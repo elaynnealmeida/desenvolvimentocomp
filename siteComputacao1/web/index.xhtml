@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Site Computação</title>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <h:link outcome="sitecargo" value="Página de Gerenciamento de Cargo" />
+        <br/>
+        <h:link outcome="usuario" value="Página de Gerenciamento de Usuário" />
+        <br/>
+        <h:link outcome="perfil" value="Página de Gerenciamento de Perfil" />
+        <br/>
+        <h:link outcome="usuarioperfil" value="Página de Gerenciamento de Perfil de Usuário" />
+        <br/>
+    </h:body>
+</html>
+

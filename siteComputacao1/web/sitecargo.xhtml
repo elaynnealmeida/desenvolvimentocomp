@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Ciência da Computação</title>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <h:form id="formcargo">
+            <br></br>
+            <h:outputText value="Cargo: "/>
+            <h:inputText id="cargo" value="#{siteCargoController.cargo.descricao}"
+                         required="true" />*
+            <p:message for="cargo" />
+            <br></br>
+
+            <br></br><br></br>
+            <p:commandButton id="btnSalvar" value="Salvar" action="#{siteCargoController.salvar}" rendered="#{!siteCargoController.isEdit}" update=":formcargo"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteCargoController.atualizar}" rendered="#{siteCargoController.isEdit}" update=":formcargo"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteCargoController.limpar}" update=":formcargo"/>
+
+            <p:dataTable var="var" value="#{siteCargoController.cargos}"
+                         selectionMode="single"  rowKey="#{var.id}"
+                         emptyMessage="Nenhum Registro Encontrado"
+                         widgetVar="varTable"
+                         filteredValue="#{siteCargoController.cargosFiltrados}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         >
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                     style="width:150px" placeholder="Cargo"
+                                     />
+                    </p:outputPanel>
+                </f:facet>
+                <p:ajax event="rowSelect" listener="#{siteCargoController.onRowSelect}" update=":formcargo" />
+                <p:column headerText="Id">
+                    <h:outputText value="#{var.id}" />
+                </p:column>
+
+                <p:column headerText="Cargo" filterBy="#{var.descricao}" filterStyle="display:none" >
+                    <h:outputText value="#{var.descricao}" />
+                </p:column>
+
+            </p:dataTable>
+            <p:messages id="msg" autoUpdate="true" closable="true" >              
+            </p:messages>
+        </h:form>
+    </h:body>
+    <h:body>
+        <h:form id="formdialog">
+            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                <p:commandButton value="Sim" update=":formcargo" onclick="PF('confirmation').hide()"
+                                 action="#{siteCargoController.deletar}" />
+
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+            </p:confirmDialog>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

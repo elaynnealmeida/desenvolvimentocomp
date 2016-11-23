@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="formusuario">
+            <h:outputText value="Nome: "/>
+            <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
+            <p:message for="nome" />
+            <br></br>
+            <h:outputText value="Email: "/>
+            <h:inputText id="email" value="#{usuarioController.usuario.email}" size="50" required="true" />*
+            <p:message for="email" />
+            <br></br>
+            <h:outputText value="Matricula: "/>
+            <h:inputText id="matricula" value="#{usuarioController.usuario.matricula}" size="50" required="true" />*
+            <p:message for="matricula" />
+            <br></br>
+             <h:outputText value="Telefone: "/>
+             <h:inputText id="telefone" value="#{usuarioController.usuario.telefone}" size="50" required="true" />*
+            <p:message for="telefone" />
+            <br></br>
+            <h:outputText value="Login: "/>
+            <h:inputText id="login" value="#{usuarioController.usuario.roles}" size="50" required="true" />*
+            <p:message for="login" />
+            <br></br>
+            <h:outputText value="Senha: "/>
+            <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
+            <p:message for="senha" />
+            <br></br>
+
+            <br></br><br></br>
+            <p:commandButton id="btnSalvar" value="Salvar" action="#{usuarioController.salvar}" rendered="#{!usuarioController.isEdit}" update=":formusuario"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{usuarioController.atualizar}" rendered="#{usuarioController.isEdit}" update=":formusuario"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{usuarioController.limpar}" update=":formusuario"/>
+            
+            <p:dataTable var="var" value="#{usuarioController.usuarios}"
+                         selectionMode="single"  rowKey="#{var.id}"
+                         emptyMessage="Nenhum Registro Encontrado"
+                         widgetVar="varTable"
+                         filteredValue="#{usuarioController.usuariosFiltrados}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         >
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                     style="width:150px" placeholder="Usuário"
+                                     />
+                    </p:outputPanel>
+                </f:facet>
+                <p:ajax event="rowSelect" listener="#{usuarioController.onRowSelect}" update=":formusuario" />
+                <p:column headerText="Id">
+                    <h:outputText value="#{var.id}" />
+                </p:column>
+
+                <p:column headerText="Nome" filterBy="#{var.nomecompleto}" filterStyle="display:none" >
+                    <h:outputText value="#{var.nomecompleto}" />
+                </p:column>
+
+                <p:column headerText="Email">
+                    <h:outputText value="#{var.email}" />
+                </p:column>
+                
+                <p:column headerText="Login">
+                    <h:outputText value="#{var.roles}" />
+                </p:column>
+
+            </p:dataTable>
+            <p:messages id="msg" autoUpdate="true" closable="true" >              
+            </p:messages>
+        </h:form>
+    </h:body>
+    <h:body>
+        <h:form id="formdialog">
+            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                <p:commandButton value="Sim" update=":formusuario" onclick="PF('confirmation').hide()"
+                                 action="#{usuarioController.deletar}" />
+
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+            </p:confirmDialog>
+            
+        </h:form>
+    </h:body>
+</html>
+
