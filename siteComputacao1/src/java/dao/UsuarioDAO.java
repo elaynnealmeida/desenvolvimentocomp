@@ -36,4 +36,27 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
         em1.close();
         return result;
     }
+
+    public TbUsersystem login(TbUsersystem login) {
+        TbUsersystem result = new TbUsersystem();
+        System.out.println("Login: "+login.getRoles());
+        System.out.println("senha: "+login.getPassword());
+        try {
+            EntityManager em1 = getEM();
+            em1.getTransaction().begin();
+            CriteriaBuilder builder = em1.getCriteriaBuilder();
+            CriteriaQuery query = builder.createQuery(TbUsersystem.class);
+            EntityType type = em1.getMetamodel().entity(TbUsersystem.class);
+            Root root = query.from(TbUsersystem.class);
+            query.where(builder.and(builder.equal(root.get(type.getDeclaredSingularAttribute("roles", String.class)), login.getRoles()),
+                    builder.equal(root.get(type.getDeclaredSingularAttribute("password", String.class)), login.getPassword())));
+            result = (TbUsersystem) em1.createQuery(query).getSingleResult();
+            em1.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println("Erro no login: "+e);
+            return null;
+        }
+
+    }
 }
