@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ciência da Computação</title>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <h:form id="formnoticias" enctype="multipart/form-data">
+            <br></br>
+            <h:outputText value="Título: "/>
+            <h:inputText id="nome" value="#{siteNoticiaController.noticia.titulo}"
+                         
+                         />*
+            <p:message for="nome" />
+            <br></br>
+            <h:outputText value="Imagem da Capa:   "/>
+            <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true"
+                          update="msg" id="imagem"  />
+            <p:message for="imagem" />
+            <br></br>
+            <h:outputText value="Conteúdo: "/>
+            <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
+                              />*
+            <p:message for="conteudo" />
+            <br></br>
+            <p:outputLabel    value="Tags:" />
+            <p:selectManyMenu id="tags" value="#{siteNoticiaController.selectedTags}"  
+                              converter="tagConverter"
+                              var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+                <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
+                <p:column>
+                    <h:outputText value="#{t.descricao}"  />                    
+                </p:column>
+            </p:selectManyMenu>
+
+            <br></br><br></br>
+            <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
+            <p:messages id="msg" autoUpdate="true" closable="true" >              
+            </p:messages>
+        </h:form>
+        <h:form id="teste">
+            <p:dataTable var="var" value="#{siteNoticiaController.noticias}"
+                         selectionMode="single"  rowKey="#{var.id}"
+                         emptyMessage="Nenhum Registro Encontrado"
+                         widgetVar="varTable"
+                         filteredValue="#{siteNoticiaController.noticiasFiltradas}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         >
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                     style="width:150px" placeholder="Título"
+                                     />
+                    </p:outputPanel>
+                </f:facet>
+                <p:ajax event="rowSelect" listener="#{siteNoticiaController.onRowSelect}" update=":formnoticias" />
+                <p:column headerText="Id">
+                    <h:outputText value="#{var.id}" />
+                </p:column>
+
+                <p:column headerText="Capa"  >
+                    <p:graphicImage value="#{siteNoticiaController.image}">
+                        <f:param name="noticia" value="#{var.id}" />
+                    </p:graphicImage>
+
+                </p:column>
+
+                <p:column headerText="Título" filterBy="#{var.titulo}" filterStyle="display:none" >
+                    <h:outputText value="#{var.titulo}" />
+                </p:column>
+
+
+            </p:dataTable>
+
+        </h:form>
+    </h:body>
+    <h:body>
+        <h:form id="formdialog">
+            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                <p:commandButton value="Sim" update=":formnoticias" onclick="PF('confirmation').hide()"
+                                 action="#{siteNoticiaController.deletar}" />
+
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+            </p:confirmDialog>
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.io.Serializable;
@@ -15,7 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -67,8 +65,12 @@ public class SiteNoticia implements Serializable {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne
     private TbUsersystem usuarioId;
-    @OneToMany(mappedBy = "noticiaId")
-    private List<SiteNoticiaTags> siteNoticiaTagsList;
+    
+    @ManyToMany
+    @JoinTable(name="site_noticia_tags", 
+               joinColumns=  @JoinColumn( name = "noticia_id"), 
+               inverseJoinColumns= @JoinColumn(name = "tag_id") )
+    private List<SiteTags> siteNoticiaTagsList;
 
     public SiteNoticia() {
     }
@@ -143,11 +145,11 @@ public class SiteNoticia implements Serializable {
     }
 
     @XmlTransient
-    public List<SiteNoticiaTags> getSiteNoticiaTagsList() {
+    public List<SiteTags> getSiteNoticiaTagsList() {
         return siteNoticiaTagsList;
     }
 
-    public void setSiteNoticiaTagsList(List<SiteNoticiaTags> siteNoticiaTagsList) {
+    public void setSiteNoticiaTagsList(List<SiteTags> siteNoticiaTagsList) {
         this.siteNoticiaTagsList = siteNoticiaTagsList;
     }
 
@@ -157,7 +159,7 @@ public class SiteNoticia implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+    
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set

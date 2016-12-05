@@ -6,33 +6,32 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Função</title>
+                <title>Ciência da Computação</title>
+          <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
-
     <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>
     </ui:insert>
-
     <h:body>
-        <h:form id="formfuncao">
+        <h:form id="formtags">
             <br></br>
-            <h:outputText value="Função: "/>
-            <h:inputText id="funcao" value="#{siteFuncaoController.funcao.descricao}"
-                         required="true" />*
-            <p:message for="funcao" />
-            <br></br>
-
+            <h:outputText value="Tag: "/>
+            <h:inputText id="tag" value="#{siteTagController.tag.descricao}"
+                         required="true"
+                         />*
+            <p:message for="tag" />
+            
             <br></br><br></br>
-            <p:commandButton id="btnSalvar" value="Salvar" action="#{siteFuncaoController.salvar}" rendered="#{!siteFuncaoController.isEdit}" update=":formfuncao"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteFuncaoController.atualizar}" rendered="#{siteFuncaoController.isEdit}" update=":formfuncao"/>
+            <p:commandButton id="btnSalvar" value="Salvar" action="#{siteTagController.salvar}" rendered="#{!siteTagController.isEdit}" update=":formtags"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteTagController.atualizar}" rendered="#{siteTagController.isEdit}" update=":formtags"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteFuncaoController.limpar}" update=":formfuncao"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteTagController.limpar}" update=":formtags"/>
 
-            <p:dataTable var="var" value="#{siteFuncaoController.funcoes}"
+            <p:dataTable var="var" value="#{siteTagController.tags}"
                          selectionMode="single"  rowKey="#{var.id}"
                          emptyMessage="Nenhum Registro Encontrado"
                          widgetVar="varTable"
-                         filteredValue="#{siteFuncaoController.funcoesFiltradas}"
+                         filteredValue="#{siteTagController.tagsFiltradas}"
                          rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -42,16 +41,16 @@
                     <p:outputPanel>
                         <h:outputText value="Pesquisar:" />
                         <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Função"
+                                     style="width:150px" placeholder="Tag"
                                      />
                     </p:outputPanel>
                 </f:facet>
-                <p:ajax event="rowSelect" listener="#{siteFuncaoController.onRowSelect}" update=":formfuncao" />
+                <p:ajax event="rowSelect" listener="#{siteTagController.onRowSelect}" update=":formtags" />
                 <p:column headerText="Id">
                     <h:outputText value="#{var.id}" />
                 </p:column>
 
-                <p:column headerText="Função" filterBy="#{var.descricao}" filterStyle="display:none" >
+                <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none" >
                     <h:outputText value="#{var.descricao}" />
                 </p:column>
 
@@ -59,13 +58,14 @@
             <p:messages id="msg" autoUpdate="true" closable="true" >              
             </p:messages>
         </h:form>
-    
+    </h:body>
+    <h:body>
         <h:form id="formdialog">
             <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
                              hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Sim" update=":formfuncao" onclick="PF('confirmation').hide()"
-                                 action="#{siteFuncaoController.deletar}" />
+                <p:commandButton value="Sim" update=":formtags" onclick="PF('confirmation').hide()"
+                                 action="#{siteTagController.deletar}" />
 
                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
             </p:confirmDialog>
@@ -75,3 +75,4 @@
 
     </h:body>
 </html>
+

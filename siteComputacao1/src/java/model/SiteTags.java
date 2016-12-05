@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
@@ -46,8 +41,8 @@ public class SiteTags implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(mappedBy = "tagId")
-    private List<SiteNoticiaTags> siteNoticiaTagsList;
+   //@OneToMany(mappedBy = "tagId")
+   // private List<SiteNoticiaTags> siteNoticiaTagsList;
 
     public SiteTags() {
     }
@@ -77,14 +72,14 @@ public class SiteTags implements Serializable {
         this.descricao = descricao;
     }
 
-    @XmlTransient
-    public List<SiteNoticiaTags> getSiteNoticiaTagsList() {
+   // @XmlTransient
+   /* public List<SiteNoticiaTags> getSiteNoticiaTagsList() {
         return siteNoticiaTagsList;
     }
 
     public void setSiteNoticiaTagsList(List<SiteNoticiaTags> siteNoticiaTagsList) {
         this.siteNoticiaTagsList = siteNoticiaTagsList;
-    }
+    }*/
 
     @Override
     public int hashCode() {
