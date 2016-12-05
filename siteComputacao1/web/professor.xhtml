@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Adicionar Professor</title>
+    </h:head>
+    <h:body>
+        <h:form id="formprofessor">
+            <h:outputText value="Nome: "/>
+            <h:inputText id="nome" value="#{tbProfessoresController.professor.nome}" size="50" required="true" />*
+            <p:message for="nome" />
+            <br></br>
+            <h:outputText value="Email: "/>
+            <h:inputText id="email" value="#{tbProfessoresController.professor.email}" size="50" required="true" />*
+            <p:message for="email" />
+            <br></br>
+
+            <br></br><br></br>
+            <p:commandButton id="btnSalvar" value="Salvar" action="#{tbProfessoresController.salvar}" rendered="#{!tbProfessoresController.isEdit}" update=":formprofessor"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{tbProfessoresController.atualizar}" rendered="#{tbProfessoresController.isEdit}" update=":formprofessor"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{tbProfessoresController.limpar}" update=":formprofessor"/>
+            
+            <p:dataTable var="var" value="#{tbProfessoresController.professores}"
+                         selectionMode="single"  rowKey="#{var.id}"
+                         emptyMessage="Nenhum Registro Encontrado"
+                         widgetVar="varTable"
+                         filteredValue="#{tbProfessoresController.professoresFiltrados}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         >
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Pesquisar:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                     style="width:150px" placeholder="Usuário"
+                                     />
+                    </p:outputPanel>
+                </f:facet>
+                <p:ajax event="rowSelect" listener="#{tbProfessoresController.onRowSelect}" update=":formprofessor" />
+                <p:column headerText="Id">
+                    <h:outputText value="#{var.id}" />
+                </p:column>
+
+                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                    <h:outputText value="#{var.nome}" />
+                </p:column>
+
+                <p:column headerText="Email">
+                    <h:outputText value="#{var.email}" />
+                </p:column> 
+
+            </p:dataTable>
+            <p:messages id="msg" autoUpdate="true" closable="true" >              
+            </p:messages>
+        </h:form>
+    </h:body>
+    <h:body>
+        <h:form id="formdialog">
+            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                <p:commandButton value="Sim" update=":formprofessor" onclick="PF('confirmacao').hide()"
+                                 action="#{tbProfessoresController.deletar}" />
+
+                <p:commandButton value="Não" onclick="PF('confirmacao').hide(); return false;" />
+            </p:confirmDialog>
+            
+        </h:form>
+    </h:body>
+</html>
+
