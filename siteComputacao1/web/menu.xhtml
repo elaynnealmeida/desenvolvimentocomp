@@ -2,33 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ciência da Computação</title>
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
     </h:head>
     <ui:composition>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
         <h:form id="menu"> 
-
-
             <nav class="navbar navbar-default" role="navigation">
                 <div class="container">
 
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                    <div class="navbar-header ">
+                        <button type="button" class="navbar-toggle collapsed"
+                                data-toggle="collapse" data-target="#barra-navegacao">
+                            <span class="sr-only">alternas navegacao</span>
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
                         </button>
-                        <a class="navbar-brand" href="index.xhtml">Ciência da Computação </a>
-                    </div>
+                        <div class="navbar-brand espaco ">
+                        <div class="flutua "><h:graphicImage styleClass="img-logo "  value="#{resource['img/computacao.png']}" /></div>
+                        <div class="flutua ">                             
+                            <h:outputLink styleClass="letra-mediaBarra" value="../faces/index.xhtml">Ciência da Computação</h:outputLink>                            
+                                                     
+                            <div class="letra-pequenaBarra">
+                                <h:outputText value="Bem Vindo, #{loginController.user.nomecompleto}!" rendered="#{loginController.isUser}"/>
+                                <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
+                             </div>
+                        </div> 
+                        </div>
 
+                    </div>
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
@@ -104,12 +106,20 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false">Administração<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="faces/pages/usuario.xhtml">Usuários</a></li>
-                                    <li><a href="faces/pages/perfil.xhtml">Perfis</a></li>
-                                    <li><a href="faces/pages/usuarioperfil.xhtml">Associar</a></li>  
-                                    <li><a href="faces/pages/sitecargo.xhtml">Cargos</a></li>    
-                                    <li><a href="faces/pages/tags.xhtml">Tags</a></li>
-                                    <li><a href="faces/noticias.xhtml">Notícias</a></li>
+                                    <li><h:commandLink value="Usuario" action="pages/usuario" />
+                                    </li>
+                                    <li><h:commandLink value="Tags" action="pages/tags" />
+                                    </li>
+                                    <li><h:commandLink value="Associar Perfil" action="pages/usuarioperfil" />
+                                    </li>  
+                                    <li><h:commandLink value="Perfis" action="perfil" />
+                                    </li>
+                                    
+                                    <li><h:commandLink value="Cargos" action="sitecargo" />
+                                    </li>    
+                                    
+                                    <li><h:commandLink value="Adicionar Notícias" action="noticias" />
+                                        <a href="faces/noticias.xhtml">Notícias</a></li>
                                 </ul>
                             </li>
 
@@ -183,19 +193,9 @@
                      </p:menubar>  -->
 
 
-            <h:outputText value="Bem Vindo, #{loginController.user.nomecompleto}!" rendered="#{loginController.isUser}"/>
-            <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
-        </h:form>
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="css/estilo.css" rel="stylesheet"/>
+        </h:form>  
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="faces/bootstrap/js/bootstrap.min.js"></script>
-
+        <script src="resources/js/bootstrap.min.js"></script>
     </ui:composition>
 </html>
-
