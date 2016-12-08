@@ -103,7 +103,7 @@ public class SiteTags implements Serializable {
 
     @Override
     public String toString() {
-        return "model.SiteTags[ id=" + id + " ]";
+        return descricao ;
     }
     
 }

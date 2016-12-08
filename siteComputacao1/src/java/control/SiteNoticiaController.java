@@ -5,6 +5,8 @@ import dao.SiteTagDAO;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import static java.lang.System.currentTimeMillis;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,7 +21,6 @@ import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import model.SiteNoticia;
-import model.SiteNoticiaTags;
 import model.SiteTags;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
@@ -71,8 +72,9 @@ public class SiteNoticiaController implements Serializable {
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
             noticia.setSiteNoticiaTagsList(selectedTags);
-            noticia.setData((new Date()).toString());
-            noticia.setHora(getDateTime());
+            noticia.setData(getDateTime());//Data de Alteração
+            noticia.setHora(getDateTime());//Data de Inserção
+            noticia.setHora2(BigInteger.valueOf(currentTimeMillis()));
             gravaImagem();
             if (noticia.getImgCapa() != null) {
                 noticiaDao.salvar(noticia);
@@ -91,6 +93,7 @@ public class SiteNoticiaController implements Serializable {
 
     public void atualizar() {
         try {
+            noticia.setData(getDateTime());//Data de Alteração
             noticiaDao.atualizar(noticia);
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -134,7 +137,7 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public List<SiteNoticia> listar() {
-        this.noticias = noticiaDao.listarTodos();
+        this.noticias = noticiaDao.listarPorData();
         return this.noticias;
     }
 

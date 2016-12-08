@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Site Computação</title>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+
+
+    <h:body> 
+
+
+        <div class=" row page-header " >  
+            <div class="col-sm-4 text-right"><img src="img/brasao.png" alt="" /></div>
+            <div class="col-sm-4 text-left" >
+                <h1 class="portal-title corto ">Ciência da Computação</h1> 
+                <span class="portal-description">Ministério da Educação</span>
+            </div>
+        </div>      
+
+
+        <h:form id="noticiaSelecionada">
+            <h:outputText value="Postado em: #{siteComentariosController.comentario.noticiaId.hora}   " />
+            <h:outputText value="Última Atualização: #{siteComentariosController.comentario.noticiaId.data}" />
+            <br></br>
+            <h:outputText value="#{siteComentariosController.comentario.noticiaId.titulo}" />
+            <br></br>
+            <h:outputText value="Tags Relacionadas: #{siteComentariosController.comentario.noticiaId.siteNoticiaTagsList}" />
+            <br></br>
+            <p:graphicImage value="#{siteComentariosController.image}">
+                <f:param name="noticia" value="#{siteComentariosController.comentario.noticiaId.id}" />
+            </p:graphicImage> 
+            <br></br>
+            <h:outputText value="#{siteComentariosController.comentario.noticiaId.conteudo}" />
+            <br></br>              
+            <h:outputText value="Comentários"  />
+        </h:form>
+
+        <h:form >
+            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
+
+
+                <h:outputText value="Nome: " />
+                <h:inputText value="#{siteComentariosController.comentario.email}" required="true" />*
+
+                <h:outputText value="Comentário: " />
+                <h:inputText  value="#{siteComentariosController.comentario.texto}" required="true" />*
+                
+                <h:commandButton id="salvar" value="Enviar" action="#{siteComentariosController.salvar}" />
+                
+            </h:panelGrid>
+        </h:form>
+        <h:form id="formlista">
+            <c:forEach var="comentario" items="${siteComentariosController.comentarios}">
+                <h:outputText  value="#{comentario.email}" />               
+                <br></br>
+                <h:outputText  value="#{comentario.texto}" />                        
+                <br></br>
+            </c:forEach>         
+
+        </h:form>
+    </h:body>
+</html>

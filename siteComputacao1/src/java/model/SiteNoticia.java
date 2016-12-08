@@ -1,12 +1,13 @@
-
 package model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SiteNoticia.findByTitulo", query = "SELECT s FROM SiteNoticia s WHERE s.titulo = :titulo"),
     @NamedQuery(name = "SiteNoticia.findByData", query = "SELECT s FROM SiteNoticia s WHERE s.data = :data"),
     @NamedQuery(name = "SiteNoticia.findByHora", query = "SELECT s FROM SiteNoticia s WHERE s.hora = :hora"),
-    @NamedQuery(name = "SiteNoticia.findByConteudo", query = "SELECT s FROM SiteNoticia s WHERE s.conteudo = :conteudo")})
+    @NamedQuery(name = "SiteNoticia.findByConteudo", query = "SELECT s FROM SiteNoticia s WHERE s.conteudo = :conteudo"),
+    @NamedQuery(name = "SiteNoticia.findByHora2", query = "SELECT s FROM SiteNoticia s WHERE s.hora2 = :hora2")})
 public class SiteNoticia implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,17 +62,21 @@ public class SiteNoticia implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "conteudo")
     private String conteudo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "noticiaId")
+    @OneToMany(mappedBy = "noticiaId")
     private List<SiteComentarios> siteComentariosList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne
     private TbUsersystem usuarioId;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="site_noticia_tags", 
                joinColumns=  @JoinColumn( name = "noticia_id"), 
                inverseJoinColumns= @JoinColumn(name = "tag_id") )
     private List<SiteTags> siteNoticiaTagsList;
+    
+    @Column(name = "hora2")
+    private BigInteger hora2;
+    
 
     public SiteNoticia() {
     }
@@ -127,13 +133,12 @@ public class SiteNoticia implements Serializable {
         this.conteudo = conteudo;
     }
 
-    @XmlTransient
-    public List<SiteComentarios> getSiteComentariosList() {
-        return siteComentariosList;
+    public BigInteger getHora2() {
+        return hora2;
     }
 
-    public void setSiteComentariosList(List<SiteComentarios> siteComentariosList) {
-        this.siteComentariosList = siteComentariosList;
+    public void setHora2(BigInteger hora2) {
+        this.hora2 = hora2;
     }
 
     public TbUsersystem getUsuarioId() {
@@ -142,6 +147,13 @@ public class SiteNoticia implements Serializable {
 
     public void setUsuarioId(TbUsersystem usuarioId) {
         this.usuarioId = usuarioId;
+    }
+    public List<SiteComentarios> getSiteComentariosList() {
+        return siteComentariosList;
+    }
+
+    public void setSiteComentariosList(List<SiteComentarios> siteComentariosList) {
+        this.siteComentariosList = siteComentariosList;
     }
 
     @XmlTransient
@@ -159,7 +171,7 @@ public class SiteNoticia implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -177,5 +189,7 @@ public class SiteNoticia implements Serializable {
     public String toString() {
         return "model.SiteNoticia[ id=" + id + " ]";
     }
+
+    
     
 }
