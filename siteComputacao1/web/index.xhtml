@@ -8,59 +8,67 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Site Computação</title>
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <link href="css/estilo.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="menu.xhtml"/>   
+        <h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
     </ui:insert>
-
-
     <h:body> 
-
-
-        <div class=" row page-header " >  
-            <div class="col-sm-4 text-right"><img src="img/brasao.png" alt="" /></div>
+        <h:form styleClass=" row page-header " >
+            <div class="col-sm-4 text-right"><h:graphicImage  value="#{resource['img/brasao.png']}" /> </div>
             <div class="col-sm-4 text-left" >
                 <h1 class="portal-title corto ">Ciência da Computação</h1> 
                 <span class="portal-description">Ministério da Educação</span>
             </div>
-        </div>
-        <div class="row"  > 
+        </h:form > 
+        <div class=" row col-sm-12">
+            <div class=" col-sm-3 menu-lateral text-right"  > 
+                <h:form styleClass=" row page-header " >
 
-            <div class="col-sm-3 menu-lateral text-right">
-                <h4><h:link outcome="#" value="Gerenciar Noticia" /></h4> 
-                <h4><h:link outcome="pages/sitecargo" value="Gerenciamento de Cargo" /></h4>           
-                <h4><h:link outcome="pages/usuario.xhtml" value="Gerenciamento de Usuário" /></h4>
-                <h4><h:link outcome="pages/perfil" value="Gerenciamento de Perfil" /></h4>             
-                <h4><h:link outcome="pages/usuarioperfil" value="Gerenciamento de Perfil de Usuário" /></h4>
-                <h4><h:link outcome="sitefuncao" value="Gerenciamento de Função" /></h4>    
+                    <div >
+                        <h4><h:commandLink action="noticias.xhtml" value="Gerenciar Noticia" /></h4> 
+                        <h4><h:commandLink action="sitecargo" value="Gerenciamento de Cargo" /></h4>           
+                        <h4><h:commandLink action="pages/usuario.xhtml" value="Gerenciamento de Usuário" /></h4>
+                        <h4><h:commandLink action="perfil" value="Gerenciamento de Perfil" /></h4>             
+                        <h4><h:commandLink action="pages/usuarioperfil" value="Gerenciamento de Perfil de Usuário" /></h4>                     
+                        <h4><h:link outcome="sitefuncao" value="Gerenciamento de Função" /></h4>    
+                    </div>
+                </h:form>  
+            </div>
+            <div class=" col-sm-8">
+                <h:form id="index">
+                    <c:forEach var="noticia" items="${noticiasHelper.noticias}">
+                        <h:link value="Postado em: #{noticia.hora}" outcome="comentarios"/> 
+                        <h:link value="  Última Atualização em: #{noticia.data}  " outcome="comentarios"/>               
+                        <br></br>
+
+                        <h:link value="Tags relacionadas: #{noticia.siteNoticiaTagsList}" outcome="comentarios"> 
+                        </h:link>              
+                        <br></br>
+
+                        <p:commandLink value="#{noticia.titulo}" action="#{noticiasHelper.pagina}" >            
+                            <f:setPropertyActionListener target="#{siteComentariosController.comentario.noticiaId}" value="#{noticia}"/>
+                            <f:param name="noticia" value="#{noticia.id}" />
+                        </p:commandLink>
+                        <br></br>            
+
+                        <p:graphicImage value="#{noticiasHelper.image}">
+                            <f:param name="noticia" value="#{noticia.id}" />
+                        </p:graphicImage> 
+                        <br></br>
+
+                        <h:outputText  value="#{noticia.conteudo}" />                        
+                        <br></br>
+                    </c:forEach>          
+
+                </h:form>
             </div>
         </div>
-        <h:form id="index">
-            <c:forEach var="noticia" items="${noticiasHelper.noticias}">
-                <h:link value="Postado em: #{noticia.hora}" outcome="comentarios"/> 
-                <h:link value="  Última Atualização em: #{noticia.data}  " outcome="comentarios"/>               
-                <br></br>
-
-                <h:link value="Tags relacionadas: #{noticia.siteNoticiaTagsList}" outcome="comentarios"> 
-                </h:link>              
-                <br></br>
-
-                <p:commandLink value="#{noticia.titulo}" action="#{noticiasHelper.pagina}" >            
-                    <f:setPropertyActionListener target="#{siteComentariosController.comentario.noticiaId}" value="#{noticia}"/>
-                    <f:param name="noticia" value="#{noticia.id}" />                    
-                </p:commandLink>
-                <br></br>             
-
-                <p:graphicImage value="#{noticiasHelper.image}">
-                    <f:param name="noticia" value="#{noticia.id}" />
-                </p:graphicImage> 
-                <br></br>
-
-                <h:outputText  value="#{noticia.conteudo}" />                        
-                <br></br>
-            </c:forEach>          
-
-        </h:form>
     </h:body>
 </html>
