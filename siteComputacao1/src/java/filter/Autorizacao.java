@@ -19,7 +19,7 @@ public class Autorizacao implements PhaseListener {
         FacesContext facesContext = event.getFacesContext();
 //adiquirindo o FacesContext.
         String currentPage = facesContext.getViewRoot().getViewId();
-        
+
 //armazenando a página que fez a requisição. (a string da pág. atual ex: "/pag.jsf")
         boolean isLoginPage = (currentPage.lastIndexOf("login.xhtml") > -1);
 //fazendo a verificação mais básica de todas... se é a página de login.
@@ -30,6 +30,7 @@ public class Autorizacao implements PhaseListener {
         SitePerfil perfil = (SitePerfil) session.getAttribute("perfil");
 //apenas recuperando o valor da sessão.
         if (!isLoginPage && user == null) {
+            System.out.println("entrou no filtro ");
             NavigationHandler nh = facesContext.getApplication().getNavigationHandler();
             nh.handleNavigation(facesContext, null, "loginPage");
 //bem, se não está logado redireciona pra lógica que (navigatio rule) atende a loginPage
@@ -39,7 +40,7 @@ public class Autorizacao implements PhaseListener {
                 System.out.println("entrou: " + perfil.getNome());
                 NavigationHandler nh = facesContext.getApplication().getNavigationHandler();
                 nh.handleNavigation(facesContext, null, "loginPage");
-            }
+            } 
         }
 
 //caso contrário o jsf passa tranquilamente por aqui!!!

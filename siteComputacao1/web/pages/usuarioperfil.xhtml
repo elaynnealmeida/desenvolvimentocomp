@@ -8,38 +8,37 @@
     <h:head>
         <title>Ciência da Computação</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-        
+
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
         <h:form id="formperfilusuario">
-            <br></br>
-            <h:outputText value="Usuario: "/>
-            <p:autoComplete id="dd" value="#{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId}" 
-                            completeMethod="#{sitePerfilUsuarioController.buscaUsuario}" 
-                            minQueryLength="4"
-                            var="user"
-                            itemLabel="#{user.nomecompleto}"
-                            itemValue="#{user}"
-                            />* 
-            <p:message for="dd" />
-            <br></br>
-            <h:outputText value="Perfil: "/>
-            <p:selectOneMenu id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId}">
-                <f:selectItem itemLabel="" itemValue="" />
-                <f:selectItems value="#{sitePerfilUsuarioController.perfil}" />
-            </p:selectOneMenu>
-            <br></br>
-            <p:message for="perfil" />
-            <br></br>
+            <h:outputText value="Associação de Perfil " />
+            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                <h:outputText value="Usuário: "/>
+                <p:autoComplete id="dd" value="#{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId}" 
+                                completeMethod="#{sitePerfilUsuarioController.buscaUsuario}" 
+                                minQueryLength="4"
+                                var="user"
+                                itemLabel="#{user.nomecompleto}"
+                                itemValue="#{user}"
+                                />* 
+                <p:message for="dd" />
 
-            <br></br><br></br>
-            <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formperfilusuario"/>
+                <h:outputText value="Perfil: "/>
+                <p:selectOneMenu id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId}">
+                    <f:selectItem itemLabel="" itemValue="" />
+                    <f:selectItems value="#{sitePerfilUsuarioController.perfil}" />
+                </p:selectOneMenu>*            
+                <p:message for="perfil" />
+
+                <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
+                <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
+                <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+                <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formperfilusuario"/>
+            </h:panelGrid>
 
             <p:dataTable var="var" value="#{sitePerfilUsuarioController.sitePerfilUsuarios}"
                          selectionMode="single"  rowKey="#{var.id}"
@@ -67,7 +66,7 @@
                 <p:column headerText="Usuário" filterBy="#{var.usuarioId.nomecompleto}" filterStyle="display:none" >
                     <h:outputText value="#{var.usuarioId.nomecompleto}" />
                 </p:column>
-                
+
                 <p:column headerText="Perfil"  >
                     <h:outputText value="#{var.perfilId.nome}" />
                 </p:column>

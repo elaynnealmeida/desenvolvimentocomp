@@ -8,7 +8,7 @@
         <phase-listener>filter.Autorizacao</phase-listener>
     </lifecycle>
     
-    <navigation-rule>
+    <navigation-rule>     
         <from-view-id>/pages/*</from-view-id>
         <navigation-case>
             <from-outcome>loginPage</from-outcome>
@@ -16,4 +16,14 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>     
+        <from-view-id>/professores/*</from-view-id>
+        <navigation-case>
+            <from-outcome>loginPage</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
 </faces-config>

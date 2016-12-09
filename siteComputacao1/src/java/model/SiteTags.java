@@ -3,11 +3,16 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,8 +46,11 @@ public class SiteTags implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "descricao")
     private String descricao;
-   //@OneToMany(mappedBy = "tagId")
-   // private List<SiteNoticiaTags> siteNoticiaTagsList;
+   @ManyToMany(cascade=CascadeType.REMOVE)
+    @JoinTable(name="site_noticia_tags", 
+               joinColumns=  @JoinColumn( name = "tag_id" ), 
+               inverseJoinColumns= @JoinColumn(name = "noticia_id") )
+    private List<SiteNoticiaTags> siteNoticiaTagsList;
 
     public SiteTags() {
     }
@@ -72,14 +80,14 @@ public class SiteTags implements Serializable {
         this.descricao = descricao;
     }
 
-   // @XmlTransient
-   /* public List<SiteNoticiaTags> getSiteNoticiaTagsList() {
+    @XmlTransient
+    public List<SiteNoticiaTags> getSiteNoticiaTagsList() {
         return siteNoticiaTagsList;
     }
 
     public void setSiteNoticiaTagsList(List<SiteNoticiaTags> siteNoticiaTagsList) {
         this.siteNoticiaTagsList = siteNoticiaTagsList;
-    }*/
+    }
 
     @Override
     public int hashCode() {

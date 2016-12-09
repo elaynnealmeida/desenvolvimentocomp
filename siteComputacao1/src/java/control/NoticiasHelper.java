@@ -66,7 +66,10 @@ public class NoticiasHelper implements Serializable {
     }
 
     public void pagina() throws IOException {
-        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/comentarios.xhtml");
+        FacesContext context = FacesContext.getCurrentInstance();
+        System.out.println("entrou no redirecionamento de pagina");
+        String id = context.getExternalContext().getRequestParameterMap().get("noticia");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/comentarios.xhtml?noticia="+id);
     }
 
     public List<SiteNoticia> getNoticias() {

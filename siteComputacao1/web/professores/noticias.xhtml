@@ -10,44 +10,52 @@
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>       
     </ui:insert>
     <h:body>
         <h:form id="formnoticias" enctype="multipart/form-data">
-            <br></br>
-            <h:outputText value="Título: "/>
-            <h:inputText id="nome" value="#{siteNoticiaController.noticia.titulo}"
-                         
-                         />*
-            <p:message for="nome" />
-            <br></br>
-            <h:outputText value="Imagem da Capa:   "/>
-            <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true"
-                          update="msg" id="imagem"  />
-            <p:message for="imagem" />
-            <br></br>
-            <h:outputText value="Conteúdo: "/>
-            <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
-                              />*
-            <p:message for="conteudo" />
-            <br></br>
-            <p:outputLabel    value="Tags:" />
-            <p:selectManyMenu id="tags" value="#{siteNoticiaController.selectedTags}"  
-                              converter="tagConverter"
-                              var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-                <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
-                <p:column>
-                    <h:outputText value="#{t.descricao}"  />                    
-                </p:column>
-            </p:selectManyMenu>
+            <h:outputText value="Cadastro de Notícias "/>
+            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                <h:outputText value="Título: "/>
+                <h:inputText id="nome" value="#{siteNoticiaController.noticia.titulo}"
+                             requiredMessage="Campo Obrigatório"
+                             required="true"
+                             />*
+                <p:message for="nome" />
 
-            <br></br><br></br>
+                <h:outputText value="Imagem da Capa: "/>
+                <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true"
+                              update="msg" id="imagem"    requiredMessage="Campo Obrigatório" 
+                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                              />*
+                <p:message for="imagem" />
+                
+                <h:outputText value="Conteúdo: "/>
+                <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
+                                 requiredMessage="Campo Obrigatório"
+                                 required="true"
+                                 />*
+                <p:message for="conteudo" />
+
+                <p:outputLabel    value="Tags:" />
+                <p:selectManyMenu id="tags" value="#{siteNoticiaController.selectedTags}"  
+                                  converter="tagConverter"
+                                  requiredMessage="Campo Obrigatório"
+                                  required="true"
+                                  var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+                    <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
+                    <p:column>
+                        <h:outputText value="#{t.descricao}"  />                    
+                    </p:column>                   
+                </p:selectManyMenu>*
+            </h:panelGrid>
+
             <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
-            <p:messages id="msg" autoUpdate="true" closable="true" >              
-            </p:messages>
+
+            <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>
         </h:form>
         <h:form id="teste">
             <p:dataTable var="var" value="#{siteNoticiaController.noticias}"

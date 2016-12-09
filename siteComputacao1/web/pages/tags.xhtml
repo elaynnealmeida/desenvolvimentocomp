@@ -6,26 +6,28 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-                <title>Ciência da Computação</title>
-          <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Ciência da Computação</title>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="../menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>       
     </ui:insert>
     <h:body>
         <h:form id="formtags">
-            <br></br>
-            <h:outputText value="Tag: "/>
-            <h:inputText id="tag" value="#{siteTagController.tag.descricao}"
-                         required="true"
-                         />*
-            <p:message for="tag" />
-            
-            <br></br><br></br>
+            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
+
+                <h:outputText value="Tag: "/>
+                <h:inputText id="tag" value="#{siteTagController.tag.descricao}"
+                             required="true"
+                             requiredMessage="Campo Obrigatório"
+                             />*
+                <p:message for="tag" />
+            </h:panelGrid>
             <p:commandButton id="btnSalvar" value="Salvar" action="#{siteTagController.salvar}" rendered="#{!siteTagController.isEdit}" update=":formtags"/>
             <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteTagController.atualizar}" rendered="#{siteTagController.isEdit}" update=":formtags"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{siteTagController.limpar}" update=":formtags"/>
+
 
             <p:dataTable var="var" value="#{siteTagController.tags}"
                          selectionMode="single"  rowKey="#{var.id}"

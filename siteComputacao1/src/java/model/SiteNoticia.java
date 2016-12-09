@@ -62,13 +62,13 @@ public class SiteNoticia implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "conteudo")
     private String conteudo;
-    @OneToMany(mappedBy = "noticiaId")
+    @OneToMany(mappedBy = "noticiaId",cascade=CascadeType.REMOVE)
     private List<SiteComentarios> siteComentariosList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne
     private TbUsersystem usuarioId;
     
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     @JoinTable(name="site_noticia_tags", 
                joinColumns=  @JoinColumn( name = "noticia_id"), 
                inverseJoinColumns= @JoinColumn(name = "tag_id") )

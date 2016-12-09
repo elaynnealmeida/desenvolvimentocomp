@@ -14,17 +14,15 @@ import javax.persistence.criteria.CriteriaQuery;
  */
 public class GenericDAO<T> implements Serializable {
 
-  //  Session session;
-   // Transaction transaction;
-
+    //  Session session;
+    // Transaction transaction;
     private EntityManager em;
     private Class<T> entityClass;
 
     public GenericDAO(Class<T> entity) {
         this.entityClass = entity;
-        
 
-}
+    }
 
     public EntityManager getEM() {
 
@@ -71,7 +69,8 @@ public class GenericDAO<T> implements Serializable {
             em1.getTransaction().begin();
             em1.persist(t);
             em1.getTransaction().commit();
-        } finally {
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar: " + e);
             em1.close();
         }
     }
@@ -82,7 +81,8 @@ public class GenericDAO<T> implements Serializable {
             em.getTransaction().begin();
             t = em.merge(t);
             em.getTransaction().commit();
-        } finally {
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar: " + e);
             em.close();
         }
         return t;
@@ -94,10 +94,8 @@ public class GenericDAO<T> implements Serializable {
             em.getTransaction().begin();
             em.remove(em.merge(t));
             em.getTransaction().commit();
-        }// catch(Exception ex){
-        //System.err.println("Erro: "+ex);
-        // }        
-        finally {
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar: " + e);
             em.close();
         }
     }
@@ -108,31 +106,48 @@ public class GenericDAO<T> implements Serializable {
         List<T> result = new ArrayList<T>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
-        CriteriaQuery cq = em1.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        result = em1.createQuery(cq).getResultList();
-        em1.close();
+        try {
+            CriteriaQuery cq = em1.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(entityClass));
+            result = em1.createQuery(cq).getResultList();
+            em1.close();
+        } catch (Exception e) {
+            System.out.println("Erro no listar Todos: " + e);
+            em1.close();
+        }
         return result;
     }
-    
+
     public T buscaPorID(int entityID) {
         System.out.println("entrou no dao buscaPorID-----------");
         System.out.println("entidade:  " + entityClass.getName());
         EntityManager em1 = getEM();
-        em1.getTransaction().begin();
-        T result = em1.find(entityClass, entityID);
-       // em1.close();
-        return result;
+        try {
+            em1.getTransaction().begin();
+            T result = em1.find(entityClass, entityID);
+            em1.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println("Erro no listar Todos: " + e);
+            em1.close();
+        }
+        return null;
     }
-    
-     public T buscaPorID2(long entityID) {
+
+    public T buscaPorID2(long entityID) {
         System.out.println("entrou no dao buscaPorID-----------");
         System.out.println("entidade:  " + entityClass.getName());
         EntityManager em1 = getEM();
-        em1.getTransaction().begin();
-        T result = em1.find(entityClass, entityID);
-       // em1.close();
-        return result;
+        try {
+            em1.getTransaction().begin();
+            T result = em1.find(entityClass, entityID);
+            em1.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println("Erro no listar Todos: " + e);
+            em1.close();
+        }
+        return null;
     }
-    
+
 }

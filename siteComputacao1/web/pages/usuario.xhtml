@@ -7,43 +7,45 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ciência da Computação</title>
-          <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
         <h:form id="formusuario">
-            <h:outputText value="Nome: "/>
-            <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
-            <p:message for="nome" />
-            <br></br>
-            <h:outputText value="Email: "/>
-            <h:inputText id="email" value="#{usuarioController.usuario.email}" size="50" required="true" />*
-            <p:message for="email" />
-            <br></br>
-            <h:outputText value="Matricula: "/>
-            <h:inputText id="matricula" value="#{usuarioController.usuario.matricula}" size="50" required="true" />*
-            <p:message for="matricula" />
-            <br></br>
-            <h:outputText value="Telefone: "/>
-            <h:inputText id="telefone" value="#{usuarioController.usuario.telefone}" size="50" required="true" />*
-            <p:message for="telefone" />
-            <br></br>
-            <h:outputText value="Login: "/>
-            <h:inputText id="login" value="#{usuarioController.usuario.roles}" size="50" required="true" />*
-            <p:message for="login" />
-            <br></br>
-            <h:outputText value="Senha: "/>
-            <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
-            <p:message for="senha" />
-            <br></br>
+            <h:outputText value="Cadastro de Usuário " />
+            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                <h:outputText value="Nome: "/>
+                <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
+                <p:message for="nome" />
 
-            <br></br><br></br>
+                <h:outputText value="Email: "/>
+                <h:inputText id="email" value="#{usuarioController.usuario.email}" size="50" required="true" />*
+                <p:message for="email" />
+
+                <h:outputText value="Matricula: "/>
+                <h:inputText id="matricula" value="#{usuarioController.usuario.matricula}" size="50" required="true" />*
+                <p:message for="matricula" />
+
+                <h:outputText value="Telefone: "/>
+                <h:inputText id="telefone" value="#{usuarioController.usuario.telefone}" size="50" required="true" />*
+                <p:message for="telefone" />
+
+                <h:outputText value="Login: "/>
+                <h:inputText id="login" value="#{usuarioController.usuario.roles}" size="50" required="true" />*
+                <p:message for="login" />
+
+                <h:outputText value="Senha: "/>
+                <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
+                <p:message for="senha" />
+            </h:panelGrid>
+
             <p:commandButton id="btnSalvar" value="Salvar" action="#{usuarioController.salvar}" rendered="#{!usuarioController.isEdit}" update=":formusuario"/>
             <p:commandButton id="btnAtualizar" value="Atualizar" action="#{usuarioController.atualizar}" rendered="#{usuarioController.isEdit}" update=":formusuario"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{usuarioController.limpar}" update=":formusuario"/>
+            <br></br><br></br>
 
             <p:dataTable var="var" value="#{usuarioController.usuarios}"
                          selectionMode="single"  rowKey="#{var.id}"

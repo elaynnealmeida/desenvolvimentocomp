@@ -9,7 +9,15 @@ and open the template in the editor.
 */
 
 
+html, body{
+    height: 100%;
+}
 
+body{
+
+    overflow-x: hidden;
+
+}
 .dropdown-submenu {
     position: relative;
 }
@@ -59,9 +67,13 @@ and open the template in the editor.
 }
 
 .menu-lateral{
+    padding: 5px; 
+}
 
-    color: white;
-    border-right: 1px #1b6d85 solid;   
+.linha-abaixo{
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-bottom: 2px solid #255625;
 }
 a:link, a:visited {
 
@@ -89,7 +101,7 @@ a:active {
 .tamanho-logo{
     border: 1px red solid;
     width: 250px;
-    
+
 }
 
 .flutua{
@@ -100,7 +112,7 @@ a:active {
 .letra-pequenaBarra{
 
     font-size: 10px;
-     padding: 0px;
+    padding: 0px;
     margin: 0px;
 }
 
@@ -113,3 +125,34 @@ a:active {
     width: 160px;
 }
 /* -- fim imagem logo  -- */
+
+
+.pading-noticia{
+    padding: 20px;
+
+}
+
+.figura-pequena{
+    max-width:200px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+.borda-superior-tags{
+    border-top: 2px solid #255625;
+}
+.plano-funco-rodape{
+    color: white;
+    background-color: #255625;    
+}
+
+.linha-acima{
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-top:2px solid #255625;
+}
+
+.borda-vermelha{
+    border: 1px red solid;
+}

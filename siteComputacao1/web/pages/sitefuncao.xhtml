@@ -5,38 +5,35 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
+     <h:head>
         <title>Ciência da Computação</title>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>       
     </ui:insert>
     <h:body>
-        <h:form id="formperfil">
-            <br></br>
-            <h:outputText value="Perfil: "/>
-            <h:inputText id="nome" value="#{sitePerfilController.sitePerfil.nome}"
-                         required="true"
-                         />*
-            <p:message for="nome" />
-            <br></br>
-            <h:outputText value="Descricao: "/>
-            <h:inputText id="descricao" value="#{sitePerfilController.sitePerfil.descricao}"
-                         required="true" />*
-            <p:message for="descricao" />
-            <br></br>
-
+        <h:form id="formfuncao">
+            <h:outputText value="Cadastro de Função "/>
             <br></br><br></br>
-            <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilController.salvar}" rendered="#{!sitePerfilController.isEdit}" update=":formperfil"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilController.atualizar}" rendered="#{sitePerfilController.isEdit}" update=":formperfil"/>
+            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
+                <h:outputText value="Função: "/>
+                <h:inputText id="funcao" value="#{siteFuncaoController.funcao.descricao}"
+                             requiredMessage="Campo Obrigatório" required="true" />*
+                <p:message for="funcao" />
+            </h:panelGrid>
+            
+            <p:commandButton id="btnSalvar" value="Salvar" action="#{siteFuncaoController.salvar}" rendered="#{!siteFuncaoController.isEdit}" update=":formfuncao"/>
+            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteFuncaoController.atualizar}" rendered="#{siteFuncaoController.isEdit}" update=":formfuncao"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilController.limpar}" update=":formperfil"/>
+            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteFuncaoController.limpar}" update=":formfuncao"/>
+            <br></br><br></br>
 
-            <p:dataTable var="var" value="#{sitePerfilController.perfis}"
+            <p:dataTable var="var" value="#{siteFuncaoController.funcoes}"
                          selectionMode="single"  rowKey="#{var.id}"
                          emptyMessage="Nenhum Registro Encontrado"
                          widgetVar="varTable"
-                         filteredValue="#{sitePerfilController.perfisFiltrados}"
+                         filteredValue="#{siteFuncaoController.funcoesFiltradas}"
                          rows="10"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -46,20 +43,16 @@
                     <p:outputPanel>
                         <h:outputText value="Pesquisar:" />
                         <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Perfil"
+                                     style="width:150px" placeholder="Função"
                                      />
                     </p:outputPanel>
                 </f:facet>
-                <p:ajax event="rowSelect" listener="#{sitePerfilController.onRowSelect}" update=":formperfil" />
+                <p:ajax event="rowSelect" listener="#{siteFuncaoController.onRowSelect}" update=":formfuncao" />
                 <p:column headerText="Id">
                     <h:outputText value="#{var.id}" />
                 </p:column>
 
-                <p:column headerText="Perfil" filterBy="#{var.nome}" filterStyle="display:none" >
-                    <h:outputText value="#{var.nome}" />
-                </p:column>
-
-                <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none" >
+                <p:column headerText="Função" filterBy="#{var.descricao}" filterStyle="display:none" >
                     <h:outputText value="#{var.descricao}" />
                 </p:column>
 
@@ -67,14 +60,13 @@
             <p:messages id="msg" autoUpdate="true" closable="true" >              
             </p:messages>
         </h:form>
-    </h:body>
-    <h:body>
+
         <h:form id="formdialog">
             <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
                              hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Sim" update=":formperfil" onclick="PF('confirmation').hide()"
-                                 action="#{sitePerfilController.deletar}" />
+                <p:commandButton value="Sim" update=":formfuncao" onclick="PF('confirmation').hide()"
+                                 action="#{siteFuncaoController.deletar}" />
 
                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
             </p:confirmDialog>
@@ -84,4 +76,3 @@
 
     </h:body>
 </html>
-

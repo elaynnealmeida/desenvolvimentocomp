@@ -37,7 +37,7 @@ public class SiteComentariosController implements Serializable {
         noticiaDao = new SiteNoticiaDAO();
         comentarios = listar();
     }
-    
+
     public void limpar() {
         this.comentario.setEmail(null);
         this.comentario.setId(null);
@@ -78,13 +78,31 @@ public class SiteComentariosController implements Serializable {
     }
 
     public List<SiteComentarios> listar() {
+        System.out.println("entrou no listar");
         FacesContext context = FacesContext.getCurrentInstance();
         String id = context.getExternalContext().getRequestParameterMap().get("noticia");
-        if (id != null) {
+        System.out.println("id: " + id);
+        if (comentario.getNoticiaId() == null) {
+            System.out.println("entrou no listar pelo parametro");
+            if (id != null) {
+                comentario.setNoticiaId(noticiaDao.buscaPorID(Integer.parseInt(id)));
+            }
+            this.comentarios = comentariosDao.listaPorNoticia(comentario.getNoticiaId());
+            return this.comentarios;
+        } /*else if (Integer.parseInt(id) != comentario.getNoticiaId().getId()) {
+            System.out.println("entrou no ids diferentes");
             comentario.setNoticiaId(noticiaDao.buscaPorID(Integer.parseInt(id)));
+            //comentario.setNoticiaId(noticiaDao.buscaPorID(comentario.getNoticiaId().getId()));
+            this.comentarios = comentariosDao.listaPorNoticia(comentario.getNoticiaId());
+            return this.comentarios;
+        } */else {
+            System.out.println("entrou no ids iguais");
+            //comentario.setNoticiaId(noticiaDao.buscaPorID(Integer.parseInt(id)));
+            comentario.setNoticiaId(noticiaDao.buscaPorID(comentario.getNoticiaId().getId()));
+            this.comentarios = comentariosDao.listaPorNoticia(comentario.getNoticiaId());
+            return this.comentarios;
         }
-        this.comentarios = comentariosDao.listaPorNoticia(comentario.getNoticiaId());
-        return this.comentarios;
+
     }
 
     public StreamedContent getImage() throws IOException {

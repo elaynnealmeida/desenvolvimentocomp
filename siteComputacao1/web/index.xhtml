@@ -16,59 +16,120 @@
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="menu.xhtml"/>   
-        <h:outputStylesheet library="css" name="estilo.css"></h:outputStylesheet>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
     </ui:insert>
     <h:body> 
-        <h:form styleClass=" row page-header " >
+        <h:form styleClass=" row page-header col-sm-12 " >
             <div class="col-sm-4 text-right"><h:graphicImage  value="#{resource['img/brasao.png']}" /> </div>
             <div class="col-sm-4 text-left" >
                 <h1 class="portal-title corto ">Ciência da Computação</h1> 
                 <span class="portal-description">Ministério da Educação</span>
             </div>
         </h:form > 
-        <div class=" row col-sm-12">
-            <div class=" col-sm-3 menu-lateral text-right"  > 
-                <h:form styleClass=" row page-header " >
+        <section>
+            <div class=" row col-sm-12">
+                <div class=" col-sm-2 menu-lateral "  > 
+                    <h:form id="formlogin" styleClass="pading-noticia" rendered="#{!loginController.isUser}" >
+                        <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
+                        <h:outputText value="Login: "/>
+                        <h:inputText id="login" value="#{loginController.user.roles}"
+                                     required="true"
+                                     />
+                        <p:message for="login" />
 
-                    <div >
-                        <h4><h:commandLink action="noticias.xhtml" value="Gerenciar Noticia" /></h4> 
-                        <h4><h:commandLink action="sitecargo" value="Gerenciamento de Cargo" /></h4>           
-                        <h4><h:commandLink action="pages/usuario.xhtml" value="Gerenciamento de Usuário" /></h4>
-                        <h4><h:commandLink action="perfil" value="Gerenciamento de Perfil" /></h4>             
-                        <h4><h:commandLink action="pages/usuarioperfil" value="Gerenciamento de Perfil de Usuário" /></h4>                     
-                        <h4><h:link outcome="sitefuncao" value="Gerenciamento de Função" /></h4>    
+                        <h:outputText value="Senha: "/>
+                        <h:inputSecret id="senha" value="#{loginController.user.password}"
+                                       required="true" />
+                        <p:message for="senha" />                    
+
+                        <p:commandButton id="btnSalvar" value="Entrar" 
+                                         action="#{loginController.login}" 
+                                         update=":formlogin"
+                                         />                        
+                        </h:panelGrid>
+                        <p:messages id="msg" autoUpdate="true" closable="true" >              
+                        </p:messages>
+                    </h:form>                 
+
+                </div>
+                <div class=" col-sm-8">
+                    <h:form id="index">
+                        <c:forEach var="noticia" items="${noticiasHelper.noticias}">
+                            <div class="pading-noticia">
+                                <div class="page-header text-center">
+                                    <h1>
+                                        <p:commandLink value="#{noticia.titulo}" action="#{noticiasHelper.pagina}" >            
+                                            <f:setPropertyActionListener target="#{siteComentariosController.comentario.noticiaId}" value="#{noticia}"/>
+                                            <f:param name="noticia" value="#{noticia.id}" />
+                                        </p:commandLink>
+                                    </h1>
+                                </div>
+                                <div class="text-center"  >
+                                    <p:graphicImage  style="    max-width:200px;
+                                                     max-height:150px;
+                                                     width: auto;
+                                                     height: auto;" value="#{noticiasHelper.image}">
+                                        <f:param name="noticia" value="#{noticia.id}" />
+                                    </p:graphicImage> 
+                                </div>
+
+                                <div class="pading-noticia" >
+                                    <h:outputText  value="#{noticia.conteudo}" /> 
+                                </div>
+                                <div>
+                                    <h:outputText value="Postado em: #{noticia.hora}" /> 
+                                    <h:outputText value="  Última Atualização em: #{noticia.data}  " /> 
+                                    <h:outputText value="Tags relacionadas: #{noticia.siteNoticiaTagsList}" /> 
+                                    
+                                </div>
+                            </div>
+
+                        </c:forEach>          
+
+                    </h:form>
+                </div>
+            </div>
+            <!--Rodapé  -->
+        </section>
+        <section >
+            <h:form id="footer1">
+
+                <div class="row col-sm-12 plano-funco-rodape">
+                    <!--começa a linha  -->
+                    <div class="row ">
+                        <div class="">
+                            <div class="col-md-2 ">
+                                <div class="flutua "><h:graphicImage styleClass="img-logo "  value="#{resource['img/computacao.png']}" /></div>
+
+                                <span class="img-logo">Ciência da Computação</span>
+                            </div>
+                            <div class="col-md-2">
+                                <h4>Curso</h4>
+                                <ul class="nav">
+                                    <li><a href="#">Sobre</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-2 ">
+                                <h4>Comunidade</h4>
+                                <ul class="nav">
+                                    <li><a href="#">Desenvolvedores</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-2 ">
+                                <h4>Links Uteis</h4>
+                                <ul class="nav">
+                                    <li><a href="#">Ajuda</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </h:form>  
-            </div>
-            <div class=" col-sm-8">
-                <h:form id="index">
-                    <c:forEach var="noticia" items="${noticiasHelper.noticias}">
-                        <h:link value="Postado em: #{noticia.hora}" outcome="comentarios"/> 
-                        <h:link value="  Última Atualização em: #{noticia.data}  " outcome="comentarios"/>               
-                        <br></br>
+                </div>
 
-                        <h:link value="Tags relacionadas: #{noticia.siteNoticiaTagsList}" outcome="comentarios"> 
-                        </h:link>              
-                        <br></br>
-
-                        <p:commandLink value="#{noticia.titulo}" action="#{noticiasHelper.pagina}" >            
-                            <f:setPropertyActionListener target="#{siteComentariosController.comentario.noticiaId}" value="#{noticia}"/>
-                            <f:param name="noticia" value="#{noticia.id}" />
-                        </p:commandLink>
-                        <br></br>            
-
-                        <p:graphicImage value="#{noticiasHelper.image}">
-                            <f:param name="noticia" value="#{noticia.id}" />
-                        </p:graphicImage> 
-                        <br></br>
-
-                        <h:outputText  value="#{noticia.conteudo}" />                        
-                        <br></br>
-                    </c:forEach>          
-
-                </h:form>
-            </div>
-        </div>
+            </h:form>
+        </section>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <h:outputScript library="js" name="bootstrap.min.js" />
     </h:body>
 </html>

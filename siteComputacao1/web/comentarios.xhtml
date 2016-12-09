@@ -9,6 +9,9 @@
     <h:head>
         <title>Site Computação</title>
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <f:metadata>
+            <f:viewAction action="#{siteComentariosController.listar}" />
+        </f:metadata>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="menu.xhtml"/>
@@ -44,27 +47,28 @@
             <h:outputText value="Comentários"  />
         </h:form>
 
-        <h:form >
+        <h:form id="comentarios">
             <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-
 
                 <h:outputText value="Nome: " />
                 <h:inputText value="#{siteComentariosController.comentario.email}" required="true" />*
 
                 <h:outputText value="Comentário: " />
                 <h:inputText  value="#{siteComentariosController.comentario.texto}" required="true" />*
-                
-                <h:commandButton id="salvar" value="Enviar" action="#{siteComentariosController.salvar}" />
-                
+
+                <p:commandButton id="salvar" value="Enviar" action="#{siteComentariosController.salvar}" update=":comentarios" />
+
             </h:panelGrid>
-        </h:form>
-        <h:form id="formlista">
-            <c:forEach var="comentario" items="${siteComentariosController.comentarios}">
+
+            <c:forEach var="comentario" items="${siteComentariosController.comentarios}" >
                 <h:outputText  value="#{comentario.email}" />               
                 <br></br>
                 <h:outputText  value="#{comentario.texto}" />                        
                 <br></br>
-            </c:forEach>         
+            </c:forEach>       
+        </h:form>
+        <h:form id="formlista">
+
 
         </h:form>
     </h:body>

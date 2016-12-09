@@ -45,12 +45,13 @@ public class SiteNoticiaController implements Serializable {
     private UploadedFile file;
     private List<SiteTags> selectedTags;
     private List<SelectItem> tags;
-    private SiteTagDAO tagDao;    
+    private SiteTagDAO tagDao;
 
     @PostConstruct
     public void init() {
         this.noticia = new SiteNoticia();
         this.noticiaDao = new SiteNoticiaDAO();
+        selectedTags = new ArrayList<SiteTags>();
         tagDao = new SiteTagDAO();
         this.isEdit = false;
         this.file = null;
@@ -61,7 +62,9 @@ public class SiteNoticiaController implements Serializable {
     public void limpar() {
         this.noticia = new SiteNoticia();
         this.isEdit = false;
-        this.selectedTags = null;
+        this.selectedTags = new ArrayList<SiteTags>();
+        this.file = null;
+        listarTags();
         listar();
     }
 
@@ -93,14 +96,23 @@ public class SiteNoticiaController implements Serializable {
 
     public void atualizar() {
         try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
             noticia.setData(getDateTime());//Data de Alteração
+            if (file.getFileName().isEmpty()) {
+                gravaImagem();
+            }
+            noticia.setSiteNoticiaTagsList(selectedTags);
             noticiaDao.atualizar(noticia);
+            limpar();
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            limpar();
+
         } catch (Exception e) {
+            System.out.println("Erro de atualizaçao: " + e);
             limpar();
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar atualizar!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
@@ -113,13 +125,15 @@ public class SiteNoticiaController implements Serializable {
             limpar();
         } catch (Exception e) {
             limpar();
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar excluir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
-    }  
+    }
 
     public void gravaImagem() {
         System.out.println("chamou o metodo");
+        // if (file.getInputstream() != null) {
+        System.out.println("file: " + this.file.getFileName());
         try {
             byte[] bytes = IOUtils.toByteArray(file.getInputstream());
             noticia.setImgCapa(bytes);
@@ -128,6 +142,7 @@ public class SiteNoticiaController implements Serializable {
             System.out.println("arquivo: " + ex);
             ex.printStackTrace();
         }
+        // }
     }
 
     private String getDateTime() {
@@ -142,9 +157,10 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public List<SelectItem> listarTags() {
+        System.out.println("entrou no listar tags: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
         List<SiteTags> result = new ArrayList<SiteTags>();
-        SiteTagDAO perfilDao = new SiteTagDAO();
+        //SiteTagDAO perfilDao = new SiteTagDAO();
         result = tagDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
             toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
@@ -161,19 +177,25 @@ public class SiteNoticiaController implements Serializable {
             return new DefaultStreamedContent();
         } else {
             String id = context.getExternalContext().getRequestParameterMap().get("noticia");
-            SiteNoticia i = noticiaDao.buscaPorID(Integer.parseInt(id));
-            System.out.println("Id: " + id);
-            if (i.getImgCapa() != null) {
-                return new DefaultStreamedContent(new ByteArrayInputStream(i.getImgCapa()));
-            } else {
-                return new DefaultStreamedContent();
+            if (!id.isEmpty()) {
+                SiteNoticia i = noticiaDao.buscaPorID(Integer.parseInt(id));
+                System.out.println("Id: " + id);
+                if (i.getImgCapa() != null) {
+                    return new DefaultStreamedContent(new ByteArrayInputStream(i.getImgCapa()));
+                } else {
+                    return new DefaultStreamedContent();
+                }
             }
-
         }
+        return new DefaultStreamedContent();
     }
 
     public void onRowSelect(SelectEvent event) {
         this.noticia = ((SiteNoticia) event.getObject());
+        selectedTags = new ArrayList<SiteTags>();
+        if (!noticia.getSiteNoticiaTagsList().isEmpty()) {
+            selectedTags.addAll(noticia.getSiteNoticiaTagsList());
+        }
         this.isEdit = true;
     }
 

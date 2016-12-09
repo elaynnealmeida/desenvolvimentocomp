@@ -7,24 +7,27 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ciência da Computação</title>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
         <h:form id="formcargo">
-            <br></br>
-            <h:outputText value="Cargo: "/>
-            <h:inputText id="cargo" value="#{siteCargoController.cargo.descricao}"
-                         required="true" />*
-            <p:message for="cargo" />
-            <br></br>
+            <h:outputText value="Cadastro de Cargos "/>
+            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-            <br></br><br></br>
+                <h:outputText value="Cargo: "/>
+                <h:inputText id="cargo" value="#{siteCargoController.cargo.descricao}"
+                             required="true" />*
+                <p:message for="cargo" />
+            </h:panelGrid>
+            
             <p:commandButton id="btnSalvar" value="Salvar" action="#{siteCargoController.salvar}" rendered="#{!siteCargoController.isEdit}" update=":formcargo"/>
             <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteCargoController.atualizar}" rendered="#{siteCargoController.isEdit}" update=":formcargo"/>
             <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{siteCargoController.limpar}" update=":formcargo"/>
+            <br></br> <br></br>
 
             <p:dataTable var="var" value="#{siteCargoController.cargos}"
                          selectionMode="single"  rowKey="#{var.id}"
