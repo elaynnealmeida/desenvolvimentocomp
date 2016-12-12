@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ciência da Computação</title>
     </h:head>
@@ -24,7 +25,7 @@
                         <div class="navbar-brand espaco ">
                             <div class="flutua "><h:graphicImage styleClass="img-logo "  value="#{resource['img/computacao.png']}" /></div>
                             <div class="flutua ">   
-                                <h:link styleClass="letra-mediaBarra" value="Ciência da Computação" outcome="index"></h:link>
+                                <h:commandLink styleClass="letra-mediaBarra" value="Ciência da Computação" actionListener="#{navegacaoHelper.inicio}" />
                                 <div class="letra-pequenaBarra">
                                     <h:outputText value="Bem Vindo, #{loginController.user.nomecompleto}!" rendered="#{loginController.isUser}"/>
                                     <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
@@ -108,22 +109,26 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false">Administração<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><h:link  outcome="usuario.xhtml" > Usuário</h:link>
+                                    <li><h:commandLink value="Usuário"  actionListener="#{navegacaoHelper.paginaUsuario}"  /> 
                                     </li>
                                     <li>                                       
-                                        <h:link value="Criar uma Tag" outcome="tags.xhtml" ></h:link>                       
+                                        <h:commandLink value="Tag"  actionListener="#{navegacaoHelper.paginaTag}"  />              
                                     </li>
-                                    <li><h:link value="Associar Perfil" outcome="usuarioperfil.xhtml" ></h:link>
+                                    <li><h:commandLink value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
                                     </li>  
-                                    <li><h:link value="Criar Perfil" outcome="perfil.xhtml" ></h:link>                                        
+                                    <li><h:commandLink value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
                                     </li>
 
-                                    <li><h:link value="Associar um Cargo" outcome="sitecargo.xhtml" ></h:link>                                           
-                                    </li>    
+                                    <li><h:commandLink value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
+                                    </li> 
+                                    
+                                    <li><h:commandLink value="Professor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
+                                    </li> 
+                                    
+                                    <li><h:commandLink value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
+                                    </li>   
 
-                                    <li><h:link value="Criar uma Noticia" outcome="noticias.xhtml" ></h:link> 
-                                        <h:link  value="Ciência da Computação" outcome="index.xhtml"></h:link>
-                                
+                                    <li><h:commandLink value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />                                                                      
                                     </li>
                                 </ul>
                             </li>
