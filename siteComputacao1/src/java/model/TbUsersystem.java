@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
@@ -11,9 +6,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -93,8 +92,13 @@ public class TbUsersystem implements Serializable {
     private String telefone;
     @OneToMany(mappedBy = "usuarioId")
     private List<SiteNoticia> siteNoticiaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
-    private List<SitePerfilUsuario> sitePerfilUsuarioList;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "site_perfil_usuario",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+    private List<SitePerfil> sitePerfilUsuarioList;
+    
 
     public TbUsersystem() {
     }
@@ -210,20 +214,20 @@ public class TbUsersystem implements Serializable {
         this.siteNoticiaList = siteNoticiaList;
     }
 
-    @XmlTransient
-    public List<SitePerfilUsuario> getSitePerfilUsuarioList() {
-        return sitePerfilUsuarioList;
-    }
-
-    public void setSitePerfilUsuarioList(List<SitePerfilUsuario> sitePerfilUsuarioList) {
-        this.sitePerfilUsuarioList = sitePerfilUsuarioList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
+    }
+
+    @XmlTransient
+    public List<SitePerfil> getSitePerfilUsuarioList() {
+        return sitePerfilUsuarioList;
+    }
+
+    public void setSitePerfilUsuarioList(List<SitePerfil> sitePerfilUsuarioList) {
+        this.sitePerfilUsuarioList = sitePerfilUsuarioList;
     }
 
     @Override
@@ -243,5 +247,5 @@ public class TbUsersystem implements Serializable {
     public String toString() {
         return "model.TbUsersystem[ id=" + id + " ]";
     }
-    
+
 }

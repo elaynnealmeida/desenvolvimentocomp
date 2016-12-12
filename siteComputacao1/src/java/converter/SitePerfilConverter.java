@@ -13,7 +13,8 @@ import model.SitePerfil;
  *
  * @author UFT
  */
-@FacesConverter(forClass = model.SitePerfil.class)
+//@FacesConverter(forClass = model.SitePerfil.class)
+@FacesConverter(value = "PerfilConverter")
 public class SitePerfilConverter implements Converter {
 
     private SitePerfilDAO perfilDao = new SitePerfilDAO();

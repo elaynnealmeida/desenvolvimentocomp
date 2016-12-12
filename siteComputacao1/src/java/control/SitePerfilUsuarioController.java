@@ -47,7 +47,7 @@ public class SitePerfilUsuarioController implements Serializable {
     }
 
     public List<SitePerfilUsuario> listar() {
-        this.sitePerfilUsuarios = this.siteperfilusuarioDao.listarTodos();
+        this.sitePerfilUsuarios = this.siteperfilusuarioDao.listarTodosAtivos();
         return this.sitePerfilUsuarios;
     }
 
@@ -101,7 +101,7 @@ public class SitePerfilUsuarioController implements Serializable {
         }
     }
 
-    public List<TbUsersystem> buscaUsuario(String q) {
+  /*  public List<TbUsersystem> buscaUsuario(String q) {
         System.out.println("a ser pesquisado: " + q);
         List<TbUsersystem> results = new ArrayList<TbUsersystem>();
         UsuarioDAO usuarioDao = new UsuarioDAO();
@@ -122,7 +122,7 @@ public class SitePerfilUsuarioController implements Serializable {
         }
 
         return toReturn;
-    }
+    }*/
 
     public SitePerfilUsuario getSitePerfilUsuario() {
         return sitePerfilUsuario;

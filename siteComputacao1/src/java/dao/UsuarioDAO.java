@@ -59,4 +59,22 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
         }
 
     }
+    
+    public List<TbUsersystem> listarTodosAtivos2() {
+
+        System.out.println("entrou no dao listar-----------");
+        List<TbUsersystem> result = new ArrayList<TbUsersystem>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();        
+        String ativo = "ATIVO";
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(TbUsersystem.class);
+        EntityType type = em1.getMetamodel().entity(TbUsersystem.class);
+        Root root = query.from(TbUsersystem.class);
+        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("status", String.class)), ativo));
+        query.orderBy(builder.asc(root.get("nomecompleto")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
 }

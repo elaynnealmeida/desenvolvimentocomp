@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.io.Serializable;
@@ -11,9 +7,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -54,7 +54,10 @@ public class SitePerfil implements Serializable {
     private String descricao;
     @Column(name = "ativo")
     private Boolean ativo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfilId")
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
+    @JoinTable(name="site_perfil_usuario", 
+               joinColumns=  @JoinColumn( name = "perfil_id"), 
+               inverseJoinColumns= @JoinColumn(name = "usuario_id") )
     private List<SitePerfilUsuario> sitePerfilUsuarioList;
 
     public SitePerfil() {
@@ -132,7 +135,7 @@ public class SitePerfil implements Serializable {
 
     @Override
     public String toString() {
-        return "model.SitePerfil[ id=" + id + " ]";
+        return "model.SitePerfil[ id=" + id + " - "+nome+"]";
     }
     
 }

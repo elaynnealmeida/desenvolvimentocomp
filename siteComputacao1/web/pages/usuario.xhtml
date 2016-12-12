@@ -39,6 +39,19 @@
                 <h:outputText value="Senha: "/>
                 <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
                 <p:message for="senha" />
+                
+                <p:outputLabel    value="Perfis:" />
+                <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
+                                  converter="PerfilConverter"
+                                  requiredMessage="Campo Obrigatório"
+                                  required="true"
+                                  var="p" filter="true" filterMatchMode="contains" showCheckbox="true">
+                    <f:selectItems value="#{usuarioController.perfis}" var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
+                    <p:column>
+                        <h:outputText value="#{p.nome}"  />                    
+                    </p:column>                   
+                </p:selectManyMenu>*
+                <p:message for="perfil" />
             </h:panelGrid>
 
             <p:commandButton id="btnSalvar" value="Salvar" action="#{usuarioController.salvar}" rendered="#{!usuarioController.isEdit}" update=":formusuario"/>

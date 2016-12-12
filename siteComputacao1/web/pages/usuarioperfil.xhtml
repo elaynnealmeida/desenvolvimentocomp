@@ -16,27 +16,22 @@
     <h:body>
         <h:form id="formperfilusuario">
             <h:outputText value="Associação de Perfil " />
-            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
                 <h:outputText value="Usuário: "/>
-                <p:autoComplete id="dd" value="#{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId}" 
-                                completeMethod="#{sitePerfilUsuarioController.buscaUsuario}" 
-                                minQueryLength="4"
-                                var="user"
-                                itemLabel="#{user.nomecompleto}"
-                                itemValue="#{user}"
-                                />* 
-                <p:message for="dd" />
+                <h:outputText id="usuario" value="#{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId.nomecompleto}" />      
+                <p:message for="usuario" />
 
                 <h:outputText value="Perfil: "/>
-                <p:selectOneMenu id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId}">
-                    <f:selectItem itemLabel="" itemValue="" />
-                    <f:selectItems value="#{sitePerfilUsuarioController.perfil}" />
-                </p:selectOneMenu>*            
+                <h:outputText id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId.nome}"   />    
                 <p:message for="perfil" />
+                
+                <h:outputText value="Ativo: "/>
+                <p:selectBooleanCheckbox id="ativo" value="#{sitePerfilUsuarioController.sitePerfilUsuario.ativo}" />      
+                <p:message for="ativo" />
+                
 
                 <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
                 <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
-                <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
                 <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formperfilusuario"/>
             </h:panelGrid>
 
