@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ciência da Computação</title>
     </h:head>
@@ -29,6 +31,11 @@
                                     <h:outputText value="Bem Vindo, #{loginController.user.nomecompleto}!" rendered="#{loginController.isUser}"/>
                                     <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
                                 </div>
+                                <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                                rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}"
+                                                >
+                                <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
+                                </p:autoComplete>                               
                             </div> 
                         </div>
 
@@ -120,10 +127,10 @@
 
                                     <li><h:commandLink value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
                                     </li> 
-                                    
+
                                     <li><h:commandLink value="Professor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
                                     </li> 
-                                    
+
                                     <li><h:commandLink value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
                                     </li>   
 

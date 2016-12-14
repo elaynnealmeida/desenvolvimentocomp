@@ -135,7 +135,7 @@ public class SitePerfil implements Serializable {
 
     @Override
     public String toString() {
-        return "model.SitePerfil[ id=" + id + " - "+nome+"]";
+        return nome;
     }
     
 }

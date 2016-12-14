@@ -3,6 +3,8 @@ package control;
 import dao.UsuarioDAO;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -48,10 +50,11 @@ public class LoginController implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
                 perfilSelecionado = user.getSitePerfilUsuarioList().get(0);
+                System.out.println("perfil selecionado: " + perfilSelecionado);
                 FacesContext context = FacesContext.getCurrentInstance();
                 HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
                 request.getSession().setAttribute("user", user);
-                request.getSession().setAttribute("perfil", perfilSelecionado);
+                request.getSession().setAttribute("perfil", user.getSitePerfilUsuarioList().get(0));
                 this.isUser = true;
                 admin();
             }
@@ -66,7 +69,9 @@ public class LoginController implements Serializable {
     public void logout() throws IOException {
         this.isUser = false;
         ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect(externalContext.getRequestContextPath()
+                + "/faces/index.xhtml");
 
     }
 
@@ -94,6 +99,24 @@ public class LoginController implements Serializable {
             e.printStackTrace();
         }
 
+    }
+
+    public List<SitePerfil> buscaPerfil(String q) {
+        System.out.println("a ser pesquisado: " + q);
+        List<SitePerfil> results = new ArrayList<SitePerfil>();
+        if (user != null) {
+            results = user.getSitePerfilUsuarioList();
+        }
+        //results = usuarioDao.listarTodosAtivos(q);
+        System.out.println("lista: " + results.size());
+        return results;
+    }
+
+    public void confirmar() {
+        System.out.println("perfil selecionado: " + perfilSelecionado);
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        request.getSession().setAttribute("perfil", perfilSelecionado);
     }
 
     public TbUsersystem getUser() {
