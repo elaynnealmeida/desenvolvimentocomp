@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,7 +28,7 @@ public class LoginController implements Serializable {
     private SitePerfil perfilSelecionado;
     private boolean isAdmin;
     private boolean isUser;
-    
+
     @PostConstruct
     public void init() {
         this.user = new TbUsersystem();
@@ -46,7 +47,7 @@ public class LoginController implements Serializable {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário sem Perfil, atribua um Perfil ao Usuário.", null);
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
-                perfilSelecionado = user.getSitePerfilUsuarioList().get(0).getPerfilId();
+                perfilSelecionado = user.getSitePerfilUsuarioList().get(0);
                 FacesContext context = FacesContext.getCurrentInstance();
                 HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
                 request.getSession().setAttribute("user", user);
@@ -84,7 +85,14 @@ public class LoginController implements Serializable {
         } else {
             isAdmin = false;
         }
-        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/index.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
