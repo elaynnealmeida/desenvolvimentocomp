@@ -30,7 +30,7 @@
 
             <p:commandButton id="btnSalvar" value="Salvar" action="#{tbProfessoresController.salvar}" rendered="#{!tbProfessoresController.isEdit}" update=":formprofessor"/>
             <p:commandButton id="btnAtualizar" value="Atualizar" action="#{tbProfessoresController.atualizar}" rendered="#{tbProfessoresController.isEdit}" update=":formprofessor"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formprofessor:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{tbProfessoresController.limpar}" update=":formprofessor"/>
             <br></br><br></br>
 
@@ -68,10 +68,7 @@
             </p:dataTable>
             <p:messages id="msg" autoUpdate="true" closable="true" >              
             </p:messages>
-        </h:form>
-    </h:body>
-    <h:body>
-        <h:form id="formdialog">
+        
             <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
                              hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 

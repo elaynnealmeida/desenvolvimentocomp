@@ -28,25 +28,23 @@
         <section>
             <div class=" row col-sm-12">
                 <div class=" col-sm-2 menu-lateral "  > 
-                    <h:form id="formlogin" styleClass="pading-noticia" rendered="#{!loginController.isUser}" >
+                    <h:form id="formlog" styleClass="pading-noticia" rendered="#{!loginController.isUser}" >
                         <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-                        <h:outputText value="Login: "/>
-                        <h:inputText id="login" value="#{loginController.user.roles}"
-                                     required="true"
-                                     />
+                        <h:outputText style="color:#000" value="Login: "  />
+                        <h:inputText style="color:#000" id="login" value="#{loginController.user.roles}"
+                                     required="true" requiredMessage="Campo Obrigatório"/>
                         <p:message for="login" />
 
-                        <h:outputText value="Senha: "/>
-                        <h:inputSecret id="senha" value="#{loginController.user.password}"
-                                       required="true" />
+                        <h:outputText  value="Senha: " style="color:#000"/>
+                        <h:inputSecret style="color:#000" id="senha" value="#{loginController.user.password}"
+                                       required="true" requiredMessage="Campo Obrigatório" />
                         <p:message for="senha" />                    
 
                         <p:commandButton id="btnSalvar" value="Entrar" 
                                          action="#{loginController.login}" 
-                                         update=":formlogin"
-                                         />                        
+                                         update=":formlog"/>                        
                         </h:panelGrid>
-                        <p:messages id="msg" autoUpdate="true" closable="true" >              
+                        <p:messages id="msg" autoUpdate="true" closable="true"  >              
                         </p:messages>
                     </h:form>                 
 

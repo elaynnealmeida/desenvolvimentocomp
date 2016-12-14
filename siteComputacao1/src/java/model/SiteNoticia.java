@@ -68,7 +68,7 @@ public class SiteNoticia implements Serializable {
     @ManyToOne
     private TbUsersystem usuarioId;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REFRESH)
     @JoinTable(name="site_noticia_tags", 
                joinColumns=  @JoinColumn( name = "noticia_id"), 
                inverseJoinColumns= @JoinColumn(name = "tag_id") )

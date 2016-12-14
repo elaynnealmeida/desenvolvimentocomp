@@ -25,7 +25,7 @@
             </h:panelGrid>
             <p:commandButton id="btnSalvar" value="Salvar" action="#{siteTagController.salvar}" rendered="#{!siteTagController.isEdit}" update=":formtags"/>
             <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteTagController.atualizar}" rendered="#{siteTagController.isEdit}" update=":formtags"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdialog:confimacao"/>
+            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtags:confimacao"/>
             <p:commandButton id="btnLimpar" value="Limpar" action="#{siteTagController.limpar}" update=":formtags"/>
 
 
@@ -59,21 +59,20 @@
             </p:dataTable>
             <p:messages id="msg" autoUpdate="true" closable="true" >              
             </p:messages>
-        </h:form>
-    </h:body>
-    <h:body>
-        <h:form id="formdialog">
+       
+   
+      
             <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
                              hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Sim" update=":formtags" onclick="PF('confirmation').hide()"
-                                 action="#{siteTagController.deletar}" />
+                <p:commandButton value="Sim"  onclick="PF('confirmation').hide()"
+                                 actionListener="#{siteTagController.deletar}" ajax="true" update=":formtags"/>
 
                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
             </p:confirmDialog>
 
-
-        </h:form>
+ </h:form>
+      
 
     </h:body>
 </html>

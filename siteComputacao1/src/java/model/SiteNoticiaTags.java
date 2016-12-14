@@ -35,10 +35,10 @@ public class SiteNoticiaTags implements Serializable {
     @Column(name = "id")
     private Long id;
     @JoinColumn(name = "noticia_id", referencedColumnName = "id")
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private SiteNoticia noticiaId;
     @JoinColumn(name = "tag_id", referencedColumnName = "id")
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private SiteTags tagId;
 
     public SiteNoticiaTags() {
