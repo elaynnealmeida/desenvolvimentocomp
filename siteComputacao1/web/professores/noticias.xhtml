@@ -29,7 +29,9 @@
                 <h:outputText value="Imagem da Capa: "/>
                 <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true"
                               update="msg" id="imagem"    requiredMessage="Campo Obrigatório" 
-                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
+                              invalidFileMessage="Somente JPG ou PNG são permitidos."
+                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
                               />*
                 <p:message for="imagem" />
                 

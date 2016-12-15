@@ -129,7 +129,19 @@ a:active {
 
 .pading-noticia{
     padding: 20px;
+}
 
+.pading-noticia-nova{
+    padding: 60px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+    background-color: #eeeeee;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 .figura-pequena{
@@ -156,3 +168,4 @@ a:active {
 .borda-vermelha{
     border: 1px red solid;
 }
+

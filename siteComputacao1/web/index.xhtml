@@ -7,12 +7,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
+        <f:metadata>
+            <f:viewAction action="#{noticiasHelper.listar}" />
+        </f:metadata>
         <title>Site Computação</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <link href="css/estilo.css" rel="stylesheet"/>
+        
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="menu.xhtml"/>   
@@ -30,26 +34,26 @@
                 <div class=" col-sm-2 menu-lateral "  > 
                     <h:form id="formlog" styleClass="pading-noticia" rendered="#{!loginController.isUser}" >
                         <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-                        <h:outputText style="color:#000" value="Login: "  />
-                        <h:inputText style="color:#000" id="login" value="#{loginController.user.roles}"
-                                     required="true" requiredMessage="Campo Obrigatório"/>
-                        <p:message for="login" />
+                            <h:outputText style="color:#000" value="Login: "  />
+                            <h:inputText style="color:#000" id="login" value="#{loginController.user.roles}"
+                                         required="true" requiredMessage="Campo Obrigatório"/>
+                            <p:message for="login" />
 
-                        <h:outputText  value="Senha: " style="color:#000"/>
-                        <h:inputSecret style="color:#000" id="senha" value="#{loginController.user.password}"
-                                       required="true" requiredMessage="Campo Obrigatório" />
-                        <p:message for="senha" />                    
+                            <h:outputText  value="Senha: " style="color:#000"/>
+                            <h:inputSecret style="color:#000" id="senha" value="#{loginController.user.password}"
+                                           required="true" requiredMessage="Campo Obrigatório" />
+                            <p:message for="senha" />                    
 
-                        <p:commandButton id="btnSalvar" value="Entrar" 
-                                         action="#{loginController.login}" 
-                                         update=":formlog"/>                        
+                            <p:commandButton id="btnSalvar" value="Entrar" 
+                                             action="#{loginController.login}" 
+                                             update=":formlog"/>                        
                         </h:panelGrid>
                         <p:messages id="msg" autoUpdate="true" closable="true"  >              
                         </p:messages>
                     </h:form>                 
 
                 </div>
-                <div class=" col-sm-8">
+                <div class="col-sm-8">
                     <h:form id="index">
                         <c:forEach var="noticia" items="${noticiasHelper.noticias}">
                             <div class="pading-noticia">
@@ -77,7 +81,7 @@
                                     <h:outputText value="Postado em: #{noticia.hora}" /> 
                                     <h:outputText value="  Última Atualização em: #{noticia.data}  " /> 
                                     <h:outputText value="Tags relacionadas: #{noticia.siteNoticiaTagsList}" /> 
-                                    
+
                                 </div>
                             </div>
 
@@ -86,8 +90,27 @@
                     </h:form>
                 </div>
             </div>
+
             <!--Rodapé  -->
         </section>
+        
+
+        <section>
+            <div class="col-sm-12 text-center">
+                <div class="col-sm-2"></div>
+                <div class="jumbotron pading-noticia-nova col-sm-8 text-center">
+                    <h1>Notícia!</h1>
+                    <p>NOVA YORK — Pelo quarto ano consecutivo, o presidente da Rússia, Vladimir Putin, foi considerado o 
+                        homem mais poderoso do mundo, de acordo com a revista “Forbes”. Putin ficou na frente do presidente eleito dos Estados Unidos, 
+                        Donald Trump, e da chanceler federal alemã, Angela Merkel. “De seu país natal até a Síria, passando pelas eleições americanas, o 
+                        dirigente russo continua alcançando seus objetivos”, 
+                        afirmou a revista em sua mais recente edição, nesta quarta-feira, sobre o presidente, de 64 anos.</p>
+                    <p><a class="btn btn-primary btn-lg" style="color:#ffffff" href="#" role="button">Saiba Mais >></a></p>
+                </div>
+                <div class="col-sm-2"></div>
+        </div>
+        </section>
+
         <section >
             <h:form id="footer1">
 
