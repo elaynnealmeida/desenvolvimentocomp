@@ -105,7 +105,7 @@
                 <p:commandButton value="Sim" update=":formusuario" onclick="PF('confirmation').hide()"
                                  action="#{usuarioController.deletar}" />
 
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
             </p:confirmDialog>
 
         </h:form>

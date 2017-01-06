@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.SessionScoped;  
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import model.SiteNoticia;
@@ -69,11 +69,37 @@ public class NoticiasHelper implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("entrou no redirecionamento de pagina");
         String id = context.getExternalContext().getRequestParameterMap().get("noticia");
-        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/comentarios.xhtml?noticia="+id);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/comentarios.xhtml?noticia=" + id);
     }
 
     public List<SiteNoticia> getNoticias() {
         return noticias;
+    }
+
+    public String limitarNoticia(SiteNoticia not) {
+        String retorno;
+        String conteudo = not.getConteudo();
+        if (conteudo.length() <= 300) {
+            retorno = conteudo;
+        } else {
+            String novaString = conteudo.substring(0, 300);
+            novaString += " ...";
+            retorno = novaString;   
+        }
+        return retorno;
+    }
+    
+    public String limitarTitulo(SiteNoticia not) {
+        String retorno;
+        String conteudo = not.getTitulo();
+        if (conteudo.length() <= 70) {
+            retorno = conteudo;
+        } else {
+            String novaString = conteudo.substring(0, 70);
+            novaString += " ...";
+            retorno = novaString;
+        }
+        return retorno;
     }
 
     public void setNoticias(List<SiteNoticia> noticias) {

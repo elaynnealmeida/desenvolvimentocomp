@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package control;
 
 import dao.TbProfessoresDAO;
@@ -13,12 +9,14 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.TbProfessores;
 import org.primefaces.event.SelectEvent;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
+//@SessionScoped
 public class TbProfessoresController implements Serializable {
     
     private TbProfessores professor;

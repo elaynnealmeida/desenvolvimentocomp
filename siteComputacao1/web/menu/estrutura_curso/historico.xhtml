@@ -22,7 +22,10 @@ and open the template in the editor.
         <link href="css/estilo.css" rel="stylesheet"/>
 
     </h:head>
-
+    
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>
+    </ui:insert>
     <h:body>
         <h:form styleClass=" row page-header col-sm-12 " >
             <div class="col-sm-4 text-right"><h:graphicImage  value="#{resource['img/brasao.png']}" /> </div>
@@ -84,5 +87,6 @@ and open the template in the editor.
 
             <!--Rodapé  -->
         </section>
+        <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
     </h:body>
 </html>

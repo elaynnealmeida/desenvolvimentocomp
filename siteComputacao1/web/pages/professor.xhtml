@@ -75,7 +75,7 @@
                 <p:commandButton value="Sim" update=":formprofessor" onclick="PF('confirmacao').hide()"
                                  action="#{tbProfessoresController.deletar}" />
 
-                <p:commandButton value="Não" onclick="PF('confirmacao').hide(); return false;" />
+                <p:commandButton value="Não" onclick="PF('confirmacao').hide(); return true;" />
             </p:confirmDialog>
 
         </h:form>

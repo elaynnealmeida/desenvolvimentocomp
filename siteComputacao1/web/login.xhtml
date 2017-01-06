@@ -12,31 +12,21 @@
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="estilo.css" ></h:outputStylesheet>
+        <link href="css/signin.css" rel="stylesheet"/>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="menu.xhtml"/>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
     </ui:insert>
     <h:body>
-        <h:form id="formlogin">
-            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-            <h:outputText value="Login: "/>
-            <h:inputText id="login" value="#{loginController.user.roles}"
-                         required="true"
-                         />
-            <p:message for="login" />
-            
-            <h:outputText value="Senha: "/>
-            <h:inputSecret id="senha" value="#{loginController.user.password}"
-                           required="true" />
-            <p:message for="senha" />
-           
-            <p:commandButton id="btnSalvar" value="Entrar" 
-                             action="#{loginController.login}" 
-                             update=":formlogin"
-                             />
-            <p:messages id="msg" autoUpdate="true" closable="true" ></p:messages>
-            </h:panelGrid>
+
+        <h:form id="formlogin" styleClass="form-signin">
+            <h2 class="form-signin-heading">Entre com sua conta</h2>
+            <p:inputText styleClass="form-control" id="email" value="#{loginController.user.roles}" placeholder="E-mail" required="true"/>           
+            <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>
+            <h:commandButton styleClass="btn btn-lg btn-primary btn-block" id="btnSalvar" value="Entrar" 
+                             action="#{loginController.login}"/>
         </h:form>
+
     </h:body>
 </html>

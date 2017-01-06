@@ -5,12 +5,86 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <!--Título que fica na Aba da página-->
+        <title>Histórico do Curso</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <link href="css/estilo.css" rel="stylesheet"/>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <h:form styleClass=" row page-header col-sm-12 " >
+            <div class="col-sm-4 text-right"><h:graphicImage  value="#{resource['img/brasao.png']}" /> </div>
+            <div class="col-sm-4 text-left" >
+                <h1 class="portal-title corto ">Ciência da Computação</h1> 
+                <span class="portal-description">Ministério da Educação</span>
+            </div>
+        </h:form >
+
+        <section>
+            <div class=" row col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8" style="background:#ffffff;">
+                    <h1>Título</h1>
+                    <br></br>
+                   
+                    <p>O  curso  de  Ciência  da  Computação  da  UFT  teve  origem  com  o  curso  de Processamento de Dados oferecido pela Universidade do Tocantins, mantida pelo governo do Estado, ofertado na cidade de Paraíso do Tocantins. A partir de 2000, o curso foi transferido para a capital do estado, Palmas, e passou a ser oferecido em conjunto com o curso de Ciência da Computação à medida que o curso de Processamento de Dados foi descontinuado. No período em que os dois cursos eram oferecidos concomitantemente o professor Antônio Carlos coordenava o curso de Processamento de Dados.
+
+                        O coordenador do primeiro semestre do curso  de Ciência da Computação era o professor Almir Joaquim de Souza, responsável pela estruturação do curso, a partir de agosto
+
+                        2000 a professora Hellena Christina passou a coordenar o curso por dois anos.  Em seguida, o professor Adevailton, a professora Sandra, o professor Gentil e o professor George foram coordenadores de curso. A transição de Unitins para Universidade Federal do Tocantins foi natural em 2002 e o projeto pedagógico foi reformulado e está em vigência desde então.  A estrutura física melhorou muito com o passar do tempo. No entanto, entre  os anos de 2003 e
+
+                        2004 ocorreram algumas dificuldades como falta de professores efetivos, contando então com vários professores substitutos. Os laboratórios de informática, inicialmente, eram de uso comum da universidade. Posteriormente, o curso conseguiu laboratórios próprios como o de Hardware e o de Redes.
+
+                        Um fato importante, que mostra a integração acadêmica dos alunos egressos, é que cinco dos atuais vinte e um professores do quadro permanente do colegiado são egressos do próprio curso.
+
+                        Ressalta-se que o Curso de Ciência da Computação não possui Diretrizes Curriculares Nacionais  específicas  aprovadas  pelo  Ministério  da  Educação.  Este  Projeto  Pedagógico baseia-se nas orientações dos documentos “Diretrizes Curriculares de Cursos da área de
+
+                        Computação e Informática”, “Currículo de Referência da Sociedade Brasileira de Computação” e “Currículo de Referência para Cursos de Graduação em Bacharelado em Ciência da Computação e Engenharia de Computação”, que são usados como propostas para as diretrizes curriculares nacionais dos cursos da área de Computação e Informática. A Resolução nº. 2, de 18 de junho de 2007 do MEC, que dispõe sobre a carga horária mínima desses cursos, também serviu como instrumentos importantes de orientação no desenvolvimento deste documento.
+
+                        O Curso de Bacharelado em Ciência da Computação foi autorizado por meio da Resolução nº 00036/99 do Conselho Curador da Fundação Universidade do Tocantins, conforme processo 0038/SECUR/99 e ATA 001/99 da reunião extraordinária.
+
+                        Criado em janeiro de 2000, não se submeteu à inspeção avaliativa do MEC para entrar com processo de reconhecimento. Porém, houve um ato de reconhecimento pelo conselho estadual de educação, conforme parecer nº 340/2002, aprovado em 20/12/2002, tendo como processo nº2002/2700/002088 e Decreto 1. 772/2003, de 16/6/2003. Neste ato de reconhecimento, o curso obteve o conceito “C”.
+
+                        Atualmente, o Curso de Bacharelado em Ciência da Computação possui (2011/2) 274 alunos matriculados em turno integral. Este Curso exige ainda uma constante interação do acadêmico com a comunidade científica a fim de adquirir novos conhecimentos e explorar técnicas computacionais mais atualizadas.</p>
+                    
+                        <p>O  curso  de  Ciência  da  Computação  da  UFT  teve  origem  com  o  curso  de Processamento de Dados oferecido pela Universidade do Tocantins, mantida pelo governo do Estado, ofertado na cidade de Paraíso do Tocantins. A partir de 2000, o curso foi transferido para a capital do estado, Palmas, e passou a ser oferecido em conjunto com o curso de Ciência da Computação à medida que o curso de Processamento de Dados foi descontinuado. No período em que os dois cursos eram oferecidos concomitantemente o professor Antônio Carlos coordenava o curso de Processamento de Dados.
+
+                        O coordenador do primeiro semestre do curso  de Ciência da Computação era o professor Almir Joaquim de Souza, responsável pela estruturação do curso, a partir de agosto
+
+                        2000 a professora Hellena Christina passou a coordenar o curso por dois anos.  Em seguida, o professor Adevailton, a professora Sandra, o professor Gentil e o professor George foram coordenadores de curso. A transição de Unitins para Universidade Federal do Tocantins foi natural em 2002 e o projeto pedagógico foi reformulado e está em vigência desde então.  A estrutura física melhorou muito com o passar do tempo. No entanto, entre  os anos de 2003 e
+
+                        2004 ocorreram algumas dificuldades como falta de professores efetivos, contando então com vários professores substitutos. Os laboratórios de informática, inicialmente, eram de uso comum da universidade. Posteriormente, o curso conseguiu laboratórios próprios como o de Hardware e o de Redes.
+
+                        Um fato importante, que mostra a integração acadêmica dos alunos egressos, é que cinco dos atuais vinte e um professores do quadro permanente do colegiado são egressos do próprio curso.
+
+                        Ressalta-se que o Curso de Ciência da Computação não possui Diretrizes Curriculares Nacionais  específicas  aprovadas  pelo  Ministério  da  Educação.  Este  Projeto  Pedagógico baseia-se nas orientações dos documentos “Diretrizes Curriculares de Cursos da área de
+
+                        Computação e Informática”, “Currículo de Referência da Sociedade Brasileira de Computação” e “Currículo de Referência para Cursos de Graduação em Bacharelado em Ciência da Computação e Engenharia de Computação”, que são usados como propostas para as diretrizes curriculares nacionais dos cursos da área de Computação e Informática. A Resolução nº. 2, de 18 de junho de 2007 do MEC, que dispõe sobre a carga horária mínima desses cursos, também serviu como instrumentos importantes de orientação no desenvolvimento deste documento.
+
+                        O Curso de Bacharelado em Ciência da Computação foi autorizado por meio da Resolução nº 00036/99 do Conselho Curador da Fundação Universidade do Tocantins, conforme processo 0038/SECUR/99 e ATA 001/99 da reunião extraordinária.
+
+                        Criado em janeiro de 2000, não se submeteu à inspeção avaliativa do MEC para entrar com processo de reconhecimento. Porém, houve um ato de reconhecimento pelo conselho estadual de educação, conforme parecer nº 340/2002, aprovado em 20/12/2002, tendo como processo nº2002/2700/002088 e Decreto 1. 772/2003, de 16/6/2003. Neste ato de reconhecimento, o curso obteve o conceito “C”.
+
+                        Atualmente, o Curso de Bacharelado em Ciência da Computação possui (2011/2) 274 alunos matriculados em turno integral. Este Curso exige ainda uma constante interação do acadêmico com a comunidade científica a fim de adquirir novos conhecimentos e explorar técnicas computacionais mais atualizadas.</p>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+
+            <!--Rodapé  -->
+        </section>
+    </h:body>
 </html>

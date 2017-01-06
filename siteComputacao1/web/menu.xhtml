@@ -8,7 +8,11 @@
     <h:head>
         <title>Ciência da Computação</title>
     </h:head>
+
     <ui:composition>
+        <ui:insert name="barra_governo" >
+            <ui:include src="barra_governo.xhtml"/>   
+        </ui:insert>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <h:outputStylesheet library="css" name="estilo.css" ></h:outputStylesheet>
 
@@ -34,12 +38,12 @@
                                 <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
                                                 rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}"
                                                 >
-                                <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
+                                    <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
                                 </p:autoComplete>                               
                             </div> 
                         </div>
-
                     </div>
+
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
@@ -47,35 +51,34 @@
                                     Estrutura do Curso <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="menu/estrutura_curso/sobre.xhtml">Sobre o Curso</a></li>
-                                    <li><a href="menu/estrutura_curso/historico.xhtml">Histórico do Curso</a></li>
-                                    <li><a href="menu/estrutura_curso/matriz.xhtml">Matriz Curricular</a></li>
-                                    <li><a href="menu/estrutura_curso/laboratorios.xhtml">Laboratórios</a></li>
+                                    <li><h:commandLink value="Sobre o Curso" actionListener="#{navegacaoHelper.sobre()}"/></li>
+                                    <li><h:commandLink value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/></li>
+                                    <li><h:commandLink value="Matriz Curricular" actionListener="#{navegacaoHelper.matriz()}"/></li>
+                                    <li><h:commandLink value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/></li>
                                     <li class="divider"></li>
                                     <li class="dropdown-submenu">
                                         <a tabindex="-1" href="#">Infra-Estrutura Física</a>
-                                        <ul class="dropdown-menu">                                            
-                                            <li><a href="menu/estrutura_curso/infraestrutura_fisica/labin_ensino.xhtml">Laboratórios de Ensino</a></li>
-                                            <li><a href="menu/estrutura_curso/infraestrutura_fisica/labin_tematico.xhtml">Laboratórios Temáticos</a></li>
-                                            <li><a href="menu/estrutura_curso/infraestrutura_fisica/sala_aula.xhtml">Salas de Aulas</a></li>
-                                            <li><a href="menu/estrutura_curso/infraestrutura_fisica/coordenacao.xhtml">Coordenação</a></li>
-                                            <li><a href="menu/estrutura_curso/infraestrutura_fisica/campus_palmas.xhtml">Campus Palmas</a></li>
-
+                                        <ul class="dropdown-menu">  
+                                            <li><h:commandLink value="Campus Palmas" actionListener="#{navegacaoHelper.campus_palmas()}"/></li>
+                                            <li><h:commandLink value="Lab de Ensino" actionListener="#{navegacaoHelper.labin_ensino()}"/></li>
+                                            <li><h:commandLink value="Lab Temático" actionListener="#{navegacaoHelper.labin_tematico()}"/></li>
+                                            <li><h:commandLink value="Salas de Aulas" actionListener="#{navegacaoHelper.sala_aula()}"/></li>
+                                            <li><h:commandLink value="Coordenação" actionListener="#{navegacaoHelper.infra_coordenacao()}"/></li>
                                         </ul>
                                     </li>
                                     <li class="divider"></li>
-                                    <li><a href="menu/estrutura_curso/pos_strictu_senso.xhtml">Pós-Graduação Strictu Senso</a></li>
-                                    <li><a href="menu/estrutura_curso/pos_lato_senso.xhtml">Pós-Graduação Lato Senso</a></li>
-                                    <li><a href="menu/estrutura_curso/centro_academico.xhtml">Centro Acadêmico</a></li>
-                                    <li><a href="menu/estrutura_curso/horarios.xhtml">Horários</a></li>
+                                    <li><h:commandLink value="Pós-Graduação Strictu Senso" actionListener="#{navegacaoHelper.pos_strictu_senso()}"/></li>
+                                    <li><h:commandLink value="Pós-Graduação Lato Senso" actionListener="#{navegacaoHelper.pos_lato_senso()}"/></li>
+                                    <li><h:commandLink value="Horários" actionListener="#{navegacaoHelper.horarios()}"/></li>
+                                    <li><h:commandLink value="Centro Acadêmico" actionListener="#{navegacaoHelper.centro_academico()}"/></li>
                                 </ul>
                             </li>                          
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Recursos Humanos<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="menu/recursos_humanos/docentes_efetivos.xhtml">Docentes Efetivos</a></li>
-                                    <li><a href="menu/recursos_humanos/docentes_substitutos.xhtml">Docentes Substitutos</a></li>
-                                    <li><a href="menu/recursos_humanos/tecnicos.xhtml">Tecnicos Administrativos</a></li>                                    
+                                    <li><h:commandLink value="Docentes Efetivos" actionListener="#{navegacaoHelper.docentes_efetivos()}"/></li>
+                                    <li><h:commandLink value="Docentes Substitutos" actionListener="#{navegacaoHelper.docentes_substitutos()}"/></li>
+                                    <li><h:commandLink value="Técnicos Administrativos" actionListener="#{navegacaoHelper.tecnicos()}"/></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -83,35 +86,25 @@
                                     Documentos <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="menu/documentos/doc_curso.xhtml">Documentos do Curso</a></li>
-                                    <li><a href="menu/documentos/doc_institucional.xhtml">Documentos Institucionais</a></li>
-                                    <li><a href="menu/documentos/plano_ensino.xhtml">Planos de Ensino</a></li>
-
+                                    <li><h:commandLink value="Documentos do Curso" actionListener="#{navegacaoHelper.doc_curso()}"/></li>
+                                    <li><h:commandLink value="Documentos Institucionais" actionListener="#{navegacaoHelper.doc_institucional()}"/></li>
+                                    <li><h:commandLink value="Planos de Ensino" actionListener="#{navegacaoHelper.plano_ensino()}"/></li>
+                                    <li><h:commandLink value="Núcleo Docente" actionListener="#{navegacaoHelper.nucleo_docentes()}"/></li>
                                     <li class="divider"></li>
                                     <li class="dropdown-submenu">
                                         <a tabindex="-1" href="#">Colegiado</a>
-                                        <ul class="dropdown-menu">                                            
-                                            <li><a href="#">Prof1</a></li>                                          
-
-                                        </ul>
+                                        <ul class="dropdown-menu"><li><a href="#">prof1</a></li></ul>
                                     </li>
-                                    <li class="divider"></li>
-                                    <li><a href="menu/documentos/nucleo_docentes.xhtml">Núcleo Docente</a></li>
                                     <li class="divider"></li>
                                     <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Direcao de Campus</a>
-                                        <ul class="dropdown-menu">                                            
-                                            <li><a href="#">prof1</a></li>
-
-
-                                        </ul>
+                                        <a tabindex="-1" href="#">Direção de Campus</a>
+                                        <ul class="dropdown-menu"><li><a href="#">prof1</a></li></ul>
                                     </li>
-                                    <li class="divider"></li>
                                 </ul>
                             </li>  
-                            <li><a href="#">Extensão</a></li>
-                            <li><a href="#">Pesquisa</a></li>
-                            <li><a href="#">Coordenação</a></li>
+                            <li><h:commandLink value="Extensão" actionListener="#{navegacaoHelper.extensao()}"/></li>
+                            <li><h:commandLink value="Pesquisa" actionListener="#{navegacaoHelper.pesquisa()}"/></li>
+                            <li><h:commandLink value="Coordenação" actionListener="#{navegacaoHelper.coordenacao()}"/></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false">Administração<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -138,77 +131,10 @@
                                     </li>
                                 </ul>
                             </li>
-
-
                         </ul>
                     </div>
-
                 </div>
             </nav> 
-            <!--  
-                     <p:menubar >
-                         <p:submenu label="Estrutura do Curso" icon="ui-icon-contact">
-                             <p:menuitem value="Sobre o Curso" icon="ui-icon-contact" />                    
-                             <p:menuitem value="Histórico do Curso" url="#" />
-                             <p:menuitem value="Matriz Curricular" url="#" />
-                             <p:menuitem value="Laboratórios" url="#" />
-                             <p:submenu label="Infra-Estrutura Física" icon="ui-icon-contact">
-                                 <p:menuitem value="Laboratórios de Ensino" url="#" />
-                                 <p:menuitem value="Laboratórios Temáticos" url="#" />
-                                 <p:menuitem value="Salas de Aulas" url="#" />
-                                 <p:menuitem value="Coordenação" url="#" />
-                                 <p:menuitem value="Campus de Palmas" url="#" />
-                             </p:submenu>
-                             <p:menuitem value="Pós-Graduação Strictu Senso" url="#" />
-                             <p:menuitem value="Pós-Graduação Lato Senso" url="#" />
-                             <p:menuitem value="Centro Acadêmico" url="#" />
-                         </p:submenu>
-         
-                         <p:submenu label="Recursos Humanos" icon="ui-icon-contact">
-                             <p:menuitem value="Docentes Efetivos" url="#" icon="ui-icon-contact" />
-                             <p:menuitem value="Docentes Substitutos" url="#" icon="ui-icon-contact" />
-                             <p:menuitem value="Tecnicos Administrativos" url="#" icon="ui-icon-contact" />
-                         </p:submenu>
-         
-                         <p:submenu label="Documentos" icon="ui-icon-contact">
-                             <p:menuitem value="Documentos do Curso" url="#" />
-                             <p:menuitem value="Documentos Institucionais" url="#" />
-                             <p:menuitem value="Planos de Ensino" url="#" />
-                             <p:submenu label="Atas" icon="ui-icon-contact">
-                                 <p:submenu label="Colegiado">
-                                     <p:menuitem value="2016" url="#" />
-                                 </p:submenu>
-                                 <p:menuitem value="Núcleo Docente" url="#" />
-                                 <p:submenu label="Direção do Campus">
-                                     <p:menuitem value="2016" url="#" />
-                                 </p:submenu>
-                             </p:submenu>
-                         </p:submenu>
-         
-                         <p:submenu label="Extensão" icon="ui-icon-gear">
-                             <p:menuitem value="2016" url="#" />
-                         </p:submenu>
-         
-                         <p:submenu label="Pesquisa" icon="ui-icon-gear">
-                             <p:menuitem value="2016" url="#" />
-                         </p:submenu>
-         
-                         <p:submenu label="Horários" icon="ui-icon-gear">
-                             <p:menuitem value="2016" url="#" />
-                         </p:submenu>
-         
-                         <p:menuitem value="Coordenação" url="#" icon="ui-icon-contact" />
-         
-                         <p:submenu label="Administração" icon="ui-icon-contact">
-                             <p:menuitem value="Usuários" url="usuario.xhtml" icon="ui-icon-contact" />
-                             <p:menuitem value="Perfis" url="perfil.xhtml" icon="ui-icon-contact" />
-                             <p:menuitem value="Associar Perfil" url="usuarioperfil.xhtml" icon="ui-icon-contact" />
-                             <p:menuitem value="Cargos" url="sitecargo.xhtml" icon="ui-icon-contact" />
-                         </p:submenu>
-         
-                     </p:menubar>  -->
-
-
         </h:form>  
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

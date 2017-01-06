@@ -62,21 +62,20 @@ public class SiteNoticia implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "conteudo")
     private String conteudo;
-    @OneToMany(mappedBy = "noticiaId",cascade=CascadeType.REMOVE)
+    @OneToMany(mappedBy = "noticiaId", cascade = CascadeType.REMOVE)
     private List<SiteComentarios> siteComentariosList;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne
     private TbUsersystem usuarioId;
-    
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REFRESH)
-    @JoinTable(name="site_noticia_tags", 
-               joinColumns=  @JoinColumn( name = "noticia_id"), 
-               inverseJoinColumns= @JoinColumn(name = "tag_id") )
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "site_noticia_tags",
+            joinColumns = @JoinColumn(name = "noticia_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<SiteTags> siteNoticiaTagsList;
-    
+
     @Column(name = "hora2")
     private BigInteger hora2;
-    
 
     public SiteNoticia() {
     }
@@ -148,6 +147,7 @@ public class SiteNoticia implements Serializable {
     public void setUsuarioId(TbUsersystem usuarioId) {
         this.usuarioId = usuarioId;
     }
+
     public List<SiteComentarios> getSiteComentariosList() {
         return siteComentariosList;
     }
@@ -190,6 +190,4 @@ public class SiteNoticia implements Serializable {
         return "model.SiteNoticia[ id=" + id + " ]";
     }
 
-    
-    
 }

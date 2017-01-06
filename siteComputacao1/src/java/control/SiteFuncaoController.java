@@ -13,13 +13,15 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.SiteFuncao;
 import org.primefaces.event.SelectEvent;
 
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
+//@SessionScoped
 public class SiteFuncaoController implements Serializable{
     
     private SiteFuncao funcao;

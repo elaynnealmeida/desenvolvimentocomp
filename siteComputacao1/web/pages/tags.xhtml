@@ -68,7 +68,7 @@
                 <p:commandButton value="Sim"  onclick="PF('confirmation').hide()"
                                  actionListener="#{siteTagController.deletar}" ajax="true" update=":formtags"/>
 
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
             </p:confirmDialog>
 
  </h:form>

@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
@@ -34,7 +35,8 @@ import org.primefaces.model.UploadedFile;
  * @author UFT
  */
 @ManagedBean
-@SessionScoped
+@ViewScoped
+//@SessionScoped
 public class SiteNoticiaController implements Serializable {
 
     private SiteNoticia noticia;
@@ -131,15 +133,15 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public void gravaImagem() {
-        System.out.println("chamou o metodo");
+        // System.out.println("chamou o metodo");
         // if (file.getInputstream() != null) {
-        System.out.println("file: " + this.file.getFileName());
+        //System.out.println("file: " + this.file.getFileName());
         try {
             byte[] bytes = IOUtils.toByteArray(file.getInputstream());
             noticia.setImgCapa(bytes);
 
         } catch (Exception ex) {
-            System.out.println("arquivo: " + ex);
+            // System.out.println("arquivo: " + ex);
             ex.printStackTrace();
         }
         // }
@@ -157,14 +159,14 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public List<SelectItem> listarTags() {
-        System.out.println("entrou no listar tags: ");
+        //System.out.println("entrou no listar tags: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
         List<SiteTags> result = new ArrayList<SiteTags>();
         //SiteTagDAO perfilDao = new SiteTagDAO();
         result = tagDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
             toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
-            System.out.println("tag: " + result.get(i).getDescricao());
+            //System.out.println("tag: " + result.get(i).getDescricao());
         }
         return toReturn;
     }
@@ -179,7 +181,7 @@ public class SiteNoticiaController implements Serializable {
             String id = context.getExternalContext().getRequestParameterMap().get("noticia");
             if (!id.isEmpty()) {
                 SiteNoticia i = noticiaDao.buscaPorID(Integer.parseInt(id));
-                System.out.println("Id: " + id);
+                //System.out.println("Id: " + id);
                 if (i.getImgCapa() != null) {
                     return new DefaultStreamedContent(new ByteArrayInputStream(i.getImgCapa()));
                 } else {

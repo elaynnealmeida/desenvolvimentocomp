@@ -8,10 +8,7 @@
     <h:head>
         <title>Ciência da Computação</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-        <f:metadata>
-            <f:viewAction action="#{siteNoticiaController.limpar}" />
-        </f:metadata>
-    </h:head>
+     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>       
     </ui:insert>
@@ -106,7 +103,7 @@
                 <p:commandButton value="Sim" update=":formnoticias" onclick="PF('confirmation').hide()"
                                  action="#{siteNoticiaController.deletar}" />
 
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return false;" />
+                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" update=":formnoticias" />
             </p:confirmDialog>
 
 
