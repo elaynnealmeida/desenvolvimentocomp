@@ -12,6 +12,17 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 public class NavegacaoHelper {
 
+    public void all_noticias() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/all_noticias.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void pesquisa() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();

@@ -21,7 +21,7 @@
     <ui:insert name="menu" >
         <ui:include src="menu.xhtml"/>   
     </ui:insert>
-    
+
     <h:body> 
         <h:form styleClass=" row page-header col-sm-12 " >
             <div class="col-sm-4 text-right"><h:graphicImage  value="#{resource['img/brasao.png']}" /> </div>
@@ -115,6 +115,13 @@
                         </c:forEach>
                     </h:form>
                 </div>
+
+            <h:form>
+                <!--<button type="button" class="btn btn-default btn-block">Todas as Notícias</button>-->
+                <!--<h:button styleClass="btn btn-default btn-block" value="Todas as Notícias"  ></h:button>-->
+                <h:commandLink value="Todas as Notícias" styleClass="btn btn-default btn-block" actionListener="#{navegacaoHelper.all_noticias()}"/>
+                <br></br>
+            </h:form>
             </div>
         </section>
 
