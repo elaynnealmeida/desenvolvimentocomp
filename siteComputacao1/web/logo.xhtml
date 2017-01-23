@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:body> 
+            <h:form>
+                <h:commandLink  actionListener="#{navegacaoHelper.inicio()}">
+                    <div  style="background-image: radial-gradient(ellipse at center,#0c897e 1%,#085a53 100%)">
+                        <main>
+                            <!--Main layout-->
+                            <div class="container">
+                                <br></br>
+                                <h:graphicImage styleClass="rounded float-xs-left" style="padding-right: 15px" value="#{resource['img/brasao.png']}" />
+                                <h1 class="h1-responsive" style=" font-size: 2.2em ;text-align: left; color: #ffffff; padding-top: 15px; ">Ciência da Computação</h1>
+                                <p style="text-align: left; color: #ffffff">UNIVERSIDADE FEDERAL DO TOCANTINS</p>
+                                <br></br>
+                            </div>
+
+                        </main>
+                    </div>
+                </h:commandLink>
+            </h:form>
+        </h:body>
+    </ui:composition>
+</html>

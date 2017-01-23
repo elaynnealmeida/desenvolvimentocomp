@@ -6,109 +6,166 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Ciência da Computação</title>
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-     </h:head>
+        <title>Adicionar Notícia</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+            main {
+                margin-top: 0rem;
+            }
+            main .card {
+                margin-bottom: 2rem;
+            }
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
+    </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>       
     </ui:insert>
     <h:body>
-        <h:form id="formnoticias" enctype="multipart/form-data">
-            <h:outputText value="Cadastro de Notícias "/>
-            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                <h:outputText value="Título: "/>
-                <h:inputText id="nome" value="#{siteNoticiaController.noticia.titulo}"
-                             requiredMessage="Campo Obrigatório"
-                             required="true"
-                             />*
-                <p:message for="nome" />
-
-                <h:outputText value="Imagem da Capa: "/>
-                <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true"
-                              update="msg" id="imagem"    requiredMessage="Campo Obrigatório" 
-                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
-                              invalidFileMessage="Somente JPG ou PNG são permitidos."
-                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
-                              />*
-                <p:message for="imagem" />
-                
-                <h:outputText value="Conteúdo: "/>
-                <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
-                                 requiredMessage="Campo Obrigatório"
-                                 required="true"
-                                 />*
-                <p:message for="conteudo" />
-
-                <p:outputLabel    value="Tags:" />
-                <p:selectManyMenu id="tags" value="#{siteNoticiaController.selectedTags}"  
-                                  converter="tagConverter"
-                                  requiredMessage="Campo Obrigatório"
-                                  required="true"
-                                  var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
-                    <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
-                    <p:column>
-                        <h:outputText value="#{t.descricao}"  />                    
-                    </p:column>                   
-                </p:selectManyMenu>*
-            </h:panelGrid>
-
-            <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formnoticias:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
-
-            <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>
-       
-            <p:dataTable var="var" value="#{siteNoticiaController.noticias}"
-                         selectionMode="single"  rowKey="#{var.id}"
-                         emptyMessage="Nenhum Registro Encontrado"
-                         widgetVar="varTable"
-                         filteredValue="#{siteNoticiaController.noticiasFiltradas}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"
-                         >
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Pesquisar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Título"
-                                     />
-                    </p:outputPanel>
-                </f:facet>
-                <p:ajax event="rowSelect" listener="#{siteNoticiaController.onRowSelect}" update=":formnoticias" />
-                <p:column headerText="Id">
-                    <h:outputText value="#{var.id}" />
-                </p:column>
-
-                <p:column headerText="Capa"  >
-                    <p:graphicImage value="#{siteNoticiaController.image}">
-                        <f:param name="noticia" value="#{var.id}" />
-                    </p:graphicImage>
-
-                </p:column>
-
-                <p:column headerText="Título" filterBy="#{var.titulo}" filterStyle="display:none" >
-                    <h:outputText value="#{var.titulo}" />
-                </p:column>
-
-
-            </p:dataTable>
-
-        
-            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
-
-                <p:commandButton value="Sim" update=":formnoticias" onclick="PF('confirmation').hide()"
-                                 action="#{siteNoticiaController.deletar}" />
-
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" update=":formnoticias" />
-            </p:confirmDialog>
-
-
-        </h:form>
-
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <!--Main column-->
+                    <div class="col-lg-12">
+                        <!--Post-->
+                        <h:form id="formnoticias" enctype="multipart/form-data">
+                            <div class="card card-block ">
+                                <div class="post-wrapper">
+                                    <!--Post data-->
+                                    <h1 class="h6-responsive" style="text-align: center">Adicionar Notícia</h1>
+                                    <br></br>
+                                    <!--Third row-->
+                                    <div class="row">
+                                        <!--First column-->
+                                        <div class="col-md-4">
+                                            <div class="md-form">
+                                                <b><h:outputText value="Título: "/></b>
+                                                <h:inputText styleClass="form-control" id="nome" value="#{siteNoticiaController.noticia.titulo}"
+                                                             requiredMessage="Especificar o Título é Obrigatório"
+                                                             required="true"></h:inputText>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Second row-->
+                                    <div class="row">
+                                        <!--First column-->
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <b><h:outputText value="Conteúdo: "/></b>
+                                                <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
+                                                                 requiredMessage="Especificar o Conteúdo é Obrigatório"
+                                                                 required="true" styleClass="form-control" rows="10"></h:inputTextarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!--First column-->
+                                        <div class="col-md-12">
+                                            <div class="md-form">
+                                                <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
+                                                <p:fileUpload value="#{siteNoticiaController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                                              update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
+                                                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
+                                                              invalidFileMessage="Somente JPG ou PNG são permitidos."
+                                                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                                              />
+                                                <p:message for="imagem" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p:outputLabel    value="Tags:" />
+                                    <h:selectManyCheckbox  id="tags2" value="#{siteNoticiaController.selectedTags}"  
+                                                          converter="tagConverter"
+                                                          requiredMessage="Especificar Tag é Obrigatório"
+                                                          required="true"
+                                                          layout="pageDirection"
+                                                          style="padding: 5px"
+                                                          >
+                                        <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
+                                    </h:selectManyCheckbox>
+                                </div>
+                            </div>
+                            <p:commandButton class="btn btn-dark-green" id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
+                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
+                            <p:commandButton class="btn btn-danger" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formnoticias:confimacao"/>
+                            <p:commandButton class="btn btn-warning" id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>
+                            <br></br>
+                            <br></br>
+                            <p:dataTable var="var" value="#{siteNoticiaController.noticias}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         tableStyleClass="table table-striped"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{siteNoticiaController.noticiasFiltradas}"
+                                         rows="5"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Título"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{siteNoticiaController.onRowSelect}" update=":formnoticias" />
+                                <p:column headerText="Título" filterBy="#{var.titulo}" filterStyle="display:none" style="text-align: center">
+                                    <h:outputText value="#{var.titulo}" />
+                                </p:column>
+                                <p:column headerText="Capa">
+                                    <p:graphicImage value="#{siteNoticiaController.image}" style="    max-width:100%;
+                                                                                                             max-height:100%;
+                                                                                                             width: 400px;
+                                                                                                             height: 180px;">
+                                        <f:param name="noticia" value="#{var.id}" />
+                                    </p:graphicImage>
+                                </p:column>
+                                <p:column headerText="Última Atualização" style="text-align: center">
+                                    <h:outputText value="#{var.data}" />
+                                </p:column>
+                            </p:dataTable>
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+                                <p:commandButton value="Sim" update=":formnoticias" onclick="PF('confirmation').hide()"
+                                                 action="#{siteNoticiaController.deletar}" />
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" update=":formnoticias" />
+                            </p:confirmDialog>
+                        </h:form>
+                        <!--/.Post-->                     
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
     </h:body>
 </html>
 

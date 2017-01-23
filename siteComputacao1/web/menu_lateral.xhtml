@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition>
+        <!--Sidebar-->
+        <div class="col-lg-3">
+            <h:form>
+                <div class="widget-wrapper">
+                    <div class="list-group-item">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="font-pequena-media" data-toggle="collapse" href="#collapse1">Estrutura do Curso</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item"  value="Sobre o Curso" actionListener="#{navegacaoHelper.sobre()}"/>
+                                        <h:commandLink class="list-group-item" value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/>
+                                        <h:commandLink class="list-group-item" value="Matriz Curricular" actionListener="#{navegacaoHelper.matriz()}"/>
+                                        <h:commandLink class="list-group-item" value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/>
+                                        <h:commandLink class="list-group-item" value="Pós-Graduação Strictu Senso" actionListener="#{navegacaoHelper.pos_strictu_senso()}"/>
+                                        <h:commandLink class="list-group-item" value="Pós-Graduação Lato Senso" actionListener="#{navegacaoHelper.pos_lato_senso()}"/>
+                                        <h:commandLink class="list-group-item" value="Horários" actionListener="#{navegacaoHelper.horarios()}"/>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico" actionListener="#{navegacaoHelper.centro_academico()}"/>
+                                    </ul>
+                                    <div class="panel-footer">Estrutura do Curso</div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse2">Professores</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
+                                         <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                    </ul>
+                                    <div class="panel-footer">Footer</div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse3">Documentos</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse3" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                    </ul>
+                                    <div class="panel-footer">Footer</div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse4">Centro Acadêmico</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse4" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                    </ul>
+                                    <div class="panel-footer">Footer</div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse5">Coordenação</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse5" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                    </ul>
+                                    <div class="panel-footer">Footer</div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse6">Programas</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse6" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                    </ul>
+                                    <div class="panel-footer">Footer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br></br>
+
+
+                
+            </h:form>
+        </div>
+        <!--/.Sidebar-->
+    </ui:composition>
+</html>

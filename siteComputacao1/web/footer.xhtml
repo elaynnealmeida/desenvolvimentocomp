@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <!--Footer-->
+        <footer class="page-footer center-on-small-only primary-color-dark">
+            <!--Footer links-->
+            <div class="container-fluid">
+                <div class="row">
+                    <!--First column-->
+                    <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                        <h:form id="formlog" styleClass="pading-noticia" rendered="#{!loginController.isUser}">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="jumbotron">
+                                        <h6 style="color: #247a7e !important; text-align: center" class="h1-responsive">Login</h6>
+                                        <div class="form-group">
+                                            <p:inputText styleClass="form-control" id="email" value="#{loginController.user.roles}" placeholder="E-mail" required="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha"></p:password>
+                                        </div>
+                                        <h:commandLink   styleClass="btn btn-success" style="color:#ffffff" value="Entrar" action="#{loginController.login}"></h:commandLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                        <h:form>
+                            <div class="navbar-header ">
+                                <div class="flutua ">   
+                                    <div class="letra-pequenaBarra">
+                                        <h:outputText value="#{loginController.user.nomecompleto}" rendered="#{loginController.isUser}"/>
+                                        <br></br>
+                                        <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
+                                    </div>
+
+
+                                    <br></br>
+                                    <p:autoComplete class="browser-default" id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                                    rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
+                                        <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
+                                    </p:autoComplete> 
+                                </div> 
+                            </div>
+                        </h:form>
+                    </div>
+                    <!--/.First column-->
+                    <hr class="hidden-md-up"></hr>
+                    <!--Second column-->
+                    <div class="col-lg-2 col-md-4 offset-lg-1">
+                        <h5 class="title">First column</h5>
+                        <ul>
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.Second column-->
+                    <hr class="hidden-md-up"></hr>
+                    <!--Third column-->
+                    <div class="col-lg-2 col-md-4">
+                        <h5 class="title">Second column</h5>
+                        <ul>
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.Third column-->
+                    <hr class="hidden-md-up"></hr>
+                    <!--Fourth column-->
+                    <div class="col-lg-2 col-md-4">
+                        <h5 class="title">Third column</h5>
+                        <ul>
+                            <li>
+                                <a href="#!">Link 1</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 2</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 3</a>
+                            </li>
+                            <li>
+                                <a href="#!">Link 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.Fourth column-->
+                </div>
+            </div>
+            <!--Copyright-->
+            <div class="footer-copyright">
+                <div class="containter-fluid">
+                    © 2017 Universidade Federal do Tocantins: <a target="_blank" href="http://ww2.uft.edu.br/"> uft.edu.br </a>
+                </div>
+            </div>
+            <!--/.Copyright-->
+        </footer>
+        <!--/.Footer-->
+
+        <!-- SCRIPTS -->
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/tether.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <!-- Barra do Governo Federal -->
+        <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+    </ui:composition>
+
+</html>

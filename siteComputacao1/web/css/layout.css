@@ -1,0 +1,16 @@
+.font-pequena{
+    font-size: .80em 
+}
+
+.font-pequena-media{
+    font-size: 1em
+}
+
+.font-media{
+    font-size: 19px
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    border-style: none;
+}
+

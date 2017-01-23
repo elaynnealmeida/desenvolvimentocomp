@@ -14,10 +14,6 @@
         <h:outputStylesheet library="css" name="estilo.css" ></h:outputStylesheet>
         <link href="css/signin.css" rel="stylesheet"/>
     </h:head>
-    <ui:insert name="menu" >
-        <ui:include src="menu.xhtml"/>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-    </ui:insert>
     <h:body>
 
         <h:form id="formlogin" styleClass="form-signin">
@@ -27,6 +23,8 @@
             <h:commandButton styleClass="btn btn-lg btn-primary btn-block" id="btnSalvar" value="Entrar" 
                              action="#{loginController.login}"/>
         </h:form>
-
+        
+         <!-- Barra do Governo Federal -->
+        <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
     </h:body>
 </html>

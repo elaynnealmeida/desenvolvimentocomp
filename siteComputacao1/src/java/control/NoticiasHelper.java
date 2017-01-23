@@ -19,13 +19,14 @@ import org.primefaces.model.StreamedContent;
  * @author UFT
  */
 @ManagedBean
+//@ViewScoped
 @SessionScoped
 public class NoticiasHelper implements Serializable {
 
     private SiteNoticia noticia;
     private SiteNoticiaDAO noticiaDao;
     private List<SiteNoticia> noticias;
-
+    
     @PostConstruct
     public void init() {
         this.noticia = new SiteNoticia();
@@ -76,26 +77,14 @@ public class NoticiasHelper implements Serializable {
         return noticias;
     }
 
-    public String limitarNoticia(SiteNoticia not) {
-        String retorno;
-        String conteudo = not.getConteudo();
-        if (conteudo.length() <= 300) {
-            retorno = conteudo;
-        } else {
-            String novaString = conteudo.substring(0, 300);
-            novaString += " ...";
-            retorno = novaString;   
-        }
-        return retorno;
-    }
     
     public String limitarTitulo(SiteNoticia not) {
         String retorno;
         String conteudo = not.getTitulo();
-        if (conteudo.length() <= 70) {
+        if (conteudo.length() <= 30) {
             retorno = conteudo;
         } else {
-            String novaString = conteudo.substring(0, 70);
+            String novaString = conteudo.substring(0, 30);
             novaString += " ...";
             retorno = novaString;
         }
@@ -105,5 +94,4 @@ public class NoticiasHelper implements Serializable {
     public void setNoticias(List<SiteNoticia> noticias) {
         this.noticias = noticias;
     }
-
 }

@@ -1,16 +1,130 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>kleysonn </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>aquii</div>
-    </body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <title>Sobre o Curso</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+
+        <!-- Bootstrap core CSS -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+
+
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+
+            main {
+                margin-top: 0rem;
+            }
+
+            main .card {
+                margin-bottom: 2rem;
+            }
+
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>   
+    </ui:insert>
+    <h:body> 
+
+        <!--Corpo-->
+        <main>
+
+            <!--Main layout-->
+            <div class="container">
+
+
+                <br></br>
+                <div class="row">
+
+                    <!--Main column-->
+                    <div class="col-lg-8">
+                        <!--Post-->
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Sobre o Curso</h1>
+
+                                <br></br>
+
+                                <!--Featured image -->
+                                <div class="view overlay hm-white-light z-depth-1-half">
+                                    <img src="https://eduardoazev.files.wordpress.com/2015/09/uft-logo.jpg" class="img-fluid " alt=""></img>
+
+                                    <div class="mask">
+                                    </div>
+                                </div>
+
+                                <br></br>
+
+                                <!--Post excerpt-->
+                                <p>Nome do Curso: Ciência da Computação <br></br>
+                                    Modalidade: Bacharelado em Ciência da Computação <br></br>
+                                    Autorização: Resolução nº 0036 de 16/06/1999 -CEE/TO Reconhecimento: Decreto 5.773/2006 e Portaria MEC 2.413/2005 <br></br>
+                                    Renovação: Portaria MEC nº 686 de 22/03/2011 – DOU de 24/03/2011, Seção 1, p.24. Turno: Integral <br></br>
+                                    Carga Horária: 3.300 h/total <br></br>
+                                    Duração: Mínima: 4 anos; Máxima: 6 anos. <br></br>
+                                    Vagas: 80 anuais com duas entradas semestrais de 40 alunos</p>
+                                <br></br>
+
+
+                            </div>
+                        </h:form>
+                        <!--/.Post-->                     
+                        <br></br>
+
+
+                    </div>
+
+                    <!--Sidebar-->
+                    <div class="col-lg-4">
+
+                        <div class="widget-wrapper">
+                            <h4>Categorias:</h4>
+                            <br></br>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item active">Professores</a>
+                                <a href="#" class="list-group-item">Alunos</a>
+                                <a href="#" class="list-group-item">Coordenação</a>
+                                <a href="#" class="list-group-item">Centro Acadêmico</a>
+                                <a href="#" class="list-group-item">Estrutura</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Sidebar-->
+                </div>
+            </div>
+            <!--/.Main layout-->
+
+        </main>
+        <!--Corpo-->
+
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+
+
+    </h:body>
 </html>

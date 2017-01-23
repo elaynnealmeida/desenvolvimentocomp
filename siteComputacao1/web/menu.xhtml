@@ -5,139 +5,80 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Ciência da Computação</title>
-    </h:head>
+
 
     <ui:composition>
-        <ui:insert name="barra_governo" >
-            <ui:include src="barra_governo.xhtml"/>   
+        <!-- Barra do Governo -->
+        <ui:insert name="governo">
+            <ui:include src="barra_governo.xhtml"></ui:include>
         </ui:insert>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-        <h:outputStylesheet library="css" name="estilo.css" ></h:outputStylesheet>
 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <h:form id="menu"> 
-            <nav class="navbar navbar-default" role="navigation">
+        <ui:insert name="logo">
+            <ui:include src="logo.xhtml"/>
+        </ui:insert>
+
+        <!--Navbar / Menu -->
+        <h:form>
+            <nav class="navbar navbar-dark primary-color-dark">
+
+                <!-- Collapse button-->
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!--Menu-->
                 <div class="container">
 
-                    <div class="navbar-header ">
-                        <button type="button" class="navbar-toggle collapsed"
-                                data-toggle="collapse" data-target="#barra-navegacao">
-                            <span class="sr-only">alternas navegacao</span>
-                            <span class="glyphicon glyphicon-menu-hamburger"></span>
-                        </button>
-                        <div class="navbar-brand espaco ">
-                            
-                            <div class="flutua ">   
-                                
-                                <div class="letra-pequenaBarra">
-                                    <h:outputText value="Bem Vindo, #{loginController.user.nomecompleto}!" rendered="#{loginController.isUser}"/>
-                                    <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
-                                </div>
-                                <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
-                                                rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}"
-                                                >
-                                    <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
-                                </p:autoComplete>                               
-                            </div> 
-                        </div>
-                    </div>
+                    <!--Collapse content-->
+                    <div class="collapse navbar-toggleable-xs" id="collapseEx">
+                        <!--Navbar Brand -->
 
-                    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+
+                        <!--Links-->
                         <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a id="dLabel"  role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#" href="/page.html">
-                                    Estrutura do Curso <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><h:commandLink value="Sobre o Curso" actionListener="#{navegacaoHelper.sobre()}"/></li>
-                                    <li><h:commandLink value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/></li>
-                                    <li><h:commandLink value="Matriz Curricular" actionListener="#{navegacaoHelper.matriz()}"/></li>
-                                    <li><h:commandLink value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Infra-Estrutura Física</a>
-                                        <ul class="dropdown-menu">  
-                                            <li><h:commandLink value="Campus Palmas" actionListener="#{navegacaoHelper.campus_palmas()}"/></li>
-                                            <li><h:commandLink value="Lab de Ensino" actionListener="#{navegacaoHelper.labin_ensino()}"/></li>
-                                            <li><h:commandLink value="Lab Temático" actionListener="#{navegacaoHelper.labin_tematico()}"/></li>
-                                            <li><h:commandLink value="Salas de Aulas" actionListener="#{navegacaoHelper.sala_aula()}"/></li>
-                                            <li><h:commandLink value="Coordenação" actionListener="#{navegacaoHelper.infra_coordenacao()}"/></li>
-                                        </ul>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li><h:commandLink value="Pós-Graduação Strictu Senso" actionListener="#{navegacaoHelper.pos_strictu_senso()}"/></li>
-                                    <li><h:commandLink value="Pós-Graduação Lato Senso" actionListener="#{navegacaoHelper.pos_lato_senso()}"/></li>
-                                    <li><h:commandLink value="Horários" actionListener="#{navegacaoHelper.horarios()}"/></li>
-                                    <li><h:commandLink value="Centro Acadêmico" actionListener="#{navegacaoHelper.centro_academico()}"/></li>
-                                </ul>
-                            </li>                          
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Recursos Humanos<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><h:commandLink value="Docentes Efetivos" actionListener="#{navegacaoHelper.docentes_efetivos()}"/></li>
-                                    <li><h:commandLink value="Docentes Substitutos" actionListener="#{navegacaoHelper.docentes_substitutos()}"/></li>
-                                    <li><h:commandLink value="Técnicos Administrativos" actionListener="#{navegacaoHelper.tecnicos()}"/></li>
-                                </ul>
+                            <!--<li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>-->
+
+                            <li class="nav-item">
+                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Ensino" actionListener="#"/>
                             </li>
-                            <li class="dropdown">
-                                <a id="dLabel"  role="button" data-toggle="dropdown" class="dropdown-toggle" data-target="#" href="/page.html">
-                                    Documentos <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><h:commandLink value="Documentos do Curso" actionListener="#{navegacaoHelper.doc_curso()}"/></li>
-                                    <li><h:commandLink value="Documentos Institucionais" actionListener="#{navegacaoHelper.doc_institucional()}"/></li>
-                                    <li><h:commandLink value="Planos de Ensino" actionListener="#{navegacaoHelper.plano_ensino()}"/></li>
-                                    <li><h:commandLink value="Núcleo Docente" actionListener="#{navegacaoHelper.nucleo_docentes()}"/></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Colegiado</a>
-                                        <ul class="dropdown-menu"><li><a href="#">prof1</a></li></ul>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-submenu">
-                                        <a tabindex="-1" href="#">Direção de Campus</a>
-                                        <ul class="dropdown-menu"><li><a href="#">prof1</a></li></ul>
-                                    </li>
-                                </ul>
-                            </li>  
-                            <li><h:commandLink value="Extensão" actionListener="#{navegacaoHelper.extensao()}"/></li>
-                            <li><h:commandLink value="Pesquisa" actionListener="#{navegacaoHelper.pesquisa()}"/></li>
-                            <li><h:commandLink value="Coordenação" actionListener="#{navegacaoHelper.coordenacao()}"/></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false">Administração<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><h:commandLink value="Usuário"  actionListener="#{navegacaoHelper.paginaUsuario}"  /> 
-                                    </li>
-                                    <li>                                       
-                                        <h:commandLink value="Tag"  actionListener="#{navegacaoHelper.paginaTag}"  />              
-                                    </li>
-                                    <li><h:commandLink value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
-                                    </li>  
-                                    <li><h:commandLink value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
-                                    </li>
-
-                                    <li><h:commandLink value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
-                                    </li> 
-
-                                    <li><h:commandLink value="Professor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
-                                    </li> 
-
-                                    <li><h:commandLink value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
-                                    </li>   
-
-                                    <li><h:commandLink value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />                                                                      
-                                    </li>
-                                </ul>
+                            <li class="nav-item">
+                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Pesquisa" actionListener="#{navegacaoHelper.pesquisa()}"/>
                             </li>
+                            <li class="nav-item">
+                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Extensão" actionListener="#{navegacaoHelper.extensao()}"/>
+                            </li>
+
+                            <li class="nav-item btn-group" style="font-size: .88em">
+                                <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <h:commandLink styleClass="dropdown-item"  value="Usuário"  actionListener="#{navegacaoHelper.paginaUsuario}"  /> 
+                                    <h:commandLink styleClass="dropdown-item"  value="Tag"  actionListener="#{navegacaoHelper.paginaTag}"  />              
+                                    <h:commandLink  styleClass="dropdown-item" value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
+                                    <h:commandLink  styleClass="dropdown-item" value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
+                                    <h:commandLink styleClass="dropdown-item"  value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
+                                    <h:commandLink styleClass="dropdown-item"  value="Professor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
+                                    <h:commandLink styleClass="dropdown-item"  value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
+                                    <h:commandLink  styleClass="dropdown-item" value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />                                                                      
+                                </div>
+                            </li>
+
                         </ul>
+                        <!--Search form-->
+                        <form class="form-inline">
+                            
+                            <div style="color: #ffffff; text-align: right; font-size: .88em">   
+                                    <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="Bem Vindo, #{loginController.user.nomecompleto}." rendered="#{loginController.isUser}"/>
+                                    <br></br>
+                                    <h:commandLink style="color: #ffffff; text-align: right; font-size: .88em" value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
+                            </div>
+                        </form>
                     </div>
+                    <!--/.Collapse content-->
                 </div>
-            </nav> 
-        </h:form>  
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <h:outputScript library="js" name="bootstrap.min.js" />
+            </nav>
+        </h:form>
+        <!--/.Navbar-->
     </ui:composition>
 </html>                           
