@@ -5,6 +5,7 @@
  */
 package util;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import sun.misc.BASE64Encoder;
@@ -14,18 +15,19 @@ import sun.misc.BASE64Encoder;
  * @author UFT
  */
 public class Servicos {
-    public Servicos(){
-    
+
+    public Servicos() {
+
     }
-    public String criptografa(String senha){
-		try{
-		 MessageDigest digest = MessageDigest.getInstance("MD5");
-		               digest.update(senha.getBytes());
-		 BASE64Encoder encoder = new BASE64Encoder();
-		        return encoder.encode(digest.digest());
-		}catch(NoSuchAlgorithmException ns){
-			ns.printStackTrace();
-		}
-		return senha;
-	}
+
+    public String criptografa(String senha) {
+        try {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.update(senha.getBytes(), 0, senha.length());
+            return new BigInteger(1, m.digest()).toString(16);
+        } catch (NoSuchAlgorithmException ns) {
+            ns.printStackTrace();
+        }
+        return senha;
+    }
 }

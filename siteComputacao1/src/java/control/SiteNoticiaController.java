@@ -100,7 +100,9 @@ public class SiteNoticiaController implements Serializable {
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
             noticia.setData(getDateTime());//Data de Alteração
-            if (file.getFileName().isEmpty()) {
+            if (!file.getFileName().isEmpty()) {
+                System.out.println("entrou no imagem vazio ");
+                noticia.setImgCapa(null);
                 gravaImagem();
             }
             noticia.setSiteNoticiaTagsList(selectedTags);
@@ -134,15 +136,20 @@ public class SiteNoticiaController implements Serializable {
         // System.out.println("chamou o metodo");
         // if (file.getInputstream() != null) {
         //System.out.println("file: " + this.file.getFileName());
-        try {
-            byte[] bytes = IOUtils.toByteArray(file.getInputstream());
-            noticia.setImgCapa(bytes);
+        if (file != null) {
+             System.out.println("file!=null");
+            try {
+                byte[] bytes = IOUtils.toByteArray(file.getInputstream());
+                noticia.setImgCapa(bytes);
 
-        } catch (Exception ex) {
-            // System.out.println("arquivo: " + ex);
-            ex.printStackTrace();
+            } catch (Exception ex) {
+                // System.out.println("arquivo: " + ex);
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("nao setou o file, file==null");
         }
-        // }
+
     }
 
     private String getDateTime() {

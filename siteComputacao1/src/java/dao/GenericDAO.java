@@ -128,7 +128,7 @@ public class GenericDAO<T> implements Serializable {
             em1.close();
             return result;
         } catch (Exception e) {
-            System.out.println("Erro no listar Todos: " + e);
+            System.out.println("Erro no buscar por id: " + e);
             em1.close();
         }
         return null;
@@ -144,7 +144,7 @@ public class GenericDAO<T> implements Serializable {
             em1.close();
             return result;
         } catch (Exception e) {
-            System.out.println("Erro no listar Todos: " + e);
+            System.out.println("Erro no buscar por id2: " + e);
             em1.close();
         }
         return null;

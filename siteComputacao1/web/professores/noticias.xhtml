@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <p:commandButton class="btn btn-dark-green" id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
-                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
+                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" actionListener="#{siteNoticiaController.atualizar}" ajax="false" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
                             <p:commandButton class="btn btn-danger" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formnoticias:confimacao"/>
                             <p:commandButton class="btn btn-warning" id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
                             <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>

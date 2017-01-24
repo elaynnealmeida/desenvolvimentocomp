@@ -364,6 +364,17 @@ public class NavegacaoHelper {
         }
     }
     
+     public void paginaDocumento() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/documento.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
      public void inicio() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
