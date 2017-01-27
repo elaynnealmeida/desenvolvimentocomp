@@ -23,24 +23,24 @@ import org.primefaces.model.StreamedContent;
 @SessionScoped
 public class NoticiasHelper implements Serializable {
 
-    private SiteNoticia noticia;
+    //private SiteNoticia noticia;
     private SiteNoticiaDAO noticiaDao;
     private List<SiteNoticia> noticias;
     
     @PostConstruct
     public void init() {
-        this.noticia = new SiteNoticia();
+       // this.noticia = new SiteNoticia();
         this.noticiaDao = new SiteNoticiaDAO();
         noticias = listar();
     }
 
-    public SiteNoticia getNoticia() {
+   /* public SiteNoticia getNoticia() {
         return noticia;
     }
 
     public void setNoticia(SiteNoticia noticia) {
         this.noticia = noticia;
-    }
+    }*/
 
     public List<SiteNoticia> listar() {
         this.noticias = noticiaDao.listarPorData();
