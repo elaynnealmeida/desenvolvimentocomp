@@ -18,7 +18,7 @@
 
         <h:form id="formlogin" styleClass="form-signin">
             <h2 class="form-signin-heading">Entre com sua conta</h2>
-            <p:inputText styleClass="form-control" id="email" value="#{loginController.user.roles}" placeholder="E-mail" required="true"/>           
+            <p:inputText styleClass="form-control" id="email" value="#{loginController.user.email}" placeholder="E-mail" required="true"/>           
             <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>
             <h:commandButton styleClass="btn btn-lg btn-primary btn-block" id="btnSalvar" value="Entrar" 
                              action="#{loginController.login}"/>

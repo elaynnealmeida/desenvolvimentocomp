@@ -105,7 +105,7 @@ public class UsuarioController implements Serializable {
 
     public void deletar() {
         try {
-            usuario.setStatus("DESATIVADO");
+            usuario.setStatus("INATIVO");
             usuario.setSitePerfilUsuarioList(selectedPerfis);
             usuarioDao.atualizar(usuario);
             FacesMessage msg = new FacesMessage("Excluido com Sucesso!");

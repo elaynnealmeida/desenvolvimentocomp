@@ -1,53 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package control;
 
-import dao.SiteFuncaoDAO;
+import dao.FormacaoDAO;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import model.SiteFuncao;
+import model.SiteFormacao;
 import org.primefaces.event.SelectEvent;
 
-
+/**
+ *
+ * @author UFT
+ */
 @ManagedBean
 @ViewScoped
-//@SessionScoped
-public class SiteFuncaoController implements Serializable{
-    
-    private SiteFuncao funcao;
-    private SiteFuncaoDAO funcaoDao;
-    private List<SiteFuncao> funcoes;
-    private List<SiteFuncao> funcoesFiltradas;
+public class FormacaoController implements Serializable {
+
+    private SiteFormacao formacao;
+    private FormacaoDAO formacaoDao;
+    private List<SiteFormacao> formacoes;
+    private List<SiteFormacao> formacoesFiltrados;
     private boolean isEdit;
-    
-    
+
     @PostConstruct
     public void init() {
-        this.funcao = new SiteFuncao();
-        this.funcaoDao = new SiteFuncaoDAO();
+        this.formacao = new SiteFormacao();
+        this.formacaoDao = new FormacaoDAO();
         this.isEdit = false;
-        funcoes = listar();
+        formacoes = listar();
     }
     
-    public void limpar() {
-        this.funcao = new SiteFuncao();
+   public void limpar() {
+        this.formacao = new SiteFormacao();
         this.isEdit = false;
         listar();
     }
 
     public void salvar() {
         try {
-            funcaoDao.salvar(funcao);
+            formacaoDao.salvar(formacao);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com Sucesso!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -61,7 +56,7 @@ public class SiteFuncaoController implements Serializable{
 
     public void atualizar() {
         try{
-        funcaoDao.atualizar(funcao);
+        formacaoDao.atualizar(formacao);
         FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         limpar();
@@ -74,7 +69,7 @@ public class SiteFuncaoController implements Serializable{
 
     public void deletar() {
         try{
-        funcaoDao.deletar(funcao);
+        formacaoDao.deletar(formacao);
         FacesMessage msg = new FacesMessage("Excluido com Sucesso!");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         limpar();
@@ -85,57 +80,38 @@ public class SiteFuncaoController implements Serializable{
         }
     }
     
-    public List<SiteFuncao> selectFuncao(String query) {
-        List<SiteFuncao> results = new ArrayList<SiteFuncao>();
-        List<SiteFuncao> result = new ArrayList<SiteFuncao>();
-        SiteFuncaoDAO funcaoDao = new SiteFuncaoDAO();
-        results = funcaoDao.listarTodos();       
-        for(int c = 0;c<results.size();c++){
-            result.add(results.get(c));
-        }
-        return results;
-    }
-
-    public List<SiteFuncao> listar() {
-        this.funcoes = funcaoDao.listarTodos();
-        return this.funcoes;
+    public List<SiteFormacao> listar() {
+        this.formacoes = formacaoDao.listarTodos();
+        return this.formacoes;
     }
     
      public void onRowSelect(SelectEvent event) {
-        this.funcao = ((SiteFuncao) event.getObject());
+        this.formacao = ((SiteFormacao) event.getObject());
         this.isEdit = true;
     }
 
-    public SiteFuncao getFuncao() {
-        return funcao;
+    public SiteFormacao getFormacao() {
+        return formacao;
     }
 
-    public void setFuncao(SiteFuncao funcao) {
-        this.funcao = funcao;
+    public void setFormacao(SiteFormacao formacao) {
+        this.formacao = formacao;
     }
 
-    public SiteFuncaoDAO getFuncaoDao() {
-        return funcaoDao;
+    public List<SiteFormacao> getFormacoes() {
+        return formacoes;
     }
 
-    public void setFuncaoDao(SiteFuncaoDAO funcaoDao) {
-        this.funcaoDao = funcaoDao;
+    public void setFormacoes(List<SiteFormacao> formacoes) {
+        this.formacoes = formacoes;
     }
 
-    public List<SiteFuncao> getFuncoes() {
-        return funcoes;
+    public List<SiteFormacao> getFormacoesFiltrados() {
+        return formacoesFiltrados;
     }
 
-    public void setFuncoes(List<SiteFuncao> funcoes) {
-        this.funcoes = funcoes;
-    }
-
-    public List<SiteFuncao> getFuncoesFiltradas() {
-        return funcoesFiltradas;
-    }
-
-    public void setFuncoesFiltradas(List<SiteFuncao> funcoesFiltrados) {
-        this.funcoesFiltradas = funcoesFiltrados;
+    public void setFormacoesFiltrados(List<SiteFormacao> formacoesFiltrados) {
+        this.formacoesFiltrados = formacoesFiltrados;
     }
 
     public boolean isIsEdit() {
@@ -145,5 +121,6 @@ public class SiteFuncaoController implements Serializable{
     public void setIsEdit(boolean isEdit) {
         this.isEdit = isEdit;
     }
+
     
 }

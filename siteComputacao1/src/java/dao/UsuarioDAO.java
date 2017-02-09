@@ -39,7 +39,7 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
 
     public TbUsersystem login(TbUsersystem login) {
         TbUsersystem result = new TbUsersystem();
-        System.out.println("Login: "+login.getRoles());
+        System.out.println("Login: "+login.getEmail());
         System.out.println("senha: "+login.getPassword());
         try {
             EntityManager em1 = getEM();
@@ -48,7 +48,7 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
             CriteriaQuery query = builder.createQuery(TbUsersystem.class);
             EntityType type = em1.getMetamodel().entity(TbUsersystem.class);
             Root root = query.from(TbUsersystem.class);
-            query.where(builder.and(builder.equal(root.get(type.getDeclaredSingularAttribute("roles", String.class)), login.getRoles()),
+            query.where(builder.and(builder.equal(root.get(type.getDeclaredSingularAttribute("email", String.class)), login.getEmail()),
                     builder.equal(root.get(type.getDeclaredSingularAttribute("password", String.class)), login.getPassword())));
             result = (TbUsersystem) em1.createQuery(query).getSingleResult();
             em1.close();

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+
+        <title>Site Computação</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet"></link>
+        <link href="css/layout.css" rel="stylesheet"></link>
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+            main {
+                margin-top: 0rem;
+            }
+            main .card {
+                margin-bottom: 2rem;
+            }
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
+    </h:head>
+    <ui:insert name="menu">
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body> 
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <!--Corpo -->
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <div class="col-lg-9">
+                        <h3 class="h3-responsive" style="text-align: right">Matriz Curricular
+                            <!--<small class="text-muted">secondary text</small>-->
+                        </h3>
+                        <hr></hr>
+                        <h:form id="detalhedisciplina">
+                            <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Disciplina: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.descricao}" ></h:outputText>
+                            <h:outputText value="Código SIE: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.codigoSie}" ></h:outputText>
+                            <h:outputText value="Crédito: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.credito}" ></h:outputText>
+                            <h:outputText value="Período Ideal: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.periodoIdeal}" ></h:outputText>
+                            <h:outputText value="Tipo: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.tipoDisciplina}" ></h:outputText>
+                            <h:outputText value="Aréa do Conhecimento: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.areaConhecimentoId.descricao}" ></h:outputText>
+                            <h:outputText value="Carga Horária Prática: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.chPratica}" ></h:outputText>
+                            <h:outputText value="Carga Horária Teórica: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.chTeorica}" ></h:outputText>
+                            <h:outputText value="Ementa: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.ementa}" ></h:outputText>
+                            <h:outputText value="Objetivo Geral: " ></h:outputText>
+                            <h:outputText value="#{disciplinaController.disciplina.objetivoGeral}" ></h:outputText>                            
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
+                <!--/.First row-->
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo -->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+    </h:body>
+</html>

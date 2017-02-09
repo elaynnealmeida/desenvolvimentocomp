@@ -199,6 +199,17 @@ public class NavegacaoHelper {
         }
     }
     
+    public void matrizCurricular() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/matrizcurricular.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void pos_strictu_senso() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -282,6 +293,17 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/faces/pages/usuario.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void paginaFormacao() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/formacao.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

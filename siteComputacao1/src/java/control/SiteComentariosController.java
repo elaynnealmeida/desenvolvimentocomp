@@ -66,15 +66,16 @@ public class SiteComentariosController implements Serializable {
 
     }
 
-    public void deletar() {
+    public void deletar(int id) {
         try {
+            comentario = comentariosDao.buscaPorID(id);
             comentariosDao.deletar(comentario);
             FacesMessage msg = new FacesMessage("Excluido com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             limpar();
         } catch (Exception e) {
             limpar();
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar excluir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
