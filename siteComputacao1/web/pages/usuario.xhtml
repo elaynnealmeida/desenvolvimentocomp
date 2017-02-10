@@ -6,109 +6,146 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Ciência da Computação</title>
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Usuário</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+            main {
+                margin-top: 0rem;
+            }
+            main .card {
+                margin-bottom: 2rem;
+            }
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
-        <h:form id="formusuario">
-            <h:outputText value="Cadastro de Usuário " />
-            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                <h:outputText value="Nome: "/>
-                <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
-                <p:message for="nome" />
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <!--Main column-->
+                    <div class="col-lg-12">
+                        <h:form id="formusuario">
+                            <h:outputText value="Cadastro de Usuário " />
+                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                <h:outputText value="Nome: "/>
+                                <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
+                                <p:message for="nome" />
 
-                <h:outputText value="Email: "/>
-                <h:inputText id="email" value="#{usuarioController.usuario.email}" size="50" required="true" />*
-                <p:message for="email" />
+                                <h:outputText value="E-mail: "/>
+                                <h:inputText id="email" value="#{usuarioController.usuario.email}" size="50" required="true" />*
+                                <p:message for="email" />
 
-                <h:outputText value="Matricula: "/>
-                <h:inputText id="matricula" value="#{usuarioController.usuario.matricula}" size="50" required="true" />*
-                <p:message for="matricula" />
+                                <h:outputText value="Matricula: "/>
+                                <h:inputText id="matricula" value="#{usuarioController.usuario.matricula}" size="50" required="true" />*
+                                <p:message for="matricula" />
 
-                <h:outputText value="Telefone: "/>
-                <h:inputText id="telefone" value="#{usuarioController.usuario.telefone}" size="50" required="true" />*
-                <p:message for="telefone" />
+                                <h:outputText value="Telefone: "/>
+                                <h:inputText id="telefone" value="#{usuarioController.usuario.telefone}" size="50" required="true" />*
+                                <p:message for="telefone" />
 
-                <h:outputText value="Login: "/>
-                <h:inputText id="login" value="#{usuarioController.usuario.roles}" size="50" required="true" />*
-                <p:message for="login" />
+                                <h:outputText value="Senha: "/>
+                                <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
+                                <p:message for="senha" />
 
-                <h:outputText value="Senha: "/>
-                <h:inputSecret id="senha" value="#{usuarioController.usuario.password}" size="50" required="true" />*
-                <p:message for="senha" />
-                
-                <p:outputLabel    value="Perfis:" />
-                <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
-                                  converter="PerfilConverter"
-                                  requiredMessage="Campo Obrigatório"
-                                  required="true"
-                                  var="p" filter="true" filterMatchMode="contains" showCheckbox="true">
-                    <f:selectItems value="#{usuarioController.perfis}" var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
-                    <p:column>
-                        <h:outputText value="#{p.nome}"  />                    
-                    </p:column>                   
-                </p:selectManyMenu>*
-                <p:message for="perfil" />
-            </h:panelGrid>
+                                <h:outputLabel    value="Perfis:" />
+                                <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
+                                                  converter="PerfilConverter"
+                                                  requiredMessage="Campo Obrigatório"
+                                                  required="true"
+                                                  var="p" filter="true" filterMatchMode="contains" showCheckbox="true">
+                                    <f:selectItems value="#{usuarioController.perfis}" var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />
+                                    <p:column>
+                                        <h:outputText value="#{p.nome}"  />                    
+                                    </p:column>                   
+                                </p:selectManyMenu>*
+                                <p:message for="perfil" />
+                            </h:panelGrid>
 
-            <p:commandButton id="btnSalvar" value="Salvar" action="#{usuarioController.salvar}" rendered="#{!usuarioController.isEdit}" update=":formusuario"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{usuarioController.atualizar}" rendered="#{usuarioController.isEdit}" update=":formusuario"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formusuario:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{usuarioController.limpar}" update=":formusuario"/>
-            <br></br><br></br>
+                            <p:commandButton id="btnSalvar" value="Salvar" action="#{usuarioController.salvar}" rendered="#{!usuarioController.isEdit}" update=":formusuario"/>
+                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{usuarioController.atualizar}" rendered="#{usuarioController.isEdit}" update=":formusuario"/>
+                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formusuario:confimacao"/>
+                            <p:commandButton id="btnLimpar" value="Limpar" action="#{usuarioController.limpar}" update=":formusuario"/>
+                            <br></br><br></br>
 
-            <p:dataTable var="var" value="#{usuarioController.usuarios}"
-                         selectionMode="single"  rowKey="#{var.id}"
-                         emptyMessage="Nenhum Registro Encontrado"
-                         widgetVar="varTable"
-                         filteredValue="#{usuarioController.usuariosFiltrados}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"
-                         >
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Pesquisar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Usuário"
-                                     />
-                    </p:outputPanel>
-                </f:facet>
-                <p:ajax event="rowSelect" listener="#{usuarioController.onRowSelect}" update=":formusuario" />
-                <p:column headerText="Id">
-                    <h:outputText value="#{var.id}" />
-                </p:column>
+                            <p:dataTable var="var" value="#{usuarioController.usuarios}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{usuarioController.usuariosFiltrados}"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Usuário"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{usuarioController.onRowSelect}" update=":formusuario" />
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{var.id}" />
+                                </p:column>
 
-                <p:column headerText="Nome" filterBy="#{var.nomecompleto}" filterStyle="display:none" >
-                    <h:outputText value="#{var.nomecompleto}" />
-                </p:column>
+                                <p:column headerText="Nome" filterBy="#{var.nomecompleto}" filterStyle="display:none" >
+                                    <h:outputText value="#{var.nomecompleto}" />
+                                </p:column>
 
-                <p:column headerText="Email">
-                    <h:outputText value="#{var.email}" />
-                </p:column>
+                                <p:column headerText="Email">
+                                    <h:outputText value="#{var.email}" />
+                                </p:column>
 
-                <p:column headerText="Login">
-                    <h:outputText value="#{var.roles}" />
-                </p:column>
+                                <p:column headerText="Login">
+                                    <h:outputText value="#{var.roles}" />
+                                </p:column>
 
-            </p:dataTable>
-            <p:messages id="msg" autoUpdate="true" closable="true" >              
-            </p:messages>
-       
-            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+                            </p:dataTable>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >              
+                            </p:messages>
 
-                <p:commandButton value="Sim" update=":formusuario" onclick="PF('confirmation').hide()"
-                                 action="#{usuarioController.deletar}" />
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-            </p:confirmDialog>
+                                <p:commandButton value="Sim" update=":formusuario" onclick="PF('confirmation').hide()"
+                                                 action="#{usuarioController.deletar}" />
 
-        </h:form>
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                            </p:confirmDialog>
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
     </h:body>
 </html>
 

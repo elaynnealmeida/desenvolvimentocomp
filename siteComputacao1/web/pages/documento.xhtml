@@ -38,84 +38,98 @@
         <ui:include src="../menu.xhtml"/>       
     </ui:insert>
     <h:body>
-        <h:form id="formdocumento" enctype="multipart/form-data">
-            <h:outputText value="Cadastro de Documento "/>
-            <h:panelGrid columns="4" >
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <!--Main column-->
+                    <div class="col-lg-12">
 
-                <h:outputText value="Título: "/>
-                <h:inputText id="titulo" value="#{documentoController.documento.titulo}"
-                             required="true" />*
-                <p:message for="titulo" />
+                        <h:form id="formdocumento" enctype="multipart/form-data">
+                            <h:outputText value="Cadastro de Documento "/>
+                            <h:panelGrid columns="4" >
 
-                <h:outputText  value="Arquivo: "/>
-                <p:fileUpload value="#{documentoController.file}"  label="Procurar" mode="simple" skinSimple="true"
-                              update="msg" id="arquivo"    requiredMessage="Arquivo Obrigatório" 
-                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(pdf)$/"
-                              invalidFileMessage="Somente PDF é permitido."
-                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
-                              />*
-                <p:message for="arquivo" />
+                                <h:outputText value="Título: "/>
+                                <h:inputText id="titulo" value="#{documentoController.documento.titulo}"
+                                             required="true" />*
+                                <p:message for="titulo" />
 
-                <h:outputText value="Ativo: "/>
-                <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
-                <p:message for="ativo" />
-            </h:panelGrid>
+                                <h:outputText  value="Arquivo: "/>
+                                <p:fileUpload value="#{documentoController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                              update="msg" id="arquivo"    requiredMessage="Arquivo Obrigatório" 
+                                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(pdf)$/"
+                                              invalidFileMessage="Somente PDF é permitido."
+                                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                              />*
+                                <p:message for="arquivo" />
 
-            <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update=":formdocumento"/>
-            <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{documentoController.atualizar}" ajax="false" rendered="#{documentoController.isEdit}" update=":formdocumento"/>
-            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdocumento:confimacao"/>
-            <p:commandButton id="btnLimpar" value="Limpar" action="#{documentoController.limpar}" update=":formdocumento"/>
-            <br></br> <br></br>
+                                <h:outputText value="Ativo: "/>
+                                <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
+                                <p:message for="ativo" />
+                            </h:panelGrid>
 
-            <p:dataTable var="var" value="#{documentoController.documentos}"
-                         selectionMode="single"  rowKey="#{var.id}"
-                         emptyMessage="Nenhum Registro Encontrado"
-                         widgetVar="varTable"
-                         filteredValue="#{documentoController.documentosFiltrados}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"
-                         >
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Pesquisar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Documento"
-                                     />
-                    </p:outputPanel>
-                </f:facet>
-                <p:ajax event="rowSelect" listener="#{documentoController.onRowSelect}" update=":formdocumento" />
-                <p:column headerText="Id">
-                    <h:outputText value="#{var.id}" />
-                </p:column>                
+                            <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update=":formdocumento"/>
+                            <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{documentoController.atualizar}" ajax="false" rendered="#{documentoController.isEdit}" update=":formdocumento"/>
+                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formdocumento:confimacao"/>
+                            <p:commandButton id="btnLimpar" value="Limpar" action="#{documentoController.limpar}" update=":formdocumento"/>
+                            <br></br> <br></br>
 
-                <p:column headerText="Download" >
-                    <p:commandButton value="#{var.titulo}" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                        <p:fileDownload value="#{documentoController.download(var)}" />
-                    </p:commandButton>
-                </p:column>
+                            <p:dataTable var="var" value="#{documentoController.documentos}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{documentoController.documentosFiltrados}"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Documento"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{documentoController.onRowSelect}" update=":formdocumento" />
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{var.id}" />
+                                </p:column>                
 
-                <p:column headerText="Tamanho do Arquivo" >
-                    <h:outputText value="#{var.tamanhoDoArquivo}" />
-                </p:column>
+                                <p:column headerText="Download" >
+                                    <p:commandButton value="#{var.titulo}" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{documentoController.download(var)}" />
+                                    </p:commandButton>
+                                </p:column>
 
-            </p:dataTable>
-            <p:messages id="msg" autoUpdate="true" closable="true" >              
-            </p:messages>
+                                <p:column headerText="Tamanho do Arquivo" >
+                                    <h:outputText value="#{var.tamanhoDoArquivo}" />
+                                </p:column>
 
-            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+                            </p:dataTable>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >              
+                            </p:messages>
 
-                <p:commandButton value="Sim" update=":formdocumento" onclick="PF('confirmation').hide()"
-                                 action="#{documentoController.deletar}" />
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-            </p:confirmDialog>
+                                <p:commandButton value="Sim" update=":formdocumento" onclick="PF('confirmation').hide()"
+                                                 action="#{documentoController.deletar}" />
+
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                            </p:confirmDialog>
 
 
-        </h:form>
+                        </h:form>
 
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
 
         <ui:insert name="footer" >
             <ui:include src="../footer.xhtml"/>   

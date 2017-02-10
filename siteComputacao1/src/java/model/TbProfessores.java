@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
@@ -11,9 +6,13 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -57,12 +56,15 @@ public class TbProfessores implements Serializable {
     private String nome;
     @Column(name = "ativo")
     private Boolean ativo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "professorId")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "professorId")
     private List<SiteCargoProfessor> siteCargoProfessorList;
     @OneToMany(mappedBy = "professorId")
     private List<SiteFuncaoProfessor> siteFuncaoProfessorList;
-    @OneToMany(mappedBy = "professorId")
-    private List<SiteProfessorFormacao> siteProfessorFormacaoList;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "site_funcao_professor",
+            joinColumns = @JoinColumn(name = "professor_id"),
+            inverseJoinColumns = @JoinColumn(name = "funcao_id"))
+    private List<SiteFormacao> siteProfessorFormacaoList;
 
     public TbProfessores() {
     }
@@ -128,11 +130,11 @@ public class TbProfessores implements Serializable {
     }
 
     @XmlTransient
-    public List<SiteProfessorFormacao> getSiteProfessorFormacaoList() {
+    public List<SiteFormacao> getSiteProfessorFormacaoList() {
         return siteProfessorFormacaoList;
     }
 
-    public void setSiteProfessorFormacaoList(List<SiteProfessorFormacao> siteProfessorFormacaoList) {
+    public void setSiteProfessorFormacaoList(List<SiteFormacao> siteProfessorFormacaoList) {
         this.siteProfessorFormacaoList = siteProfessorFormacaoList;
     }
 
