@@ -408,6 +408,30 @@ public class NavegacaoHelper {
         }
     }
      
+      public void paginaTpDocumento() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/tipodocumento.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+       public void paginaTpPublicacao() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/tipopublicacao.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+      
+     
      public void paginaDowloads() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();

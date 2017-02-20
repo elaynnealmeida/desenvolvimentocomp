@@ -36,17 +36,25 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteDocumento.findByTitulo", query = "SELECT s FROM SiteDocumento s WHERE s.titulo = :titulo")})
 public class SiteDocumento implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "arquivo")
+    private byte[] arquivo;
+    @Size(max = 2147483647)
+    @Column(name = "assunto")
+    private String assunto;
+    @Column(name = "tipo_documento")
+    private Integer tipoDocumento;
+    @Column(name = "publicacao_id")
+    private Integer publicacaoId;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "arquivo")
-    private byte[] arquivo;
     @Column(name = "tamanho_do_arquivo")
     private BigInteger tamanhoDoArquivo;
     @Size(max = 2147483647)
@@ -83,13 +91,6 @@ public class SiteDocumento implements Serializable {
         this.id = id;
     }
 
-    public byte[] getArquivo() {
-        return arquivo;
-    }
-
-    public void setArquivo(byte[] arquivo) {
-        this.arquivo = arquivo;
-    }
 
     public BigInteger getTamanhoDoArquivo() {
         return tamanhoDoArquivo;
@@ -162,6 +163,38 @@ public class SiteDocumento implements Serializable {
     @Override
     public String toString() {
         return "model.SiteDocumento[ id=" + id + " ]";
+    }
+
+    public byte[] getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(byte[] arquivo) {
+        this.arquivo = arquivo;
+    }
+
+    public String getAssunto() {
+        return assunto;
+    }
+
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+
+    public Integer getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(Integer tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public Integer getPublicacaoId() {
+        return publicacaoId;
+    }
+
+    public void setPublicacaoId(Integer publicacaoId) {
+        this.publicacaoId = publicacaoId;
     }
     
 }
