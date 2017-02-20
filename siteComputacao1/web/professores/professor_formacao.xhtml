@@ -14,75 +14,189 @@
         <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
-        <h:form id="formprofformacao">
-            <h:outputText value="Cadastro de Formação " />
-            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-                <h:outputText value="Servidor: "/>
-                <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
-                <p:message for="servidor" />
+        <p:tabView id="dados">
 
-                <h:outputText value="Titulação: "/>
-                <p:selectManyMenu id="perfil" value="#{professorFormacaoController.listarFormacao}"  
-                                  requiredMessage="Campo Obrigatório"
-                                  required="true"
+            <p:tab title="Informações Básica" id="dadosbasicos">
+                <h:form id="forminfos" enctype="multipart/form-data">
+                    <h:outputText value="Informações Básicas " />
+                    <h:panelGrid columns="3" cellpadding="2" style="margin-bottom:10px">
+                        <h:outputText value="Servidor: "/>
+                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
+                        <p:message for="servidor" />
+
+                        <h:outputText value="Foto para perfil " />
+                        <p:fileUpload value="#{dadosComplementaresController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                      update="msg" id="imagem"    
+                                      sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
+                                      invalidFileMessage="Somente JPG ou PNG são permitidos."
+                                      invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                      />
+                        <p:message for="imagem" />
+
+                        <h:outputText value="Lattes: "/>
+                        <h:inputText id="lattes" value="#{dadosComplementaresController.dadoComplementar.lattes}" />      
+                        <p:message for="lattes" />
+
+                        <h:outputText value="Endereço Profissional: "/>
+                        <h:inputText id="endprofissional" value="#{dadosComplementaresController.dadoComplementar.enderecoProfissional}" />      
+                        <p:message for="endprofissional" />
+
+                        <h:outputText value="Telefone Profisisonal: "/>
+                        <h:inputText id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" />      
+                        <p:message for="tel" />
+
+                        <h:outputText value="Área de Atuação: "/>
+                        <h:inputTextarea id="areaAtuacao" value="#{dadosComplementaresController.dadoComplementar.areaAtuacao}" />      
+                        <p:message for="areaAtuacao" />
+
+                        <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{dadosComplementaresController.salvar}" ajax="false" rendered="#{dadosComplementaresController.isEdit}" update="@form"/>
+                        <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{dadosComplementaresController.atualizar}" ajax="false" rendered="#{!dadosComplementaresController.isEdit}" update="@form"/>
+                        <p:commandButton id="btnLimpar" value="Limpar" action="#{dadosComplementaresController.limpar}" update="@form"/>
+
+                    </h:panelGrid>
+
+                    <p:dataTable var="var" value="#{dadosComplementaresController.dadosComplementares}"
+                                 selectionMode="single"  rowKey="#{var.id}"
+                                 emptyMessage="Nenhum Registro Encontrado"
+                                 widgetVar="varTable"
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15"
                                  >
-                    <f:selectItems value="#{professorFormacaoController.listarFormacao}" var="perfil" itemLabel="#{perfil}" itemValue="#{perfil}" />                                       
-                </p:selectManyMenu>*  
-                <p:message for="perfil" />
-                
-                <h:outputText value="Ativo: "/>
-                <p:selectBooleanCheckbox id="ativo" value="#{sitePerfilUsuarioController.sitePerfilUsuario.ativo}" />      
-                <p:message for="ativo" />
-                
 
-                <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formprofformacao"/>
-                <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formprofformacao"/>
-                <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formprofformacao"/>
-                 <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formprofformacao:confimacao"/>
-            </h:panelGrid>
+                        <p:ajax event="rowSelect" listener="#{dadosComplementaresController.onRowSelect}" update="@form" />
+                        <p:column headerText="Id">
+                            <h:outputText value="#{var.id}" />
+                        </p:column>
 
-            <p:dataTable var="var" value="#{sitePerfilUsuarioController.sitePerfilUsuarios}"
-                         selectionMode="single"  rowKey="#{var.id}"
-                         emptyMessage="Nenhum Registro Encontrado"
-                         widgetVar="varTable"
-                         filteredValue="#{sitePerfilController.perfisFiltrados}"
-                         rows="10"
-                         paginator="true"
-                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15"
-                         >
-                <f:facet name="header">
-                    <p:outputPanel>
-                        <h:outputText value="Pesquisar:" />
-                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                     style="width:150px" placeholder="Usuário"
-                                     />
-                    </p:outputPanel>
-                </f:facet>
-                <p:ajax event="rowSelect" listener="#{sitePerfilUsuarioController.onRowSelect}" update=":formprofformacao" />
-                <p:column headerText="Id">
-                    <h:outputText value="#{var.id}" />
-                </p:column>
+                        <p:column headerText="Servidor">
+                            <h:outputText value="#{var.idProfessor.nome}" />
+                        </p:column>
 
-                <p:column headerText="Usuário" filterBy="#{var.usuarioId.nomecompleto}" filterStyle="display:none" >
-                    <h:outputText value="#{var.usuarioId.nomecompleto}" />
-                </p:column>
+                        <p:column headerText="Foto" >
+                            <p:graphicImage value="#{dadosComplementaresController.image}" style="    max-width:100%;
+                                            max-height:100%;
+                                            width: 400px;
+                                            height: 180px;">
+                                <f:param name="foto" value="#{var.id}" />
+                            </p:graphicImage>
+                        </p:column>
 
-                <p:column headerText="Perfil"  >
-                    <h:outputText value="#{var.perfilId.nome}" />
-                </p:column>
-            </p:dataTable>
-            <p:messages id="msg" autoUpdate="true" closable="true" >              
-            </p:messages>
-        </h:form>
+                        <p:column headerText="Lattes"  >
+                            <h:outputText value="#{var.lattes}" />
+                        </p:column>
+
+                        <p:column headerText="Endereço"  >
+                            <h:outputText value="#{var.enderecoProfissional}" />
+                        </p:column>
+
+                        <p:column headerText="Telefone"  >
+                            <h:outputText value="#{var.telefoneProfissional}" />
+                        </p:column>
+                    </p:dataTable>
+                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                    </p:messages>
+                </h:form>
+            </p:tab>
+
+            <p:tab title="Dados Formação" id="dadosformacao">
+                <h:form id="formprofformacao">
+                    <h:outputText value="Cadastro de Formação " />
+                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                        <h:outputText value="Servidor: "/>
+                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
+                        <p:message for="servidor" />*
+
+                        <h:outputText value="Titulação: "/>
+                        <p:selectOneMenu id="formacao" value="#{professorFormacaoController.profFormacao.formacaoId}"  
+                                         requiredMessage="Campo Obrigatório"
+                                         required="true"
+                                         converter="FormacaoConverter"
+                                         >
+                            <f:selectItems value="#{professorFormacaoController.formacao}" var="formacao" itemLabel="#{formacao}" itemValue="#{formacao}" />                                       
+                        </p:selectOneMenu>*  
+                        <p:message for="formacao" />  
+
+                        <h:outputText value="Descrição: "/>
+                        <h:inputTextarea id="descricao" value="#{professorFormacaoController.profFormacao.descricao}" />      
+                        <p:message for="descricao" />*
+
+                        <h:outputText value="Data de Inicio: "/>
+                        <p:inputMask id="dtinicio" value="#{professorFormacaoController.profFormacao.dtInicio}" mask="99/99/9999" />      
+                        <p:message for="dtinicio" />*
+
+                        <h:outputText value="Data de Finalização: "/>
+                        <p:inputMask id="dtfim"  value="#{professorFormacaoController.profFormacao.dtFim}" mask="99/99/9999"/>      
+                        <p:message for="dtfim" />*
+
+
+                        <p:commandButton id="btnSalvar" value="Salvar" action="#{professorFormacaoController.salvar}" rendered="#{!professorFormacaoController.isEdit}" update="@form"/>
+                        <p:commandButton id="btnAtualizar" value="Atualizar" action="#{professorFormacaoController.atualizar}" rendered="#{professorFormacaoController.isEdit}" update="@form"/>
+                        <p:commandButton id="btnLimpar" value="Limpar" action="#{professorFormacaoController.limpar}" update="@form"/>
+                        <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confirmacao"/>
+                    </h:panelGrid>
+
+                    <p:dataTable var="var" value="#{professorFormacaoController.formacoes}"
+                                 selectionMode="single"  rowKey="#{var.id}"
+                                 emptyMessage="Nenhum Registro Encontrado"
+                                 widgetVar="varTable"
+                                 filteredValue="#{professorFormacaoController.formacoesFiltrados}"
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15"
+                                 >
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Pesquisar:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                             style="width:150px" placeholder="Usuário"
+                                             />
+                            </p:outputPanel>
+                        </f:facet>
+                        <p:ajax event="rowSelect" listener="#{professorFormacaoController.onRowSelect}" update="@form" />
+                        <p:column headerText="Id">
+                            <h:outputText value="#{var.id}" />
+                        </p:column>
+
+                        <p:column headerText="Formação" filterBy="#{var.formacaoId.descricao}" filterStyle="display:none" >
+                            <h:outputText value="#{var.formacaoId.descricao}" />
+                        </p:column>
+
+                        <p:column headerText="Descrição"  >
+                            <h:outputText value="#{var.descricao}" />
+                        </p:column>
+
+                        <p:column headerText="Data de Inicio"  >
+                            <h:outputText value="#{var.dtInicio}" />
+                        </p:column>
+
+                        <p:column headerText="Data de Finalização"  >
+                            <h:outputText value="#{var.dtFim}" />
+                        </p:column>
+                    </p:dataTable>
+                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                    </p:messages>
+                    <p:confirmDialog id="confirmacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                         action="#{professorFormacaoController.deletar}" />
+
+                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                    </p:confirmDialog>
+                </h:form>
+            </p:tab>
+        </p:tabView>
     </h:body>
     <h:body>
         <h:form id="formdialog">
-            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+            <p:confirmDialog id="confirmacao" message="Deseja mesmo excluir?" showEffect="bounce"
                              hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                <p:commandButton value="Sim" update=":formprofformacao" onclick="PF('confirmation').hide()"
-                                 action="#{sitePerfilUsuarioController.deletar}" />
+                <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                 action="#{professorFormacaoController.deletar}" />
 
                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
             </p:confirmDialog>

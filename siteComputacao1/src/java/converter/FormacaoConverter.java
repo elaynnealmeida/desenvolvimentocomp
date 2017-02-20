@@ -13,7 +13,8 @@ import model.SiteFormacao;
  *
  * @author UFT
  */
-@FacesConverter(forClass = model.SiteFormacao.class)
+//@FacesConverter(forClass = model.SiteFormacao.class)
+@FacesConverter(value = "FormacaoConverter")
 public class FormacaoConverter implements Converter {
     private FormacaoDAO formacaoDao = new FormacaoDAO();
 

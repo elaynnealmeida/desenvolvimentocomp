@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administração</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet"></link>
+        <link href="css/layout.css" rel="stylesheet"></link>
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+            main {
+                margin-top: 0rem;
+            }
+            main .card {
+                margin-bottom: 2rem;
+            }
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
+    </h:head>
+    <ui:insert name="menu">
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+                    <div class="col-lg-9">
+                        <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                        rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
+                            <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
+                        </p:autoComplete>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <!--Panel-->
+                        <div class="card">
+                            <h3 class="card-header primary-color white-text"><i class="fa fa-plus" aria-hidden="true"></i> Notícias</h3>
+                            <div class="card-block">
+                                <h4 class="card-title">Special title treatment</h4>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a class="btn btn-primary">Adicionar Notícia</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-header primary-color white-text"><i class="fa fa-cog" aria-hidden="true"></i> Suporte</h3>
+                            <div class="card-block">
+                                <h4 class="card-title">Special title treatment</h4>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a class="btn btn-primary">Adicionar Notícia</a>
+                            </div>
+                        </div>
+                        <!--/.Panel-->
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+
+        <ui:insert name="footer" >
+            <ui:include src="footer.xhtml"/>   
+        </ui:insert>
+    </h:body>
+</html>

@@ -11,22 +11,6 @@
                 <div class="row">
                     <!--First column-->
                     <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                        <h:form id="formlog" styleClass="pading-noticia" rendered="#{!loginController.isUser}">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="jumbotron">
-                                        <h6 style="color: #247a7e !important; text-align: center" class="h1-responsive">Login</h6>
-                                        <div class="form-group">
-                                            <p:inputText styleClass="form-control" id="email" value="#{loginController.user.email}" placeholder="E-mail" required="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha"></p:password>
-                                        </div>
-                                        <h:commandLink   styleClass="btn btn-success" style="color:#ffffff" value="Entrar" action="#{loginController.login}"></h:commandLink>
-                                    </div>
-                                </div>
-                            </div>
-                        </h:form>
                         <h:form>
                             <div class="navbar-header ">
                                 <div class="flutua ">   
@@ -38,7 +22,7 @@
 
 
                                     <br></br>
-                                    <p:autoComplete class="browser-default" id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                    <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
                                                     rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
                                         <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
                                     </p:autoComplete> 
@@ -46,6 +30,7 @@
                             </div>
                         </h:form>
                     </div>
+                    
                     <!--/.First column-->
                     <hr class="hidden-md-up"></hr>
                     <!--Second column-->

@@ -46,6 +46,8 @@ public class SiteProfessorFormacao implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "dt_fim")
     private String dtFim;
+    @Column(name = "dt_fim2")
+    private int dtFim2;
     @JoinColumn(name = "formacao_id", referencedColumnName = "id")
     @ManyToOne
     private SiteFormacao formacaoId;
@@ -90,6 +92,14 @@ public class SiteProfessorFormacao implements Serializable {
 
     public void setDtFim(String dtFim) {
         this.dtFim = dtFim;
+    }
+
+    public int getDtFim2() {
+        return dtFim2;
+    }
+
+    public void setDtFim2(int dtFim2) {
+        this.dtFim2 = dtFim2;
     }
 
     public SiteFormacao getFormacaoId() {

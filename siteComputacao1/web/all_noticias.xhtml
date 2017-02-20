@@ -55,12 +55,12 @@
                         <h3 class="h3-responsive" style="text-align: center">Todas as Notícias</h3>
                         <br></br>
                         <h:form id="formnoticias" enctype="multipart/form-data">
-                            <p:dataTable var="var" value="#{siteNoticiaController.noticias}"
+                            <p:dataTable var="var" value="#{noticiasHelper.noticias}"
                                          selectionMode="single"  rowKey="#{var.id}"
                                          tableStyleClass="table table-striped"
                                          emptyMessage="Nenhum Registro Encontrado"
                                          widgetVar="varTable"
-                                         filteredValue="#{siteNoticiaController.noticiasFiltradas}"
+                                         filteredValue="#{noticiasHelper.noticiasFiltradas}"
                                          rows="5"
                                          paginator="true"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -82,7 +82,7 @@
                                     </h:commandLink>
                                 </p:column>
                                 <p:column headerText="Capa">
-                                    <p:graphicImage value="#{siteNoticiaController.image}" style="    max-width:100%;
+                                    <p:graphicImage value="#{noticiasHelper.image}" style="    max-width:100%;
                                                     max-height:100%;
                                                     width: 400px;
                                                     height: 180px;">

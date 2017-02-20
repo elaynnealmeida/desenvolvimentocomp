@@ -287,6 +287,17 @@ public class NavegacaoHelper {
         }
     }
     
+     public void professor_formacao() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/professores/professor_formacao.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void paginaUsuario() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();

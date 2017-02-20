@@ -69,7 +69,7 @@
                                 <p:message for="senha" />
 
                                 <h:outputLabel    value="Perfis:" />
-                                <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
+                               <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
                                                   converter="PerfilConverter"
                                                   requiredMessage="Campo Obrigatório"
                                                   required="true"
@@ -115,12 +115,8 @@
                                     <h:outputText value="#{var.nomecompleto}" />
                                 </p:column>
 
-                                <p:column headerText="Email">
+                                <p:column headerText="Email/Login">
                                     <h:outputText value="#{var.email}" />
-                                </p:column>
-
-                                <p:column headerText="Login">
-                                    <h:outputText value="#{var.roles}" />
                                 </p:column>
 
                             </p:dataTable>

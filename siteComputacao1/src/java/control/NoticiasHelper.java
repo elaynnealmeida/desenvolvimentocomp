@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;  
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import model.SiteNoticia;
@@ -26,6 +27,7 @@ public class NoticiasHelper implements Serializable {
     //private SiteNoticia noticia;
     private SiteNoticiaDAO noticiaDao;
     private List<SiteNoticia> noticias;
+    private List<SiteNoticia> noticiasFiltradas;
     
     @PostConstruct
     public void init() {
@@ -94,4 +96,14 @@ public class NoticiasHelper implements Serializable {
     public void setNoticias(List<SiteNoticia> noticias) {
         this.noticias = noticias;
     }
+
+    public List<SiteNoticia> getNoticiasFiltradas() {
+        return noticiasFiltradas;
+    }
+
+    public void setNoticiasFiltradas(List<SiteNoticia> noticiasFiltradas) {
+        this.noticiasFiltradas = noticiasFiltradas;
+    }
+    
+    
 }
