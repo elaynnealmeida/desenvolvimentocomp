@@ -50,6 +50,17 @@
                             <h:outputText value="Cadastro de Documento "/>
                             <h:panelGrid columns="4" >
 
+                                <h:outputText value="Tipo de Documento: "/>
+                                <p:selectOneMenu id="documento" value="#{documentoController.documento.tipoDocumento}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="TipoDocumentoConverter"
+                                                 >
+                                    <f:selectItems value="#{documentoController.tpDocumento}" 
+                                                   var="tpdocumento" itemLabel="#{tpdocumento}" itemValue="#{tpdocumento}" />                                       
+                                </p:selectOneMenu>*  
+                                <p:message for="documento" />  
+                                
                                 <h:outputText value="Título: "/>
                                 <h:inputText id="titulo" value="#{documentoController.documento.titulo}"
                                              required="true" />*
@@ -67,6 +78,47 @@
                                 <h:outputText value="Ativo: "/>
                                 <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
                                 <p:message for="ativo" />
+
+
+                                <h:outputText value="Publicação "/>
+                                
+                                 <h:outputText value="Conselho: "/>
+                                 <p:selectOneMenu id="conselho" value="#{documentoController.documento.publicacaoId.conselhoId}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="ConselhoConverter"
+                                                 >
+                                    <f:selectItems value="#{documentoController.tpDocumento}" 
+                                                   var="conselho" itemLabel="#{conselho}" itemValue="#{conselho}" />                                       
+                                </p:selectOneMenu>*  
+                                <p:message for="conselho" />  
+                                
+                                 <h:outputText value="Tipo de Publicação: "/>
+                                 <p:selectOneMenu id="tppublicacao" value="#{documentoController.documento.publicacaoId.tipoPublicacao}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="TipoDocumentoConverter"
+                                                 >
+                                     <f:selectItems value="#{documentoController.tpPublicacao}" 
+                                                   var="tppublicacao" itemLabel="#{tppublicacao}" itemValue="#{tppublicacao}" />                                       
+                                </p:selectOneMenu>*  
+                                <p:message for="tppublicacao" />  
+                                
+                                <h:outputText value="Número: "/>
+                                <h:inputText id="numero" value="#{documentoController.documento.publicacaoId.numero}"
+                                             />
+                                <p:message for="numero" />
+
+                                <h:outputText value="Data: "/>
+                                <p:inputMask id="dt"  value="#{documentoController.documento.publicacaoId.data}" mask="99/99/9999"/>      
+                                <p:message for="dt" />
+
+                                <h:outputText value="Ano: "/>
+                                <h:inputText id="ano" value="#{documentoController.documento.publicacaoId.ano}"
+                                             />
+                                <p:message for="ano" />
+
+
                             </h:panelGrid>
 
                             <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update=":formdocumento"/>

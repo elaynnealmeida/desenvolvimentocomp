@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,10 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +38,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SitePublicacao.findByAno", query = "SELECT s FROM SitePublicacao s WHERE s.ano = :ano"),
     @NamedQuery(name = "SitePublicacao.findByData", query = "SELECT s FROM SitePublicacao s WHERE s.data = :data")})
 public class SitePublicacao implements Serializable {
+
+    @OneToMany(mappedBy = "publicacaoId")
+    private List<SiteDocumento> siteDocumentoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -147,6 +153,15 @@ public class SitePublicacao implements Serializable {
     @Override
     public String toString() {
         return "model.SitePublicacao[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<SiteDocumento> getSiteDocumentoList() {
+        return siteDocumentoList;
+    }
+
+    public void setSiteDocumentoList(List<SiteDocumento> siteDocumentoList) {
+        this.siteDocumentoList = siteDocumentoList;
     }
     
 }

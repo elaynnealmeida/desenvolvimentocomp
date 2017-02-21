@@ -1,6 +1,9 @@
 package control;
 
+import dao.ConselhoDAO;
 import dao.SiteDocumentoDAO;
+import dao.TipoDocumentoDAO;
+import dao.TipoPublicacaoDAO;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +12,7 @@ import static java.lang.System.currentTimeMillis;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -16,8 +20,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
+import model.SiteConselho;
 import model.SiteDocumento;
+import model.SiteTipoArquivo;
+import model.SiteTipoPublicacao;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.event.SelectEvent;
@@ -116,6 +124,45 @@ public class DocumentoController implements Serializable {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar excluir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
+    }
+    
+    public List<SelectItem> getTpDocumento() {
+        System.out.println("entrou no listar tp documento: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        TipoDocumentoDAO tpdDao = new TipoDocumentoDAO();
+        List<SiteTipoArquivo> result = new ArrayList<SiteTipoArquivo>();
+        result = tpdDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
+    
+    public List<SelectItem> getConselho() {
+        System.out.println("entrou no listar conselho: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        ConselhoDAO tpdDao = new ConselhoDAO();
+        List<SiteConselho> result = new ArrayList<SiteConselho>();
+        result = tpdDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getSigla()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
+    
+     public List<SelectItem> getTpPublicacao() {
+        System.out.println("entrou no listar tp publicacao: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        TipoPublicacaoDAO tpdDao = new TipoPublicacaoDAO();
+        List<SiteTipoPublicacao> result = new ArrayList<SiteTipoPublicacao>();
+        result = tpdDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
     }
 
     public void gravaArquivo() throws IOException {

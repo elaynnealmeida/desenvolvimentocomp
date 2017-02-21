@@ -429,6 +429,17 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+       
+       public void paginaConselho() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/conselho.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
       
       
      

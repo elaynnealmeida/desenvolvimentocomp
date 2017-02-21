@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.io.Serializable;
@@ -33,21 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteDocumento.findByDataInclusao", query = "SELECT s FROM SiteDocumento s WHERE s.dataInclusao = :dataInclusao"),
     @NamedQuery(name = "SiteDocumento.findByAtivo", query = "SELECT s FROM SiteDocumento s WHERE s.ativo = :ativo"),
     @NamedQuery(name = "SiteDocumento.findByHora", query = "SELECT s FROM SiteDocumento s WHERE s.hora = :hora"),
-    @NamedQuery(name = "SiteDocumento.findByTitulo", query = "SELECT s FROM SiteDocumento s WHERE s.titulo = :titulo")})
+    @NamedQuery(name = "SiteDocumento.findByTitulo", query = "SELECT s FROM SiteDocumento s WHERE s.titulo = :titulo"),
+    @NamedQuery(name = "SiteDocumento.findByAssunto", query = "SELECT s FROM SiteDocumento s WHERE s.assunto = :assunto")})
 public class SiteDocumento implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "arquivo")
-    private byte[] arquivo;
-    @Size(max = 2147483647)
-    @Column(name = "assunto")
-    private String assunto;
-    @Column(name = "tipo_documento")
-    private Integer tipoDocumento;
-    @Column(name = "publicacao_id")
-    private Integer publicacaoId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,6 +47,11 @@ public class SiteDocumento implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "arquivo")
+    private byte[] arquivo;
     @Column(name = "tamanho_do_arquivo")
     private BigInteger tamanhoDoArquivo;
     @Size(max = 2147483647)
@@ -67,6 +64,15 @@ public class SiteDocumento implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "titulo")
     private String titulo;
+    @Size(max = 2147483647)
+    @Column(name = "assunto")
+    private String assunto;
+    @JoinColumn(name = "publicacao_id", referencedColumnName = "id")
+    @ManyToOne
+    private SitePublicacao publicacaoId;
+    @JoinColumn(name = "tipo_documento", referencedColumnName = "id")
+    @ManyToOne
+    private SiteTipoArquivo tipoDocumento;
     @JoinColumn(name = "usuario_inclusao", referencedColumnName = "id")
     @ManyToOne
     private TbUsersystem usuarioInclusao;
@@ -91,6 +97,13 @@ public class SiteDocumento implements Serializable {
         this.id = id;
     }
 
+    public byte[] getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(byte[] arquivo) {
+        this.arquivo = arquivo;
+    }
 
     public BigInteger getTamanhoDoArquivo() {
         return tamanhoDoArquivo;
@@ -132,6 +145,30 @@ public class SiteDocumento implements Serializable {
         this.titulo = titulo;
     }
 
+    public String getAssunto() {
+        return assunto;
+    }
+
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+
+    public SitePublicacao getPublicacaoId() {
+        return publicacaoId;
+    }
+
+    public void setPublicacaoId(SitePublicacao publicacaoId) {
+        this.publicacaoId = publicacaoId;
+    }
+
+    public SiteTipoArquivo getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(SiteTipoArquivo tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
     public TbUsersystem getUsuarioInclusao() {
         return usuarioInclusao;
     }
@@ -163,38 +200,6 @@ public class SiteDocumento implements Serializable {
     @Override
     public String toString() {
         return "model.SiteDocumento[ id=" + id + " ]";
-    }
-
-    public byte[] getArquivo() {
-        return arquivo;
-    }
-
-    public void setArquivo(byte[] arquivo) {
-        this.arquivo = arquivo;
-    }
-
-    public String getAssunto() {
-        return assunto;
-    }
-
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
-    }
-
-    public Integer getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(Integer tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public Integer getPublicacaoId() {
-        return publicacaoId;
-    }
-
-    public void setPublicacaoId(Integer publicacaoId) {
-        this.publicacaoId = publicacaoId;
     }
     
 }
