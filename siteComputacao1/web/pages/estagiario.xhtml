@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Estagiários - Ciência da Computação</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <!-- Template styles -->
+        <style rel="stylesheet">
+            /* TEMPLATE STYLES */
+            main {
+                margin-top: 0rem;
+            }
+            main .card {
+                margin-bottom: 2rem;
+            }
+            @media only screen and (max-width: 768px) {
+                .read-more {
+                    text-align: center;
+                }
+            }
+        </style>
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <!--Main column-->
+                    <div class="col-lg-12">
+                        <h:form id="formestagiario">
+                            <h:outputText value="Cadastro de Estagiários "/>
+                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+
+                                <h:outputText value="Nome: "/>
+                                <h:inputText id="nome" value="#{estagiarioController.estagiario.nome}"
+                                             required="true" />*
+                                <p:message for="nome" />
+
+                                <h:outputText value="Matricula: "/>
+                                <h:inputText id="matricula" value="#{estagiarioController.estagiario.matricula}"
+                                             required="true" />*
+                                <p:message for="matricula" />
+
+                                <h:outputText value="Email: "/>
+                                <h:inputText id="email" value="#{estagiarioController.estagiario.email}"
+                                             required="true" />*
+                                <p:message for="email" />
+
+                                <h:outputText value="Data de Inicio: "/>
+                                <p:inputMask id="dtinicio" value="#{estagiarioController.estagiario.dataInicio}" mask="99/99/9999" />      
+                                <p:message for="dtinicio" />*
+
+                                <h:outputText value="Data de Finalização: "/>
+                                <p:inputMask id="dtfim"  value="#{estagiarioController.estagiario.dataFim}" mask="99/99/9999"/>      
+                                <p:message for="dtfim" />*
+
+                                <h:outputText value="Ativo: "/>
+                                <h:selectBooleanCheckbox id="ativo" value="#{estagiarioController.estagiario.ativo}" />      
+                                <p:message for="ativo" /><br></br>
+                                
+                                 <h:outputText value="Sala: "/>
+                                 <p:selectOneMenu id="sala" value="#{estagiarioController.horario.sala}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="SalaConverter"
+                                                 >
+                                     <f:selectItems value="#{estagiarioController.sala}" 
+                                                   var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                                </p:selectOneMenu>*  
+                                <p:message for="sala" />  
+
+                                <h:outputText value="Hora Inicio: "/>
+                                <p:inputMask id="hrinicio"  value="#{estagiarioController.horario.horaInicio}" mask="99:99"/>      
+                                <p:message for="hrinicio" />*
+
+                                <h:outputText value="Hora Fim: "/>
+                                <p:inputMask id="hrfim"  value="#{estagiarioController.horario.horaFim}" mask="99:99"/>      
+                                <p:message for="hrfim" />*
+
+                                <h:outputText value="Dia da semana: "/>
+                                <p:selectOneMenu id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:125px">
+                                    <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                                    <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                                    <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                                    <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                                    <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                                    <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                </p:selectOneMenu>
+                                <p:message for="dia" />*
+
+                                <p:commandButton id="btnAdd" value="+"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
+                              
+                                    <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
+                                        <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
+                                        <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> 
+                                        <p:commandButton id="btnEditar" value="Editar" action="#{estagiarioController.editaHorario(hor)}" update=":formestagiario"/>                                        
+                                        <p:commandButton id="btnRemove" value="Remove" action="#{estagiarioController.removeHorario(hor)}" update=":formestagiario"/>
+                                     </c:forEach>
+                               
+                            </h:panelGrid>
+
+                            <p:commandButton id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
+                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
+                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
+                            <p:commandButton id="btnLimpar" value="Limpar" action="#{estagiarioController.limpar}" update=":formestagiario"/>
+                            <br></br> <br></br>
+
+                            <p:dataTable var="var" value="#{estagiarioController.estagiarios}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{estagiarioController.estagiariosFiltrados}"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Nome"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{estagiarioController.onRowSelect}" update=":formestagiario" />
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{var.id}" />
+                                </p:column>
+
+                                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                                    <h:outputText value="#{var.nome}" />
+                                </p:column>
+                                
+                                <p:column headerText="Horários"  >
+                                    <h:outputText value="#{var.siteHorarioList}" />
+                                </p:column>
+
+
+                            </p:dataTable>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >              
+                            </p:messages>
+
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                                <p:commandButton value="Sim" update=":formestagiario" onclick="PF('confirmation').hide()"
+                                                 action="#{estagiarioController.deletar}" />
+
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                            </p:confirmDialog>
+
+
+                        </h:form>
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+    </h:body>
+</html>
+

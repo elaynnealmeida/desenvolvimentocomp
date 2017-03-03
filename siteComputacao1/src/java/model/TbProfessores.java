@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TbProfessores.findByAtivo", query = "SELECT t FROM TbProfessores t WHERE t.ativo = :ativo")})
 public class TbProfessores implements Serializable {
 
+    @OneToMany(mappedBy = "servidorId")
+    private List<SiteHorarioServidor> siteHorarioServidorList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProfessor")
     private List<SiteProfDadosComplementares> siteProfDadosComplementaresList;
 
@@ -173,6 +176,15 @@ public class TbProfessores implements Serializable {
 
     public void setSiteProfDadosComplementaresList(List<SiteProfDadosComplementares> siteProfDadosComplementaresList) {
         this.siteProfDadosComplementaresList = siteProfDadosComplementaresList;
+    }
+
+    @XmlTransient
+    public List<SiteHorarioServidor> getSiteHorarioServidorList() {
+        return siteHorarioServidorList;
+    }
+
+    public void setSiteHorarioServidorList(List<SiteHorarioServidor> siteHorarioServidorList) {
+        this.siteHorarioServidorList = siteHorarioServidorList;
     }
     
 }

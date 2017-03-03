@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TbCampus.findBySigla", query = "SELECT t FROM TbCampus t WHERE t.sigla = :sigla")})
 public class TbCampus implements Serializable {
 
+    @OneToMany(mappedBy = "campusId")
+    private List<TbBloco> tbBlocoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -126,6 +129,15 @@ public class TbCampus implements Serializable {
     @Override
     public String toString() {
         return "model.TbCampus[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public List<TbBloco> getTbBlocoList() {
+        return tbBlocoList;
+    }
+
+    public void setTbBlocoList(List<TbBloco> tbBlocoList) {
+        this.tbBlocoList = tbBlocoList;
     }
     
 }

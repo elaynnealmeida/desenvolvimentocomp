@@ -440,7 +440,27 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
-      
+       public void paginaEstagiario() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/estagiario.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+       
+     public void paginaMonitor() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/monitor.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
       
      
      public void paginaDowloads() throws IOException {

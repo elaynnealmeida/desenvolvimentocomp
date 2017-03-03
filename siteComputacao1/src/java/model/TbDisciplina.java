@@ -48,9 +48,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TbDisciplina.findByPosicao", query = "SELECT t FROM TbDisciplina t WHERE t.posicao = :posicao")})
 public class TbDisciplina implements Serializable {
 
-    @OneToMany(mappedBy = "idDisciplina")
-    private List<SiteMatriz> siteMatrizList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,6 +89,8 @@ public class TbDisciplina implements Serializable {
     private List<TbDisciplina> tbDisciplinaList;
     @ManyToMany(mappedBy = "tbDisciplinaList")
     private List<TbDisciplina> tbDisciplinaList1;
+    @OneToMany(mappedBy = "disciplina")
+    private List<SiteMonitor> siteMonitorList;
     @JoinColumn(name = "area_conhecimento_id", referencedColumnName = "id")
     @ManyToOne
     private TbAreaConhecimento areaConhecimentoId;
@@ -220,6 +219,15 @@ public class TbDisciplina implements Serializable {
         this.tbDisciplinaList1 = tbDisciplinaList1;
     }
 
+    @XmlTransient
+    public List<SiteMonitor> getSiteMonitorList() {
+        return siteMonitorList;
+    }
+
+    public void setSiteMonitorList(List<SiteMonitor> siteMonitorList) {
+        this.siteMonitorList = siteMonitorList;
+    }
+
     public TbAreaConhecimento getAreaConhecimentoId() {
         return areaConhecimentoId;
     }
@@ -259,15 +267,6 @@ public class TbDisciplina implements Serializable {
     @Override
     public String toString() {
         return "model.TbDisciplina[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public List<SiteMatriz> getSiteMatrizList() {
-        return siteMatrizList;
-    }
-
-    public void setSiteMatrizList(List<SiteMatriz> siteMatrizList) {
-        this.siteMatrizList = siteMatrizList;
     }
     
 }

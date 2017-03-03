@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,14 +28,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author UFT
  */
 @Entity
-@Table(name = "tb_matriz_curricular")
+@Table(name = "tb_bloco")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TbMatrizCurricular.findAll", query = "SELECT t FROM TbMatrizCurricular t"),
-    @NamedQuery(name = "TbMatrizCurricular.findById", query = "SELECT t FROM TbMatrizCurricular t WHERE t.id = :id"),
-    @NamedQuery(name = "TbMatrizCurricular.findByAno", query = "SELECT t FROM TbMatrizCurricular t WHERE t.ano = :ano"),
-    @NamedQuery(name = "TbMatrizCurricular.findByDescricao", query = "SELECT t FROM TbMatrizCurricular t WHERE t.descricao = :descricao")})
-public class TbMatrizCurricular implements Serializable {
+    @NamedQuery(name = "TbBloco.findAll", query = "SELECT t FROM TbBloco t"),
+    @NamedQuery(name = "TbBloco.findById", query = "SELECT t FROM TbBloco t WHERE t.id = :id"),
+    @NamedQuery(name = "TbBloco.findByDescricao", query = "SELECT t FROM TbBloco t WHERE t.descricao = :descricao")})
+public class TbBloco implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,29 +42,20 @@ public class TbMatrizCurricular implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ano")
-    private int ano;
     @Size(max = 255)
     @Column(name = "descricao")
     private String descricao;
-    @OneToMany(mappedBy = "matrizCurricularId")
-    private List<TbDisciplina> tbDisciplinaList;
-    @JoinColumn(name = "curso_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "blocoId")
+    private List<TbSala> tbSalaList;
+    @JoinColumn(name = "campus_id", referencedColumnName = "id")
     @ManyToOne
-    private TbCurso cursoId;
+    private TbCampus campusId;
 
-    public TbMatrizCurricular() {
+    public TbBloco() {
     }
 
-    public TbMatrizCurricular(Long id) {
+    public TbBloco(Long id) {
         this.id = id;
-    }
-
-    public TbMatrizCurricular(Long id, int ano) {
-        this.id = id;
-        this.ano = ano;
     }
 
     public Long getId() {
@@ -75,14 +64,6 @@ public class TbMatrizCurricular implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
     }
 
     public String getDescricao() {
@@ -94,20 +75,20 @@ public class TbMatrizCurricular implements Serializable {
     }
 
     @XmlTransient
-    public List<TbDisciplina> getTbDisciplinaList() {
-        return tbDisciplinaList;
+    public List<TbSala> getTbSalaList() {
+        return tbSalaList;
     }
 
-    public void setTbDisciplinaList(List<TbDisciplina> tbDisciplinaList) {
-        this.tbDisciplinaList = tbDisciplinaList;
+    public void setTbSalaList(List<TbSala> tbSalaList) {
+        this.tbSalaList = tbSalaList;
     }
 
-    public TbCurso getCursoId() {
-        return cursoId;
+    public TbCampus getCampusId() {
+        return campusId;
     }
 
-    public void setCursoId(TbCurso cursoId) {
-        this.cursoId = cursoId;
+    public void setCampusId(TbCampus campusId) {
+        this.campusId = campusId;
     }
 
     @Override
@@ -120,10 +101,10 @@ public class TbMatrizCurricular implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TbMatrizCurricular)) {
+        if (!(object instanceof TbBloco)) {
             return false;
         }
-        TbMatrizCurricular other = (TbMatrizCurricular) object;
+        TbBloco other = (TbBloco) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -132,7 +113,7 @@ public class TbMatrizCurricular implements Serializable {
 
     @Override
     public String toString() {
-        return "model.TbMatrizCurricular[ id=" + id + " ]";
+        return "model.TbBloco[ id=" + id + " ]";
     }
     
 }
