@@ -38,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
 public class TbSala implements Serializable {
 
     @OneToMany(mappedBy = "sala")
+    private List<SiteHorarioServidor> siteHorarioServidorList;
+
+    @OneToMany(mappedBy = "sala")
     private List<SiteHorarioMonitor> siteHorarioMonitorList;
 
     private static final long serialVersionUID = 1L;
@@ -138,6 +141,15 @@ public class TbSala implements Serializable {
 
     public void setSiteHorarioMonitorList(List<SiteHorarioMonitor> siteHorarioMonitorList) {
         this.siteHorarioMonitorList = siteHorarioMonitorList;
+    }
+
+    @XmlTransient
+    public List<SiteHorarioServidor> getSiteHorarioServidorList() {
+        return siteHorarioServidorList;
+    }
+
+    public void setSiteHorarioServidorList(List<SiteHorarioServidor> siteHorarioServidorList) {
+        this.siteHorarioServidorList = siteHorarioServidorList;
     }
     
 }

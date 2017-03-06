@@ -33,8 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteHorarioServidor.findByHoraInicio", query = "SELECT s FROM SiteHorarioServidor s WHERE s.horaInicio = :horaInicio"),
     @NamedQuery(name = "SiteHorarioServidor.findByHoraFim", query = "SELECT s FROM SiteHorarioServidor s WHERE s.horaFim = :horaFim"),
     @NamedQuery(name = "SiteHorarioServidor.findByDiaSemana", query = "SELECT s FROM SiteHorarioServidor s WHERE s.diaSemana = :diaSemana"),
-    @NamedQuery(name = "SiteHorarioServidor.findByAtivo", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ativo = :ativo"),
-    @NamedQuery(name = "SiteHorarioServidor.findBySala", query = "SELECT s FROM SiteHorarioServidor s WHERE s.sala = :sala")})
+    @NamedQuery(name = "SiteHorarioServidor.findByAtivo", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ativo = :ativo")})
 public class SiteHorarioServidor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,11 +53,12 @@ public class SiteHorarioServidor implements Serializable {
     private String diaSemana;
     @Column(name = "ativo")
     private Boolean ativo;
-    @Column(name = "sala")
-    private Integer sala;
     @JoinColumn(name = "servidor_id", referencedColumnName = "id")
     @ManyToOne
     private TbProfessores servidorId;
+    @JoinColumn(name = "sala", referencedColumnName = "id")
+    @ManyToOne
+    private TbSala sala;
 
     public SiteHorarioServidor() {
     }
@@ -107,20 +107,20 @@ public class SiteHorarioServidor implements Serializable {
         this.ativo = ativo;
     }
 
-    public Integer getSala() {
-        return sala;
-    }
-
-    public void setSala(Integer sala) {
-        this.sala = sala;
-    }
-
     public TbProfessores getServidorId() {
         return servidorId;
     }
 
     public void setServidorId(TbProfessores servidorId) {
         this.servidorId = servidorId;
+    }
+
+    public TbSala getSala() {
+        return sala;
+    }
+
+    public void setSala(TbSala sala) {
+        this.sala = sala;
     }
 
     @Override

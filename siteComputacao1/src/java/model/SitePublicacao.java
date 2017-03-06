@@ -51,11 +51,11 @@ public class SitePublicacao implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "numero")
-    private int numero;
+    private Integer numero;
     @Basic(optional = false)
     @NotNull
     @Column(name = "ano")
-    private int ano;
+    private Integer ano;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -90,19 +90,19 @@ public class SitePublicacao implements Serializable {
         this.id = id;
     }
 
-    public int getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    public int getAno() {
+    public Integer getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
