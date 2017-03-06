@@ -73,19 +73,19 @@ public class EstagiarioController implements Serializable {
         try {
             if (!this.horariosRemover.isEmpty()) {
                 for (int i = 0; i < this.horariosRemover.size(); i++) {
-                     System.out.println("Excluido: " +this.horariosRemover.get(i));
+                    System.out.println("Excluido: " + this.horariosRemover.get(i));
                     HorarioDAO hDao = new HorarioDAO();
                     hDao.deletar(this.horariosRemover.get(i));
                 }
-            }       
+            }
             if (estagiario.getSiteHorarioList() != horarios) {
                 for (int i = 0; i < this.horarios.size(); i++) {
-                    if (this.horarios.get(i).getId() != null) {                        
-                         HorarioDAO hDao = new HorarioDAO();
+                    if (this.horarios.get(i).getId() != null) {
+                        HorarioDAO hDao = new HorarioDAO();
                         hDao.atualizar(this.horarios.get(i));
                     } else {
                         System.out.println("Entrou no horario novo ");
-                         HorarioDAO hDao = new HorarioDAO();
+                        HorarioDAO hDao = new HorarioDAO();
                         horario.setEstagiarioId(estagiario);
                         hDao.salvar(this.horarios.get(i));
                     }
@@ -138,21 +138,17 @@ public class EstagiarioController implements Serializable {
     public void removeHorario(SiteHorario h) {
         System.out.println("Excluido: " + h);
         this.horarios.remove(h);
-        if (h.getId() != null){
+        if (h.getId() != null) {
             this.horariosRemover.add(h);
         }
         this.horario = new SiteHorario();
     }
-    
+
     public void editaHorario(SiteHorario h) {
         System.out.println("horarios1 " + horarios);
         this.horario = h;
         this.horarios.remove(h);
         System.out.println("horarios2 " + horarios);
-    }
-
-    public SiteEstagiarios getEstagiario() {
-        return estagiario;
     }
 
     public List<SelectItem> getSala() {
@@ -166,6 +162,10 @@ public class EstagiarioController implements Serializable {
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
+    }
+
+    public SiteEstagiarios getEstagiario() {
+        return estagiario;
     }
 
     public void setEstagiario(SiteEstagiarios estagiario) {

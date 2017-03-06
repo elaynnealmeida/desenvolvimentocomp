@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Ciência da Computação</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -188,21 +189,100 @@
                     </p:confirmDialog>
                 </h:form>
             </p:tab>
+            <p:tab title="Horários" id="horarios">
+                <h:form id="formforariosp">
+                    <h:outputText value="Cadastro de Horários "/>
+                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                        <h:outputText value="Sala: "/>
+                        <p:selectOneMenu id="sala" value="#{horarioServidorController.horario.sala}"  
+                                         requiredMessage="Campo Obrigatório"
+                                         required="true"
+                                         converter="SalaConverter"
+                                         >
+                            <f:selectItems value="#{estagiarioController.sala}" 
+                                           var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                        </p:selectOneMenu>*  
+                        <p:message for="sala" />  
+
+                        <h:outputText value="Hora Inicio: "/>
+                        <p:inputMask id="hrinicio"  value="#{horarioServidorController.horario.horaInicio}" mask="99:99"/>      
+                        <p:message for="hrinicio" />*
+
+                        <h:outputText value="Hora Fim: "/>
+                        <p:inputMask id="hrfim"  value="#{horarioServidorController.horario.horaFim}" mask="99:99"/>      
+                        <p:message for="hrfim" />*
+
+                        <h:outputText value="Dia da semana: "/>
+                        <p:selectOneMenu id="dia" value="#{horarioServidorController.horario.diaSemana}" style="width:125px">
+                            <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                            <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                            <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                            <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                            <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                            <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                        </p:selectOneMenu>
+                        <p:message for="dia" />*                        
+                    </h:panelGrid>
+
+                    <p:commandButton id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>
+                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{horarioServidorController.atualizar}" rendered="#{horarioServidorController.isEdit}" update="@form"/>
+                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                    <p:commandButton id="btnLimpar" value="Limpar" action="#{horarioServidorController.limpar}" update="@form"/>
+                    <br></br> <br></br>
+
+                    <p:dataTable var="var" value="#{horarioServidorController.horarios}"
+                                 selectionMode="single"  rowKey="#{var.id}"
+                                 emptyMessage="Nenhum Registro Encontrado"
+                                 widgetVar="varTable"
+                                rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5,10,15"
+                                 >                      
+                        <p:ajax event="rowSelect" listener="#{horarioServidorController.onRowSelect}" update="@form" />
+                        <p:column headerText="Id">
+                            <h:outputText value="#{var.id}" />
+                        </p:column>
+                        
+                        <p:column headerText="Bloco"  >
+                            <h:outputText value="#{var.sala.blocoId.descricao}" />
+                        </p:column>
+                        
+                         <p:column headerText="Sala"  >
+                             <h:outputText value="#{var.sala.nomeSala}" />
+                        </p:column>
+
+                        <p:column headerText="Dia da Semana"  >
+                            <h:outputText value="#{var.diaSemana}" />
+                        </p:column>
+
+                        <p:column headerText="Hora Inicio" >
+                            <h:outputText value="#{var.horaInicio}" />
+                        </p:column>
+                        
+                         <p:column headerText="Hora Fim" >
+                             <h:outputText value="#{var.horaFim}" />
+                        </p:column>
+
+                    </p:dataTable>
+                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                    </p:messages>
+
+                    <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                         action="#{horarioServidorController.deletar}" />
+
+                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                    </p:confirmDialog>
+
+
+                </h:form>
+
+            </p:tab>
         </p:tabView>
     </h:body>
-    <h:body>
-        <h:form id="formdialog">
-            <p:confirmDialog id="confirmacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
-
-                <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
-                                 action="#{professorFormacaoController.deletar}" />
-
-                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-            </p:confirmDialog>
-
-
-        </h:form>
-    </h:body>
+    
 </html>
 

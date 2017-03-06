@@ -1,6 +1,7 @@
 package control;
 
 import dao.ConselhoDAO;
+import dao.PublicacaoDAO;
 import dao.SiteDocumentoDAO;
 import dao.TipoDocumentoDAO;
 import dao.TipoPublicacaoDAO;
@@ -24,6 +25,7 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 import model.SiteConselho;
 import model.SiteDocumento;
+import model.SitePublicacao;
 import model.SiteTipoArquivo;
 import model.SiteTipoPublicacao;
 import model.TbUsersystem;
@@ -139,32 +141,19 @@ public class DocumentoController implements Serializable {
         return toReturn;
     }
     
-    public List<SelectItem> getConselho() {
-        System.out.println("entrou no listar conselho: ");
+    public List<SelectItem> getPublicacao() {
+        System.out.println("entrou no listar publicaçao: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
-        ConselhoDAO tpdDao = new ConselhoDAO();
-        List<SiteConselho> result = new ArrayList<SiteConselho>();
-        result = tpdDao.listarTodos();
+        PublicacaoDAO publicacaoDao = new PublicacaoDAO();
+        List<SitePublicacao> result = new ArrayList<SitePublicacao>();
+        result = publicacaoDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
-            toReturn.add(new SelectItem(result.get(i), result.get(i).getSigla()));
+            toReturn.add(new SelectItem(result.get(i), String.valueOf(result.get(i).getNumero())+" "+result.get(i).getData()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
     }
-    
-     public List<SelectItem> getTpPublicacao() {
-        System.out.println("entrou no listar tp publicacao: ");
-        List<SelectItem> toReturn = new ArrayList<SelectItem>();
-        TipoPublicacaoDAO tpdDao = new TipoPublicacaoDAO();
-        List<SiteTipoPublicacao> result = new ArrayList<SiteTipoPublicacao>();
-        result = tpdDao.listarTodos();
-        for (int i = 0; i < result.size(); i++) {
-            toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
-            //System.out.println("perfil: " + result.get(i).toString());
-        }
-        return toReturn;
-    }
-
+       
     public void gravaArquivo() throws IOException {
         System.out.println("chamou o metodo de gravar aquivo");
         if (file != null) {

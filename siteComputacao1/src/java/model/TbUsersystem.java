@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TbUsersystem.findByStatus", query = "SELECT t FROM TbUsersystem t WHERE t.status = :status"),
     @NamedQuery(name = "TbUsersystem.findByTelefone", query = "SELECT t FROM TbUsersystem t WHERE t.telefone = :telefone")})
 public class TbUsersystem implements Serializable {
-    
+
     @OneToMany(mappedBy = "usuarioInclusao")
     private List<SiteDocumento> siteDocumentoList;
 
@@ -260,5 +260,4 @@ public class TbUsersystem implements Serializable {
         this.siteDocumentoList = siteDocumentoList;
     }
 
-    
 }
