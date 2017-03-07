@@ -79,11 +79,6 @@
                                                       invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
                                                       />*
                                         <p:message for="arquivo" />
-                                        
-                                        <h:outputText value="Assunto: "/>
-                                        <h:inputTextarea id="assunto" value="#{documentoController.documento.assunto}"
-                                                     required="true" />*
-                                        <p:message for="assunto" />
 
                                         <h:outputText value="Ativo: "/>
                                         <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
@@ -117,15 +112,13 @@
                                         <p:ajax event="rowSelect" listener="#{documentoController.onRowSelect}" update="@form" />
                                         <p:column headerText="Id">
                                             <h:outputText value="#{var.id}" />
-                                        </p:column>            
+                                        </p:column>                
 
-                                       <p:column headerText="Título" filterBy="#{var.titulo}" filterStyle="display:none">
-                                           <h:outputText value="#{var.titulo}" />
-                                        </p:column>     
-                                        
-                                        <p:column headerText="Assunto" filterBy="#{var.assunto}" filterStyle="display:none">
-                                            <h:outputText value="#{var.assunto}" />
-                                        </p:column>     
+                                        <p:column headerText="Download" >
+                                            <p:commandButton value="#{var.titulo}" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                <p:fileDownload value="#{documentoController.download(var)}" />
+                                            </p:commandButton>
+                                        </p:column>
 
                                         <p:column headerText="Tamanho do Arquivo" >
                                             <h:outputText value="#{var.tamanhoDoArquivo}" />
