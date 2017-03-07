@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+/siteComputacao1/build/
+/siteComputacao1/lib/
+=======
 
 # Created by https://www.gitignore.io/api/java,netbeans,eclipse
 
@@ -77,3 +81,4 @@ local.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+>>>>>>> parent of 9746e7d... separação de estilos e arquivos html
