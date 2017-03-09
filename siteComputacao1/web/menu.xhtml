@@ -7,7 +7,9 @@
       xmlns:p="http://primefaces.org/ui">
 
 
+
     <ui:composition>
+
         <!-- Barra do Governo -->
         <ui:insert name="governo">
             <ui:include src="barra_governo.xhtml"></ui:include>
@@ -70,19 +72,46 @@
                             </li>
                         </ul>
 
-                        <div style="color: #ffffff; text-align: right;">   
+                        <div style="color: #ffffff; text-align: right;">
                             <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="Bem Vindo, #{loginController.user.nomecompleto}. " rendered="#{loginController.isUser}"/>
-                            <h:commandLink  rendered="#{!loginController.isUser}" actionListener="#{navegacaoHelper.paginaNoticias}">
-                                <i class="fa fa-sign-in fa-2x" aria-hidden="true" style="color: #ffffff; text-align: right"></i>
-                            </h:commandLink>
+
                             <h:commandLink style="color: #ffffff; text-align: right;" action="#{loginController.logout}" rendered="#{loginController.isUser}">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                             </h:commandLink>
-
                         </div>
+
+                        <h:form rendered="#{!loginController.isUser}">
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" style="font-size: .88em; color: #ffffff" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                                    <ul id="login-dp" class="dropdown-menu">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+
+                                                    <h:form id="loginform" styleClass="form-signin" role="form">
+                                                        <h5 class="form-signin-heading">Entrar</h5>
+                                                        <p:inputText type="email" placeholder="Email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
+                                                        <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>                                                           
+                                                        <h:commandButton styleClass="btn btn-sm btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
+                                                                         action="#{loginController.login()}"/>
+                                                    </h:form>
+
+                                                    <div class="bottom text-center">
+                                                        Esqueceu a senha? <a href="#"><b>Recuperar senha</b></a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </h:form>
                     </div>
                 </div>
-
             </nav>
         </h:form>
         <!--/.Navbar-->

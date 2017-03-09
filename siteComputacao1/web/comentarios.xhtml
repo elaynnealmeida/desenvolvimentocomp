@@ -54,7 +54,7 @@
                                 </div>
                                 <br></br>
                                 <!--Post excerpt-->
-                                <p><h:outputText value="#{siteComentariosController.comentario.noticiaId.conteudo}" /></p>
+                                <p><h:outputText value="#{siteComentariosController.comentario.noticiaId.conteudo}" escape="false" /></p>
                                 <br></br>
                                 <h6 style="font-size: 12px" class="h6-responsive"><h:outputText value="Postado em: #{siteComentariosController.comentario.noticiaId.hora}" /><br></br>
                                     <h:outputText value="Última Atualização: #{siteComentariosController.comentario.noticiaId.data}" /></h6>
