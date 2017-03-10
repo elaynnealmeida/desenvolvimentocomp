@@ -7,282 +7,320 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Ciência da Computação</title>
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Professor - Formação</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/professores/noticias.css" rel="stylesheet"></link>
 
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
-        <p:tabView id="dados">
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <!--Main column-->
+                    <div class="col-lg-12">
+                        <!--Post-->
+                        <p:tabView id="dados">
+                            <p:tab title="Informações Básica" id="dadosbasicos">
+                                <h:form id="forminfos" enctype="multipart/form-data">
+                                    <h:outputText value="Informações Básicas " />
+                                    <h:panelGrid columns="3" cellpadding="2" style="margin-bottom:10px">
+                                        <h:outputText value="Servidor: "/>
+                                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
+                                        <p:message for="servidor" />
 
-            <p:tab title="Informações Básica" id="dadosbasicos">
-                <h:form id="forminfos" enctype="multipart/form-data">
-                    <h:outputText value="Informações Básicas " />
-                    <h:panelGrid columns="3" cellpadding="2" style="margin-bottom:10px">
-                        <h:outputText value="Servidor: "/>
-                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
-                        <p:message for="servidor" />
+                                        <h:outputText value="Foto para perfil " />
+                                        <p:fileUpload value="#{dadosComplementaresController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                                      update="msg" id="imagem"    
+                                                      sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
+                                                      invalidFileMessage="Somente JPG ou PNG são permitidos."
+                                                      invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                                      />
+                                        <p:message for="imagem" />
 
-                        <h:outputText value="Foto para perfil " />
-                        <p:fileUpload value="#{dadosComplementaresController.file}"  label="Procurar" mode="simple" skinSimple="true"
-                                      update="msg" id="imagem"    
-                                      sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
-                                      invalidFileMessage="Somente JPG ou PNG são permitidos."
-                                      invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
-                                      />
-                        <p:message for="imagem" />
+                                        <h:outputText value="Lattes: "/>
+                                        <h:inputText id="lattes" value="#{dadosComplementaresController.dadoComplementar.lattes}" />      
+                                        <p:message for="lattes" />
 
-                        <h:outputText value="Lattes: "/>
-                        <h:inputText id="lattes" value="#{dadosComplementaresController.dadoComplementar.lattes}" />      
-                        <p:message for="lattes" />
+                                        <h:outputText value="Endereço Profissional: "/>
+                                        <h:inputText id="endprofissional" value="#{dadosComplementaresController.dadoComplementar.enderecoProfissional}" />      
+                                        <p:message for="endprofissional" />
 
-                        <h:outputText value="Endereço Profissional: "/>
-                        <h:inputText id="endprofissional" value="#{dadosComplementaresController.dadoComplementar.enderecoProfissional}" />      
-                        <p:message for="endprofissional" />
+                                        <h:outputText value="Telefone Profisisonal: "/>
+                                        <h:inputText id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" />      
+                                        <p:message for="tel" />
 
-                        <h:outputText value="Telefone Profisisonal: "/>
-                        <h:inputText id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" />      
-                        <p:message for="tel" />
+                                        <h:outputText value="Área de Atuação: "/>
+                                        <h:inputTextarea id="areaAtuacao" value="#{dadosComplementaresController.dadoComplementar.areaAtuacao}" />      
+                                        <p:message for="areaAtuacao" />
 
-                        <h:outputText value="Área de Atuação: "/>
-                        <h:inputTextarea id="areaAtuacao" value="#{dadosComplementaresController.dadoComplementar.areaAtuacao}" />      
-                        <p:message for="areaAtuacao" />
+                                        <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{dadosComplementaresController.salvar}" ajax="false" rendered="#{dadosComplementaresController.isEdit}" update="@form"/>
+                                        <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{dadosComplementaresController.atualizar}" ajax="false" rendered="#{!dadosComplementaresController.isEdit}" update="@form"/>
+                                        <p:commandButton id="btnLimpar" value="Limpar" action="#{dadosComplementaresController.limpar}" update="@form"/>
 
-                        <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{dadosComplementaresController.salvar}" ajax="false" rendered="#{dadosComplementaresController.isEdit}" update="@form"/>
-                        <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{dadosComplementaresController.atualizar}" ajax="false" rendered="#{!dadosComplementaresController.isEdit}" update="@form"/>
-                        <p:commandButton id="btnLimpar" value="Limpar" action="#{dadosComplementaresController.limpar}" update="@form"/>
+                                    </h:panelGrid>
 
-                    </h:panelGrid>
+                                    <p:dataTable var="var" value="#{dadosComplementaresController.dadosComplementares}"
+                                                 selectionMode="single"  rowKey="#{var.id}"
+                                                 emptyMessage="Nenhum Registro Encontrado"
+                                                 widgetVar="varTable"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 >
 
-                    <p:dataTable var="var" value="#{dadosComplementaresController.dadosComplementares}"
-                                 selectionMode="single"  rowKey="#{var.id}"
-                                 emptyMessage="Nenhum Registro Encontrado"
-                                 widgetVar="varTable"
-                                 rows="10"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15"
-                                 >
+                                        <p:ajax event="rowSelect" listener="#{dadosComplementaresController.onRowSelect}" update="@form" />
+                                        <p:column headerText="Id">
+                                            <h:outputText value="#{var.id}" />
+                                        </p:column>
 
-                        <p:ajax event="rowSelect" listener="#{dadosComplementaresController.onRowSelect}" update="@form" />
-                        <p:column headerText="Id">
-                            <h:outputText value="#{var.id}" />
-                        </p:column>
+                                        <p:column headerText="Servidor">
+                                            <h:outputText value="#{var.idProfessor.nome}" />
+                                        </p:column>
 
-                        <p:column headerText="Servidor">
-                            <h:outputText value="#{var.idProfessor.nome}" />
-                        </p:column>
+                                        <p:column headerText="Foto" >
+                                            <p:graphicImage value="#{dadosComplementaresController.image}" style="    max-width:100%;
+                                                            max-height:100%;
+                                                            width: 400px;
+                                                            height: 180px;">
+                                                <f:param name="foto" value="#{var.id}" />
+                                            </p:graphicImage>
+                                        </p:column>
 
-                        <p:column headerText="Foto" >
-                            <p:graphicImage value="#{dadosComplementaresController.image}" style="    max-width:100%;
-                                            max-height:100%;
-                                            width: 400px;
-                                            height: 180px;">
-                                <f:param name="foto" value="#{var.id}" />
-                            </p:graphicImage>
-                        </p:column>
+                                        <p:column headerText="Lattes"  >
+                                            <h:outputText value="#{var.lattes}" />
+                                        </p:column>
 
-                        <p:column headerText="Lattes"  >
-                            <h:outputText value="#{var.lattes}" />
-                        </p:column>
+                                        <p:column headerText="Endereço"  >
+                                            <h:outputText value="#{var.enderecoProfissional}" />
+                                        </p:column>
 
-                        <p:column headerText="Endereço"  >
-                            <h:outputText value="#{var.enderecoProfissional}" />
-                        </p:column>
+                                        <p:column headerText="Telefone"  >
+                                            <h:outputText value="#{var.telefoneProfissional}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                                    </p:messages>
+                                </h:form>
+                            </p:tab>
 
-                        <p:column headerText="Telefone"  >
-                            <h:outputText value="#{var.telefoneProfissional}" />
-                        </p:column>
-                    </p:dataTable>
-                    <p:messages id="msg" autoUpdate="true" closable="true" >              
-                    </p:messages>
-                </h:form>
-            </p:tab>
+                            <p:tab title="Dados Formação" id="dadosformacao">
+                                <h:form id="formprofformacao">
+                                    <h:outputText value="Cadastro de Formação " />
+                                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                        <h:outputText value="Servidor: "/>
+                                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
+                                        <p:message for="servidor" />*
 
-            <p:tab title="Dados Formação" id="dadosformacao">
-                <h:form id="formprofformacao">
-                    <h:outputText value="Cadastro de Formação " />
-                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                        <h:outputText value="Servidor: "/>
-                        <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
-                        <p:message for="servidor" />*
+                                        <h:outputText value="Titulação: "/>
+                                        <p:selectOneMenu id="formacao" value="#{professorFormacaoController.profFormacao.formacaoId}"  
+                                                         requiredMessage="Campo Obrigatório"
+                                                         required="true"
+                                                         converter="FormacaoConverter"
+                                                         >
+                                            <f:selectItems value="#{professorFormacaoController.formacao}" var="formacao" itemLabel="#{formacao}" itemValue="#{formacao}" />                                       
+                                        </p:selectOneMenu>*  
+                                        <p:message for="formacao" />  
 
-                        <h:outputText value="Titulação: "/>
-                        <p:selectOneMenu id="formacao" value="#{professorFormacaoController.profFormacao.formacaoId}"  
-                                         requiredMessage="Campo Obrigatório"
-                                         required="true"
-                                         converter="FormacaoConverter"
-                                         >
-                            <f:selectItems value="#{professorFormacaoController.formacao}" var="formacao" itemLabel="#{formacao}" itemValue="#{formacao}" />                                       
-                        </p:selectOneMenu>*  
-                        <p:message for="formacao" />  
+                                        <h:outputText value="Descrição: "/>
+                                        <h:inputTextarea id="descricao" value="#{professorFormacaoController.profFormacao.descricao}" />      
+                                        <p:message for="descricao" />*
 
-                        <h:outputText value="Descrição: "/>
-                        <h:inputTextarea id="descricao" value="#{professorFormacaoController.profFormacao.descricao}" />      
-                        <p:message for="descricao" />*
+                                        <h:outputText value="Data de Inicio: "/>
+                                        <p:inputMask id="dtinicio" value="#{professorFormacaoController.profFormacao.dtInicio}" mask="99/99/9999" />      
+                                        <p:message for="dtinicio" />*
 
-                        <h:outputText value="Data de Inicio: "/>
-                        <p:inputMask id="dtinicio" value="#{professorFormacaoController.profFormacao.dtInicio}" mask="99/99/9999" />      
-                        <p:message for="dtinicio" />*
-
-                        <h:outputText value="Data de Finalização: "/>
-                        <p:inputMask id="dtfim"  value="#{professorFormacaoController.profFormacao.dtFim}" mask="99/99/9999"/>      
-                        <p:message for="dtfim" />*
-
-
-                        <p:commandButton id="btnSalvar" value="Salvar" action="#{professorFormacaoController.salvar}" rendered="#{!professorFormacaoController.isEdit}" update="@form"/>
-                        <p:commandButton id="btnAtualizar" value="Atualizar" action="#{professorFormacaoController.atualizar}" rendered="#{professorFormacaoController.isEdit}" update="@form"/>
-                        <p:commandButton id="btnLimpar" value="Limpar" action="#{professorFormacaoController.limpar}" update="@form"/>
-                        <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confirmacao"/>
-                    </h:panelGrid>
-
-                    <p:dataTable var="var" value="#{professorFormacaoController.formacoes}"
-                                 selectionMode="single"  rowKey="#{var.id}"
-                                 emptyMessage="Nenhum Registro Encontrado"
-                                 widgetVar="varTable"
-                                 filteredValue="#{professorFormacaoController.formacoesFiltrados}"
-                                 rows="10"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15"
-                                 >
-                        <f:facet name="header">
-                            <p:outputPanel>
-                                <h:outputText value="Pesquisar:" />
-                                <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                             style="width:150px" placeholder="Usuário"
-                                             />
-                            </p:outputPanel>
-                        </f:facet>
-                        <p:ajax event="rowSelect" listener="#{professorFormacaoController.onRowSelect}" update="@form" />
-                        <p:column headerText="Id">
-                            <h:outputText value="#{var.id}" />
-                        </p:column>
-
-                        <p:column headerText="Formação" filterBy="#{var.formacaoId.descricao}" filterStyle="display:none" >
-                            <h:outputText value="#{var.formacaoId.descricao}" />
-                        </p:column>
-
-                        <p:column headerText="Descrição"  >
-                            <h:outputText value="#{var.descricao}" />
-                        </p:column>
-
-                        <p:column headerText="Data de Inicio"  >
-                            <h:outputText value="#{var.dtInicio}" />
-                        </p:column>
-
-                        <p:column headerText="Data de Finalização"  >
-                            <h:outputText value="#{var.dtFim}" />
-                        </p:column>
-                    </p:dataTable>
-                    <p:messages id="msg" autoUpdate="true" closable="true" >              
-                    </p:messages>
-                    <p:confirmDialog id="confirmacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
-
-                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
-                                         action="#{professorFormacaoController.deletar}" />
-
-                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-                    </p:confirmDialog>
-                </h:form>
-            </p:tab>
-            <p:tab title="Horários" id="horarios">
-                <h:form id="formforariosp">
-                    <h:outputText value="Cadastro de Horários "/>
-                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                        <h:outputText value="Sala: "/>
-                        <p:selectOneMenu id="sala" value="#{horarioServidorController.horario.sala}"  
-                                         requiredMessage="Campo Obrigatório"
-                                         required="true"
-                                         converter="SalaConverter"
-                                         >
-                            <f:selectItems value="#{estagiarioController.sala}" 
-                                           var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                        </p:selectOneMenu>*  
-                        <p:message for="sala" />  
-
-                        <h:outputText value="Hora Inicio: "/>
-                        <p:inputMask id="hrinicio"  value="#{horarioServidorController.horario.horaInicio}" mask="99:99"/>      
-                        <p:message for="hrinicio" />*
-
-                        <h:outputText value="Hora Fim: "/>
-                        <p:inputMask id="hrfim"  value="#{horarioServidorController.horario.horaFim}" mask="99:99"/>      
-                        <p:message for="hrfim" />*
-
-                        <h:outputText value="Dia da semana: "/>
-                        <p:selectOneMenu id="dia" value="#{horarioServidorController.horario.diaSemana}" style="width:125px">
-                            <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
-                            <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
-                            <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
-                            <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
-                            <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
-                            <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
-                        </p:selectOneMenu>
-                        <p:message for="dia" />*                        
-                    </h:panelGrid>
-
-                    <p:commandButton id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>
-                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{horarioServidorController.atualizar}" rendered="#{horarioServidorController.isEdit}" update="@form"/>
-                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
-                    <p:commandButton id="btnLimpar" value="Limpar" action="#{horarioServidorController.limpar}" update="@form"/>
-                    <br></br> <br></br>
-
-                    <p:dataTable var="var" value="#{horarioServidorController.horarios}"
-                                 selectionMode="single"  rowKey="#{var.id}"
-                                 emptyMessage="Nenhum Registro Encontrado"
-                                 widgetVar="varTable"
-                                rows="10"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15"
-                                 >                      
-                        <p:ajax event="rowSelect" listener="#{horarioServidorController.onRowSelect}" update="@form" />
-                        <p:column headerText="Id">
-                            <h:outputText value="#{var.id}" />
-                        </p:column>
-                        
-                        <p:column headerText="Bloco"  >
-                            <h:outputText value="#{var.sala.blocoId.descricao}" />
-                        </p:column>
-                        
-                         <p:column headerText="Sala"  >
-                             <h:outputText value="#{var.sala.nomeSala}" />
-                        </p:column>
-
-                        <p:column headerText="Dia da Semana"  >
-                            <h:outputText value="#{var.diaSemana}" />
-                        </p:column>
-
-                        <p:column headerText="Hora Inicio" >
-                            <h:outputText value="#{var.horaInicio}" />
-                        </p:column>
-                        
-                         <p:column headerText="Hora Fim" >
-                             <h:outputText value="#{var.horaFim}" />
-                        </p:column>
-
-                    </p:dataTable>
-                    <p:messages id="msg" autoUpdate="true" closable="true" >              
-                    </p:messages>
-
-                    <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
-
-                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
-                                         action="#{horarioServidorController.deletar}" />
-
-                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-                    </p:confirmDialog>
+                                        <h:outputText value="Data de Finalização: "/>
+                                        <p:inputMask id="dtfim"  value="#{professorFormacaoController.profFormacao.dtFim}" mask="99/99/9999"/>      
+                                        <p:message for="dtfim" />*
 
 
-                </h:form>
+                                        <p:commandButton id="btnSalvar" value="Salvar" action="#{professorFormacaoController.salvar}" rendered="#{!professorFormacaoController.isEdit}" update="@form"/>
+                                        <p:commandButton id="btnAtualizar" value="Atualizar" action="#{professorFormacaoController.atualizar}" rendered="#{professorFormacaoController.isEdit}" update="@form"/>
+                                        <p:commandButton id="btnLimpar" value="Limpar" action="#{professorFormacaoController.limpar}" update="@form"/>
+                                        <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confirmacao"/>
+                                    </h:panelGrid>
 
-            </p:tab>
-        </p:tabView>
+                                    <p:dataTable var="var" value="#{professorFormacaoController.formacoes}"
+                                                 selectionMode="single"  rowKey="#{var.id}"
+                                                 emptyMessage="Nenhum Registro Encontrado"
+                                                 widgetVar="varTable"
+                                                 filteredValue="#{professorFormacaoController.formacoesFiltrados}"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 >
+                                        <f:facet name="header">
+                                            <p:outputPanel>
+                                                <h:outputText value="Pesquisar:" />
+                                                <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                             style="width:150px" placeholder="Usuário"
+                                                             />
+                                            </p:outputPanel>
+                                        </f:facet>
+                                        <p:ajax event="rowSelect" listener="#{professorFormacaoController.onRowSelect}" update="@form" />
+                                        <p:column headerText="Id">
+                                            <h:outputText value="#{var.id}" />
+                                        </p:column>
+
+                                        <p:column headerText="Formação" filterBy="#{var.formacaoId.descricao}" filterStyle="display:none" >
+                                            <h:outputText value="#{var.formacaoId.descricao}" />
+                                        </p:column>
+
+                                        <p:column headerText="Descrição"  >
+                                            <h:outputText value="#{var.descricao}" />
+                                        </p:column>
+
+                                        <p:column headerText="Data de Inicio"  >
+                                            <h:outputText value="#{var.dtInicio}" />
+                                        </p:column>
+
+                                        <p:column headerText="Data de Finalização"  >
+                                            <h:outputText value="#{var.dtFim}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                                    </p:messages>
+                                    <p:confirmDialog id="confirmacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                                         action="#{professorFormacaoController.deletar}" />
+
+                                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                                    </p:confirmDialog>
+                                </h:form>
+                            </p:tab>
+                            <p:tab title="Horários" id="horarios">
+                                <h:form id="formforariosp">
+                                    <h:outputText value="Cadastro de Horários "/>
+                                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                        <h:outputText value="Sala: "/>
+                                        <p:selectOneMenu id="sala" value="#{horarioServidorController.horario.sala}"  
+                                                         requiredMessage="Campo Obrigatório"
+                                                         required="true"
+                                                         converter="SalaConverter"
+                                                         >
+                                            <f:selectItems value="#{estagiarioController.sala}" 
+                                                           var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                                        </p:selectOneMenu>*  
+                                        <p:message for="sala" />  
+
+                                        <h:outputText value="Hora Inicio: "/>
+                                        <p:inputMask id="hrinicio"  value="#{horarioServidorController.horario.horaInicio}" mask="99:99"/>      
+                                        <p:message for="hrinicio" />*
+
+                                        <h:outputText value="Hora Fim: "/>
+                                        <p:inputMask id="hrfim"  value="#{horarioServidorController.horario.horaFim}" mask="99:99"/>      
+                                        <p:message for="hrfim" />*
+
+                                        <h:outputText value="Dia da semana: "/>
+                                        <p:selectOneMenu id="dia" value="#{horarioServidorController.horario.diaSemana}" style="width:125px">
+                                            <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                                            <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                                            <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                                            <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                                            <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                                            <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                        </p:selectOneMenu>
+                                        <p:message for="dia" />*                        
+                                    </h:panelGrid>
+
+                                    <p:commandButton id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>
+                                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{horarioServidorController.atualizar}" rendered="#{horarioServidorController.isEdit}" update="@form"/>
+                                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                                    <p:commandButton id="btnLimpar" value="Limpar" action="#{horarioServidorController.limpar}" update="@form"/>
+                                    <br></br> <br></br>
+
+                                    <p:dataTable var="var" value="#{horarioServidorController.horarios}"
+                                                 selectionMode="single"  rowKey="#{var.id}"
+                                                 emptyMessage="Nenhum Registro Encontrado"
+                                                 widgetVar="varTable"
+                                                 rows="10"
+                                                 paginator="true"
+                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                                 rowsPerPageTemplate="5,10,15"
+                                                 >                      
+                                        <p:ajax event="rowSelect" listener="#{horarioServidorController.onRowSelect}" update="@form" />
+                                        <p:column headerText="Id">
+                                            <h:outputText value="#{var.id}" />
+                                        </p:column>
+
+                                        <p:column headerText="Bloco"  >
+                                            <h:outputText value="#{var.sala.blocoId.descricao}" />
+                                        </p:column>
+
+                                        <p:column headerText="Sala"  >
+                                            <h:outputText value="#{var.sala.nomeSala}" />
+                                        </p:column>
+
+                                        <p:column headerText="Dia da Semana"  >
+                                            <h:outputText value="#{var.diaSemana}" />
+                                        </p:column>
+
+                                        <p:column headerText="Hora Inicio" >
+                                            <h:outputText value="#{var.horaInicio}" />
+                                        </p:column>
+
+                                        <p:column headerText="Hora Fim" >
+                                            <h:outputText value="#{var.horaFim}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+                                    <p:messages id="msg" autoUpdate="true" closable="true" >              
+                                    </p:messages>
+
+                                    <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                                         action="#{horarioServidorController.deletar}" />
+
+                                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                                    </p:confirmDialog>
+
+
+                                </h:form>
+
+                            </p:tab>
+                        </p:tabView>
+
+                        <!--/.Post-->                     
+                        <br></br>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
     </h:body>
-    
+
 </html>
 

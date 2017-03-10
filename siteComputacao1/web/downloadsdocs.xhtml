@@ -7,8 +7,6 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
-
-
         <title>Documentos Para Download</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,27 +25,45 @@
         <ui:include src="menu.xhtml"/>
     </ui:insert>
     <h:body> 
-        <ui:insert name="menu_lateral">
-            <ui:include src="menu_lateral.xhtml"></ui:include>
-        </ui:insert>
-        <h:form id="formdocumentos">
-             <h:outputText value="Documentos Para Download  " />  <br></br><br></br>        
-            <c:forEach var="doc" items="${documentosHelper.documentos}" varStatus="id" >
 
-                <h:outputText value="#{doc.titulo}  " />                 
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <!--Corpo -->
+                <div class="row">
 
-                <p:commandButton value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                    <p:fileDownload value="#{documentosHelper.download(doc)}" />
-                </p:commandButton>               
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <h:form id="formdocumentos">
+                        <h:outputText value="Documentos Para Download  " />  <br></br><br></br>        
+                        <c:forEach var="doc" items="${documentosHelper.documentos}" varStatus="id" >
 
-                <h:outputText value="  #{doc.tamanhoDoArquivo} bytes," />
-                <h:outputText value=" postado em:  #{doc.dataInclusao}" />
-                <br></br><br></br>
-            </c:forEach>
+                            <h:outputText value="#{doc.titulo}  " />                 
 
-        </h:form>
+                            <p:commandButton value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                <p:fileDownload value="#{documentosHelper.download(doc)}" />
+                            </p:commandButton>               
+
+                            <h:outputText value="  #{doc.tamanhoDoArquivo} bytes," />
+                            <h:outputText value=" postado em:  #{doc.dataInclusao}" />
+                            <br></br><br></br>
+                        </c:forEach>
+
+                    </h:form>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo -->
         <ui:insert name="footer" >
             <ui:include src="footer.xhtml"/>   
         </ui:insert>
+
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
     </h:body>
 </html>
