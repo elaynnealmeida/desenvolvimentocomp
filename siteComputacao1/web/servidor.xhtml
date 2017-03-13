@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+         <f:metadata>
+             <f:viewAction action="#{servidorInfo.serv}" />
+        </f:metadata>
+        <title>Informações</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet"></link>
+        <link href="css/comentarios.css" rel="stylesheet"></link>
+    </h:head>
+    <ui:insert name="insercao" >
+        <ui:insert name="menu">
+            <ui:include src="menu.xhtml"/>
+        </ui:insert>
+    </ui:insert>
+    <h:body> 
+
+        <ui:insert name="menu_lateral">
+            <ui:include src="menu_lateral.xhtml"></ui:include>
+        </ui:insert>
+
+        <h:form>                            
+            <p:graphicImage  styleClass="view overlay hm-white-light z-depth-1-half" value="#{servidoresHelper.image}" style="    max-width:100%;
+                             max-height:100%;
+                             width: 100px;
+                             height: 100px;">
+                <f:param name="servidor" value="#{servidorInfo.servidor.id}" />
+            </p:graphicImage>  
+             <p:graphicImage style="    max-width:100%;
+                                                                                                             max-height:100%;
+                                                                                                             width: 100px;
+                                                                                                             height: 100px;" value="#{resource['img/sem_foto.jpg']}"
+                                                                                                             rendered="#{servidorInfo.servidor.foto==null}"
+                                                                                                             >                                                   
+                                                </p:graphicImage>
+
+            <h:outputText value="#{servidorInfo.servidor.idProfessor.nome}" /><br></br>
+
+            <h:outputText value="Lattes: " />
+            <p:commandLink value="#{servidorInfo.servidor.lattes}" /><br></br>
+
+            <h:outputText value="Email: " />
+            <h:outputText value="#{servidorInfo.servidor.idProfessor.email}" /><br></br>
+
+            <h:outputText value="Endereço Profissional: " />
+            <h:outputText value="#{servidorInfo.servidor.enderecoProfissional}" /><br></br>
+
+            <h:outputText value="Telefone: " />
+            <h:outputText value="#{servidorInfo.servidor.telefoneProfissional}" /><br></br>
+
+            <h:outputText value="Formação: " /><br></br>
+
+            <c:forEach var="formacao" items="${servidorInfo.formacaoList}" varStatus="id">
+
+                <h:outputText value="#{formacao.formacaoId.descricao}" />
+                <h:outputText value=" em #{formacao.descricao} " />
+                <h:outputText value="de #{formacao.dtInicio} " />
+                <h:outputText value="a #{formacao.dtFim}" />
+                <br></br>
+            </c:forEach>
+            <br></br>
+            <h:outputText value="Área de Atuação:" /> <br></br>
+            <h:outputText value="#{servidorInfo.servidor.areaAtuacao}" /><br></br>
+
+            <h:outputText value="Horários: " /><br></br>
+            <c:forEach var="horario" items="${servidorInfo.horarioList}" varStatus="id">
+
+                <h:outputText value="#{horario.diaSemana}, " />
+                <h:outputText value="Bloco #{horario.sala.blocoId.descricao} - Sala #{horario.sala.nomeSala} " />
+                <h:outputText value="das #{horario.horaInicio} " />
+                <h:outputText value="a #{horario.horaFim} horas" />
+                <br></br>
+            </c:forEach>
+        </h:form>
+
+        <br></br>
+
+        <ui:insert name="footer" >
+            <ui:include src="footer.xhtml"/>   
+        </ui:insert>
+
+    </h:body>
+</html>

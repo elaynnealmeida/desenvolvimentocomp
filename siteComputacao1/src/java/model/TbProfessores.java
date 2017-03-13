@@ -21,6 +21,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -62,7 +63,7 @@ public class TbProfessores implements Serializable {
     private String nome;
     @Column(name = "ativo")
     private Boolean ativo;
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "professorId")
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REMOVE}, mappedBy = "professorId")
     private List<SiteCargoProfessor> siteCargoProfessorList;
     @OneToMany(mappedBy = "professorId")
     private List<SiteFuncaoProfessor> siteFuncaoProfessorList;
