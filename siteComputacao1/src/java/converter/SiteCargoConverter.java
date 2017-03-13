@@ -12,7 +12,7 @@ import model.SiteCargo;
  *
  * @author UFT
  */
-@FacesConverter(forClass = model.SiteCargo.class)
+@FacesConverter(value = "CargoConverter")
 public class SiteCargoConverter implements Converter {
 
     private SiteCargoDAO cargoDao = new SiteCargoDAO();

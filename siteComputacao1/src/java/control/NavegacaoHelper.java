@@ -297,6 +297,17 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+     
+     public void servidores() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/servidores.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void paginaUsuario() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
