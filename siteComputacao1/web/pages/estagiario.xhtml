@@ -63,6 +63,14 @@
                                 <h:selectBooleanCheckbox id="ativo" value="#{estagiarioController.estagiario.ativo}" />      
                                 <p:message for="ativo" /><br></br>
                                 
+                                <h:outputText value="Semestre: "/>
+                                        <p:inputText id="semestre"  value="#{estagiarioController.horario.periodo}" />      
+                                        <p:message for="semestre" />*
+                                        
+                                        <h:outputText value="Ano Letivo: "/>
+                                        <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
+                                        <p:message for="ano" />*
+                                
                                  <h:outputText value="Sala: "/>
                                  <p:selectOneMenu id="sala" value="#{estagiarioController.horario.sala}"  
                                                  requiredMessage="Campo Obrigatório"
@@ -92,6 +100,10 @@
                                     <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
                                 </p:selectOneMenu>
                                 <p:message for="dia" />*
+                                
+                                <h:outputText value="Ativo: "/>
+                                <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
+                                <p:message for="ativoh" /><br></br>
 
                                 <p:commandButton id="btnAdd" value="+"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
                               

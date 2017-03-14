@@ -308,6 +308,17 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+     
+     public void horariosGeral() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public void paginaUsuario() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()

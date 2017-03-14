@@ -82,10 +82,12 @@ public class EstagiarioController implements Serializable {
                 for (int i = 0; i < this.horarios.size(); i++) {
                     if (this.horarios.get(i).getId() != null) {
                         HorarioDAO hDao = new HorarioDAO();
+                        this.horarios.get(i).setDia(atualizaDia());
                         hDao.atualizar(this.horarios.get(i));
                     } else {
                         System.out.println("Entrou no horario novo ");
                         HorarioDAO hDao = new HorarioDAO();
+                        horario.setDia(atualizaDia());
                         horario.setEstagiarioId(estagiario);
                         hDao.salvar(this.horarios.get(i));
                     }
@@ -130,6 +132,7 @@ public class EstagiarioController implements Serializable {
 
     public void addHorario() {
         System.out.println("horario: " + horario.getSala().getBlocoId().getDescricao() + " - " + horario.getSala().getNomeSala() + " - " + horario.getDiaSemana() + " - " + horario.getHoraInicio() + " as " + horario.getHoraFim());
+        horario.setDia(atualizaDia());
         horario.setEstagiarioId(estagiario);
         this.horarios.add(horario);
         this.horario = new SiteHorario();
@@ -162,6 +165,28 @@ public class EstagiarioController implements Serializable {
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
+    }
+    
+    public Integer atualizaDia(){
+        System.out.println("dia escolhido:----------------------"+horario.getDiaSemana());
+        if(horario.getDiaSemana().equals("Segunda-Feira")){
+           return 2;
+        }
+        else if(horario.getDiaSemana().equals("Terça-Feira")){
+            return 3;
+        }
+        else if(horario.getDiaSemana().equals("Quarta-Feira")){
+            return 4;
+        }
+        else if(horario.getDiaSemana().equals("Quinta-Feira")){
+            return 5;
+        }
+       else if(horario.getDiaSemana().equals("Sexta-Feira")){
+            return 6;
+        }
+       else{
+           return 7;
+        }       
     }
 
     public SiteEstagiarios getEstagiario() {

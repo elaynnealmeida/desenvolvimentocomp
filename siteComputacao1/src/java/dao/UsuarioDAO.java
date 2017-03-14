@@ -21,7 +21,6 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
 
     public List<TbUsersystem> listarTodosAtivos(String nome) {
 
-        System.out.println("entrou no dao listar-----------");
         List<TbUsersystem> result = new ArrayList<TbUsersystem>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -39,8 +38,6 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
 
     public TbUsersystem login(TbUsersystem login) {
         TbUsersystem result = new TbUsersystem();
-        System.out.println("Login: "+login.getEmail());
-        System.out.println("senha: "+login.getPassword());
         try {
             EntityManager em1 = getEM();
             em1.getTransaction().begin();
@@ -54,15 +51,12 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
             em1.close();
             return result;
         } catch (Exception e) {
-            System.out.println("Erro no login: "+e);
             return null;
         }
 
     }
     
     public List<TbUsersystem> listarTodosAtivos2() {
-
-        System.out.println("entrou no dao listar-----------");
         List<TbUsersystem> result = new ArrayList<TbUsersystem>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();        

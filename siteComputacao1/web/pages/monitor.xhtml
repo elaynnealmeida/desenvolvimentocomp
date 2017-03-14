@@ -74,6 +74,14 @@
                                 <h:selectBooleanCheckbox id="ativo" value="#{monitorController.monitor.ativo}" />      
                                 <p:message for="ativo" /><br></br>
                                 
+                                <h:outputText value="Semestre: "/>
+                                <p:inputText id="semestre"  value="#{monitorController.horario.perido}"/>      
+                                        <p:message for="semestre" />*
+                                        
+                                        <h:outputText value="Ano Letivo: "/>
+                                        <p:inputText id="ano"  value="#{monitorController.horario.ano}" />      
+                                        <p:message for="ano" />*
+                                
                                  <h:outputText value="Sala: "/>
                                  <p:selectOneMenu id="sala" value="#{monitorController.horario.sala}"  
                                                  requiredMessage="Campo Obrigatório"
@@ -103,6 +111,10 @@
                                     <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
                                 </p:selectOneMenu>
                                 <p:message for="dia" />*
+                                
+                                <h:outputText value="Horário Ativo: "/>
+                                <h:selectBooleanCheckbox id="ativoh" value="#{monitorController.horario.ativo}" />      
+                                <p:message for="ativoh" /><br></br>
 
                                 <p:commandButton id="btnAdd" value="+"  action="#{monitorController.addHorario}" update=":formmonitor"/><br></br>
                               

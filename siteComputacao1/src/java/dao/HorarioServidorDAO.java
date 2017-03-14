@@ -23,7 +23,6 @@ public class HorarioServidorDAO extends GenericDAO<SiteHorarioServidor>{
     
      public List<SiteHorarioServidor> listarHorarioPorProfessor(TbProfessores id) {
 
-        System.out.println("Id do professor: "+id);
         List<SiteHorarioServidor> result = new ArrayList<SiteHorarioServidor>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -37,4 +36,20 @@ public class HorarioServidorDAO extends GenericDAO<SiteHorarioServidor>{
         return result;
     }
     
+      public List<SiteHorarioServidor> listarTodosAtivos() {
+
+        System.out.println("entrou no dao listar estagiarios ativos-----------");
+        List<SiteHorarioServidor> result = new ArrayList<SiteHorarioServidor>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteHorarioServidor.class);
+        EntityType type = em1.getMetamodel().entity(SiteHorarioServidor.class);
+        Root root = query.from(SiteHorarioServidor.class);
+        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"));
+        query.orderBy(builder.asc(root.get("id")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
 }

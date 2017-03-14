@@ -33,7 +33,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteHorarioServidor.findByHoraInicio", query = "SELECT s FROM SiteHorarioServidor s WHERE s.horaInicio = :horaInicio"),
     @NamedQuery(name = "SiteHorarioServidor.findByHoraFim", query = "SELECT s FROM SiteHorarioServidor s WHERE s.horaFim = :horaFim"),
     @NamedQuery(name = "SiteHorarioServidor.findByDiaSemana", query = "SELECT s FROM SiteHorarioServidor s WHERE s.diaSemana = :diaSemana"),
-    @NamedQuery(name = "SiteHorarioServidor.findByAtivo", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ativo = :ativo")})
+    @NamedQuery(name = "SiteHorarioServidor.findByAtivo", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ativo = :ativo"),
+    @NamedQuery(name = "SiteHorarioServidor.findBySemestre", query = "SELECT s FROM SiteHorarioServidor s WHERE s.semestre = :semestre"),
+    @NamedQuery(name = "SiteHorarioServidor.findByAno", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ano = :ano"),
+    @NamedQuery(name = "SiteHorarioServidor.findByTipohorario", query = "SELECT s FROM SiteHorarioServidor s WHERE s.tipohorario = :tipohorario"),
+    @NamedQuery(name = "SiteHorarioServidor.findByDia", query = "SELECT s FROM SiteHorarioServidor s WHERE s.dia = :dia")})
 public class SiteHorarioServidor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +57,15 @@ public class SiteHorarioServidor implements Serializable {
     private String diaSemana;
     @Column(name = "ativo")
     private Boolean ativo;
+    @Column(name = "semestre")
+    private Integer semestre;
+    @Column(name = "ano")
+    private Integer ano;
+    @Size(max = 2147483647)
+    @Column(name = "tipohorario")
+    private String tipohorario;
+    @Column(name = "dia")
+    private Integer dia;
     @JoinColumn(name = "servidor_id", referencedColumnName = "id")
     @ManyToOne
     private TbProfessores servidorId;
@@ -105,6 +118,38 @@ public class SiteHorarioServidor implements Serializable {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
+
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    public String getTipohorario() {
+        return tipohorario;
+    }
+
+    public void setTipohorario(String tipohorario) {
+        this.tipohorario = tipohorario;
+    }
+
+    public Integer getDia() {
+        return dia;
+    }
+
+    public void setDia(Integer dia) {
+        this.dia = dia;
     }
 
     public TbProfessores getServidorId() {

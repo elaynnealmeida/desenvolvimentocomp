@@ -212,6 +212,21 @@
                                 <h:form id="formforariosp">
                                     <h:outputText value="Cadastro de Horários "/>
                                     <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                        <h:outputText value="Tipo de Horário: "/>
+                                        <p:selectOneMenu id="tphorario" value="#{horarioServidorController.horario.tipohorario}" style="width:125px">
+                                            <f:selectItem itemLabel="Aula" itemValue="Aula" />
+                                            <f:selectItem itemLabel="Atendimento" itemValue="Atendimento" />                               
+                                        </p:selectOneMenu>
+                                        <p:message for="tphorario" />*
+
+                                        <h:outputText value="Semestre: "/>
+                                        <p:inputText id="semestre"  value="#{horarioServidorController.horario.semestre}"/>      
+                                        <p:message for="semestre" />*
+
+                                        <h:outputText value="Ano Letivo: "/>
+                                        <p:inputText id="ano"  value="#{horarioServidorController.horario.ano}" />      
+                                        <p:message for="ano" />*
+
                                         <h:outputText value="Sala: "/>
                                         <p:selectOneMenu id="sala" value="#{horarioServidorController.horario.sala}"  
                                                          requiredMessage="Campo Obrigatório"
@@ -238,9 +253,13 @@
                                             <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
                                             <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
                                             <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
-                                            <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                            <f:selectItem itemLabel="Sábado" itemValue="Sábado" />                                            
                                         </p:selectOneMenu>
-                                        <p:message for="dia" />*                        
+                                        <p:message for="dia" />*  
+
+                                        <h:outputText value="Ativo: "/>
+                                        <h:selectBooleanCheckbox id="ativo" value="#{horarioServidorController.horario.ativo}" />      
+                                        <p:message for="ativo" />
                                     </h:panelGrid>
 
                                     <p:commandButton id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>

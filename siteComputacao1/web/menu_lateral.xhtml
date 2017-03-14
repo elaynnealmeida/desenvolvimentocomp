@@ -51,7 +51,8 @@ and open the template in the editor.
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Servidores" actionListener="#{navegacaoHelper.servidores()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Formação" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.professor_formacao()}"/>
-                                         <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Horários" actionListener="#{navegacaoHelper.horariosGeral()}"/> 
+                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
                                         <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
                                        
                                     </ul>
