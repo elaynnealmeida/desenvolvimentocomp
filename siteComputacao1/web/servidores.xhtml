@@ -22,9 +22,10 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
+        <link href="css/signin.css" rel="stylesheet"></link>
         <link href="css/mdb.min.css" rel="stylesheet"></link>
         <link href="css/layout.css" rel="stylesheet"></link>
-        <link href="css/index.css" rel="stylesheet"></link>
+        <link href="css/geral.css" rel="stylesheet"></link>
     </h:head>
     <ui:insert name="menu">
         <ui:include src="menu.xhtml"/>
@@ -104,5 +105,9 @@
             <ui:include src="footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>        
+        
     </h:body>
 </html>
