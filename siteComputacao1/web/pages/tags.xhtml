@@ -18,7 +18,7 @@
         <!-- Material Design Bootstrap -->
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
-        <link href="../css/pages/tags.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>       
@@ -101,7 +101,11 @@
         </ui:insert>
         <!--Footer-->
 
-
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
     </h:body>
 </html>
 

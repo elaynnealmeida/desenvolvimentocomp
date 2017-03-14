@@ -36,6 +36,7 @@ public class SiteComentariosController implements Serializable {
     public void init() {
         this.comentario = new SiteComentarios();
         this.comentariosDao = new SiteComentariosDAO();
+        System.out.println("noticia: "+comentario.getNoticiaId());
         noticiaDao = new SiteNoticiaDAO();
         comentarios = listar();
     }

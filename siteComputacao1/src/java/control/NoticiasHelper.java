@@ -8,7 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;  
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import model.SiteNoticia;
@@ -24,25 +24,15 @@ import org.primefaces.model.StreamedContent;
 @SessionScoped
 public class NoticiasHelper implements Serializable {
 
-    //private SiteNoticia noticia;
-    private SiteNoticiaDAO noticiaDao;
+     private SiteNoticiaDAO noticiaDao;
     private List<SiteNoticia> noticias;
     private List<SiteNoticia> noticiasFiltradas;
     
     @PostConstruct
     public void init() {
-       // this.noticia = new SiteNoticia();
         this.noticiaDao = new SiteNoticiaDAO();
         noticias = listar();
     }
-
-   /* public SiteNoticia getNoticia() {
-        return noticia;
-    }
-
-    public void setNoticia(SiteNoticia noticia) {
-        this.noticia = noticia;
-    }*/
 
     public List<SiteNoticia> listar() {
         this.noticias = noticiaDao.listarPorData();
@@ -72,7 +62,14 @@ public class NoticiasHelper implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("entrou no redirecionamento de pagina");
         String id = context.getExternalContext().getRequestParameterMap().get("noticia");
-        FacesContext.getCurrentInstance().getExternalContext().redirect("faces/comentarios.xhtml?noticia=" + id);
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/comentarios.xhtml?noticia=" + id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<SiteNoticia> getNoticias() {
@@ -104,6 +101,6 @@ public class NoticiasHelper implements Serializable {
     public void setNoticiasFiltradas(List<SiteNoticia> noticiasFiltradas) {
         this.noticiasFiltradas = noticiasFiltradas;
     }
-    
+   
     
 }

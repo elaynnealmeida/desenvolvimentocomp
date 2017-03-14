@@ -6,8 +6,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-
-
     <ui:composition>
 
         <!-- Barra do Governo -->
@@ -59,7 +57,7 @@
                                     <h:commandLink  styleClass="dropdown-item" value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
                                     <h:commandLink  styleClass="dropdown-item" value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
                                     <h:commandLink styleClass="dropdown-item"  value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
-                                    <h:commandLink styleClass="dropdown-item"  value="Professor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
+                                    <h:commandLink styleClass="dropdown-item"  value="Servidor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
                                     <h:commandLink styleClass="dropdown-item"  value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
                                     <h:commandLink  styleClass="dropdown-item" value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />
                                     <h:commandLink  styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
@@ -69,6 +67,9 @@
                                     <h:commandLink  styleClass="dropdown-item" value="Estagiário" actionListener="#{navegacaoHelper.paginaEstagiario}"  /> 
                                     <h:commandLink  styleClass="dropdown-item" value="Monitor" actionListener="#{navegacaoHelper.paginaMonitor}"  /> 
                                 </div>
+                            </li>
+                            <li>
+                                
                             </li>
                         </ul>
 
@@ -80,36 +81,22 @@
                             </h:commandLink>
                         </div>
 
-                        <h:form rendered="#{!loginController.isUser}">
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
-                                    <a href="#" style="font-size: .88em; color: #ffffff" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
-                                    <ul id="login-dp" class="dropdown-menu">
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-
-                                                    <h:form id="loginform" styleClass="form-signin" role="form">
-                                                        <h5 class="form-signin-heading">Entrar</h5>
-                                                        <p:inputText type="email" placeholder="Email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
-                                                        <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>                                                           
-                                                        <h:commandButton styleClass="btn btn-sm btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
-                                                                         action="#{loginController.login()}"/>
-                                                    </h:form>
-
-                                                    <div class="bottom text-center">
-                                                        Esqueceu a senha? <a href="#"><b>Recuperar senha</b></a>
-                                                    </div>
-
-
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                        <ul class="nav navbar-nav navbar-right nav-inline" style="margin-right: 0em">
+                        
+                            <h:form id="loginform" styleClass="form-signin" role="form" rendered="#{!loginController.isUser}" >
+                                <li class="nav-item">
+                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="height: 10px; margin-top: 1em; margin-right: 1em; width: 200px " id="Email" value="#{loginController.user.email}" required="true"/></div>
                                 </li>
-                            </ul>
-                        </h:form>
+                                <li class="nav-item">
+                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="height: 10px; margin-top: 1em; margin-right: 1em; width: 200px" required="true" placeholder="Senha" ></p:password></div>
+                                </li>
+                                <li class="nav-item">
+                                    <div> <h:commandButton class="btn btn-default btn-sm waves-effect waves-light"  id="btnSalvar" value="Entrar" 
+                                                          action="#{loginController.login()}" /> </div>                                  
+                                </li>
+                              
+                                </h:form>
+                        </ul>
                     </div>
                 </div>
             </nav>
