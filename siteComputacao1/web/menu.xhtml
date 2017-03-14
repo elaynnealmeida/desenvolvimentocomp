@@ -39,7 +39,7 @@
                             </li>-->
 
                             <li class="nav-item">
-                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Ensino" actionListener="#"/>
+                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Ensino" actionListener="#{navegacaoHelper.ensino()}"/>
                             </li>
                             <li class="nav-item">
                                 <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Pesquisa" actionListener="#{navegacaoHelper.pesquisa()}"/>
@@ -74,10 +74,10 @@
                         </ul>
 
                         <div style="color: #ffffff; text-align: right;">
-                            <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="Bem Vindo, #{loginController.user.nomecompleto}. " rendered="#{loginController.isUser}"/>
+                            <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="Bem Vindo, #{loginController.user.nomecompleto}.&nbsp;&nbsp;&nbsp;" rendered="#{loginController.isUser}"/>
 
                             <h:commandLink style="color: #ffffff; text-align: right;" action="#{loginController.logout}" rendered="#{loginController.isUser}">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                <i class="fa fa-sign-out" aria-hidden="true">Sair</i>
                             </h:commandLink>
                         </div>
 
@@ -85,10 +85,10 @@
                         
                             <h:form id="loginform" styleClass="form-signin" role="form" rendered="#{!loginController.isUser}" >
                                 <li class="nav-item">
-                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="height: 10px; margin-top: 1em; margin-right: 1em; width: 200px " id="Email" value="#{loginController.user.email}" required="true"/></div>
+                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="color: white; height: 8px; margin-top: 1em; margin-right: 1em; width: 150px " id="Email" value="#{loginController.user.email}" required="true"/></div>
                                 </li>
                                 <li class="nav-item">
-                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="height: 10px; margin-top: 1em; margin-right: 1em; width: 200px" required="true" placeholder="Senha" ></p:password></div>
+                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="color: white; height: 8px; margin-top: 1em; margin-right: 1em; width: 150px" required="true" placeholder="Senha" ></p:password></div>
                                 </li>
                                 <li class="nav-item">
                                     <div> <h:commandButton class="btn btn-default btn-sm waves-effect waves-light"  id="btnSalvar" value="Entrar" 

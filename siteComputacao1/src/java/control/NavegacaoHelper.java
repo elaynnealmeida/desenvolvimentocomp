@@ -22,6 +22,18 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+
+    public void ensino() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/menu/ensino.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }    
+    
     
     public void pesquisa() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
