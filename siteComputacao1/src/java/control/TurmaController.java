@@ -1,9 +1,11 @@
+
 package control;
 
 import dao.DisciplinaDAO;
-import dao.HorarioMonitorDAO;
-import dao.MonitorDAO;
+import dao.HorarioAulaDAO;
 import dao.SalaDAO;
+import dao.TbProfessoresDAO;
+import dao.TurmaDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +15,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
-import model.SiteHorarioMonitor;
-import model.SiteMonitor;
+import model.SiteHorarioAula;
+import model.SiteTurma;
 import model.TbDisciplina;
+import model.TbProfessores;
 import model.TbSala;
 import org.primefaces.event.SelectEvent;
 
@@ -25,41 +28,41 @@ import org.primefaces.event.SelectEvent;
  */
 @ManagedBean
 @ViewScoped
-public class MonitorController implements Serializable {
+public class TurmaController implements Serializable {
 
-    private SiteMonitor monitor;
-    private MonitorDAO monitorDao;
-    private List<SiteMonitor> monitores;
-    private List<SiteMonitor> monitoresFiltrados;
-    private List<SiteHorarioMonitor> horarios;
-    private List<SiteHorarioMonitor> horariosRemover;
-    private SiteHorarioMonitor horario;
+    private SiteTurma turma;
+    private TurmaDAO turmaDao;
+    private List<SiteTurma> turmas;
+    private List<SiteTurma> turmasFiltrados;
+    private List<SiteHorarioAula> horarios;
+    private List<SiteHorarioAula> horariosRemover;
+    private SiteHorarioAula horario;
     private boolean isEdit;
 
     @PostConstruct
     public void init() {
-        this.monitor = new SiteMonitor();
-        this.monitorDao = new MonitorDAO();
-        this.horarios = new ArrayList<SiteHorarioMonitor>();
-        this.horariosRemover = new ArrayList<SiteHorarioMonitor>();
-        this.horario = new SiteHorarioMonitor();
+        this.turma = new SiteTurma();
+        this.turmaDao = new TurmaDAO();
+        this.horarios = new ArrayList<SiteHorarioAula>();
+        this.horariosRemover = new ArrayList<SiteHorarioAula>();
+        this.horario = new SiteHorarioAula();
         this.isEdit = false;
-        monitores = listar();
+        turmas = listar();
     }
 
     public void limpar() {
-        this.monitor = new SiteMonitor();
-        this.horarios = new ArrayList<SiteHorarioMonitor>();
-        this.horariosRemover = new ArrayList<SiteHorarioMonitor>();
-        this.horario = new SiteHorarioMonitor();
+        this.turma = new SiteTurma();
+        this.horarios = new ArrayList<SiteHorarioAula>();
+        this.horariosRemover = new ArrayList<SiteHorarioAula>();
+        this.horario = new SiteHorarioAula();
         this.isEdit = false;
         listar();
     }
 
     public void salvar() {
         try {            
-            monitor.setSiteHorarioMonitorList(horarios);
-            monitorDao.salvar(monitor);
+            turma.setSiteHorarioAulaList(horarios);
+            turmaDao.salvar(turma);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com Sucesso!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -75,27 +78,27 @@ public class MonitorController implements Serializable {
         try {
             if (!this.horariosRemover.isEmpty()) {
                 for (int i = 0; i < this.horariosRemover.size(); i++) {
-                    HorarioMonitorDAO hDao = new HorarioMonitorDAO();
+                    HorarioAulaDAO hDao = new HorarioAulaDAO();
                     hDao.deletar(this.horariosRemover.get(i));
                 }
             }
-            if (monitor.getSiteHorarioMonitorList() != horarios) {
+            if (turma.getSiteHorarioAulaList() != horarios) {
                 for (int i = 0; i < this.horarios.size(); i++) {
                     if (this.horarios.get(i).getId() != null) {                        
-                        HorarioMonitorDAO hDao = new HorarioMonitorDAO();
+                        HorarioAulaDAO hDao = new HorarioAulaDAO();
                         this.horarios.get(i).setDia(atualizaDia());
                         hDao.atualizar(this.horarios.get(i));
                     } else {
                         System.out.println("Entrou no horario novo ");
-                        HorarioMonitorDAO hDao = new HorarioMonitorDAO();
+                        HorarioAulaDAO hDao = new HorarioAulaDAO();
                         horario.setDia(atualizaDia());
-                        horario.setMonitor(monitor);
+                        horario.setTurmaId(turma);
                         hDao.salvar(this.horarios.get(i));
                     }
                 }
             }
-            monitor.setSiteHorarioMonitorList(horarios);
-            monitorDao.atualizar(monitor);
+            turma.setSiteHorarioAulaList(horarios);
+            turmaDao.atualizar(turma);
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             limpar();
@@ -108,7 +111,7 @@ public class MonitorController implements Serializable {
 
     public void deletar() {
         try {
-            monitorDao.deletar(monitor);
+            turmaDao.deletar(turma);
             FacesMessage msg = new FacesMessage("Excluido com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
             limpar();
@@ -119,36 +122,39 @@ public class MonitorController implements Serializable {
         }
     }
 
-    public List<SiteMonitor> listar() {
-        this.monitores = monitorDao.listarTodos();
-        return this.monitores;
+    public List<SiteTurma> listar() {
+        this.turmas = turmaDao.listarTodos();
+        //for(int i=0;i<this.turmas.size();i++){
+         //this.turmas.get(i).setSiteHorarioAulaList(buscaHorario(turmas.get(i)));
+        //}        
+        return this.turmas;
     }
 
     public void onRowSelect(SelectEvent event) {
-        this.monitor = ((SiteMonitor) event.getObject());
-        System.out.println("horarios: " + this.monitor.getSiteHorarioMonitorList());
-        horarios.addAll(this.monitor.getSiteHorarioMonitorList());
+        this.turma = ((SiteTurma) event.getObject());
+        System.out.println("horarios: " + this.turma.getSiteHorarioAulaList());
+        horarios.addAll(this.turma.getSiteHorarioAulaList());
         this.isEdit = true;
     }
 
     public void addHorario() {
-        System.out.println("horario: " + horario.getSala().getBlocoId().getDescricao() + " - " + horario.getSala().getNomeSala() + " - " + horario.getDiaSemana() + " - " + horario.getHoraInicio() + " as " + horario.getHoraFim());
+        System.out.println("horario: " + horario.getSalaId().getBlocoId().getDescricao() + " - " + horario.getSalaId().getNomeSala() + " - " + horario.getDiaSemana() + " - " + horario.getHoraInicio() + " as " + horario.getHoraFim());
         horario.setDia(atualizaDia());
-        horario.setMonitor(monitor);
+        horario.setTurmaId(turma);
         this.horarios.add(horario);
-        this.horario = new SiteHorarioMonitor();
+        this.horario = new SiteHorarioAula();
     }
 
-    public void removeHorario(SiteHorarioMonitor h) {
+    public void removeHorario(SiteHorarioAula h) {
         System.out.println("Excluido: " + h);
         this.horarios.remove(h);
         if (h.getId() != null) {
             this.horariosRemover.add(h);
         }
-        this.horario = new SiteHorarioMonitor();
+        this.horario = new SiteHorarioAula();
     }
 
-    public void editaHorario(SiteHorarioMonitor h) {
+    public void editaHorario(SiteHorarioAula h) {
         System.out.println("horarios1 " + horarios);
         this.horario = h;
         this.horarios.remove(h);
@@ -163,6 +169,19 @@ public class MonitorController implements Serializable {
         result = disciplinaDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
             toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
+    
+    public List<SelectItem> getProfessor() {
+        System.out.println("entrou no listar professor: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        TbProfessoresDAO profDao = new TbProfessoresDAO();
+        List<TbProfessores> result = new ArrayList<TbProfessores>();
+        result = profDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getNome()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
@@ -202,52 +221,64 @@ public class MonitorController implements Serializable {
            return 7;
         }       
     }
-
-    public SiteMonitor getMonitor() {
-        return monitor;
+    
+    public List<SiteHorarioAula> buscaHorario(SiteTurma turma){
+        if(turma != null){
+        List<SiteHorarioAula> ha = new ArrayList<SiteHorarioAula>();
+        HorarioAulaDAO hDao = new HorarioAulaDAO();
+        ha = hDao.listarHorarioPorTurma(turma);
+        return ha;
+        }
+        else {
+            return null;
+        }
     }
 
-    public void setMonitor(SiteMonitor monitor) {
-        this.monitor = monitor;
+    public SiteTurma getTurma() {
+        return turma;
     }
 
-    public List<SiteMonitor> getMonitores() {
-        return monitores;
+    public void setTurma(SiteTurma turma) {
+        this.turma = turma;
     }
 
-    public void setMonitores(List<SiteMonitor> monitores) {
-        this.monitores = monitores;
+    public List<SiteTurma> getTurmas() {
+        return turmas;
     }
 
-    public List<SiteMonitor> getMonitoresFiltrados() {
-        return monitoresFiltrados;
+    public void setTurmas(List<SiteTurma> turmas) {
+        this.turmas = turmas;
     }
 
-    public void setMonitoresFiltrados(List<SiteMonitor> monitoresFiltrados) {
-        this.monitoresFiltrados = monitoresFiltrados;
+    public List<SiteTurma> getTurmasFiltrados() {
+        return turmasFiltrados;
     }
 
-    public List<SiteHorarioMonitor> getHorarios() {
+    public void setTurmasFiltrados(List<SiteTurma> turmasFiltrados) {
+        this.turmasFiltrados = turmasFiltrados;
+    }
+
+    public List<SiteHorarioAula> getHorarios() {
         return horarios;
     }
 
-    public void setHorarios(List<SiteHorarioMonitor> horarios) {
+    public void setHorarios(List<SiteHorarioAula> horarios) {
         this.horarios = horarios;
     }
 
-    public List<SiteHorarioMonitor> getHorariosRemover() {
+    public List<SiteHorarioAula> getHorariosRemover() {
         return horariosRemover;
     }
 
-    public void setHorariosRemover(List<SiteHorarioMonitor> horariosRemover) {
+    public void setHorariosRemover(List<SiteHorarioAula> horariosRemover) {
         this.horariosRemover = horariosRemover;
     }
 
-    public SiteHorarioMonitor getHorario() {
+    public SiteHorarioAula getHorario() {
         return horario;
     }
 
-    public void setHorario(SiteHorarioMonitor horario) {
+    public void setHorario(SiteHorarioAula horario) {
         this.horario = horario;
     }
 
@@ -258,5 +289,5 @@ public class MonitorController implements Serializable {
     public void setIsEdit(boolean isEdit) {
         this.isEdit = isEdit;
     }
-
+    
 }

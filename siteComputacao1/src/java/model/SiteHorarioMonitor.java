@@ -1,9 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +33,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteHorarioMonitor.findByHoraInicio", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.horaInicio = :horaInicio"),
     @NamedQuery(name = "SiteHorarioMonitor.findByHoraFim", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.horaFim = :horaFim"),
     @NamedQuery(name = "SiteHorarioMonitor.findByDiaSemana", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.diaSemana = :diaSemana"),
-    @NamedQuery(name = "SiteHorarioMonitor.findByAtivo", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.ativo = :ativo")})
+    @NamedQuery(name = "SiteHorarioMonitor.findByAtivo", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.ativo = :ativo"),
+    @NamedQuery(name = "SiteHorarioMonitor.findBySemestre", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.semestre = :semestre"),
+    @NamedQuery(name = "SiteHorarioMonitor.findByAno", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.ano = :ano"),
+    @NamedQuery(name = "SiteHorarioMonitor.findByDia", query = "SELECT s FROM SiteHorarioMonitor s WHERE s.dia = :dia")})
 public class SiteHorarioMonitor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,6 +56,12 @@ public class SiteHorarioMonitor implements Serializable {
     private String diaSemana;
     @Column(name = "ativo")
     private Boolean ativo;
+    @Column(name = "semestre")
+    private Integer semestre;
+    @Column(name = "ano")
+    private Integer ano;
+    @Column(name = "dia")
+    private Integer dia;
     @JoinColumn(name = "monitor", referencedColumnName = "id")
     @ManyToOne
     private SiteMonitor monitor;
@@ -102,6 +114,30 @@ public class SiteHorarioMonitor implements Serializable {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
+
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    public Integer getDia() {
+        return dia;
+    }
+
+    public void setDia(Integer dia) {
+        this.dia = dia;
     }
 
     public SiteMonitor getMonitor() {

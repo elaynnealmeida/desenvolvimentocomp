@@ -53,6 +53,7 @@ public class HorarioServidorController implements Serializable {
 
     public void salvar() {
         try {
+            horario.setDia(atualizaDia());
             horario.setServidorId(buscaProf());
             horarioDAO.salvar(horario);
             limpar();
@@ -68,6 +69,7 @@ public class HorarioServidorController implements Serializable {
 
     public void atualizar() {
         try {            
+            horario.setDia(atualizaDia());
             horarioDAO.atualizar(horario);
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -124,6 +126,28 @@ public class HorarioServidorController implements Serializable {
         return toReturn;
     }
 
+    public Integer atualizaDia(){
+        System.out.println("dia escolhido:----------------------"+horario.getDiaSemana());
+        if(horario.getDiaSemana().equals("Segunda-Feira")){
+           return 2;
+        }
+        else if(horario.getDiaSemana().equals("Terça-Feira")){
+            return 3;
+        }
+        else if(horario.getDiaSemana().equals("Quarta-Feira")){
+            return 4;
+        }
+        else if(horario.getDiaSemana().equals("Quinta-Feira")){
+            return 5;
+        }
+       else if(horario.getDiaSemana().equals("Sexta-Feira")){
+            return 6;
+        }
+       else{
+           return 7;
+        }       
+    }
+    
     public List<SiteHorarioServidor> getHorarios() {
         return horarios;
     }

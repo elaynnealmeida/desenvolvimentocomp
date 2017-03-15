@@ -6,7 +6,6 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,7 +33,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SiteHorario.findByHoraInicio", query = "SELECT s FROM SiteHorario s WHERE s.horaInicio = :horaInicio"),
     @NamedQuery(name = "SiteHorario.findByHoraFim", query = "SELECT s FROM SiteHorario s WHERE s.horaFim = :horaFim"),
     @NamedQuery(name = "SiteHorario.findByDiaSemana", query = "SELECT s FROM SiteHorario s WHERE s.diaSemana = :diaSemana"),
-    @NamedQuery(name = "SiteHorario.findByAtivo", query = "SELECT s FROM SiteHorario s WHERE s.ativo = :ativo")})
+    @NamedQuery(name = "SiteHorario.findByAtivo", query = "SELECT s FROM SiteHorario s WHERE s.ativo = :ativo"),
+    @NamedQuery(name = "SiteHorario.findBySemestre", query = "SELECT s FROM SiteHorario s WHERE s.semestre = :semestre"),
+    @NamedQuery(name = "SiteHorario.findByAno", query = "SELECT s FROM SiteHorario s WHERE s.ano = :ano"),
+    @NamedQuery(name = "SiteHorario.findByDia", query = "SELECT s FROM SiteHorario s WHERE s.dia = :dia")})
 public class SiteHorario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,6 +56,12 @@ public class SiteHorario implements Serializable {
     private String diaSemana;
     @Column(name = "ativo")
     private Boolean ativo;
+    @Column(name = "semestre")
+    private Integer semestre;
+    @Column(name = "ano")
+    private Integer ano;
+    @Column(name = "dia")
+    private Integer dia;
     @JoinColumn(name = "estagiario_id", referencedColumnName = "id")
     @ManyToOne
     private SiteEstagiarios estagiarioId;
@@ -110,6 +116,30 @@ public class SiteHorario implements Serializable {
         this.ativo = ativo;
     }
 
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
+
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    public Integer getDia() {
+        return dia;
+    }
+
+    public void setDia(Integer dia) {
+        this.dia = dia;
+    }
+
     public SiteEstagiarios getEstagiarioId() {
         return estagiarioId;
     }
@@ -148,8 +178,7 @@ public class SiteHorario implements Serializable {
 
     @Override
     public String toString() {
-        return this.diaSemana+" Bloco: "+this.sala.getBlocoId().getDescricao()+" Sala: "+this.sala.getNomeSala()+" das "+this.horaInicio+" as "+this.horaFim;
+        return "model.SiteHorario[ id=" + id + " ]";
     }
-
     
 }
