@@ -13,7 +13,7 @@
                     <div class="col-md-3 offset-lg-1 hidden-lg-down">
                         <h:form>
                             <div class="navbar-header ">
-                                <div class="flutua ">   
+                                <div class="flutua">   
                                     <div class="letra-pequenaBarra">
                                         <h:outputText value="#{loginController.user.nomecompleto}" rendered="#{loginController.isUser}"/>
                                         <br></br>
@@ -21,11 +21,12 @@
                                     </div>
 
 
-                                    <br></br>
-                                    <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
-                                                    rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
-                                        <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
-                                    </p:autoComplete> 
+                                    <div style="">
+                                        <p:autoComplete id="dd" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                                        rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
+                                            <p:ajax event="itemSelect" listener="#{loginController.confirmar}" />
+                                        </p:autoComplete> 
+                                    </div>
                                 </div> 
                             </div>
                         </h:form>

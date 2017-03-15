@@ -8,8 +8,8 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
-         <f:metadata>
-             <f:viewAction action="#{servidorInfo.serv}" />
+        <f:metadata>
+            <f:viewAction action="#{servidorInfo.serv}" />
         </f:metadata>
         <title>Informações</title>
         <meta charset="utf-8" />
@@ -30,71 +30,114 @@
         </ui:insert>
     </ui:insert>
     <h:body> 
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+                    <div class="col-lg-9">
+                        <!--Post-->
 
-        <ui:insert name="menu_lateral">
-            <ui:include src="menu_lateral.xhtml"></ui:include>
-        </ui:insert>
+                        <h:form>       
+                            <h1 >
+                                <h:outputText value="#{servidorInfo.servidor.idProfessor.nome}" /><br></br>
+                            </h1>
 
-        <h:form>                            
-            <p:graphicImage  styleClass="view overlay hm-white-light z-depth-1-half" value="#{servidoresHelper.image}" style="    max-width:100%;
-                             max-height:100%;
-                             width: 100px;
-                             height: 100px;">
-                <f:param name="servidor" value="#{servidorInfo.servidor.id}" />
-            </p:graphicImage>  
-             <p:graphicImage style="    max-width:100%;
-                                                                                                             max-height:100%;
-                                                                                                             width: 100px;
-                                                                                                             height: 100px;" value="#{resource['img/sem_foto.jpg']}"
-                                                                                                             rendered="#{servidorInfo.servidor.foto==null}"
-                                                                                                             >                                                   
-                                                </p:graphicImage>
 
-            <h:outputText value="#{servidorInfo.servidor.idProfessor.nome}" /><br></br>
+                            <hr>
+                                <p style="float: left; margin-left: 0px" >
+                                    <p:graphicImage  styleClass="view overlay hm-white-light z-depth-1-half" value="#{servidoresHelper.image}" style="    max-width:100%;
+                                                     max-height:165%;
+                                                     width: 127px;
+                                                     height: 165px;">
+                                        <f:param name="servidor" value="#{servidorInfo.servidor.id}" />
+                                    </p:graphicImage>  
+                                    <p:graphicImage style="    max-width:100%;
+                                                    max-height:165%;
+                                                    width: 127px;
+                                                    height: 165px;" value="#{resource['img/sem_foto.jpg']}"
+                                                    rendered="#{servidorInfo.servidor.foto==null}"
+                                                    >                                                   
+                                    </p:graphicImage>
 
-            <h:outputText value="Lattes: " />
-            <p:commandLink value="#{servidorInfo.servidor.lattes}" /><br></br>
+                                    <div style="margin-left: 147px">
 
-            <h:outputText value="Email: " />
-            <h:outputText value="#{servidorInfo.servidor.idProfessor.email}" /><br></br>
+                                        <p>
+                                            <h:outputText value="Lattes: " style="font-weight:bold" />
+                                            <p:commandLink value="#{servidorInfo.servidor.lattes}" />
+                                        </p>
+                                        <p>
+                                            <h:outputText value="Email: " style="font-weight:bold" />
+                                            <h:outputText value="#{servidorInfo.servidor.idProfessor.email}" />
+                                        </p>
+                                        <p>
+                                            <h:outputText value="Endereço Profissional: "  style="font-weight:bold"/>
+                                            <h:outputText value="#{servidorInfo.servidor.enderecoProfissional}" />
+                                        </p>
+                                        <p>
+                                            <h:outputText value="Telefone: "  style="font-weight:bold"/>
+                                            <h:outputText value="#{servidorInfo.servidor.telefoneProfissional}" />
+                                        </p>
+                                    </div>
+                                </p>
+                            </hr>
+                            
+                            <br></br>
 
-            <h:outputText value="Endereço Profissional: " />
-            <h:outputText value="#{servidorInfo.servidor.enderecoProfissional}" /><br></br>
+                            <hr>
+                                <h3>
+                                    <h:outputText value="Formação " style="font-weight:bold"/>
+                                </h3>
+                            </hr>
+                            <hr>
 
-            <h:outputText value="Telefone: " />
-            <h:outputText value="#{servidorInfo.servidor.telefoneProfissional}" /><br></br>
+                                <c:forEach var="formacao" items="${servidorInfo.formacaoList}" varStatus="id">
+                                    <br></br>
+                                    <h5>
+                                        <h:outputText value="#{formacao.formacaoId.descricao}" />
+                                    </h5>
+                                    <h:outputText value=" #{formacao.descricao} " />
+                                    <h:outputText value="de #{formacao.dtInicio} " />
+                                    <h:outputText value="a #{formacao.dtFim}" />
+                                    <br></br>
+                                </c:forEach>
 
-            <h:outputText value="Formação: " /><br></br>
+                            </hr>
 
-            <c:forEach var="formacao" items="${servidorInfo.formacaoList}" varStatus="id">
+                            <hr>
+                                <h3>
+                                    <h:outputText value="Área de Atuação:" style="font-weight:bold"/> 
+                                </h3>
+                            </hr>
 
-                <h:outputText value="#{formacao.formacaoId.descricao}" />
-                <h:outputText value=" em #{formacao.descricao} " />
-                <h:outputText value="de #{formacao.dtInicio} " />
-                <h:outputText value="a #{formacao.dtFim}" />
-                <br></br>
-            </c:forEach>
-            <br></br>
-            <h:outputText value="Área de Atuação:" /> <br></br>
-            <h:outputText value="#{servidorInfo.servidor.areaAtuacao}" /><br></br>
+                            <hr>
+                                <h:outputText value="#{servidorInfo.servidor.areaAtuacao}" style="font-weight:bold" /><br></br>
 
-            <h:outputText value="Horários: " /><br></br>
-            <c:forEach var="horario" items="${servidorInfo.horarioList}" varStatus="id">
+                                <h:outputText value="Horários: " style="font-weight:bold"/><br></br>
+                                <c:forEach var="horario" items="${servidorInfo.horarioList}" varStatus="id">
 
-                <h:outputText value="#{horario.diaSemana}, " />
-                <h:outputText value="Bloco #{horario.sala.blocoId.descricao} - Sala #{horario.sala.nomeSala} " />
-                <h:outputText value="das #{horario.horaInicio} " />
-                <h:outputText value="a #{horario.horaFim} horas" />
-                <br></br>
-            </c:forEach>
-        </h:form>
-
-        <br></br>
+                                    <h:outputText value="#{horario.diaSemana}, " />
+                                    <h:outputText value="Bloco #{horario.sala.blocoId.descricao} - Sala #{horario.sala.nomeSala} " />
+                                    <h:outputText value="das #{horario.horaInicio} " />
+                                    <h:outputText value="a #{horario.horaFim} horas" />
+                                    <br></br>
+                                </c:forEach>
+                            </hr>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
 
         <ui:insert name="footer" >
             <ui:include src="footer.xhtml"/>   
         </ui:insert>
-        
+
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   
         </ui:insert>        

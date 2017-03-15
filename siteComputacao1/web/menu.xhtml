@@ -81,18 +81,20 @@
                             </h:commandLink>
                         </div>
 
-                        <ul class="nav navbar-nav navbar-right nav-inline" style="margin-right: 0em">
+                        <ul class="nav navbar-nav navbar-right nav-inline" style="margin-right: 0em; margin-bottom: -10px; margin-top: -10px">
                         
                             <h:form id="loginform" styleClass="form-signin" role="form" rendered="#{!loginController.isUser}" >
                                 <li class="nav-item">
-                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="color: white; height: 8px; margin-top: 1em; margin-right: 1em; width: 150px " id="Email" value="#{loginController.user.email}" required="true"/></div>
+                                    <label style="color: white; margin-bottom: 0px; margin-left: -5px">Email: </label>
+                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="color: white; height: 8px; margin-top: 0em; margin-right: 1em; width: 150px " id="Email" value="#{loginController.user.email}" required="true"/></div>
                                 </li>
                                 <li class="nav-item">
-                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="color: white; height: 8px; margin-top: 1em; margin-right: 1em; width: 150px" required="true" placeholder="Senha" ></p:password></div>
+                                    <label style="color: white; margin-bottom: 0px; margin-left: -5px">Senha:</label>
+                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="color: white; height: 8px; margin-top: 0em; margin-right: 1em; width: 150px" required="true" placeholder="Senha" ></p:password></div>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" style="margin-top: 17px">
                                     <div> <h:commandButton class="btn btn-default btn-sm waves-effect waves-light"  id="btnSalvar" value="Entrar" 
-                                                          action="#{loginController.login()}" /> </div>                                  
+                                                           action="#{loginController.login()}" /> </div>                                  
                                 </li>
                               
                                 </h:form>
