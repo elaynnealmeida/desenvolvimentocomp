@@ -212,14 +212,8 @@
                                 <h:form id="formforariosp">
                                     <h:outputText value="Cadastro de Horários "/>
                                     <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                                        <h:outputText value="Tipo de Horário: "/>
-                                        <p:selectOneMenu id="tphorario" value="#{horarioServidorController.horario.tipohorario}" style="width:125px">
-                                            <f:selectItem itemLabel="Aula" itemValue="Aula" />
-                                            <f:selectItem itemLabel="Atendimento" itemValue="Atendimento" />                               
-                                        </p:selectOneMenu>
-                                        <p:message for="tphorario" />*
-
-                                        <h:outputText value="Semestre: "/>
+                                        
+                                        <h:outputText value="Semestre Letivo: "/>
                                         <p:inputText id="semestre"  value="#{horarioServidorController.horario.semestre}"/>      
                                         <p:message for="semestre" />*
 

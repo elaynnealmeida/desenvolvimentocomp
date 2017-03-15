@@ -19,7 +19,7 @@
         <!-- Material Design Bootstrap -->
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
-        <link href="../css/pages/monitor.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
@@ -75,7 +75,7 @@
                                 <p:message for="ativo" /><br></br>
                                 
                                 <h:outputText value="Semestre: "/>
-                                <p:inputText id="semestre"  value="#{monitorController.horario.perido}"/>      
+                                <p:inputText id="semestre"  value="#{monitorController.horario.semestre}"/>      
                                         <p:message for="semestre" />*
                                         
                                         <h:outputText value="Ano Letivo: "/>
