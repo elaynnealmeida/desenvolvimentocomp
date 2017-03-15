@@ -36,7 +36,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteHorarioServidor.findByAtivo", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ativo = :ativo"),
     @NamedQuery(name = "SiteHorarioServidor.findBySemestre", query = "SELECT s FROM SiteHorarioServidor s WHERE s.semestre = :semestre"),
     @NamedQuery(name = "SiteHorarioServidor.findByAno", query = "SELECT s FROM SiteHorarioServidor s WHERE s.ano = :ano"),
-    @NamedQuery(name = "SiteHorarioServidor.findByTipohorario", query = "SELECT s FROM SiteHorarioServidor s WHERE s.tipohorario = :tipohorario"),
     @NamedQuery(name = "SiteHorarioServidor.findByDia", query = "SELECT s FROM SiteHorarioServidor s WHERE s.dia = :dia")})
 public class SiteHorarioServidor implements Serializable {
 
@@ -61,9 +60,6 @@ public class SiteHorarioServidor implements Serializable {
     private Integer semestre;
     @Column(name = "ano")
     private Integer ano;
-    @Size(max = 2147483647)
-    @Column(name = "tipohorario")
-    private String tipohorario;
     @Column(name = "dia")
     private Integer dia;
     @JoinColumn(name = "servidor_id", referencedColumnName = "id")
@@ -134,14 +130,6 @@ public class SiteHorarioServidor implements Serializable {
 
     public void setAno(Integer ano) {
         this.ano = ano;
-    }
-
-    public String getTipohorario() {
-        return tipohorario;
-    }
-
-    public void setTipohorario(String tipohorario) {
-        this.tipohorario = tipohorario;
     }
 
     public Integer getDia() {

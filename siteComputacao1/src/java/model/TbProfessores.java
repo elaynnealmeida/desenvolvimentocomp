@@ -38,6 +38,9 @@ import org.hibernate.annotations.Cascade;
     @NamedQuery(name = "TbProfessores.findByAtivo", query = "SELECT t FROM TbProfessores t WHERE t.ativo = :ativo")})
 public class TbProfessores implements Serializable {
 
+    @OneToMany(mappedBy = "professorId")
+    private List<SiteTurma> siteTurmaList;
+
     @OneToMany(mappedBy = "servidorId")
     private List<SiteHorarioServidor> siteHorarioServidorList;
 
@@ -186,6 +189,15 @@ public class TbProfessores implements Serializable {
 
     public void setSiteHorarioServidorList(List<SiteHorarioServidor> siteHorarioServidorList) {
         this.siteHorarioServidorList = siteHorarioServidorList;
+    }
+
+    @XmlTransient
+    public List<SiteTurma> getSiteTurmaList() {
+        return siteTurmaList;
+    }
+
+    public void setSiteTurmaList(List<SiteTurma> siteTurmaList) {
+        this.siteTurmaList = siteTurmaList;
     }
     
 }

@@ -22,6 +22,18 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+
+    public void ensino() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/menu/ensino.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }    
+    
     
     public void pesquisa() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
@@ -479,6 +491,17 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/faces/pages/monitor.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
+     
+     public void paginaTurma() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/turma.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
