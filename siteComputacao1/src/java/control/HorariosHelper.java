@@ -3,6 +3,7 @@ package control;
 
 import dao.EstagiarioDAO;
 import dao.HorarioAulaDAO;
+import dao.HorarioMonitorDAO;
 import dao.HorarioServidorDAO;
 import dao.MonitorDAO;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import model.SiteEstagiarios;
 import model.SiteHorarioAula;
+import model.SiteHorarioMonitor;
 import model.SiteHorarioServidor;
 import model.SiteMonitor;
 
@@ -32,7 +34,7 @@ public class HorariosHelper implements Serializable {
     private List<SiteHorarioAula> aulas;
     private List<SiteMonitor> monitores;
     private List<SiteEstagiarios> estagiarios;
-    private String tamanhoAula;
+    private String tamanhoAula;   
 
     @PostConstruct
     public void init() {
@@ -66,10 +68,10 @@ public class HorariosHelper implements Serializable {
      public List<SiteMonitor> listarMonitores() {
         this.monitores = monitorDao.listarTodosAtivos();
         return this.monitores;
-    }
+    }    
      
       public List<SiteEstagiarios> listarEstagiarios() {
-        this.estagiarios = estagiarioDao.listarTodosAtivos();
+        this.estagiarios = estagiarioDao.listarHorarioAtual();
         return this.estagiarios;
     }
 
@@ -120,5 +122,5 @@ public class HorariosHelper implements Serializable {
     public void setDocentes(List<SiteHorarioServidor> docentes) {
         this.docentes = docentes;
     }
-    
+
 }
