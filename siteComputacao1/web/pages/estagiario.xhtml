@@ -30,96 +30,101 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formestagiario">
-                            <h:outputText value="Cadastro de Estagiários "/>
+                            <h2>
+                                <h:outputText value="Cadastro de Estagiários "/>
+                            </h2>
                             <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Nome: "/>
+                                <h:outputText value="Nome: " style="font-weight:bold"/>
                                 <h:inputText id="nome" value="#{estagiarioController.estagiario.nome}"
                                              required="true" />*
                                 <p:message for="nome" />
 
-                                <h:outputText value="Matricula: "/>
+                                <h:outputText value="Matricula: " style="font-weight:bold"/>
                                 <h:inputText id="matricula" value="#{estagiarioController.estagiario.matricula}"
                                              required="true" />*
-                                <p:message for="matricula" />
+                                <h:message for="matricula" />
 
-                                <h:outputText value="Email: "/>
+                                <h:outputText value="Email: " style="font-weight:bold"/>
                                 <h:inputText id="email" value="#{estagiarioController.estagiario.email}"
                                              required="true" />*
                                 <p:message for="email" />
 
-                                <h:outputText value="Data de Inicio: "/>
+                                <h:outputText value="Data de Inicio: " style="font-weight:bold"/>
                                 <p:inputMask id="dtinicio" value="#{estagiarioController.estagiario.dataInicio}" mask="99/99/9999" />      
-                                <p:message for="dtinicio" />*
+                                <h:message for="dtinicio" />*
 
-                                <h:outputText value="Data de Finalização: "/>
+                                <h:outputText value="Data de Finalização: " style="font-weight:bold"/>
                                 <p:inputMask id="dtfim"  value="#{estagiarioController.estagiario.dataFim}" mask="99/99/9999"/>      
-                                <p:message for="dtfim" />*
+                                <h:message for="dtfim" />*
 
-                                <h:outputText value="Ativo: "/>
+                                <h:outputText value="Ativo: " style="font-weight:bold"/>
                                 <h:selectBooleanCheckbox id="ativo" value="#{estagiarioController.estagiario.ativo}" />      
-                                <p:message for="ativo" /><br></br>
-                                
-                                <h:outputText value="Semestre: "/>
+                                <h:message for="ativo" /><br></br>
+
+                                <h:outputText value="Semestre: " style="font-weight:bold"/>
                                 <p:inputText id="semestre"  value="#{estagiarioController.horario.semestre}" />      
-                                        <p:message for="semestre" />*
-                                        
-                                        <h:outputText value="Ano Letivo: "/>
-                                        <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
-                                        <p:message for="ano" />*
-                                
-                                 <h:outputText value="Sala: "/>
-                                 <p:selectOneMenu id="sala" value="#{estagiarioController.horario.sala}"  
+                                <h:message for="semestre" />*
+
+                                <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
+                                <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
+                                <h:message for="ano" />*
+
+                                <h:outputText value="Sala: " style="font-weight:bold"/>
+                                <h:selectOneMenu class="form-control" id="sala" value="#{estagiarioController.horario.sala}"  
                                                  requiredMessage="Campo Obrigatório"
                                                  required="true"
                                                  converter="SalaConverter"
                                                  >
-                                     <f:selectItems value="#{estagiarioController.sala}" 
+                                    <f:selectItems value="#{estagiarioController.sala}" 
                                                    var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                                </p:selectOneMenu>*  
-                                <p:message for="sala" />  
+                                </h:selectOneMenu>*  
+                                <h:message for="sala" />  
 
-                                <h:outputText value="Hora Inicio: "/>
+                                <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
                                 <p:inputMask id="hrinicio"  value="#{estagiarioController.horario.horaInicio}" mask="99:99"/>      
-                                <p:message for="hrinicio" />*
+                                <h:message for="hrinicio" />*
 
-                                <h:outputText value="Hora Fim: "/>
+                                <h:outputText value="Hora Fim: " style="font-weight:bold"/>
                                 <p:inputMask id="hrfim"  value="#{estagiarioController.horario.horaFim}" mask="99:99"/>      
-                                <p:message for="hrfim" />*
+                                <h:message for="hrfim" />*
 
-                                <h:outputText value="Dia da semana: "/>
-                                <p:selectOneMenu id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:125px">
+                                <h:outputText value="Dia da semana: " style="font-weight:bold"/>
+                                <h:selectOneMenu class="form-control" id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:125px">
                                     <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
                                     <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
                                     <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
                                     <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
                                     <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
                                     <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
-                                </p:selectOneMenu>
-                                <p:message for="dia" />*
-                                
-                                <h:outputText value="Ativo: "/>
-                                <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
-                                <p:message for="ativoh" /><br></br>
+                                </h:selectOneMenu>
+                                <h:message for="dia" />*
 
-                                <p:commandButton id="btnAdd" value="+"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
-                              
-                                    <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
-                                        <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
-                                        <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> 
-                                        <p:commandButton id="btnEditar" value="Editar" action="#{estagiarioController.editaHorario(hor)}" update=":formestagiario"/>                                        
-                                        <p:commandButton id="btnRemove" value="Remove" action="#{estagiarioController.removeHorario(hor)}" update=":formestagiario"/>
-                                     </c:forEach>
-                               
+                                <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
+                                <h:message for="ativoh" /><br></br>
+
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Estagiário"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
+
+                                <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
+                                    <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
+                                    <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{estagiarioController.editaHorario(hor)}" update=":formestagiario"/>                                        
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{estagiarioController.removeHorario(hor)}" update=":formestagiario"/>
+                                </c:forEach>
+
                             </h:panelGrid>
 
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{estagiarioController.limpar}" update=":formestagiario"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{estagiarioController.limpar}" update=":formestagiario"/>
                             <br></br> <br></br>
 
                             <p:dataTable var="var" value="#{estagiarioController.estagiarios}"
@@ -131,10 +136,12 @@
                                          paginator="true"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                          rowsPerPageTemplate="5,10,15"
+                                         class="table table-bordered table-striped"
+                                         style="border-width: medium"
                                          >
                                 <f:facet name="header">
                                     <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
+                                        <h:outputText value="Pesquisar:"  style="font-weight:bold"/>
                                         <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
                                                      style="width:150px" placeholder="Nome"
                                                      />
@@ -148,7 +155,7 @@
                                 <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
                                     <h:outputText value="#{var.nome}" />
                                 </p:column>
-                                
+
                                 <p:column headerText="Horários"  >
                                     <h:outputText value="#{var.siteHorarioList}" />
                                 </p:column>
@@ -179,7 +186,7 @@
         <ui:insert name="footer" >
             <ui:include src="../footer.xhtml"/>   
         </ui:insert>
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

@@ -35,22 +35,34 @@
                     <ui:insert name="menu_lateral">
                         <ui:include src="menu_lateral.xhtml"></ui:include>
                     </ui:insert>
-                    <h:form id="formdocumentos">
-                        <h:outputText value="Documentos Para Download  " />  <br></br><br></br>        
-                        <c:forEach var="doc" items="${documentosHelper.documentos}" varStatus="id" >
 
-                            <h:outputText value="#{doc.titulo}  " />                 
+                    <div class="col-lg-9">
 
-                            <p:commandButton value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                                <p:fileDownload value="#{documentosHelper.download(doc)}" />
-                            </p:commandButton>               
+                        <h:form id="formdocumentos">
+                            <h1>
+                                <h:outputText value="Documentos Para Download  " /> 
+                            </h1>
+                            <hr>
+                                <c:forEach var="doc" items="${documentosHelper.documentos}" varStatus="id" >
+                                    <hr>
+                                        <h4>
+                                            <h:outputText value="#{doc.titulo}:  " />  
+                                        </h4>
 
-                            <h:outputText value="  #{doc.tamanhoDoArquivo} bytes," />
-                            <h:outputText value=" postado em:  #{doc.dataInclusao}" />
-                            <br></br><br></br>
-                        </c:forEach>
+                                        <p:commandButton class="btn btn-primary btn-md" value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                            <p:fileDownload value="#{documentosHelper.download(doc)}" />
+                                        </p:commandButton>               
+                                        
+                                        <p style="font-size: small">
+                                            <h:outputText value="  #{doc.tamanhoDoArquivo} bytes" /><br></br>
+                                            <h:outputText value=" postado em:  #{doc.dataInclusao}" />
+                                        </p>
+                                    </hr>
+                                </c:forEach>
+                            </hr>
 
-                    </h:form>
+                        </h:form>
+                    </div>
                 </div>
             </div>
             <!--/.Main layout-->
