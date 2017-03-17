@@ -39,140 +39,149 @@
                             <h2>
                                 <h:outputText value="Cadastro de Monitores "/>
                             </h2>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Nome: " style="font-weight:bold"/>
-                                <h:inputText id="nome" value="#{monitorController.monitor.nome}"
-                                             required="true" />*
-                                <h:message for="nome" />
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Matricula: " style="font-weight:bold"/>
-                                <h:inputText id="matricula" value="#{monitorController.monitor.matricula}"
-                                             required="true" />*
-                                <h:message for="matricula" />
+                                    <h:outputText value="Nome: " style="font-weight:bold"/>
+                                    <h:inputText id="nome" value="#{monitorController.monitor.nome}"
+                                                 required="true" />*
+                                    <h:message for="nome" />
 
-                                <h:outputText value="Email: " style="font-weight:bold"/>
-                                <h:inputText id="email" value="#{monitorController.monitor.email}"
-                                             required="true" />*
-                                <p:message for="email" />
+                                    <h:outputText value="Matricula: " style="font-weight:bold"/>
+                                    <h:inputText id="matricula" value="#{monitorController.monitor.matricula}"
+                                                 required="true" />*
+                                    <h:message for="matricula" />
 
-                                <h:outputText value="Disciplina: " style="font-weight:bold"/>
-                                <h:selectOneMenu class="form-control" id="disciplina" value="#{monitorController.monitor.disciplina}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="DisciplinaConverter"
-                                                 >
-                                    <f:selectItems value="#{monitorController.disciplina}" 
-                                                   var="disciplina" itemLabel="#{disciplina}" itemValue="#{disciplina}" />                                       
-                                </h:selectOneMenu>*  
-                                <h:message for="disciplina" />  
+                                    <h:outputText value="Email: " style="font-weight:bold"/>
+                                    <h:inputText id="email" value="#{monitorController.monitor.email}"
+                                                 required="true" />*
+                                    <p:message for="email" />
 
-                                <h:outputText value="Data de Inicio: " style="font-weight:bold"/>
-                                <p:inputMask id="dtinicio" value="#{monitorController.monitor.dataInicio}" mask="99/99/9999" />      
-                                <h:message for="dtinicio" />*
+                                    <h:outputText value="Disciplina: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="disciplina" value="#{monitorController.monitor.disciplina}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="DisciplinaConverter"
+                                                     >
+                                        <f:selectItems value="#{monitorController.disciplina}" 
+                                                       var="disciplina" itemLabel="#{disciplina}" itemValue="#{disciplina}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="disciplina" />  
 
-                                <h:outputText value="Data de Finalização: " style="font-weight:bold"/>
-                                <p:inputMask id="dtfim"  value="#{monitorController.monitor.dataFim}" mask="99/99/9999"/>      
-                                <p:message for="dtfim" />*
+                                    <h:outputText value="Data de Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtinicio" value="#{monitorController.monitor.dataInicio}" mask="99/99/9999" />      
+                                    <h:message for="dtinicio" />*
 
-                                <h:outputText value="Ativo: " style="font-weight:bold"/>
-                                <h:selectBooleanCheckbox id="ativo" value="#{monitorController.monitor.ativo}" />      
-                                <p:message for="ativo" /><br></br>
+                                    <h:outputText value="Data de Finalização: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtfim"  value="#{monitorController.monitor.dataFim}" mask="99/99/9999"/>      
+                                    <p:message for="dtfim" />*
 
-                                <h:outputText value="Semestre: " style="font-weight:bold"/>
-                                <p:inputText id="semestre"  value="#{monitorController.horario.semestre}"/>      
-                                <p:message for="semestre" />*
+                                    <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativo" value="#{monitorController.monitor.ativo}" />      
+                                    <p:message for="ativo" /><br></br>
 
-                                <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
-                                <p:inputText id="ano"  value="#{monitorController.horario.ano}" />      
-                                <p:message for="ano" />*
+                                    <h:outputText value="Semestre: " style="font-weight:bold"/>
+                                    <p:inputText id="semestre"  value="#{monitorController.horario.semestre}"/>      
+                                    <p:message for="semestre" />*
 
-                                <h:outputText value="Sala: " style="font-weight:bold"/>
-                                <h:selectOneMenu class="form-control" id="sala" value="#{monitorController.horario.sala}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="SalaConverter"
-                                                 >
-                                    <f:selectItems value="#{monitorController.sala}" 
-                                                   var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                                </h:selectOneMenu>*  
-                                <h:message for="sala" />  
+                                    <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
+                                    <p:inputText id="ano"  value="#{monitorController.horario.ano}" />      
+                                    <p:message for="ano" />*
 
-                                <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
-                                <p:inputMask id="hrinicio"  value="#{monitorController.horario.horaInicio}" mask="99:99"/>      
-                                <h:message for="hrinicio" />*
+                                    <h:outputText value="Sala: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="sala" value="#{monitorController.horario.sala}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="SalaConverter"
+                                                     >
+                                        <f:selectItems value="#{monitorController.sala}" 
+                                                       var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="sala" />  
 
-                                <h:outputText value="Hora Fim: " style="font-weight:bold"/>
-                                <p:inputMask id="hrfim"  value="#{monitorController.horario.horaFim}" mask="99:99"/>      
-                                <h:message for="hrfim" />*
+                                    <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrinicio"  value="#{monitorController.horario.horaInicio}" mask="99:99"/>      
+                                    <h:message for="hrinicio" />*
 
-                                <h:outputText value="Dia da semana: " style="font-weight:bold"/>
-                                <h:selectOneMenu class="form-control" id="dia" value="#{monitorController.horario.diaSemana}" style="width:125px">
-                                    <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
-                                    <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
-                                    <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
-                                    <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
-                                    <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
-                                    <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
-                                </h:selectOneMenu>
-                                <h:message for="dia" />*
+                                    <h:outputText value="Hora Fim: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrfim"  value="#{monitorController.horario.horaFim}" mask="99:99"/>      
+                                    <h:message for="hrfim" />*
 
-                                <h:outputText value="Horário Ativo: " style="font-weight:bold"/>
-                                <h:selectBooleanCheckbox id="ativoh" value="#{monitorController.horario.ativo}" />      
-                                <h:message for="ativoh" /><br></br>
+                                    <h:outputText value="Dia da semana: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="dia" value="#{monitorController.horario.diaSemana}" style="width:125px">
+                                        <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                                        <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                                        <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                                        <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                                        <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                                        <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                    </h:selectOneMenu>
+                                    <h:message for="dia" />*
 
-                                <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar monitor"  action="#{monitorController.addHorario}" update=":formmonitor"/><br></br>
+                                    <h:outputText value="Horário Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativoh" value="#{monitorController.horario.ativo}" />      
+                                    <h:message for="ativoh" /><br></br>
 
-                                <c:forEach var="hor" items="${monitorController.horarios}" varStatus="id">
-                                    <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
-                                    <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
-                                    <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{monitorController.editaHorario(hor)}" update=":formmonitor"/>                                        
-                                    <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{monitorController.removeHorario(hor)}" update=":formmonitor"/>
-                                </c:forEach>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar monitor"  action="#{monitorController.addHorario}" update=":formmonitor"/><br></br>
 
-                            </h:panelGrid>
+                                    <c:forEach var="hor" items="${monitorController.horarios}" varStatus="id">
+                                        <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
+                                        <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
+                                        <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{monitorController.editaHorario(hor)}" update=":formmonitor"/>                                        
+                                        <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{monitorController.removeHorario(hor)}" update=":formmonitor"/>
+                                    </c:forEach>
 
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{monitorController.salvar}" rendered="#{!monitorController.isEdit}" update=":formmonitor"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{monitorController.atualizar}" rendered="#{monitorController.isEdit}" update=":formmonitor"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formmonitor:confimacao"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{monitorController.limpar}" update=":formmonitor"/>
-                            <br></br> <br></br>
+                                </h:panelGrid>
 
-                            <p:dataTable var="var" value="#{monitorController.monitores}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{monitorController.monitoresFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         class="table table-bordered table-striped"
-                                         style="border-width: medium"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" style="font-weight:bold"/>
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Nome"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{monitorController.onRowSelect}" update=":formmonitor" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{monitorController.salvar}" rendered="#{!monitorController.isEdit}" update=":formmonitor"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{monitorController.atualizar}" rendered="#{monitorController.isEdit}" update=":formmonitor"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formmonitor:confimacao"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{monitorController.limpar}" update=":formmonitor"/>
+                                <br></br> <br></br>
 
-                                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.nome}" />
-                                </p:column>
+                            </hr>
 
-                                <p:column headerText="Horários"  >
-                                    <h:outputText value="#{var.siteHorarioMonitorList}" />
-                                </p:column>
+                            <hr>
+
+                                <p:dataTable var="var" value="#{monitorController.monitores}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{monitorController.monitoresFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             class="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Nome"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{monitorController.onRowSelect}" update=":formmonitor" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.nome}" />
+                                    </p:column>
+
+                                    <p:column headerText="Horários"  >
+                                        <h:outputText value="#{var.siteHorarioMonitorList}" />
+                                    </p:column>
 
 
-                            </p:dataTable>
+                                </p:dataTable>
+
+                            </hr>
+
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
 

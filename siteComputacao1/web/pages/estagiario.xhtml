@@ -39,129 +39,142 @@
                             <h2>
                                 <h:outputText value="Cadastro de Estagiários "/>
                             </h2>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Nome: " style="font-weight:bold"/>
-                                <h:inputText id="nome" value="#{estagiarioController.estagiario.nome}"
-                                             required="true" />*
-                                <p:message for="nome" />
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Matricula: " style="font-weight:bold"/>
-                                <h:inputText id="matricula" value="#{estagiarioController.estagiario.matricula}"
-                                             required="true" />*
-                                <h:message for="matricula" />
+                                    <h:outputText value="Nome: " style="font-weight:bold"/>
+                                    <h:inputText id="nome" value="#{estagiarioController.estagiario.nome}"
+                                                 required="true" />*
+                                    <p:message for="nome" />
 
-                                <h:outputText value="Email: " style="font-weight:bold"/>
-                                <h:inputText id="email" value="#{estagiarioController.estagiario.email}"
-                                             required="true" />*
-                                <p:message for="email" />
+                                    <h:outputText value="Matricula: " style="font-weight:bold"/>
+                                    <h:inputText id="matricula" value="#{estagiarioController.estagiario.matricula}"
+                                                 required="true" />*
+                                    <h:message for="matricula" />
 
-                                <h:outputText value="Data de Inicio: " style="font-weight:bold"/>
-                                <p:inputMask id="dtinicio" value="#{estagiarioController.estagiario.dataInicio}" mask="99/99/9999" />      
-                                <h:message for="dtinicio" />*
+                                    <h:outputText value="Email: " style="font-weight:bold"/>
+                                    <h:inputText id="email" value="#{estagiarioController.estagiario.email}"
+                                                 required="true" />*
+                                    <p:message for="email" />
 
-                                <h:outputText value="Data de Finalização: " style="font-weight:bold"/>
-                                <p:inputMask id="dtfim"  value="#{estagiarioController.estagiario.dataFim}" mask="99/99/9999"/>      
-                                <h:message for="dtfim" />*
+                                    <h:outputText value="Data de Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtinicio" value="#{estagiarioController.estagiario.dataInicio}" mask="99/99/9999" />      
+                                    <h:message for="dtinicio" />*
 
-                                <h:outputText value="Ativo: " style="font-weight:bold"/>
-                                <h:selectBooleanCheckbox id="ativo" value="#{estagiarioController.estagiario.ativo}" />      
-                                <h:message for="ativo" /><br></br>
+                                    <h:outputText value="Data de Finalização: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtfim"  value="#{estagiarioController.estagiario.dataFim}" mask="99/99/9999"/>      
+                                    <h:message for="dtfim" />*
 
-                                <h:outputText value="Semestre: " style="font-weight:bold"/>
-                                <p:inputText id="semestre"  value="#{estagiarioController.horario.semestre}" />      
-                                <h:message for="semestre" />*
+                                    <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativo" value="#{estagiarioController.estagiario.ativo}" />      
+                                    <h:message for="ativo" /><br></br>
 
-                                <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
-                                <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
-                                <h:message for="ano" />*
+                                    <h:outputText value="Semestre: " style="font-weight:bold"/>
+                                    <p:inputText id="semestre"  value="#{estagiarioController.horario.semestre}" />      
+                                    <h:message for="semestre" />*
 
-                                <h:outputText value="Sala: " style="font-weight:bold"/>
-                                <h:selectOneMenu class="form-control" id="sala" value="#{estagiarioController.horario.sala}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="SalaConverter"
-                                                 >
-                                    <f:selectItems value="#{estagiarioController.sala}" 
-                                                   var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                                </h:selectOneMenu>*  
-                                <h:message for="sala" />  
+                                    <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
+                                    <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
+                                    <h:message for="ano" />*
 
-                                <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
-                                <p:inputMask id="hrinicio"  value="#{estagiarioController.horario.horaInicio}" mask="99:99"/>      
-                                <h:message for="hrinicio" />*
+                                    <h:outputText value="Sala: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="sala" value="#{estagiarioController.horario.sala}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="SalaConverter"
+                                                     >
+                                        <f:selectItems value="#{estagiarioController.sala}" 
+                                                       var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="sala" />  
 
-                                <h:outputText value="Hora Fim: " style="font-weight:bold"/>
-                                <p:inputMask id="hrfim"  value="#{estagiarioController.horario.horaFim}" mask="99:99"/>      
-                                <h:message for="hrfim" />*
+                                    <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrinicio"  value="#{estagiarioController.horario.horaInicio}" mask="99:99"/>      
+                                    <h:message for="hrinicio" />*
 
-                                <h:outputText value="Dia da semana: " style="font-weight:bold"/>
-                                <h:selectOneMenu class="form-control" id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:125px">
-                                    <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
-                                    <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
-                                    <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
-                                    <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
-                                    <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
-                                    <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
-                                </h:selectOneMenu>
-                                <h:message for="dia" />*
+                                    <h:outputText value="Hora Fim: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrfim"  value="#{estagiarioController.horario.horaFim}" mask="99:99"/>      
+                                    <h:message for="hrfim" />*
 
-                                <h:outputText value="Ativo: " style="font-weight:bold"/>
-                                <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
-                                <h:message for="ativoh" /><br></br>
+                                    <h:outputText value="Dia da semana: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:125px">
+                                        <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                                        <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                                        <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                                        <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                                        <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                                        <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                    </h:selectOneMenu>
+                                    <h:message for="dia" />*
 
-                                <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Estagiário"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
+                                    <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
+                                    <h:message for="ativoh" /><br></br>
 
-                                <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
-                                    <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
-                                    <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
-                                    <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{estagiarioController.editaHorario(hor)}" update=":formestagiario"/>                                        
-                                    <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{estagiarioController.removeHorario(hor)}" update=":formestagiario"/>
-                                </c:forEach>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Estagiário"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
 
-                            </h:panelGrid>
+                                    <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
+                                        <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
+                                        <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
+                                        <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{estagiarioController.editaHorario(hor)}" update=":formestagiario"/>                                        
+                                        <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{estagiarioController.removeHorario(hor)}" update=":formestagiario"/>
+                                    </c:forEach>
 
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{estagiarioController.limpar}" update=":formestagiario"/>
-                            <br></br> <br></br>
-
-                            <p:dataTable var="var" value="#{estagiarioController.estagiarios}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{estagiarioController.estagiariosFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         class="table table-bordered table-striped"
-                                         style="border-width: medium"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:"  style="font-weight:bold"/>
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Nome"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{estagiarioController.onRowSelect}" update=":formestagiario" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
-
-                                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.nome}" />
-                                </p:column>
-
-                                <p:column headerText="Horários"  >
-                                    <h:outputText value="#{var.siteHorarioList}" />
-                                </p:column>
+                                </h:panelGrid>
 
 
-                            </p:dataTable>
+
+
+
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{estagiarioController.limpar}" update=":formestagiario"/>
+                                <br></br> <br></br>
+
+                            </hr>
+
+                            <hr>
+
+                                <p:dataTable var="var" value="#{estagiarioController.estagiarios}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{estagiarioController.estagiariosFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             class="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:"  style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Nome"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{estagiarioController.onRowSelect}" update=":formestagiario" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.nome}" />
+                                    </p:column>
+
+                                    <p:column headerText="Horários"  >
+                                        <h:outputText value="#{var.siteHorarioList}" />
+                                    </p:column>
+
+
+                                </p:dataTable>
+
+                            </hr>
+
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
 
