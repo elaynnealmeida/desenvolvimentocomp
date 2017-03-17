@@ -22,7 +22,6 @@ public class MonitorDAO extends GenericDAO<SiteMonitor>{
     
     public List<SiteMonitor> listarTodosAtivos() {
 
-        System.out.println("entrou no dao listar estagiarios ativos-----------");
         List<SiteMonitor> result = new ArrayList<SiteMonitor>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -33,6 +32,10 @@ public class MonitorDAO extends GenericDAO<SiteMonitor>{
         query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"));
         query.orderBy(builder.asc(root.get("id")));
         result = em1.createQuery(query).getResultList();
+        HorarioMonitorDAO dao = new HorarioMonitorDAO();
+        for(int i=0; i<result.size(); i++){
+            result.get(i).setSiteHorarioMonitorList(dao.listarHorarioAtual(result.get(i)));
+        }
         em1.close();
         return result;
     }

@@ -36,6 +36,26 @@ public class EstagiarioDAO extends GenericDAO<SiteEstagiarios>{
         em1.close();
         return result;
     }
+     public List<SiteEstagiarios> listarHorarioAtual() {
+        
+        List<SiteEstagiarios> result = new ArrayList<SiteEstagiarios>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteEstagiarios.class);
+        EntityType type = em1.getMetamodel().entity(SiteEstagiarios.class);
+        Root root = query.from(SiteEstagiarios.class);
+        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"));
+        query.orderBy(builder.asc(root.get("id")));
+        result = em1.createQuery(query).getResultList();
+        HorarioDAO dao = new HorarioDAO();
+        for(int i=0; i<result.size(); i++){
+            result.get(i).setSiteHorarioList(dao.listarHorarioAtual(result.get(i)));
+        }
+        em1.close();
+        return result;
+    }
+     
 
     
 }
