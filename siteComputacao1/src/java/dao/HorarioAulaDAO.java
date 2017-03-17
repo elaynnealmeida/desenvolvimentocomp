@@ -37,4 +37,23 @@ public class HorarioAulaDAO extends GenericDAO<SiteHorarioAula>{
         em1.close();
         return result;
     }
+    
+    public List<SiteHorarioAula> listarHorarioAtual() {
+
+        List<SiteHorarioAula> result = new ArrayList<SiteHorarioAula>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteHorarioAula.class);
+        EntityType type = em1.getMetamodel().entity(SiteHorarioAula.class);
+        Root root = query.from(SiteHorarioAula.class);
+        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"));
+        query.orderBy(builder.asc(root.get("dia")),builder.asc(root.get("horaInicio")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
 }
+
+
+
