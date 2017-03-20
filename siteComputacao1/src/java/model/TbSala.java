@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TbSala.findByTipoSala", query = "SELECT t FROM TbSala t WHERE t.tipoSala = :tipoSala")})
 public class TbSala implements Serializable {
 
+    @OneToMany(mappedBy = "sala")
+    private List<SiteInfraestrutura> siteInfraestruturaList;
+
     @OneToMany(mappedBy = "salaId")
     private List<SiteHorarioAula> siteHorarioAulaList;
 
@@ -162,6 +165,15 @@ public class TbSala implements Serializable {
 
     public void setSiteHorarioAulaList(List<SiteHorarioAula> siteHorarioAulaList) {
         this.siteHorarioAulaList = siteHorarioAulaList;
+    }
+
+    @XmlTransient
+    public List<SiteInfraestrutura> getSiteInfraestruturaList() {
+        return siteInfraestruturaList;
+    }
+
+    public void setSiteInfraestruturaList(List<SiteInfraestrutura> siteInfraestruturaList) {
+        this.siteInfraestruturaList = siteInfraestruturaList;
     }
     
 }

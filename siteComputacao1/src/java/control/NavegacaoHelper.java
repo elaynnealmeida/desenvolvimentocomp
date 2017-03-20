@@ -518,6 +518,39 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+     
+     public void paginaTipoEquipamento() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/tipoequipamento.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaEquipamento() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/equipamento.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaInfraestrutura() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pages/infraestrutura.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
      public void inicio() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
