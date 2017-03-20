@@ -30,145 +30,162 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formturma">
-                            <h:outputText value="Cadastro de Horário de Aula "/>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                            <h2>
+                                <h:outputText value="Cadastro de Horário de Aula "/>
+                            </h2>
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Disciplina: "/>
-                                <p:selectOneMenu id="disciplina" value="#{turmaController.turma.disciplinaId}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="DisciplinaConverter"
-                                                 >
-                                    <f:selectItems value="#{turmaController.disciplina}" 
-                                                   var="disciplina" itemLabel="#{disciplina}" itemValue="#{disciplina}" />                                       
-                                </p:selectOneMenu>*  
-                                <p:message for="disciplina" /> 
+                                    <h:outputText value="Disciplina: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="disciplina" value="#{turmaController.turma.disciplinaId}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="DisciplinaConverter"
+                                                     >
+                                        <f:selectItems value="#{turmaController.disciplina}" 
+                                                       var="disciplina" itemLabel="#{disciplina}" itemValue="#{disciplina}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="disciplina" /> 
 
-                                <h:outputText value="Professor: "/>
-                                <p:selectOneMenu id="professor" value="#{turmaController.turma.professorId}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="ProfessorConverter"
-                                                 >
-                                    <f:selectItems value="#{turmaController.professor}" 
-                                                   var="professor" itemLabel="#{professor}" itemValue="#{professor}" />                                       
-                                </p:selectOneMenu>*  
-                                <p:message for="disciplina" /> 
+                                    <h:outputText value="Professor: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="professor" value="#{turmaController.turma.professorId}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="ProfessorConverter"
+                                                     >
+                                        <f:selectItems value="#{turmaController.professor}" 
+                                                       var="professor" itemLabel="#{professor}" itemValue="#{professor}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="disciplina" /> 
 
-                                <h:outputText value="Turma B: "/>
-                                <h:selectBooleanCheckbox id="turmab" value="#{turmaController.turma.turmaB}" />      
-                                <p:message for="turmab" /><br></br>
+                                    <h:outputText value="Turma B: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="turmab" value="#{turmaController.turma.turmaB}" />      
+                                    <h:message for="turmab" /><br></br>
 
-                                <h:outputText value="Ano Letivo: "/>
-                                <h:inputText id="ano" value="#{turmaController.turma.anoLetivo}"
-                                             required="true" />*
-                                <p:message for="ano" />
+                                    <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
+                                    <h:inputText id="ano" value="#{turmaController.turma.anoLetivo}"
+                                                 required="true" />*
+                                    <h:message for="ano" />
 
-                                <h:outputText value="Semestre Letivo: "/>
-                                <h:inputText id="semestre" value="#{turmaController.turma.semestreLetivo}"
-                                             required="true" />*
-                                <p:message for="semestre" />
+                                    <h:outputText value="Semestre Letivo: " style="font-weight:bold"/>
+                                    <h:inputText id="semestre" value="#{turmaController.turma.semestreLetivo}"
+                                                 required="true" />*
+                                    <h:message for="semestre" />
 
-                                <h:outputText value="Período: "/>
-                                <h:inputText id="periodo" value="#{turmaController.turma.periodo}"
-                                             required="true" />*
-                                <p:message for="periodo" />                                                                 
+                                    <h:outputText value="Período: " style="font-weight:bold"/>
+                                    <h:inputText id="periodo" value="#{turmaController.turma.periodo}"
+                                                 required="true" />*
+                                    <h:message for="periodo" />                                                                 
 
-                                <h:outputText value="Sala: "/>
-                                <p:selectOneMenu id="sala" value="#{turmaController.horario.salaId}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="SalaConverter"
-                                                 >
-                                    <f:selectItems value="#{turmaController.sala}" 
-                                                   var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                                </p:selectOneMenu>*  
-                                <p:message for="sala" />  
+                                    <h:outputText value="Sala: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="sala" value="#{turmaController.horario.salaId}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="SalaConverter"
+                                                     >
+                                        <f:selectItems value="#{turmaController.sala}" 
+                                                       var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <h:message for="sala" />  
 
-                                <h:outputText value="Hora Inicio: "/>
-                                <p:inputMask id="hrinicio"  value="#{turmaController.horario.horaInicio}" mask="99:99"/>      
-                                <p:message for="hrinicio" />*
+                                    <h:outputText value="Hora Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrinicio"  value="#{turmaController.horario.horaInicio}" mask="99:99"/>      
+                                    <p:message for="hrinicio" />*
 
-                                <h:outputText value="Hora Fim: "/>
-                                <p:inputMask id="hrfim"  value="#{turmaController.horario.horaFim}" mask="99:99"/>      
-                                <p:message for="hrfim" />*
+                                    <h:outputText value="Hora Fim: " style="font-weight:bold"/>
+                                    <p:inputMask id="hrfim"  value="#{turmaController.horario.horaFim}" mask="99:99"/>      
+                                    <h:message for="hrfim" />*
 
-                                <h:outputText value="Dia da semana: "/>
-                                <p:selectOneMenu id="dia" value="#{turmaController.horario.diaSemana}" style="width:125px">
-                                    <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
-                                    <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
-                                    <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
-                                    <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
-                                    <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
-                                    <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
-                                </p:selectOneMenu>
-                                <p:message for="dia" />*
+                                    <h:outputText value="Dia da semana: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="dia" value="#{turmaController.horario.diaSemana}" style="width:125px">
+                                        <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
+                                        <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
+                                        <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
+                                        <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
+                                        <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
+                                        <f:selectItem itemLabel="Sábado" itemValue="Sábado" />
+                                    </h:selectOneMenu>
+                                    <h:message for="dia" />*
 
-                                <h:outputText value="Horário Ativo: "/>
-                                <h:selectBooleanCheckbox id="ativoh" value="#{turmaController.horario.ativo}" />      
-                                <p:message for="ativoh" /><br></br>
+                                    <h:outputText value="Horário Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativoh" value="#{turmaController.horario.ativo}" />      
+                                    <h:message for="ativoh" /><br></br>
 
-                                <p:commandButton id="btnAdd" value="+"  action="#{turmaController.addHorario}" update=":formturma"/><br></br>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Horário"  action="#{turmaController.addHorario}" update=":formturma"/><br></br>
+                                    <br></br>
+                                    <c:forEach var="hor" items="${turmaController.horarios}" varStatus="id">
+                                            <h:outputText value="#{hor.salaId.blocoId.descricao}"/>
+                                            <h:outputText value="#{hor.salaId.nomeSala}"/> 
+                                            <h:outputText value="#{hor.diaSemana} - "/>  
+                                            <h:outputText value="#{hor.horaInicio} as "/> 
+                                            <h:outputText value="#{hor.horaFim} "/>  <br></br>
+                                            <p:commandButton class="btn btn-primary btn-sm" id="btnEditar" value="Editar" action="#{turmaController.editaHorario(hor)}" update=":formturma"/>                                        
+                                            <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remover" action="#{turmaController.removeHorario(hor)}" update=":formturma"/>
+                                            
+                                    </c:forEach>
+                                        
+                                </h:panelGrid>
+                                
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{turmaController.salvar}" rendered="#{!turmaController.isEdit}" update=":formturma"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{turmaController.atualizar}" rendered="#{turmaController.isEdit}" update=":formturma"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formturma:confimacao"/>
+                                <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{turmaController.limpar}" update=":formturma"/>
+                                <br></br> <br></br>
 
-                                <c:forEach var="hor" items="${turmaController.horarios}" varStatus="id">
-                                    <h:outputText value="#{hor.salaId.blocoId.descricao} "/>  <h:outputText value="#{hor.salaId.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  
-                                    <h:outputText value="#{hor.horaInicio} as "/> <h:outputText value="#{hor.horaFim} "/> <br></br>
-                                    <p:commandButton id="btnEditar" value="Editar" action="#{turmaController.editaHorario(hor)}" update=":formturma"/>                                        
-                                    <p:commandButton id="btnRemove" value="Remove" action="#{turmaController.removeHorario(hor)}" update=":formturma"/>
-                                </c:forEach>
+                            </hr>
 
-                            </h:panelGrid>
+                            <hr>
+                                <p:dataTable var="var" value="#{turmaController.turmas}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{turmaController.turmasFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             class="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Nome"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{turmaController.onRowSelect}" update=":formturma" />
 
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{turmaController.salvar}" rendered="#{!turmaController.isEdit}" update=":formturma"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{turmaController.atualizar}" rendered="#{turmaController.isEdit}" update=":formturma"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formturma:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{turmaController.limpar}" update=":formturma"/>
-                            <br></br> <br></br>
+                                    <p:column headerText="Disciplina" filterBy="#{var.disciplinaId.descricao}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.disciplinaId.descricao}" />
+                                    </p:column>   
+                                    <p:column headerText="Professor"  >
+                                        <h:outputText value="#{var.professorId.nome}" />
+                                    </p:column>   
+                                    <p:column headerText="Horário" >
+                                        <p:dataTable var="x" value="#{var.siteHorarioAulaList}">
+                                            <p:column headerText="Local" >
+                                                <h:outputText value="Bloco #{x.salaId.blocoId.descricao} Sala #{x.salaId.nomeSala}" />
+                                            </p:column>                                        
+                                            <p:column headerText="Dia" >
+                                                <h:outputText value="#{x.diaSemana}" />
+                                            </p:column>                                        
+                                            <p:column headerText="Hora" >
+                                                <h:outputText value="#{x.horaInicio} até #{x.horaFim}" />
+                                            </p:column>
 
-                            <p:dataTable var="var" value="#{turmaController.turmas}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{turmaController.turmasFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Nome"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{turmaController.onRowSelect}" update=":formturma" />
-                               
-                                <p:column headerText="Disciplina" filterBy="#{var.disciplinaId.descricao}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.disciplinaId.descricao}" />
-                                </p:column>   
-                                <p:column headerText="Professor"  >
-                                    <h:outputText value="#{var.professorId.nome}" />
-                                </p:column>   
-                                <p:column headerText="Horário" >
-                                    <p:dataTable var="x" value="#{var.siteHorarioAulaList}">
-                                        <p:column headerText="Local" >
-                                            <h:outputText value="Bloco #{x.salaId.blocoId.descricao} Sala #{x.salaId.nomeSala}" />
-                                        </p:column>                                        
-                                        <p:column headerText="Dia" >
-                                            <h:outputText value="#{x.diaSemana}" />
-                                        </p:column>                                        
-                                        <p:column headerText="Hora" >
-                                            <h:outputText value="#{x.horaInicio} até #{x.horaFim}" />
-                                        </p:column>
-
-                                    </p:dataTable>
-                                </p:column>
-                            </p:dataTable>
+                                        </p:dataTable>
+                                    </p:column>
+                                </p:dataTable>
+                            </hr>
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
 
@@ -180,8 +197,6 @@
 
                                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
                             </p:confirmDialog>
-
-
                         </h:form>
                         <br></br>
                     </div>
