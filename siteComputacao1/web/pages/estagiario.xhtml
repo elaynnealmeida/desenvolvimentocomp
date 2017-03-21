@@ -41,6 +41,7 @@
                             </h2>
 
                             <hr>
+                                
                                 <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
                                     <h:outputText value="Nome: " style="font-weight:bold"/>
@@ -123,10 +124,6 @@
 
                                 </h:panelGrid>
 
-
-
-
-
                                 <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{estagiarioController.salvar}" rendered="#{!estagiarioController.isEdit}" update=":formestagiario"/>
                                 <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{estagiarioController.atualizar}" rendered="#{estagiarioController.isEdit}" update=":formestagiario"/>
                                 <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formestagiario:confimacao"/>
@@ -146,7 +143,7 @@
                                              paginator="true"
                                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                              rowsPerPageTemplate="5,10,15"
-                                             class="table table-bordered table-striped"
+                                             tableStyleClass="table table-bordered table-striped"
                                              style="border-width: medium"
                                              >
                                     <f:facet name="header">

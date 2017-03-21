@@ -14,12 +14,12 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
         <!-- Bootstrap core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
-        <link href="../css/mdb.min.css" rel="stylesheet"></link>
-        <link href="../css/layout.css" rel="stylesheet"></link>
-        <link href="../css/professores/noticias.css" rel="stylesheet"></link>
+        <link href="css/mdb.min.css" rel="stylesheet"></link>
+        <link href="css/layout.css" rel="stylesheet"></link>
+        <link href="css/geral.css" rel="stylesheet"></link>
 
     </h:head>
     <ui:insert name="menu" >
@@ -36,12 +36,13 @@
                     <div class="col-lg-12">
                         <!--Post-->
                         <p:tabView id="tabhorarios">
-                            <p:tab title="Aula" id="aula">
+                            <p:tab class="style-tab" title="Aula" id="aula">
                                 <h:form id="aulahorario">   
                                     <p:dataTable var="var" value="#{horariosHelper.aulas}"
                                                  rowKey="#{var.id}"
                                                  emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"                                                                                             
+                                                 widgetVar="varTable" 
+                                                 tableStyleClass="table table-bordered table-striped"
                                                  >                                    
                                         <p:column  headerText="Dia" >
                                             <h:outputText value="#{var.diaSemana}" />
@@ -69,7 +70,8 @@
                                     <p:dataTable var="var" value="#{horariosHelper.docentes}"
                                                  rowKey="#{var.id}"                                                 
                                                  emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"                                                                                             
+                                                 widgetVar="varTable" 
+                                                 tableStyleClass="table table-bordered table-striped"
                                                  >                                    
                                         <p:column  headerText="Dia" >
                                             <h:outputText value="#{var.diaSemana}" />
@@ -96,7 +98,8 @@
                                     <p:dataTable var="var" value="#{horariosHelper.servidores}"
                                                  rowKey="#{var.id}"
                                                  emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"                                                                                             
+                                                 widgetVar="varTable" 
+                                                 tableStyleClass="table table-bordered table-striped"
                                                  >                                    
                                         <p:column  headerText="Dia" >
                                             <h:outputText value="#{var.diaSemana}" />
@@ -123,12 +126,13 @@
                                     <p:dataTable var="var" value="#{horariosHelper.estagiarios}"
                                                  rowKey="#{var.id}"
                                                  emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"                                                                                             
+                                                 widgetVar="varTable" 
+                                                 tableStyleClass="table table-bordered table-striped"
                                                  >       
                                         <p:column headerText="Nome" >
                                             <h:outputText value="#{var.nome}" />
                                         </p:column>
-                                        
+
                                         <p:column headerText="Horário" >
                                             <p:dataTable var="x" value="#{var.siteHorarioList}">
                                                 <p:column  headerText="Dia" >
@@ -152,7 +156,8 @@
                                     <p:dataTable var="var" value="#{horariosHelper.monitores}"
                                                  rowKey="#{var.id}"
                                                  emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"                                                                                             
+                                                 widgetVar="varTable" 
+                                                 tableStyleClass="table table-bordered table-striped"
                                                  >                                    
                                         <p:column headerText="Nome" >
                                             <h:outputText value="#{var.nome}" />
@@ -161,7 +166,7 @@
                                         <p:column headerText="Disciplina" >
                                             <h:outputText value="#{var.disciplina.descricao}" />
                                         </p:column>
-                                        
+
                                         <p:column headerText="Horário" >
                                             <p:dataTable var="x" value="#{var.siteHorarioMonitorList}">
                                                 <p:column  headerText="Dia" >
@@ -180,6 +185,40 @@
                                 </h:form>
                             </p:tab>
                         </p:tabView>
+
+<!--                        <div class="container">
+                            <div id="content">
+                                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
+                                    <li><a href="#orange" data-toggle="tab">Orange</a></li>
+                                    <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
+                                    <li><a href="#green" data-toggle="tab">Green</a></li>
+                                    <li><a href="#blue" data-toggle="tab">Blue</a></li>
+                                </ul>
+                                <div id="my-tab-content" class="tab-content">
+                                    <div class="tab-pane active" id="red">
+                                        <h1>Red</h1>
+                                        <p>red red red red red red</p>
+                                    </div>
+                                    <div class="tab-pane" id="orange">
+                                        <h1>Orange</h1>
+                                        <p>orange orange orange orange orange</p>
+                                    </div>
+                                    <div class="tab-pane" id="yellow">
+                                        <h1>Yellow</h1>
+                                        <p>yellow yellow yellow yellow yellow</p>
+                                    </div>
+                                    <div class="tab-pane" id="green">
+                                        <h1>Green</h1>
+                                        <p>green green green green green</p>
+                                    </div>
+                                    <div class="tab-pane" id="blue">
+                                        <h1>Blue</h1>
+                                        <p>blue blue blue blue blue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
 
                         <!--/.Post-->                     
                         <br></br>
