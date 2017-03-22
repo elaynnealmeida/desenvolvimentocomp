@@ -29,10 +29,15 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formusuario">
-                            <h:outputText value="Cadastro de Usuário " />
+                            <h2>
+                                <h:outputText value="Cadastro de Usuário " />
+                            </h2>
                             <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
                                 <h:outputText value="Nome: "/>
                                 <h:inputText id="nome" value="#{usuarioController.usuario.nomecompleto}" size="50" required="true" />*
@@ -55,7 +60,7 @@
                                 <p:message for="senha" />
 
                                 <h:outputLabel    value="Perfis:" />
-                               <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
+                                <p:selectManyMenu id="perfil" value="#{usuarioController.selectedPerfis}"  
                                                   converter="PerfilConverter"
                                                   requiredMessage="Campo Obrigatório"
                                                   required="true"
@@ -128,7 +133,7 @@
             <ui:include src="../footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

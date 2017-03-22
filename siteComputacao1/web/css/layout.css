@@ -14,3 +14,7 @@
     border-style: none;
 }
 
+.ui-autocomplete-multiple-container {
+  width: 200px;
+}
+

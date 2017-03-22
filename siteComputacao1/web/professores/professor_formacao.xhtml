@@ -32,48 +32,52 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <!--Post-->
                         <p:tabView id="dados">
                             <p:tab title="Informações Básica" id="dadosbasicos">
                                 <h:form id="forminfos" enctype="multipart/form-data">
-                                    <h:outputText value="Informações Básicas " />
-                                    <h:panelGrid columns="3" cellpadding="2" style="margin-bottom:10px">
-                                        <h:outputText value="Servidor: "/>
+                                    <h3>
+                                        <h:outputText value="Informações Básicas " />
+                                    </h3><br></br>
+                                    <h:panelGrid columns="1" width="500px" cellpadding="2" style="margin-bottom:10px">
+                                        <h:outputText value="Servidor: " style="font-weight:bold"/>
                                         <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
-                                        <p:message for="servidor" />
+                                        <p:message for="servidor" /><br></br>
 
-                                        <h:outputText value="Foto para perfil " />
-                                        <p:fileUpload value="#{dadosComplementaresController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                        <h:outputText value="Foto para perfil " style="font-weight:bold"/><br></br>
+                                        <p:fileUpload value="#{dadosComplementaresController.file}"  label="Procurar" mode="simple" skinSimple="false"
                                                       update="msg" id="imagem"    
                                                       sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
                                                       invalidFileMessage="Somente JPG ou PNG são permitidos."
                                                       invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
                                                       />
-                                        <p:message for="imagem" />
+                                        <p:message for="imagem" /><br></br>
 
-                                        <h:outputText value="Lattes: "/>
+                                        <h:outputText value="Lattes: " style="font-weight:bold"/>
                                         <h:inputText id="lattes" value="#{dadosComplementaresController.dadoComplementar.lattes}" />      
-                                        <p:message for="lattes" />
+                                        <h:message for="lattes" /><br></br>
 
-                                        <h:outputText value="Endereço Profissional: "/>
+                                        <h:outputText value="Endereço Profissional: " style="font-weight:bold"/>
                                         <h:inputText id="endprofissional" value="#{dadosComplementaresController.dadoComplementar.enderecoProfissional}" />      
-                                        <p:message for="endprofissional" />
+                                        <h:message for="endprofissional" /><br></br>
 
-                                        <h:outputText value="Telefone Profisisonal: "/>
+                                        <h:outputText value="Telefone Profisisonal: " style="font-weight:bold"/>
                                         <h:inputText id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" />      
-                                        <p:message for="tel" />
+                                        <h:message for="tel" /><br></br>
 
-                                        <h:outputText value="Área de Atuação: "/>
+                                        <h:outputText value="Área de Atuação: " style="font-weight:bold"/>
                                         <h:inputTextarea id="areaAtuacao" value="#{dadosComplementaresController.dadoComplementar.areaAtuacao}" />      
-                                        <p:message for="areaAtuacao" />
-
-                                        <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{dadosComplementaresController.salvar}" ajax="false" rendered="#{dadosComplementaresController.isEdit}" update="@form"/>
-                                        <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{dadosComplementaresController.atualizar}" ajax="false" rendered="#{!dadosComplementaresController.isEdit}" update="@form"/>
-                                        <p:commandButton id="btnLimpar" value="Limpar" action="#{dadosComplementaresController.limpar}" update="@form"/>
-
+                                        <h:message for="areaAtuacao" /><br></br>
                                     </h:panelGrid>
+
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" actionListener="#{dadosComplementaresController.salvar}" ajax="false" rendered="#{dadosComplementaresController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" actionListener="#{dadosComplementaresController.atualizar}" ajax="false" rendered="#{!dadosComplementaresController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{dadosComplementaresController.limpar}" update="@form"/>
 
                                     <p:dataTable var="var" value="#{dadosComplementaresController.dadosComplementares}"
                                                  selectionMode="single"  rowKey="#{var.id}"
@@ -83,6 +87,8 @@
                                                  paginator="true"
                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                                  rowsPerPageTemplate="5,10,15"
+                                                 tableStyleClass="table table-bordered table-striped"
+                                                 style="border-width: medium"
                                                  >
 
                                         <p:ajax event="rowSelect" listener="#{dadosComplementaresController.onRowSelect}" update="@form" />
@@ -122,40 +128,41 @@
 
                             <p:tab title="Dados Formação" id="dadosformacao">
                                 <h:form id="formprofformacao">
-                                    <h:outputText value="Cadastro de Formação " />
-                                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                                        <h:outputText value="Servidor: "/>
+                                    <h3>
+                                        <h:outputText value="Cadastro de Formação " />
+                                    </h3><br></br>
+                                    <h:panelGrid columns="1" width="500px" cellpadding="5" style="margin-bottom:10px">
+                                        <h:outputText value="Servidor: " style="font-weight:bold"/>
                                         <h:outputText id="servidor" value="#{loginController.user.nomecompleto}" />      
-                                        <p:message for="servidor" />*
+                                        <h:message for="servidor" /><br></br>
 
-                                        <h:outputText value="Titulação: "/>
-                                        <p:selectOneMenu id="formacao" value="#{professorFormacaoController.profFormacao.formacaoId}"  
+                                        <h:outputText value="Titulação: *" style="font-weight:bold;"/>
+                                        <h:selectOneMenu class="form-control" id="formacao" value="#{professorFormacaoController.profFormacao.formacaoId}"  
                                                          requiredMessage="Campo Obrigatório"
                                                          required="true"
                                                          converter="FormacaoConverter"
                                                          >
                                             <f:selectItems value="#{professorFormacaoController.formacao}" var="formacao" itemLabel="#{formacao}" itemValue="#{formacao}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="formacao" />  
+                                        </h:selectOneMenu> 
+                                        <h:message for="formacao" />  <br></br>
 
-                                        <h:outputText value="Descrição: "/>
+                                        <h:outputText value="Descrição: *" style="font-weight:bold"/>
                                         <h:inputTextarea id="descricao" value="#{professorFormacaoController.profFormacao.descricao}" />      
-                                        <p:message for="descricao" />*
+                                        <h:message for="descricao" /><br></br>
 
-                                        <h:outputText value="Data de Inicio: "/>
+                                        <h:outputText value="Data de Inicio: *" style="font-weight:bold"/>
                                         <p:inputMask id="dtinicio" value="#{professorFormacaoController.profFormacao.dtInicio}" mask="99/99/9999" />      
-                                        <p:message for="dtinicio" />*
+                                        <h:message for="dtinicio" /><br></br>
 
-                                        <h:outputText value="Data de Finalização: "/>
+                                        <h:outputText value="Data de Finalização: *" style="font-weight:bold"/>
                                         <p:inputMask id="dtfim"  value="#{professorFormacaoController.profFormacao.dtFim}" mask="99/99/9999"/>      
-                                        <p:message for="dtfim" />*
-
-
-                                        <p:commandButton id="btnSalvar" value="Salvar" action="#{professorFormacaoController.salvar}" rendered="#{!professorFormacaoController.isEdit}" update="@form"/>
-                                        <p:commandButton id="btnAtualizar" value="Atualizar" action="#{professorFormacaoController.atualizar}" rendered="#{professorFormacaoController.isEdit}" update="@form"/>
-                                        <p:commandButton id="btnLimpar" value="Limpar" action="#{professorFormacaoController.limpar}" update="@form"/>
-                                        <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confirmacao"/>
+                                        <h:message for="dtfim" />  <br></br>                        
                                     </h:panelGrid>
+
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{professorFormacaoController.salvar}" rendered="#{!professorFormacaoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{professorFormacaoController.atualizar}" rendered="#{professorFormacaoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{professorFormacaoController.limpar}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confirmacao"/>
 
                                     <p:dataTable var="var" value="#{professorFormacaoController.formacoes}"
                                                  selectionMode="single"  rowKey="#{var.id}"
@@ -166,6 +173,8 @@
                                                  paginator="true"
                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                                  rowsPerPageTemplate="5,10,15"
+                                                 tableStyleClass="table table-bordered table-striped"
+                                                 style="border-width: medium"
                                                  >
                                         <f:facet name="header">
                                             <p:outputPanel>
@@ -210,56 +219,58 @@
                             </p:tab>
                             <p:tab title="Horários" id="horarios">
                                 <h:form id="formforariosp">
-                                    <h:outputText value="Cadastro de Horários "/>
-                                    <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                    <h3>
+                                        <h:outputText value="Cadastro de Horários "/>
+                                    </h3><br></br>
+                                    <h:panelGrid columns="1" width="500px" cellpadding="5" style="margin-bottom:10px">
 
-                                        <h:outputText value="Semestre Letivo: "/>
+                                        <h:outputText value="Semestre Letivo: *" style="font-weight:bold"/>
                                         <p:inputText id="semestre"  value="#{horarioServidorController.horario.semestre}"/>      
-                                        <p:message for="semestre" />*
+                                        <h:message for="semestre" /><br></br>
 
-                                        <h:outputText value="Ano Letivo: "/>
+                                        <h:outputText value="Ano Letivo: *" style="font-weight:bold"/>
                                         <p:inputText id="ano"  value="#{horarioServidorController.horario.ano}" />      
-                                        <p:message for="ano" />*
+                                        <h:message for="ano" /><br></br>
 
-                                        <h:outputText value="Sala: "/>
-                                        <p:selectOneMenu id="sala" value="#{horarioServidorController.horario.sala}"  
+                                        <h:outputText value="Sala: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="sala" value="#{horarioServidorController.horario.sala}"  
                                                          requiredMessage="Campo Obrigatório"
                                                          required="true"
                                                          converter="SalaConverter"
                                                          >
                                             <f:selectItems value="#{estagiarioController.sala}" 
                                                            var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="sala" />  
+                                        </h:selectOneMenu>
+                                        <h:message for="sala" /><br></br>  
 
-                                        <h:outputText value="Hora Inicio: "/>
+                                        <h:outputText value="Hora Inicio: *" style="font-weight:bold"/>
                                         <p:inputMask id="hrinicio"  value="#{horarioServidorController.horario.horaInicio}" mask="99:99"/>      
-                                        <p:message for="hrinicio" />*
+                                        <h:message for="hrinicio" /><br></br>
 
-                                        <h:outputText value="Hora Fim: "/>
+                                        <h:outputText value="Hora Fim: *" style="font-weight:bold"/>
                                         <p:inputMask id="hrfim"  value="#{horarioServidorController.horario.horaFim}" mask="99:99"/>      
-                                        <p:message for="hrfim" />*
+                                        <h:message for="hrfim" /><br></br>
 
-                                        <h:outputText value="Dia da semana: "/>
-                                        <p:selectOneMenu id="dia" value="#{horarioServidorController.horario.diaSemana}" style="width:125px">
+                                        <h:outputText value="Dia da semana: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="dia" value="#{horarioServidorController.horario.diaSemana}" >
                                             <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
                                             <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
                                             <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
                                             <f:selectItem itemLabel="Quinta-Feira" itemValue="Quinta-Feira" />
                                             <f:selectItem itemLabel="Sexta-Feira" itemValue="Sexta-Feira" />
                                             <f:selectItem itemLabel="Sábado" itemValue="Sábado" />                                            
-                                        </p:selectOneMenu>
-                                        <p:message for="dia" />*  
+                                        </h:selectOneMenu>
+                                        <h:message for="dia" /><br></br>
 
-                                        <h:outputText value="Ativo: "/>
+                                        <h:outputText value="Ativo: " style="font-weight:bold"/>
                                         <h:selectBooleanCheckbox id="ativo" value="#{horarioServidorController.horario.ativo}" />      
-                                        <p:message for="ativo" />
+                                        <h:message for="ativo" />
                                     </h:panelGrid>
 
-                                    <p:commandButton id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{horarioServidorController.atualizar}" rendered="#{horarioServidorController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
-                                    <p:commandButton id="btnLimpar" value="Limpar" action="#{horarioServidorController.limpar}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{horarioServidorController.salvar}" rendered="#{!horarioServidorController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{horarioServidorController.atualizar}" rendered="#{horarioServidorController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{horarioServidorController.limpar}" update="@form"/>
                                     <br></br> <br></br>
 
                                     <p:dataTable var="var" value="#{horarioServidorController.horarios}"
@@ -270,6 +281,8 @@
                                                  paginator="true"
                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                                  rowsPerPageTemplate="5,10,15"
+                                                 tableStyleClass="table table-bordered table-striped"
+                                                 style="border-width: medium"
                                                  >                      
                                         <p:ajax event="rowSelect" listener="#{horarioServidorController.onRowSelect}" update="@form" />
                                         <p:column headerText="Id">
