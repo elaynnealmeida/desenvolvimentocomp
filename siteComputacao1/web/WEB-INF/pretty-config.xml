@@ -1,0 +1,252 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="index">
+		<pattern value="/" />
+		<view-id value="/faces/index.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="downloadsdocs">
+		<pattern value="/downloadsdocs" />
+		<view-id value="/faces/downloadsdocs.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="infraestrutura">
+		<pattern value="/pages/infraestrutura" />
+		<view-id value="/faces/pages/infraestrutura.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="equipamento">
+		<pattern value="/pages/equipamento" />
+		<view-id value="/faces/pages/equipamento.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="tipoequipamento">
+		<pattern value="/pages/tipoequipamento" />
+		<view-id value="/faces/pages/tipoequipamento.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="turma">
+		<pattern value="/pages/turma" />
+		<view-id value="/faces/pages/turma.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="monitor">
+		<pattern value="/pages/monitor" />
+		<view-id value="/faces/pages/monitor.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="estagiario">
+		<pattern value="/pages/estagiario" />
+		<view-id value="/faces/pages/estagiario.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="conselho">
+		<pattern value="/pages/conselho" />
+		<view-id value="/faces/pages/conselho.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="tipopublicacao">
+		<pattern value="/pages/tipopublicacao" />
+		<view-id value="/faces/pages/tipopublicacao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="tipodocumento">
+		<pattern value="/pages/tipodocumento" />
+		<view-id value="/faces/pages/tipodocumento.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="documento">
+		<pattern value="/pages/documento" />
+		<view-id value="/faces/pages/documento.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="noticias">
+		<pattern value="/professores/noticias" />
+		<view-id value="/faces/professores/noticias.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="usuarioperfil">
+		<pattern value="/pages/usuarioperfil" />
+		<view-id value="/faces/pages/usuarioperfil.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="tags">
+		<pattern value="/pages/tags" />
+		<view-id value="/faces/pages/tags.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="sitefuncao">
+		<pattern value="/pages/sitefuncao" />
+		<view-id value="/faces/pages/sitefuncao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="sitecargo">
+		<pattern value="/pages/sitecargo" />
+		<view-id value="/faces/pages/sitecargo.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="professor">
+		<pattern value="/pages/professor" />
+		<view-id value="/faces/pages/professor.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="perfil">
+		<pattern value="/pages/perfil" />
+		<view-id value="/faces/pages/perfil.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="formacao">
+		<pattern value="/pages/formacao" />
+		<view-id value="/faces/pages/formacao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="usuario">
+		<pattern value="/pages/usuario" />
+		<view-id value="/faces/pages/usuario.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="horarios">
+		<pattern value="/horarios" />
+		<view-id value="/faces/horarios.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="servidores">
+		<pattern value="/servidores" />
+		<view-id value="/faces/servidores.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="professor_formacao">
+		<pattern value="/professores/professor_formacao" />
+		<view-id value="/faces/professores/professor_formacao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="centro_academico">
+		<pattern value="/menu/estrutura_curso/centro_academico" />
+		<view-id value="/faces/menu/estrutura_curso/centro_academico.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="historico">
+		<pattern value="/menu/estrutura_curso/historico" />
+		<view-id value="/faces/menu/estrutura_curso/historico.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="horarios_aulas">
+		<pattern value="/menu/estrutura_curso/horarios" />
+		<view-id value="/faces/menu/estrutura_curso/horarios.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="laboratorios">
+		<pattern value="/menu/estrutura_curso/laboratorios" />
+		<view-id value="/faces/menu/estrutura_curso/laboratorios.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="matriz">
+		<pattern value="/menu/estrutura_curso/matriz" />
+		<view-id value="/faces/menu/estrutura_curso/matriz.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="pos_lato_senso">
+		<pattern value="/menu/estrutura_curso/pos_lato_senso" />
+		<view-id value="/faces/menu/estrutura_curso/pos_lato_senso.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="pos_strictu_senso">
+		<pattern value="/menu/estrutura_curso/pos_strictu_senso" />
+		<view-id value="/faces/menu/estrutura_curso/pos_strictu_senso.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="sobre">
+		<pattern value="/menu/estrutura_curso/sobre" />
+		<view-id value="/faces/menu/estrutura_curso/sobre.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="campus_palmas">
+		<pattern value="/menu/estrutura_curso/infraestrutura_fisica/campus_palmas" />
+		<view-id value="/faces/menu/estrutura_curso/infraestrutura_fisica/campus_palmas.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="coordenacao">
+		<pattern value="/menu/estrutura_curso/infraestrutura_fisica/coordenacao" />
+		<view-id value="/faces/menu/estrutura_curso/infraestrutura_fisica/coordenacao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="labin_ensino">
+		<pattern value="/menu/estrutura_curso/infraestrutura_fisica/labin_ensino" />
+		<view-id value="/faces/menu/estrutura_curso/infraestrutura_fisica/labin_ensino.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="labin_tematico">
+		<pattern value="/menu/estrutura_curso/infraestrutura_fisica/labin_tematico" />
+		<view-id value="/faces/menu/estrutura_curso/infraestrutura_fisica/labin_tematico.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="sala_aula">
+		<pattern value="/menu/estrutura_curso/infraestrutura_fisica/sala_aula" />
+		<view-id value="/faces/menu/estrutura_curso/infraestrutura_fisica/sala_aula.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="docentes_efetivos">
+		<pattern value="/menu/recursos_humanos/docentes_efetivos" />
+		<view-id value="/faces/menu/recursos_humanos/docentes_efetivos.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="docentes_substitutos">
+		<pattern value="/menu/recursos_humanos/docentes_substitutos" />
+		<view-id value="/faces/menu/recursos_humanos/docentes_substitutos.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="tecnicos">
+		<pattern value="/menu/recursos_humanos/tecnicos" />
+		<view-id value="/faces/menu/recursos_humanos/tecnicos.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="doc_curso">
+		<pattern value="/menu/documentos/doc_curso" />
+		<view-id value="/faces/menu/documentos/doc_curso.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="doc_institucional">
+		<pattern value="/menu/documentos/doc_institucional" />
+		<view-id value="/faces/menu/documentos/doc_institucional.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="nucleo_docentes">
+		<pattern value="/menu/documentos/nucleo_docentes" />
+		<view-id value="/faces/menu/documentos/nucleo_docentes.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="plano_ensino">
+		<pattern value="/menu/documentos/plano_ensino" />
+		<view-id value="/faces/menu/documentos/plano_ensino.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="coordenacao">
+		<pattern value="/menu/coordenacao" />
+		<view-id value="/faces/menu/coordenacao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="extensao">
+		<pattern value="/menu/extensao" />
+		<view-id value="/faces/menu/extensao.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="pesquisa">
+		<pattern value="/menu/pesquisa" />
+		<view-id value="/faces/menu/pesquisa.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="ensino">
+		<pattern value="/menu/ensino" />
+		<view-id value="/faces/menu/ensino.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="all_noticias">
+		<pattern value="/all_noticias" />
+		<view-id value="/faces/all_noticias.xhtml" />
+	</url-mapping>
+
+
+</pretty-config>

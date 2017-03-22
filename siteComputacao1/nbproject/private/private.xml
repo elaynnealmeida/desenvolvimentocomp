@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/UFT/Documents/NetBeansProjects/siteuft/siteComputacao1/src/java/control/LoginController.java</file>
             <file>file:/C:/Users/UFT/Documents/NetBeansProjects/siteuft/siteComputacao1/src/java/control/SiteNoticiaController.java</file>
             <file>file:/C:/Users/UFT/Documents/NetBeansProjects/siteuft/siteComputacao1/src/java/dao/UsuarioDAO.java</file>
+=======
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/pages/turma.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/horarios.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/pages/estagiario.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/professores/professor_formacao.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/js_interno.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/footer.xhtml</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/css/geral.css</file>
+            <file>file:/C:/Users/suporte/Documents/siteuft/siteComputacao1/web/pages/monitor.xhtml</file>
+>>>>>>> 511f08cd30a680f8f1a878d5232d86592d2320c9
         </group>
     </open-files>
 </project-private>

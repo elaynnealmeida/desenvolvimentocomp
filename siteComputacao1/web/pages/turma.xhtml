@@ -104,7 +104,7 @@
                                     <h:message for="hrfim" />*
 
                                     <h:outputText value="Dia da semana: " style="font-weight:bold"/>
-                                    <h:selectOneMenu class="form-control" id="dia" value="#{turmaController.horario.diaSemana}" style="width:125px">
+                                    <h:selectOneMenu class="form-control" id="dia" value="#{turmaController.horario.diaSemana}" style="width:150px">
                                         <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
                                         <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
                                         <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
@@ -151,7 +151,7 @@
                                              paginator="true"
                                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                              rowsPerPageTemplate="5,10,15"
-                                             class="table table-bordered table-striped"
+                                             tableStyleClass="table table-bordered table-striped"
                                              style="border-width: medium"
                                              >
                                     <f:facet name="header">

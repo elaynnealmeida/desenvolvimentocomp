@@ -17,7 +17,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/all_noticias.xhtml");
+                    + "/all_noticias");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/ensino.xhtml");
+                    + "/menu/ensino");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/pesquisa.xhtml");
+                    + "/menu/pesquisa");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/extensao.xhtml");
+                    + "/menu/extensao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/coordenacao.xhtml");
+                    + "/menu/coordenacao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/documentos/plano_ensino.xhtml");
+                    + "/menu/documentos/plano_ensino");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/documentos/nucleo_docentes.xhtml");
+                    + "/menu/documentos/nucleo_docentes");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/documentos/doc_institucional.xhtml");
+                    + "/menu/documentos/doc_institucional");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,7 +106,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/documentos/doc_curso.xhtml");
+                    + "/menu/documentos/doc_curso");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -117,7 +117,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/recursos_humanos/tecnicos.xhtml");
+                    + "/menu/recursos_humanos/tecnicos");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/recursos_humanos/docentes_substitutos.xhtml");
+                    + "/menu/recursos_humanos/docentes_substitutos");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -139,7 +139,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/recursos_humanos/docentes_efetivos.xhtml");
+                    + "/menu/recursos_humanos/docentes_efetivos");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,7 +150,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/infraestrutura_fisica/sala_aula.xhtml");
+                    + "/menu/estrutura_curso/infraestrutura_fisica/sala_aula");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -161,7 +161,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/infraestrutura_fisica/labin_tematico.xhtml");
+                    + "/menu/estrutura_curso/infraestrutura_fisica/labin_tematico");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -172,7 +172,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/infraestrutura_fisica/labin_ensino.xhtml");
+                    + "/menu/estrutura_curso/infraestrutura_fisica/labin_ensino");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -183,7 +183,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/infraestrutura_fisica/coordenacao.xhtml");
+                    + "/menu/estrutura_curso/infraestrutura_fisica/coordenacao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -194,7 +194,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/infraestrutura_fisica/campus_palmas.xhtml");
+                    + "/menu/estrutura_curso/infraestrutura_fisica/campus_palmas");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -205,7 +205,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/sobre.xhtml");
+                    + "/menu/estrutura_curso/sobre");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,7 +227,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/pos_strictu_senso.xhtml");
+                    + "/menu/estrutura_curso/pos_strictu_senso");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -238,7 +238,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/pos_lato_senso.xhtml");
+                    + "/menu/estrutura_curso/pos_lato_senso");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -249,7 +249,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/matriz.xhtml");
+                    + "/menu/estrutura_curso/matriz");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -260,7 +260,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/laboratorios.xhtml");
+                    + "/menu/estrutura_curso/laboratorios");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -271,7 +271,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/horarios.xhtml");
+                    + "/menu/estrutura_curso/horarios");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -282,7 +282,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/historico.xhtml");
+                    + "/menu/estrutura_curso/historico");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -293,7 +293,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/menu/estrutura_curso/centro_academico.xhtml");
+                    + "/menu/estrutura_curso/centro_academico");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -304,7 +304,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/professores/professor_formacao.xhtml");
+                    + "/professores/professor_formacao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -315,7 +315,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/servidores.xhtml");
+                    + "/servidores");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -326,7 +326,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/horarios.xhtml");
+                    + "/horarios");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -337,7 +337,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/usuario.xhtml");
+                    + "/pages/usuario");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -348,7 +348,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/formacao.xhtml");
+                    + "/pages/formacao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -359,7 +359,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/perfil.xhtml");
+                    + "/pages/perfil");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -370,7 +370,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/professor.xhtml");
+                    + "/pages/professor");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -381,7 +381,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/sitecargo.xhtml");
+                    + "/pages/sitecargo");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -392,7 +392,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/sitefuncao.xhtml");
+                    + "/pages/sitefuncao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -403,7 +403,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/tags.xhtml");
+                    + "/pages/tags");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -414,7 +414,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/usuarioperfil.xhtml");
+                    + "/pages/usuarioperfil");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -425,7 +425,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/professores/noticias.xhtml");
+                    + "/professores/noticias");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -436,7 +436,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/documento.xhtml");
+                    + "/pages/documento");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -447,7 +447,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/tipodocumento.xhtml");
+                    + "/pages/tipodocumento");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -458,7 +458,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/tipopublicacao.xhtml");
+                    + "/pages/tipopublicacao");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -469,7 +469,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/conselho.xhtml");
+                    + "/pages/conselho");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -479,7 +479,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/estagiario.xhtml");
+                    + "/pages/estagiario");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -490,7 +490,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/monitor.xhtml");
+                    + "/pages/monitor");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -501,7 +501,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/turma.xhtml");
+                    + "/pages/turma");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -513,7 +513,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/downloadsdocs.xhtml");
+                    + "/downloadsdocs");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -524,7 +524,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/tipoequipamento.xhtml");
+                    + "/pages/tipoequipamento");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -535,7 +535,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/equipamento.xhtml");
+                    + "/pages/equipamento");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -546,7 +546,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/pages/infraestrutura.xhtml");
+                    + "/pages/infraestrutura");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -557,7 +557,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/faces/index.xhtml");
+                    + "/");
         } catch (IOException e) {
             e.printStackTrace();
         }
