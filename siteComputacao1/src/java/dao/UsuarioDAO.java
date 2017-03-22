@@ -46,7 +46,8 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
             EntityType type = em1.getMetamodel().entity(TbUsersystem.class);
             Root root = query.from(TbUsersystem.class);
             query.where(builder.and(builder.equal(root.get(type.getDeclaredSingularAttribute("email", String.class)), login.getEmail()),
-                    builder.equal(root.get(type.getDeclaredSingularAttribute("password", String.class)), login.getPassword())));
+                    builder.equal(root.get(type.getDeclaredSingularAttribute("password", String.class)), login.getPassword())),
+                    builder.equal(root.get(type.getDeclaredSingularAttribute("status", String.class)), "ATIVO"));
             result = (TbUsersystem) em1.createQuery(query).getSingleResult();
             em1.close();
             return result;

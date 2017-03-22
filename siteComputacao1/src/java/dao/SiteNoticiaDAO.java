@@ -34,6 +34,22 @@ public class SiteNoticiaDAO extends GenericDAO<SiteNoticia> {
         em1.close();
         return result;
     }
+    
+    public List<SiteNoticia> listarPorUsuario(TbUsersystem id) {
+        System.out.println("entrou no dao listar noticias");
+        List<SiteNoticia> result = new ArrayList<SiteNoticia>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteNoticia.class);
+        EntityType type = em1.getMetamodel().entity(SiteNoticia.class);
+        Root root = query.from(SiteNoticia.class);
+        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("usuarioId", TbUsersystem.class)), id));
+        query.orderBy(builder.desc(root.get("hora2")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
 
     /* @Override
     public List<SiteNoticia> listarTodos() {
