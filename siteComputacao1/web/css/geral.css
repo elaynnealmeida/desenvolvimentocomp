@@ -15,3 +15,8 @@ main .card {
     border: 1px solid #30cfc0;
     border-radius: 4px;
 }
+
+#matriz-curricular-svg {
+    width: 140%;
+    height: 140%;
+}

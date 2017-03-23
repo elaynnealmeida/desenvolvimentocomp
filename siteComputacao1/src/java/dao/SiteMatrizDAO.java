@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
 import model.SiteMatriz;
 
 /**
@@ -39,5 +40,29 @@ public class SiteMatrizDAO extends GenericDAO<SiteMatriz> {
             em1.close();
         }
         return result;
+    }
+    
+    public SiteMatriz buscaPorApelido(String apelido) {
+        System.out.println("entrou no dao buscaPorApelido-----------");
+        System.out.println("entidade:  " + SiteMatriz.class.getName());
+        EntityManager em1 = getEM();
+        try {
+            em1.getTransaction().begin();
+           
+            CriteriaBuilder builder = em1.getCriteriaBuilder();
+            CriteriaQuery query = builder.createQuery(SiteMatriz.class);
+            EntityType type = em1.getMetamodel().entity(SiteMatriz.class);
+            Root root = query.from(SiteMatriz.class);
+            query.where(builder.equal(root.get("apelido"), apelido));
+            //query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("apelido", TbProfessores.class)), apelido));
+            SiteMatriz result = (SiteMatriz) em1.createQuery(query).getSingleResult();
+            
+            em1.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println("Erro no buscar por apelido: " + e);
+            em1.close();
+        }
+        return null;
     }
 }

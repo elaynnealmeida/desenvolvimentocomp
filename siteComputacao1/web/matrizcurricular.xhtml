@@ -40,28 +40,7 @@
                             <!--<small class="text-muted">secondary text</small>-->
                         </h3>
                         <hr></hr>
-                        <h:form id="matrizCurricular">
-                            <p:dataGrid var="disciplina" value="#{matrizController.matrizes}" columns="8" layout="grid"
-                                        id="disciplinas" >
-
-                                <f:facet name="header">
-                                    Disciplinas
-                                </f:facet>
-                                <p:panel  header="#{disciplina.idDisciplina.periodoIdeal}º Periodo" style="text-align:center">
-                                    <h:panelGrid  style="width:100%" styleClass="#{disciplina.idDisciplina.areaConhecimentoId.cor}" >
-
-                                        <h:outputText value="#{disciplina.descricao}" />
-                                        <h:outputText value="#{disciplina.idDisciplina.codigoSie}" />
-
-                                        <p:commandLink value="Ver" actionListener="#{matrizController.disciplina()}" title="Ver Disciplina">
-                                            <f:param name="disciplina" value="#{disciplina.idDisciplina.id}" />
-                                            <h:outputText value="Ver" style="margin:0 auto;" />
-                                        </p:commandLink>
-                                    </h:panelGrid>
-                                </p:panel>
-
-                            </p:dataGrid>
-                        </h:form>
+                        <ui:include src="matriz_svg.xhtml"></ui:include>
                     </div>
                 </div>
                 <!--/.First row-->
@@ -78,5 +57,15 @@
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   
         </ui:insert>
+        <script type="text/javascript">
+            $(function () {
+                $(".materia").on('click', function() {
+                    id = $(this).attr('id');
+                    if (!id.match(/[op|el]\d/)) {
+                        window.open('faces/detalhesdisciplina.xhtml?disciplinaApelido='+id, '_blank');
+                    }
+                });
+            });
+        </script>
     </h:body>
 </html>
