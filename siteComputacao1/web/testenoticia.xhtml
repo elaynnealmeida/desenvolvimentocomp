@@ -6,84 +6,26 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        
         <title>Adicionar Notícia</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
-        <!-- Bootstrap core CSS -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
-        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-        <!-- Material Design Bootstrap -->
-        <link href="../css/mdb.min.css" rel="stylesheet"></link>
-        <link href="../css/layout.css" rel="stylesheet"></link>
-        <!-- Template styles -->
-        <style rel="stylesheet">
-            /* TEMPLATE STYLES */
-            main {
-                margin-top: 0rem;
-            }
-            main .card {
-                margin-bottom: 2rem;
-            }
-            @media only screen and (max-width: 768px) {
-                .read-more {
-                    text-align: center;
-                }
-            }
-        </style>
+        
     </h:head>
-    <ui:insert name="menu" >
-        <ui:include src="../menu.xhtml"/>       
-    </ui:insert>
+    
     <h:body>
-        <!--Corpo-->
-        <main>
-            <!--Main layout-->
-            <div class="container">
-                <br></br>
-                <div class="row">
-                    <ui:insert name="menu_lateral">
-                        <ui:include src="../menu_lateral.xhtml"></ui:include>
-                    </ui:insert>
-                    <!--Main column-->
-                    <div class="col-lg-9">
-                        <!--Post-->
+       
                         <h:form id="formnoticias" enctype="multipart/form-data">
-                            <div class="card card-block ">
-                                <div class="post-wrapper">
-                                    <!--Post data-->
-                                    <h1 class="h6-responsive" style="text-align: center">Adicionar Notícia</h1>
-                                    <br></br>
-                                    <!--Third row-->
-                                    <div class="row">
-                                        <!--First column-->
-                                        <div class="col-md-4">
-                                            <div class="md-form">
+                            
                                                 <b><h:outputText value="Título: "/></b>
                                                 <h:inputText styleClass="form-control" id="nome" value="#{siteNoticiaController.noticia.titulo}"
                                                              requiredMessage="Especificar o Título é Obrigatório"
                                                              required="true"></h:inputText>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--Second row-->
-                                    <div class="row">
-                                        <!--First column-->
-                                        <div class="col-md-12">
-                                            <div class="md-form">
+                                           
+                                       
                                                 <b><h:outputText value="Conteúdo: "/></b>
                                                 <h:inputTextarea id="conteudo" value="#{siteNoticiaController.noticia.conteudo}"
                                                                  requiredMessage="Especificar o Conteúdo é Obrigatório"
                                                                  required="true" styleClass="form-control" rows="10"></h:inputTextarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <!--First column-->
-                                        <div class="col-md-12">
-                                            <div class="md-form">
+                                            
                                                 <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
                                                 <p:fileUpload value="#{siteNoticiaController.file}"  label="Procurar" mode="simple" skinSimple="true"
                                                               update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
@@ -92,9 +34,7 @@
                                                               invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
                                                               />
                                                 <p:message for="imagem" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                            
                                     <p:outputLabel    value="Tags:" />
                                     <h:selectManyCheckbox  id="tags2" value="#{siteNoticiaController.selectedTags}"  
                                                           converter="tagConverter"
@@ -105,10 +45,9 @@
                                                           >
                                         <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
                                     </h:selectManyCheckbox>
-                                </div>
-                            </div>
+                                
                             <p:commandButton class="btn btn-dark-green" id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>
-                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{siteNoticiaController.atualizar}" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
+                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" actionListener="#{siteNoticiaController.atualizar}" ajax="false" rendered="#{siteNoticiaController.isEdit}" update=":formnoticias"/>
                             <p:commandButton class="btn btn-danger" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formnoticias:confimacao"/>
                             <p:commandButton class="btn btn-warning" id="btnLimpar" value="Limpar" action="#{siteNoticiaController.limpar}" update=":formnoticias"/>
                             <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>
@@ -156,21 +95,8 @@
                                 <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" update=":formnoticias" />
                             </p:confirmDialog>
                         </h:form>
-                        <!--/.Post-->                     
-                        <br></br>
-                    </div>
-                </div>
-            </div>
-            <!--/.Main layout-->
-        </main>
-        <!--Corpo-->
-        <!--Footer-->
-        <ui:insert name="footer" >
-            <ui:include src="../footer.xhtml"/>   
-        </ui:insert>
-        <!--Footer-->
-        <ui:insert name="extensao" >
-            <ui:include src="../js_interno.xhtml"/>   
-        </ui:insert>
+                       
+      
     </h:body>
 </html>
+

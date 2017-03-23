@@ -551,6 +551,17 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+     
+      public void teste() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/testenoticia.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
      public void inicio() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()

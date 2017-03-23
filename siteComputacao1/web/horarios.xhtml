@@ -17,6 +17,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
+        <link href="css/signin.css" rel="stylesheet"></link>
         <link href="css/mdb.min.css" rel="stylesheet"></link>
         <link href="css/layout.css" rel="stylesheet"></link>
         <link href="css/geral.css" rel="stylesheet"></link>
@@ -37,32 +38,279 @@
                         <!--Post-->
                         <p:tabView id="tabhorarios">
                             <p:tab class="style-tab" title="Aula" id="aula">
-                                <h:form id="aulahorario">   
-                                    <p:dataTable var="var" value="#{horariosHelper.aulas}"
-                                                 rowKey="#{var.id}"
-                                                 emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable" 
-                                                 tableStyleClass="table table-bordered table-striped"
-                                                 >                                    
-                                        <p:column  headerText="Dia" >
-                                            <h:outputText value="#{var.diaSemana}" />
-                                        </p:column>                                            
+                                <p:tabView id="tabhorariosaula">
 
-                                        <p:column headerText="Docente" >
-                                            <h:outputText value="#{var.turmaId.professorId.nome}" />
-                                        </p:column>
-                                        <p:column headerText="Disciplina" >
-                                            <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
-                                        </p:column>
-                                        <p:column headerText="Horário" >
-                                            <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
-                                        </p:column>
-                                        <p:column headerText="Local"  >
-                                            <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
-                                        </p:column>                                         
-                                    </p:dataTable>
+                                    <p:tab class="style-tab" title="1º Periodo" id="periodoUm">
+                                        <h:form id="aulaUmperiodo">   
 
-                                </h:form>
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+
+                                    <p:tab class="style-tab" title="2º Periodo" id="segundoperiodo">
+                                        <h:form id="aulasegundoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas2}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="3º Periodo" id="terceiroperiodo">
+                                        <h:form id="aulaterceiroperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas3}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="4º Periodo" id="quartoperiodo">
+                                        <h:form id="aulaquartoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas4}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="5º Periodo" id="quintoperiodo">
+                                        <h:form id="aulaquintoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas5}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="6º Periodo" id="sextoperiodo">
+                                        <h:form id="aulasextoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas6}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="7º Periodo" id="setimoperiodo">
+                                        <h:form id="aulasetimoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas7}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="8º Periodo" id="oitavoperiodo">
+                                        <h:form id="aulaoitavoperiodo">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas8}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                    <p:tab class="style-tab" title="Optativas" id="optativas">
+                                        <h:form id="aulaoptativas">   
+
+                                            <p:dataTable var="var" value="#{horariosHelper.aulas9}"
+                                                         rowKey="#{var.id}"
+                                                         emptyMessage="Nenhum Registro Encontrado"
+                                                         widgetVar="varTable" 
+                                                         tableStyleClass="table table-bordered table-striped"
+                                                         >                                    
+                                                <p:column  headerText="Dia" >
+                                                    <h:outputText value="#{var.diaSemana}" />
+                                                </p:column>                                            
+
+                                                <p:column headerText="Docente" >
+                                                    <h:outputText value="#{var.turmaId.professorId.nome}" />
+                                                </p:column>
+                                                <p:column headerText="Disciplina" >
+                                                    <h:outputText value="#{var.turmaId.disciplinaId.descricao}" />
+                                                </p:column>
+                                                <p:column headerText="Horário" >
+                                                    <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
+                                                </p:column>
+                                                <p:column headerText="Local"  >
+                                                    <h:outputText value="Bloco: #{var.salaId.blocoId.descricao} Sala: #{var.salaId.nomeSala}" />
+                                                </p:column>                                         
+                                            </p:dataTable>
+
+                                        </h:form>
+                                    </p:tab>
+                                    
+                                </p:tabView>
                             </p:tab>
 
                             <p:tab title="Atendimento Professores" id="atendimento">
@@ -186,39 +434,39 @@
                             </p:tab>
                         </p:tabView>
 
-<!--                        <div class="container">
-                            <div id="content">
-                                <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                    <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
-                                    <li><a href="#orange" data-toggle="tab">Orange</a></li>
-                                    <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
-                                    <li><a href="#green" data-toggle="tab">Green</a></li>
-                                    <li><a href="#blue" data-toggle="tab">Blue</a></li>
-                                </ul>
-                                <div id="my-tab-content" class="tab-content">
-                                    <div class="tab-pane active" id="red">
-                                        <h1>Red</h1>
-                                        <p>red red red red red red</p>
-                                    </div>
-                                    <div class="tab-pane" id="orange">
-                                        <h1>Orange</h1>
-                                        <p>orange orange orange orange orange</p>
-                                    </div>
-                                    <div class="tab-pane" id="yellow">
-                                        <h1>Yellow</h1>
-                                        <p>yellow yellow yellow yellow yellow</p>
-                                    </div>
-                                    <div class="tab-pane" id="green">
-                                        <h1>Green</h1>
-                                        <p>green green green green green</p>
-                                    </div>
-                                    <div class="tab-pane" id="blue">
-                                        <h1>Blue</h1>
-                                        <p>blue blue blue blue blue</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
+                        <!--                        <div class="container">
+                                                    <div id="content">
+                                                        <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                                            <li class="active"><a href="#red" data-toggle="tab">Red</a></li>
+                                                            <li><a href="#orange" data-toggle="tab">Orange</a></li>
+                                                            <li><a href="#yellow" data-toggle="tab">Yellow</a></li>
+                                                            <li><a href="#green" data-toggle="tab">Green</a></li>
+                                                            <li><a href="#blue" data-toggle="tab">Blue</a></li>
+                                                        </ul>
+                                                        <div id="my-tab-content" class="tab-content">
+                                                            <div class="tab-pane active" id="red">
+                                                                <h1>Red</h1>
+                                                                <p>red red red red red red</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="orange">
+                                                                <h1>Orange</h1>
+                                                                <p>orange orange orange orange orange</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="yellow">
+                                                                <h1>Yellow</h1>
+                                                                <p>yellow yellow yellow yellow yellow</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="green">
+                                                                <h1>Green</h1>
+                                                                <p>green green green green green</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="blue">
+                                                                <h1>Blue</h1>
+                                                                <p>blue blue blue blue blue</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
 
                         <!--/.Post-->                     
                         <br></br>

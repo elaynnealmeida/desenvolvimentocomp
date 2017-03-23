@@ -26,4 +26,22 @@
         </navigation-case>
     </navigation-rule>
     
+     <navigation-rule>     
+        <from-view-id>/professores/*</from-view-id>
+        <navigation-case>
+            <from-outcome>noticia</from-outcome>
+            <to-view-id>/professores/noticias.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+     <navigation-rule>     
+        <from-view-id>/pages/*</from-view-id>
+        <navigation-case>
+            <from-outcome>noticia</from-outcome>
+            <to-view-id>/professores/noticias.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
 </faces-config>
