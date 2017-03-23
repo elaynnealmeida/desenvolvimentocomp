@@ -42,6 +42,7 @@ public class MatrizController implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("entrou no redirecionamento de pagina");
         String id = context.getExternalContext().getRequestParameterMap().get("disciplina");
+        
         FacesContext.getCurrentInstance().getExternalContext().redirect("faces/detalhesdisciplina.xhtml?disciplina=" + id);
     }
 

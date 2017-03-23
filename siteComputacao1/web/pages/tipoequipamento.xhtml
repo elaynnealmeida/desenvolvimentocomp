@@ -29,26 +29,31 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formtipoequipamento">
-                            <h:outputText value="Cadastro de Tipos de Equipamentos "/>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                            <h3>
+                                <h:outputText value="Cadastro de Tipos de Equipamentos "/>
+                            </h3><br></br>
+                            <h:panelGrid columns="1" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Descrição: "/>
-                                <h:inputText id="descricao" value="#{tipoEquipamentoController.tipoEquipamento.descricao}"
-                                             required="true" />*
-                                <p:message for="descricao" />
-                                <h:outputText value="Natureza da Despeza: "/>
+                                <h:outputText value="Descrição: *" style="font-weight:bold"/>
+                                <h:inputText id="descricao" style="width: 400px" value="#{tipoEquipamentoController.tipoEquipamento.descricao}"
+                                             required="true" />
+                                <p:message for="descricao" /><br></br>
+                                <h:outputText value="Natureza da Despeza: *" style="font-weight:bold"/>
                                 <h:inputText id="natureza" value="#{tipoEquipamentoController.tipoEquipamento.naturezaDaDespeza}"
-                                             required="true" />*
-                                <p:message for="natureza" />
+                                             required="true" />
+                                <p:message for="natureza" /><br></br>
                             </h:panelGrid>
 
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{tipoEquipamentoController.salvar}" rendered="#{!tipoEquipamentoController.isEdit}" update=":formtipoequipamento"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{tipoEquipamentoController.atualizar}" rendered="#{tipoEquipamentoController.isEdit}" update=":formtipoequipamento"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtipoequipamento:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{tipoEquipamentoController.limpar}" update=":formtipoequipamento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{tipoEquipamentoController.salvar}" rendered="#{!tipoEquipamentoController.isEdit}" update=":formtipoequipamento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{tipoEquipamentoController.atualizar}" rendered="#{tipoEquipamentoController.isEdit}" update=":formtipoequipamento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtipoequipamento:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{tipoEquipamentoController.limpar}" update=":formtipoequipamento"/>
                             <br></br> <br></br>
 
                             <p:dataTable var="var" value="#{tipoEquipamentoController.tipoEquipamentos}"
@@ -60,10 +65,12 @@
                                          paginator="true"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                          rowsPerPageTemplate="5,10,15"
+                                         tableStyleClass="table table-bordered table-striped"
+                                         style="border-width: medium"
                                          >
                                 <f:facet name="header">
                                     <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
+                                        <h:outputText value="Pesquisar:" style="font-weight:bold"/>
                                         <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
                                                      style="width:150px" placeholder="Tipo de Equipamento"
                                                      />
@@ -77,9 +84,9 @@
                                 <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none" >
                                     <h:outputText value="#{var.descricao}" />
                                 </p:column>
-                                
-                                 <p:column headerText="Natureza da Despeza" >
-                                     <h:outputText value="#{var.naturezaDaDespeza}" />
+
+                                <p:column headerText="Natureza da Despeza" >
+                                    <h:outputText value="#{var.naturezaDaDespeza}" />
                                 </p:column>
 
                             </p:dataTable>
@@ -107,7 +114,7 @@
         <ui:insert name="footer" >
             <ui:include src="../footer.xhtml"/>   
         </ui:insert>
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

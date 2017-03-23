@@ -28,7 +28,7 @@
 
 
                                     <div>
-                                        <p:autoComplete id="dd" emptyMessage="Não possui registros"  dropdownMode="current" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
+                                        <p:autoComplete  id="dd" emptyMessage="Não possui registros"  dropdownMode="current" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
                                                         rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
                                             <p:ajax event="itemSelect" listener="#{loginController.confirmar}"/>
                                         </p:autoComplete>
@@ -43,26 +43,26 @@
                     <hr class="hidden-md-up"></hr>
                     <!--Second column-->
                     <div class="col-lg-2 col-md-4 offset-lg-1">
-                        <h5 class="title">First column</h5>
+                        <h5 class="title">Acesso Rápido</h5>
                         <ul>
                             <li>
-                                <a href="#!">Link 1</a>
+                                <a href="http://ww2.uft.edu.br/" target="_blank">UFT</a>
                             </li>
                             <li>
-                                <a href="#!">Link 2</a>
+                                <a href="http://ww2.uft.edu.br/gestao/pro-reitorias/107-proest/13703-restaurante-universitario" target="_blank">Restaurante Universitário</a>
                             </li>
                             <li>
-                                <a href="#!">Link 3</a>
+                                <a href="https://moodle.uft.edu.br/" target="_blank">Moodle UFT</a>
                             </li>
                             <li>
-                                <a href="#!">Link 4</a>
+                                <a href="https://sistemas.uft.edu.br/aluno/" target="_blank">Portal do Aluno</a>
                             </li>
                         </ul>
                     </div>
                     <!--/.Second column-->
                     <hr class="hidden-md-up"></hr>
                     <!--Third column-->
-                    <div class="col-lg-2 col-md-4">
+<!--                    <div class="col-lg-2 col-md-4">
                         <h5 class="title">Second column</h5>
                         <ul>
                             <li>
@@ -79,9 +79,9 @@
                             </li>
                         </ul>
                     </div>
-                    <!--/.Third column-->
+                    /.Third column
                     <hr class="hidden-md-up"></hr>
-                    <!--Fourth column-->
+                    Fourth column
                     <div class="col-lg-2 col-md-4">
                         <h5 class="title">Third column</h5>
                         <ul>
@@ -98,7 +98,7 @@
                                 <a href="#!">Link 4</a>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
                     <!--/.Fourth column-->
                 </div>
             </div>

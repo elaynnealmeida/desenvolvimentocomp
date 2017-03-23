@@ -30,96 +30,103 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
-                      
-                                <h:form id="formdocumento" >
-                                    <h:panelGrid columns="4" >
+                    <div class="col-lg-9">
 
-                                        <h:outputText value="Tipo de Equipamento: "/>
-                                        <p:selectOneMenu id="tipo" value="#{equipamentoController.equipamento.tipo}"  
-                                                         requiredMessage="Campo Obrigatório"
-                                                         required="true"
-                                                         converter="TipoEquipamentoConverter"
-                                                         >
-                                            <f:selectItems value="#{equipamentoController.tipoEquipamento}" 
-                                                           var="tipo" itemLabel="#{tipo}" itemValue="#{tipo}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="tipo" />  
-
-                                        <h:outputText value="Número do Patrimonio: "/>
-                                        <h:inputText id="numpatrimonio" value="#{equipamentoController.equipamento.numPatrimonio}"
-                                                     required="true" />*
-                                        <p:message for="numpatrimonio" />  
-
-                                        <h:outputText value="Nome: "/>
-                                        <h:inputText id="nome" value="#{equipamentoController.equipamento.nome}"
-                                                     required="true" />*
-                                        <p:message for="nome" />
-
-                                        <h:outputText  value="Descrição: "/>
-                                        <h:inputTextarea id="descricao" value="#{equipamentoController.equipamento.descricao}"
-                                                     required="true" />*
-                                        <p:message for="descricao" />
-                                                                           
-                                    </h:panelGrid>
-
-                                    <p:commandButton id="btnSalvar" value="Salvar" action="#{equipamentoController.salvar}" ajax="false" rendered="#{!equipamentoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{equipamentoController.atualizar}" ajax="false" rendered="#{equipamentoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
-                                    <p:commandButton id="btnLimpar" value="Limpar" action="#{equipamentoController.limpar}" update="@form"/>
-                                    <br></br> <br></br>
-
-                                    <p:dataTable var="var" value="#{equipamentoController.equipamentos}"
-                                                 selectionMode="single"  rowKey="#{var.id}"
-                                                 emptyMessage="Nenhum Registro Encontrado"
-                                                 widgetVar="varTable"
-                                                 filteredValue="#{equipamentoController.equipamentosFiltrados}"
-                                                 rows="10"
-                                                 paginator="true"
-                                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                                 rowsPerPageTemplate="5,10,15"
+                        <h:form id="formdocumento" >
+                            <h3>
+                                <h:outputText value="Cadastro de Equipamentos "/>
+                            </h3><br></br>
+                            <h:panelGrid columns="1" width="500px" >
+                                <h:outputText value="Tipo de Equipamento: *" style="font-weight:bold"/>
+                                <h:selectOneMenu class="form-control" id="tipo" value="#{equipamentoController.equipamento.tipo}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="TipoEquipamentoConverter"
                                                  >
-                                        <f:facet name="header">
-                                            <p:outputPanel>
-                                                <h:outputText value="Pesquisar:" />
-                                                <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                             style="width:150px" placeholder="Equipamento"
-                                                             />
-                                            </p:outputPanel>
-                                        </f:facet>
-                                        <p:ajax event="rowSelect" listener="#{equipamentoController.onRowSelect}" update="@form" />
-                                        <p:column headerText="Id">
-                                            <h:outputText value="#{var.id}" />
-                                        </p:column>            
+                                    <f:selectItems value="#{equipamentoController.tipoEquipamento}" 
+                                                   var="tipo" itemLabel="#{tipo}" itemValue="#{tipo}" />                                       
+                                </h:selectOneMenu>  
+                                <p:message for="tipo" />  <br></br>
 
-                                        <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none">
-                                            <h:outputText value="#{var.nome}" />
-                                        </p:column>     
+                                <h:outputText value="Número do Patrimonio: *" style="font-weight:bold"/>
+                                <h:inputText id="numpatrimonio" value="#{equipamentoController.equipamento.numPatrimonio}"
+                                             required="true" />
+                                <p:message for="numpatrimonio" /> <br></br> 
 
-                                        <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none">
-                                            <h:outputText value="#{var.descricao}" />
-                                        </p:column>     
+                                <h:outputText value="Nome: *" style="font-weight:bold"/>
+                                <h:inputText id="nome" value="#{equipamentoController.equipamento.nome}"
+                                             required="true" />
+                                <p:message for="nome" /><br></br>
 
-                                        <p:column headerText="Nº do Patrimonio" >
-                                            <h:outputText value="#{var.numPatrimonio}" />
-                                        </p:column>
+                                <h:outputText  value="Descrição: *" style="font-weight:bold"/>
+                                <h:inputTextarea id="descricao" value="#{equipamentoController.equipamento.descricao}"
+                                                 required="true" />
+                                <p:message for="descricao" /><br></br>
 
-                                    </p:dataTable>
-                                    <p:messages id="msg" autoUpdate="true" closable="true" >              
-                                    </p:messages>
+                            </h:panelGrid>
 
-                                    <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                                                     hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{equipamentoController.salvar}" ajax="false" rendered="#{!equipamentoController.isEdit}" update="@form"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{equipamentoController.atualizar}" ajax="false" rendered="#{equipamentoController.isEdit}" update="@form"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{equipamentoController.limpar}" update="@form"/>
+                            <br></br> <br></br>
 
-                                        <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
-                                                         action="#{equipamentoController.deletar}" />
+                            <p:dataTable var="var" value="#{equipamentoController.equipamentos}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{equipamentoController.equipamentosFiltrados}"
+                                         rows="10"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         tableStyleClass="table table-bordered table-striped"
+                                         style="border-width: medium"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Equipamento"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{equipamentoController.onRowSelect}" update="@form" />
+                                <p:column headerText="Id">
+                                    <h:outputText value="#{var.id}" />
+                                </p:column>            
 
-                                        <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
-                                    </p:confirmDialog>
+                                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none">
+                                    <h:outputText value="#{var.nome}" />
+                                </p:column>     
+
+                                <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none">
+                                    <h:outputText value="#{var.descricao}" />
+                                </p:column>     
+
+                                <p:column headerText="Nº do Patrimonio" >
+                                    <h:outputText value="#{var.numPatrimonio}" />
+                                </p:column>
+
+                            </p:dataTable>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >              
+                            </p:messages>
+
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                                <p:commandButton value="Sim" update="@form" onclick="PF('confirmation').hide()"
+                                                 action="#{equipamentoController.deletar}" />
+
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                            </p:confirmDialog>
 
 
-                                </h:form>                          
+                        </h:form>                          
                         <br></br>
                     </div>
                 </div>

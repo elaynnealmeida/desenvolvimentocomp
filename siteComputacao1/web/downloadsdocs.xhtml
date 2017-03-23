@@ -53,10 +53,8 @@
                                             <p:fileDownload value="#{documentosHelper.download(doc)}" />
                                         </p:commandButton>               
                                         
-                                        <p style="font-size: small">
-                                            <h:outputText value="  #{doc.tamanhoDoArquivo} bytes" /><br></br>
-                                            <h:outputText value=" postado em:  #{doc.dataInclusao}" />
-                                        </p>
+                                        <h:outputText style="font-size: small" value="  #{doc.tamanhoDoArquivo} bytes." />
+                                            <h:outputText style="font-size: small" value=" postado em:  #{doc.dataInclusao}." />
                                     </hr>
                                 </c:forEach>
                             </hr>

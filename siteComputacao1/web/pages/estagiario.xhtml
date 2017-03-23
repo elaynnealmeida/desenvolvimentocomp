@@ -45,7 +45,7 @@
                                 <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
                                     <h:outputText value="Nome: " style="font-weight:bold"/>
-                                    <h:inputText id="nome" value="#{estagiarioController.estagiario.nome}"
+                                    <h:inputText id="nome" style="width: 400px" value="#{estagiarioController.estagiario.nome}"
                                                  required="true" />*
                                     <p:message for="nome" />
 
@@ -77,7 +77,7 @@
 
                                     <h:outputText value="Ano Letivo: " style="font-weight:bold"/>
                                     <p:inputText id="ano"  value="#{estagiarioController.horario.ano}"/>      
-                                    <h:message for="ano" />*
+                                    <h:message for="ano" />*<br></br>
 
                                     <h:outputText value="Sala: " style="font-weight:bold"/>
                                     <h:selectOneMenu class="form-control" id="sala" value="#{estagiarioController.horario.sala}"  
@@ -96,10 +96,10 @@
 
                                     <h:outputText value="Hora Fim: " style="font-weight:bold"/>
                                     <p:inputMask id="hrfim"  value="#{estagiarioController.horario.horaFim}" mask="99:99"/>      
-                                    <h:message for="hrfim" />*
+                                    <h:message for="hrfim" />*<br></br>
 
                                     <h:outputText value="Dia da semana: " style="font-weight:bold"/>
-                                    <h:selectOneMenu class="form-control" id="dia" value="#{estagiarioController.horario.diaSemana}" style="width:150px">
+                                    <h:selectOneMenu class="form-control" id="dia" value="#{estagiarioController.horario.diaSemana}">
                                         <f:selectItem itemLabel="Segunda-Feira" itemValue="Segunda-Feira" />
                                         <f:selectItem itemLabel="Terça-Feira" itemValue="Terça-Feira" />
                                         <f:selectItem itemLabel="Quarta-Feira" itemValue="Quarta-Feira" />
@@ -109,7 +109,7 @@
                                     </h:selectOneMenu>
                                     <h:message for="dia" />*
 
-                                    <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                    <h:outputText value="Horário Ativo: " style="font-weight:bold"/>
                                     <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
                                     <h:message for="ativoh" /><br></br>
 

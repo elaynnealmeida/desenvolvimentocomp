@@ -19,6 +19,7 @@
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
         <link href="../css/geral.css" rel="stylesheet"></link>
+        <link href="../css/fileupload.css" rel="stylesheet"></link>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>       
@@ -30,63 +31,71 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <p:tabView id="documento1">
 
                             <p:tab title="Documento" id="doc">
                                 <h:form id="formdocumento" enctype="multipart/form-data">
-                                    <h:outputText value="Cadastro de Documento "/>
-                                    <h:panelGrid columns="4" >
+                                    <h3>
+                                        <h:outputText value="Cadastro de Documento "/>
+                                    </h3> 
+                                    <br></br>
+                                    <h:panelGrid columns="1" width="500px" >
 
-                                        <h:outputText value="Tipo de Documento: "/>
-                                        <p:selectOneMenu id="documento" value="#{documentoController.documento.tipoDocumento}"  
+                                        <h:outputText value="Tipo de Documento: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="documento" value="#{documentoController.documento.tipoDocumento}"  
                                                          requiredMessage="Campo Obrigatório"
                                                          required="true"
                                                          converter="TipoDocumentoConverter"
                                                          >
                                             <f:selectItems value="#{documentoController.tpDocumento}" 
-                                                           var="tpdocumento" itemLabel="#{tpdocumento}" itemValue="#{tpdocumento}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="documento" />  
+                                                           var="tpdocumento" itemLabel="#{tpdocumento}" itemValue="#{tpdocumento}" />                                      
+                                        </h:selectOneMenu>  
+                                        <h:message for="documento" />  
 
-                                        <h:outputText value="Publicacao: "/>
-                                        <p:selectOneMenu id="publicacao" value="#{documentoController.documento.publicacaoId}"  
+                                        <h:outputText value="Publicacao: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="publicacao" value="#{documentoController.documento.publicacaoId}"  
                                                          converter="PublicacaoConverter"
                                                          >
                                             <f:selectItems value="#{documentoController.publicacao}" 
                                                            var="publicacao" itemLabel="#{publicacao}" itemValue="#{publicacao}" />                                       
-                                        </p:selectOneMenu><br></br>  
-                                        <p:message for="publicacao" />  
+                                        </h:selectOneMenu> 
+                                        <h:message for="publicacao" />  
 
-                                        <h:outputText value="Título: "/>
+                                        <h:outputText value="Título: *" style="font-weight:bold"/>
                                         <h:inputText id="titulo" value="#{documentoController.documento.titulo}"
-                                                     required="true" />*
-                                        <p:message for="titulo" />
-
-                                        <h:outputText  value="Arquivo: "/>
-                                        <p:fileUpload value="#{documentoController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                                     required="true" />
+                                        <h:message for="titulo" />
+                                        <br></br>
+                                        <h:outputText  value="Arquivo: *" style="font-weight:bold"/><br></br>
+                                        <p:fileUpload  value="#{documentoController.file}"  label="Procurar" mode="simple" skinSimple="false"
                                                       update="msg" id="arquivo"    requiredMessage="Arquivo Obrigatório" 
                                                       required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(pdf)$/"
-                                                      invalidFileMessage="Somente PDF é permitido."
+                                                      invalidFileMessage="Somente PDF é permitido." 
                                                       invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
-                                                      />*
-                                        <p:message for="arquivo" />
+                                                      />
+                                        <h:message for="arquivo" />
+                                        <br></br>
 
-                                        <h:outputText value="Assunto: "/>
+                                        <h:outputText value="Assunto: *" style="font-weight:bold"/>
                                         <h:inputTextarea id="assunto" value="#{documentoController.documento.assunto}"
-                                                         required="true" />*
-                                        <p:message for="assunto" />
+                                                         required="true" />
+                                        <h:message for="assunto" />
 
                                         <h:outputText value="Ativo: "/>
                                         <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
-                                        <p:message for="ativo" />                                        
+                                        <h:message for="ativo" />                                        
                                     </h:panelGrid>
+                                    <br></br><br></br>
 
-                                    <p:commandButton id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnAtualizar" value="Atualizar" actionListener="#{documentoController.atualizar}" ajax="false" rendered="#{documentoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
-                                    <p:commandButton id="btnLimpar" value="Limpar" action="#{documentoController.limpar}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" actionListener="#{documentoController.atualizar}" ajax="false" rendered="#{documentoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{documentoController.limpar}" update="@form"/>
                                     <br></br> <br></br>
 
                                     <p:dataTable var="var" value="#{documentoController.documentos}"
@@ -98,10 +107,12 @@
                                                  paginator="true"
                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                                  rowsPerPageTemplate="5,10,15"
+                                                 tableStyleClass="table table-bordered table-striped"
+                                                 style="border-width: medium"
                                                  >
                                         <f:facet name="header">
                                             <p:outputPanel>
-                                                <h:outputText value="Pesquisar:" />
+                                                <h:outputText value="Pesquisar:" style="font-weight:bold"/>
                                                 <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
                                                              style="width:150px" placeholder="Documento"
                                                              />
@@ -144,53 +155,57 @@
 
                             <p:tab title="Publicação" id="publicacao">
                                 <h:form id="formpublicacao">
-                                    <h:outputText value="Cadastro de Publicação "/>
-                                    <h:panelGrid columns="4" >                                
+                                    <h3>
+                                        <h:outputText value="Cadastro de Publicação "/>
+                                    </h3>
+                                    <br></br>
+                                    <h:panelGrid columns="1" width="500px" >                                
 
-                                        <h:outputText value="Conselho: "/>
-                                        <p:selectOneMenu id="conselho" value="#{publicacaoController.publicacao.conselhoId}"  
+                                        <h:outputText value="Conselho: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="conselho" value="#{publicacaoController.publicacao.conselhoId}"  
                                                          requiredMessage="Campo Obrigatório"
                                                          required="true"
                                                          converter="ConselhoConverter"
                                                          >
                                             <f:selectItems value="#{publicacaoController.conselho}" 
                                                            var="conselho" itemLabel="#{conselho}" itemValue="#{conselho}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="conselho" />  
+                                        </h:selectOneMenu>  
+                                        <h:message for="conselho" />  
 
-                                        <h:outputText value="Tipo de Publicação: "/>
-                                        <p:selectOneMenu id="tppublicacao" value="#{publicacaoController.publicacao.tipoPublicacao}"  
+                                        <h:outputText value="Tipo de Publicação: *" style="font-weight:bold"/>
+                                        <h:selectOneMenu class="form-control" id="tppublicacao" value="#{publicacaoController.publicacao.tipoPublicacao}"  
                                                          requiredMessage="Campo Obrigatório"
                                                          required="true"
                                                          converter="TipoPublicacaoConverter"
                                                          >
                                             <f:selectItems value="#{publicacaoController.tpPublicacao}" 
                                                            var="tppublicacao" itemLabel="#{tppublicacao}" itemValue="#{tppublicacao}" />                                       
-                                        </p:selectOneMenu>*  
-                                        <p:message for="tppublicacao" />  
+                                        </h:selectOneMenu>  
+                                        <h:message for="tppublicacao" />  
 
-                                        <h:outputText value="Número: "/>
+                                        <h:outputText value="Número: *" style="font-weight:bold"/>
                                         <h:inputText id="numero" value="#{publicacaoController.publicacao.numero}"
                                                      required="true" requiredMessage="Campo Obrigatório"/>
-                                        <p:message for="numero" />*
+                                        <h:message for="numero" />
 
-                                        <h:outputText value="Data: "/>
+                                        <h:outputText value="Data: *" style="font-weight:bold"/>
                                         <p:inputMask id="dt"  value="#{publicacaoController.publicacao.data}" mask="99/99/9999"
                                                      required="true" requiredMessage="Campo Obrigatório" />      
-                                        <p:message for="dt" />*
+                                        <h:message for="dt" />
 
-                                        <h:outputText value="Ano: "/>
+                                        <h:outputText value="Ano: *" style="font-weight:bold"/>
                                         <h:inputText id="ano" value="#{publicacaoController.publicacao.ano}"
-                                                     required="true" requiredMessage="Campo Obrigatório"/>*
-                                        <p:message for="ano" />
+                                                     required="true" requiredMessage="Campo Obrigatório"/>
+                                        <h:message for="ano" />
+                                        <br></br><br></br>
 
 
                                     </h:panelGrid>
 
-                                    <p:commandButton id="btnSalvar" value="Salvar" action="#{publicacaoController.salvar}" rendered="#{!publicacaoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnAtualizar" value="Atualizar" action="#{publicacaoController.atualizar}" rendered="#{publicacaoController.isEdit}" update="@form"/>
-                                    <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
-                                    <p:commandButton id="btnLimpar" value="Limpar" action="#{publicacaoController.limpar}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{publicacaoController.salvar}" rendered="#{!publicacaoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{publicacaoController.atualizar}" rendered="#{publicacaoController.isEdit}" update="@form"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update="@form:confimacao"/>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{publicacaoController.limpar}" update="@form"/>
                                     <br></br> <br></br>
 
                                     <p:dataTable var="var" value="#{publicacaoController.publicacoes}"
@@ -202,10 +217,12 @@
                                                  paginator="true"
                                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                                  rowsPerPageTemplate="5,10,15"
+                                                 tableStyleClass="table table-bordered table-striped"
+                                                 style="border-width: medium"
                                                  >
                                         <f:facet name="header">
                                             <p:outputPanel>
-                                                <h:outputText value="Pesquisar:" />
+                                                <h:outputText value="Pesquisar:" style="font-weight:bold"/>
                                                 <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
                                                              style="width:150px" placeholder="Publicação"
                                                              />

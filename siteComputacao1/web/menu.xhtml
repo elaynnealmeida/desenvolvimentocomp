@@ -48,30 +48,30 @@
                                 <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Extensão" actionListener="#{navegacaoHelper.extensao()}"/>
                             </li>
 
-                            <li class="nav-item btn-group" style="font-size: .88em">
-                                <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <h:commandLink styleClass="dropdown-item" value="Usuário"  actionListener="#{navegacaoHelper.paginaUsuario}"  />
-                                    <h:commandLink styleClass="dropdown-item" value="Formação"  actionListener="#{navegacaoHelper.paginaFormacao}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Tag"  actionListener="#{navegacaoHelper.paginaTag}"  />              
-                                    <h:commandLink styleClass="dropdown-item" value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
-                                    <h:commandLink styleClass="dropdown-item" value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
-                                    <h:commandLink styleClass="dropdown-item" value="Servidor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
-                                    <h:commandLink styleClass="dropdown-item" value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
-                                    <h:commandLink styleClass="dropdown-item" value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />
-                                    <h:commandLink styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Tipo de Documento" actionListener="#{navegacaoHelper.paginaTpDocumento}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Tipo de Publicação" actionListener="#{navegacaoHelper.paginaTpPublicacao}"  />
-                                    <h:commandLink styleClass="dropdown-item" value="Conselho" actionListener="#{navegacaoHelper.paginaConselho}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Estagiário" actionListener="#{navegacaoHelper.paginaEstagiario}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Monitor" actionListener="#{navegacaoHelper.paginaMonitor}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Turma" actionListener="#{navegacaoHelper.paginaTurma}"  /> 
-                                </div>
-                            </li>
-                            <li>
-                                
-                            </li>
+                            <h:panelGroup rendered="#{loginController.isUser}">
+                                <li class="nav-item btn-group" style="font-size: .88em">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <h:commandLink styleClass="dropdown-item" value="Usuário"  actionListener="#{navegacaoHelper.paginaUsuario}"  />
+                                        <h:commandLink styleClass="dropdown-item" value="Formação"  actionListener="#{navegacaoHelper.paginaFormacao}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Tag"  actionListener="#{navegacaoHelper.paginaTag}"  />              
+                                        <h:commandLink styleClass="dropdown-item" value="Função"  actionListener="#{navegacaoHelper.paginaFuncao}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Perfil" actionListener="#{navegacaoHelper.paginaPerfil}"  />                                     
+                                        <h:commandLink styleClass="dropdown-item" value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
+                                        <h:commandLink styleClass="dropdown-item" value="Servidor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
+                                        <h:commandLink styleClass="dropdown-item" value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
+                                        <h:commandLink styleClass="dropdown-item" value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />
+                                        <h:commandLink styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Documento" actionListener="#{navegacaoHelper.paginaTpDocumento}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Publicação" actionListener="#{navegacaoHelper.paginaTpPublicacao}"  />
+                                        <h:commandLink styleClass="dropdown-item" value="Conselho" actionListener="#{navegacaoHelper.paginaConselho}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Estagiário" actionListener="#{navegacaoHelper.paginaEstagiario}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Monitor" actionListener="#{navegacaoHelper.paginaMonitor}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Turma" actionListener="#{navegacaoHelper.paginaTurma}"  /> 
+                                    </div>
+                                </li>
+                            </h:panelGroup>
+
                         </ul>
 
                         <div style="color: #ffffff; text-align: right;">
@@ -83,7 +83,7 @@
                         </div>
 
                         <ul class="nav navbar-nav navbar-right nav-inline" style="margin-right: 0em; margin-bottom: -10px; margin-top: -10px">
-                        
+
                             <h:form id="loginform" styleClass="form-signin" role="form" rendered="#{!loginController.isUser}" >
                                 <li class="nav-item">
                                     <label style="color: white; margin-bottom: 0px; margin-left: -5px">Email: </label>
@@ -97,8 +97,8 @@
                                     <div> <h:commandButton class="btn btn-default btn-sm waves-effect waves-light"  id="btnSalvar" value="Entrar" 
                                                            action="#{loginController.login()}" /> </div>                                  
                                 </li>
-                              
-                                </h:form>
+
+                            </h:form>
                         </ul>
                     </div>
                 </div>

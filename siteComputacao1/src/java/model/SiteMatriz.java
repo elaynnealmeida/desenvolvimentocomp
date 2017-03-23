@@ -48,6 +48,9 @@ public class SiteMatriz implements Serializable {
     @JoinColumn(name = "id_disciplina", referencedColumnName = "id")
     @ManyToOne
     private TbDisciplina idDisciplina;
+    @Size(max = 16)
+    @Column(name="apelido")
+    private String apelido;
 
     public SiteMatriz() {
     }
