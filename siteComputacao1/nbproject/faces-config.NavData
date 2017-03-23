@@ -4,29 +4,28 @@
     <Scope Scope="Project">
         <Node id="menu_lateral.xhtml" x="150" y="450" zoom="true"/>
         <Node id="menu/estrutura_curso/historico.xhtml" x="650" y="600" zoom="true"/>
-        <Node id="pages/*" x="1650" y="300" zoom="true"/>
         <Node id="menu/documentos/doc_curso.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="pages/*" x="1650" y="300" zoom="true"/>
         <Node id="downloadsdocs.xhtml" x="400" y="750" zoom="true"/>
-        <Node id="menu/estrutura_curso/matriz.xhtml" x="650" y="150" zoom="true"/>
         <Node id="pages/documento.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="menu/estrutura_curso/matriz.xhtml" x="650" y="150" zoom="true"/>
         <Node id="menu/recursos_humanos/tecnicos.xhtml" x="1900" y="150" zoom="true"/>
-        <Node id="menu/estrutura_curso/infraestrutura_fisica/labin_ensino.xhtml" x="650" y="450" zoom="true"/>
         <Node id="pages/tags.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="menu/estrutura_curso/infraestrutura_fisica/labin_ensino.xhtml" x="650" y="450" zoom="true"/>
         <Node id="menu/pesquisa.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="menu/estrutura_curso/pos_strictu_senso.xhtml" x="1150" y="450" zoom="true"/>
         <Node id="menu/extensao.xhtml" x="400" y="150" zoom="true"/>
         <Node id="menu/recursos_humanos/docentes_substitutos.xhtml" x="1400" y="600" zoom="true"/>
         <Node id="comentarios.xhtml" x="1150" y="150" zoom="true"/>
-        <Node id="painel.xhtml" x="1900" y="300" zoom="true"/>
         <Node id="pages/sitecargo.xhtml" x="1400" y="450" zoom="true"/>
         <Node id="matrizcurricular.xhtml" x="150" y="1350" zoom="true"/>
         <Node id="menu/estrutura_curso/laboratorios.xhtml" x="150" y="150" zoom="true"/>
         <Node id="menu.xhtml" x="650" y="900" zoom="true"/>
         <Node id="menu/documentos/doc_institucional.xhtml" x="650" y="300" zoom="true"/>
         <Node id="menu/estrutura_curso/infraestrutura_fisica/coordenacao.xhtml" x="1150" y="600" zoom="true"/>
-        <Node id="footer.xhtml" x="150" y="750" zoom="true"/>
         <Node id="pages/usuario.xhtml" x="1650" y="150" zoom="true"/>
         <Node id="index.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="footer.xhtml" x="150" y="750" zoom="true"/>
         <Node id="menu/estrutura_curso/infraestrutura_fisica/campus_palmas.xhtml" x="650" y="750" zoom="true"/>
         <Node id="menu/coordenacao.xhtml" x="400" y="300" zoom="true"/>
         <Node id="menu/estrutura_curso/sobre.xhtml" x="400" y="1200" zoom="true"/>
@@ -36,18 +35,18 @@
         <Node id="pages/professor.xhtml" x="2150" y="150" zoom="true"/>
         <Node id="menu/estrutura_curso/horarios.xhtml" x="900" y="750" zoom="true"/>
         <Node id="menu/documentos/nucleo_docentes.xhtml" x="150" y="1050" zoom="true"/>
-        <Node id="all_noticias.xhtml" x="900" y="600" zoom="true"/>
         <Node id="login.xhtml" x="1650" y="450" zoom="true"/>
+        <Node id="all_noticias.xhtml" x="900" y="600" zoom="true"/>
         <Node id="barra_governo.xhtml" x="1150" y="750" zoom="true"/>
-        <Node id="menu/estrutura_curso/pos_lato_senso.xhtml" x="150" y="300" zoom="true"/>
         <Node id="menu/documentos/plano_ensino.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="menu/estrutura_curso/pos_lato_senso.xhtml" x="150" y="300" zoom="true"/>
         <Node id="professores/*" x="400" y="600" zoom="true"/>
         <Node id="menu/estrutura_curso/centro_academico.xhtml" x="400" y="1050" zoom="true"/>
         <Node id="professores/noticias.xhtml" x="900" y="150" zoom="true"/>
-        <Node id="pages/usuarioperfil.xhtml" x="900" y="300" zoom="true"/>
         <Node id="menu/recursos_humanos/docentes_efetivos.xhtml" x="150" y="900" zoom="true"/>
-        <Node id="pages/perfil.xhtml" x="1400" y="300" zoom="true"/>
         <Node id="logo.xhtml" x="150" y="1200" zoom="true"/>
+        <Node id="pages/usuarioperfil.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="pages/perfil.xhtml" x="1400" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

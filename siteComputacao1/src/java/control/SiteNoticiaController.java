@@ -70,8 +70,9 @@ public class SiteNoticiaController implements Serializable {
     }
     
     public void salvar() {
-        
+        System.out.println("Entrou no salvar noticia ========================= ");
         try {
+            System.out.println("Entrou no salvar noticia ========================= ");
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
@@ -166,8 +167,10 @@ public class SiteNoticiaController implements Serializable {
         SitePerfil perfil = new SitePerfil();
         perfil = (SitePerfil) request.getSession().getAttribute("perfil");
         if (perfil.getId()==1) {
+            System.out.println("entrou no perfil de adm");
             this.noticias = noticiaDao.listarPorData();
         } else {
+            System.out.println("entrou no perfil de prof ou ca");
             this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
         }
         return this.noticias;

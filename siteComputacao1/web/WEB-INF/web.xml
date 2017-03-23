@@ -46,5 +46,23 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>none</param-value>
     </context-param>
-   
+    
+    <mime-mapping>
+        <extension>xhtml</extension>
+        <mime-type>application/xml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpg</extension>
+        <mime-type>application/jpg</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>png</extension>
+        <mime-type>application/png</mime-type>
+    </mime-mapping>
+
+    <mime-mapping>
+        <extension>jpeg</extension>
+        <mime-type>application/jpeg</mime-type>
+    </mime-mapping>
 </web-app>

@@ -21,7 +21,7 @@ public class Autorizacao implements PhaseListener {
         String currentPage = facesContext.getViewRoot().getViewId();
 
 //armazenando a página que fez a requisição. (a string da pág. atual ex: "/pag.jsf")
-        boolean isLoginPage = (currentPage.lastIndexOf("login.xhtml") > -1);
+        boolean isLoginPage = (currentPage.lastIndexOf("/login.xhtml") > -1);
 //fazendo a verificação mais básica de todas... se é a página de login.
         HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 
@@ -41,6 +41,7 @@ public class Autorizacao implements PhaseListener {
                 NavigationHandler nh = facesContext.getApplication().getNavigationHandler();
                 nh.handleNavigation(facesContext, null, "loginPage");
             } 
+            
         }
 
 //caso contrário o jsf passa tranquilamente por aqui!!!
