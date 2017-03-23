@@ -54,7 +54,7 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item" value="Horários" actionListener="#{navegacaoHelper.horariosGeral()}"/> 
                                         <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
                                         <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
-                                       
+
                                     </ul>
                                     <div class="panel-footer">Professores</div>
                                 </div>
@@ -105,9 +105,9 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse5" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                         <h:commandLink class="list-group-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
-                                         <h:commandLink class="list-group-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
-                                         <h:commandLink class="list-group-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
                                     </ul>
                                     <div class="panel-footer">Coordenação</div>
                                 </div>
@@ -135,11 +135,29 @@ and open the template in the editor.
                     </div>
                 </div>
 
-                <br></br>
-
-
-                
             </h:form>
+            <br></br>
+
+            <!--Panel-->
+            <h:form  rendered="#{loginController.isUser}">
+
+                <div class="card text-center">
+                    <div class="card-header default-color-dark white-text">
+                        Notícias
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">Adinione uma nova notíca ao site</h4>
+                        <p class="card-text">Somente para coordenação, professores, técnicos, estagiários e o centro acadêmico.</p>
+                        <h:commandLink class="btn btn-default" value="Notícia +" actionListener="#{navegacaoHelper.paginaNoticias}"></h:commandLink>
+                    </div>
+                    <div class="card-footer text-muted default-color-dark white-text">
+                        <p>Ciência da Computação</p>
+                    </div>
+                </div>
+            </h:form>
+            <!--/.Panel-->
+
+
         </div>
         <!--/.Sidebar-->
     </ui:composition>

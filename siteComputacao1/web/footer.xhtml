@@ -2,7 +2,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <script name="jquery/jquery.js" library="primefaces"></script>
 
@@ -26,10 +27,10 @@
                                         <h:commandLink value="Sair" action="#{loginController.logout}" rendered="#{loginController.isUser}"/>
                                     </div>
 
-
+                                    
                                     <div>
                                         <p:autoComplete  id="dd" emptyMessage="Não possui registros"  dropdownMode="current" dropdown="true" var="p" value="#{loginController.perfilSelecionado}" completeMethod="#{loginController.buscaPerfil}" 
-                                                        rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
+                                                         rendered="#{loginController.isUser}" itemValue="#{p}" converter="PerfilConverter" itemLabel="#{p.nome}">
                                             <p:ajax event="itemSelect" listener="#{loginController.confirmar}"/>
                                         </p:autoComplete>
                                     </div>
@@ -62,43 +63,43 @@
                     <!--/.Second column-->
                     <hr class="hidden-md-up"></hr>
                     <!--Third column-->
-<!--                    <div class="col-lg-2 col-md-4">
-                        <h5 class="title">Second column</h5>
-                        <ul>
-                            <li>
-                                <a href="#!">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    /.Third column
-                    <hr class="hidden-md-up"></hr>
-                    Fourth column
-                    <div class="col-lg-2 col-md-4">
-                        <h5 class="title">Third column</h5>
-                        <ul>
-                            <li>
-                                <a href="#!">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>-->
+                    <!--                    <div class="col-lg-2 col-md-4">
+                                            <h5 class="title">Second column</h5>
+                                            <ul>
+                                                <li>
+                                                    <a href="#!">Link 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 4</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        /.Third column
+                                        <hr class="hidden-md-up"></hr>
+                                        Fourth column
+                                        <div class="col-lg-2 col-md-4">
+                                            <h5 class="title">Third column</h5>
+                                            <ul>
+                                                <li>
+                                                    <a href="#!">Link 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 2</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 3</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#!">Link 4</a>
+                                                </li>
+                                            </ul>
+                                        </div>-->
                     <!--/.Fourth column-->
                 </div>
             </div>

@@ -79,6 +79,7 @@ public class SiteNoticiaController implements Serializable {
             noticia.setData(getDateTime());//Data de Alteração
             noticia.setHora(getDateTime());//Data de Inserção
             noticia.setHora2(BigInteger.valueOf(currentTimeMillis()));
+            System.out.println("Salvar");
             gravaImagem();
             if (noticia.getImgCapa() != null) {
                 noticiaDao.salvar(noticia);

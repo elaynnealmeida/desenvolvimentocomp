@@ -21,10 +21,10 @@
         <div class="md-form">
             <h:form id="formlogin" styleClass="form-signin">
                 <h2 class="form-signin-heading">Entre com sua conta</h2>
-                <p:inputText type="email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
                 <label for="Email" data-error="wrong" data-success="right">Digite seu Email</label>
-                <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>
+                <p:inputText type="email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" placeholder="Email" required="true"/>   
                 <label for="senha" data-error="wrong" data-success="right">Digite sua senha</label>
+                <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>
                 <h:commandButton styleClass="btn btn-lg btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
                                  action="#{loginController.login()}"/>
             </h:form>

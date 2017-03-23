@@ -60,7 +60,6 @@
                                         <h:commandLink styleClass="dropdown-item" value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
                                         <h:commandLink styleClass="dropdown-item" value="Servidor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
                                         <h:commandLink styleClass="dropdown-item" value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
-                                        <h:commandLink styleClass="dropdown-item" value="Notícia" actionListener="#{navegacaoHelper.paginaNoticias}"  />
                                         <h:commandLink styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
                                         <h:commandLink styleClass="dropdown-item" value="Tipo de Documento" actionListener="#{navegacaoHelper.paginaTpDocumento}"  /> 
                                         <h:commandLink styleClass="dropdown-item" value="Tipo de Publicação" actionListener="#{navegacaoHelper.paginaTpPublicacao}"  />
@@ -82,24 +81,36 @@
                             </h:commandLink>
                         </div>
 
-                        <ul class="nav navbar-nav navbar-right nav-inline" style="margin-right: 0em; margin-bottom: -10px; margin-top: -10px">
+                        <h:form rendered="#{!loginController.isUser}">
 
-                            <h:form id="loginform" styleClass="form-signin" role="form" rendered="#{!loginController.isUser}" >
-                                <li class="nav-item">
-                                    <label style="color: white; margin-bottom: 0px; margin-left: -5px">Email: </label>
-                                    <div><p:inputText type="email" placeholder="Email" styleClass="form-control validate" style="color: white; height: 8px; margin-top: 0em; margin-right: 1em; width: 150px " id="Email" value="#{loginController.user.email}" required="true"/></div>
-                                </li>
-                                <li class="nav-item">
-                                    <label style="color: white; margin-bottom: 0px; margin-left: -5px">Senha:</label>
-                                    <div><p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" style="color: white; height: 8px; margin-top: 0em; margin-right: 1em; width: 150px" required="true" placeholder="Senha" ></p:password></div>
-                                </li>
-                                <li class="nav-item" style="margin-top: 17px">
-                                    <div> <h:commandButton class="btn btn-default btn-sm waves-effect waves-light"  id="btnSalvar" value="Entrar" 
-                                                           action="#{loginController.login()}" /> </div>                                  
-                                </li>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    <a href="#" style="font-size: .88em; color: #ffffff" class=" dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                                    <ul id="login-dp" class="dropdown-menu">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-lg-12">
 
-                            </h:form>
-                        </ul>
+                                                    <h:form id="loginform" styleClass="form-signin" role="form">
+                                                        <h5 class="form-signin-heading">Entrar</h5>
+                                                        <p:inputText type="email" placeholder="Email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
+                                                        <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>                                                           
+                                                        <h:commandButton styleClass="btn btn-sm btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
+                                                                         action="#{loginController.login()}"/>
+                                                    </h:form>
+
+                                                    <div class="bottom text-center">
+                                                        Esqueceu a senha? <a href="#"><b>Recuperar senha</b></a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </h:form>
                     </div>
                 </div>
             </nav>
