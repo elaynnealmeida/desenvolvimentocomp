@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import model.SiteHorarioAula;
 import model.SiteTurma;
+import model.TbDisciplina;
 
 /**
  *
@@ -38,7 +41,7 @@ public class HorarioAulaDAO extends GenericDAO<SiteHorarioAula>{
         return result;
     }
     
-    public List<SiteHorarioAula> listarHorarioAtual() {
+    public List<SiteHorarioAula> listarHorarioAtual(Integer periodo) {
 
         List<SiteHorarioAula> result = new ArrayList<SiteHorarioAula>();
         EntityManager em1 = getEM();
@@ -47,7 +50,11 @@ public class HorarioAulaDAO extends GenericDAO<SiteHorarioAula>{
         CriteriaQuery query = builder.createQuery(SiteHorarioAula.class);
         EntityType type = em1.getMetamodel().entity(SiteHorarioAula.class);
         Root root = query.from(SiteHorarioAula.class);
-        query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"));
+        Join<SiteHorarioAula, SiteTurma> join = root.join("turmaId", JoinType.INNER);
+        Join<SiteTurma, TbDisciplina> join2 = join.join("disciplinaId", JoinType.INNER);
+        query.equals(join2.get("id"));
+        query.where(builder.and(builder.equal(builder.equal(join2.get("periodoIdeal"), periodo), 
+                builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"))));
         query.orderBy(builder.asc(root.get("dia")),builder.asc(root.get("horaInicio")));
         result = em1.createQuery(query).getResultList();
         em1.close();
