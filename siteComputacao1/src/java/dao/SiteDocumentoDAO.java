@@ -1,13 +1,17 @@
 
 package dao;
 
+import static antlr.build.ANTLR.root;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import model.SiteDocumento;
+import model.SitePublicacao;
 
 /**
  *
@@ -26,8 +30,104 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         em1.getTransaction().begin();
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
-        //EntityType type = em1.getMetamodel().entity(SiteNoticia.class);
+        Root root = query.from(SiteDocumento.class);       
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    
+    public List<SiteDocumento> listarConsuni() {
+        System.out.println("entrou no dao listar listarConsuni");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"1"));   //Consuni
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    public List<SiteDocumento> listarConsepe() {
+        System.out.println("entrou no dao listar listarConsepe");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"2"));   //Consepe
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    public List<SiteDocumento> listarDocentes() {
+        System.out.println("entrou no dao listar listarDocentes");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"4"));   //Docentes
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    public List<SiteDocumento> listarCondir() {
+        System.out.println("entrou no dao listar listarCondir");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"5"));   //Condir
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    public List<SiteDocumento> listarCoordenacao() {
+        System.out.println("entrou no dao listar listarCoordenacao");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"6"));   //Coordenacao
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    public List<SiteDocumento> listarNDE() {
+        System.out.println("entrou no dao listar listarNDE");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"7"));   //nde
         query.orderBy(builder.desc(root.get("hora")));
         result = em1.createQuery(query).getResultList();
         em1.close();

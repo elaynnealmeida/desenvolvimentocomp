@@ -1,7 +1,9 @@
 package control;
 
+import dao.EquipamentoDAO;
 import dao.InfraestruturaDAO;
 import dao.SalaDAO;
+import dao.TipoInfraestruturaDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import model.SiteEquipamento;
 import model.SiteInfraestrutura;
+import model.SiteTipoInfraestrutura;
 import model.TbSala;
 import org.primefaces.event.SelectEvent;
 
@@ -27,24 +31,28 @@ public class InfraestruturaController implements Serializable {
     private InfraestruturaDAO infraDao;
     private List<SiteInfraestrutura> infras;
     private List<SiteInfraestrutura> infrasFiltradas;
+    private List<SiteEquipamento> selectedEquipamentos;
     private boolean isEdit;
 
     @PostConstruct
     public void init() {
         this.infra = new SiteInfraestrutura();
         this.infraDao = new InfraestruturaDAO();
+        selectedEquipamentos = new ArrayList<SiteEquipamento>();
         this.isEdit = false;
         infras = listar();
     }
 
     public void limpar() {
         this.infra = new SiteInfraestrutura();
+        selectedEquipamentos = new ArrayList<SiteEquipamento>();
         this.isEdit = false;
         listar();
     }
 
     public void salvar() {
         try {
+            infra.setSiteInfraEquipamentosList(selectedEquipamentos);
             infraDao.salvar(infra);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com Sucesso!", null);
@@ -59,6 +67,7 @@ public class InfraestruturaController implements Serializable {
 
     public void atualizar() {
         try {
+            infra.setSiteInfraEquipamentosList(selectedEquipamentos);
             infraDao.atualizar(infra);
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -90,6 +99,9 @@ public class InfraestruturaController implements Serializable {
 
     public void onRowSelect(SelectEvent event) {
         this.infra = ((SiteInfraestrutura) event.getObject());
+        selectedEquipamentos = new ArrayList<SiteEquipamento>();
+        System.out.println("lista de equipamentos: "+infra.getSiteInfraEquipamentosList());
+        this.selectedEquipamentos.addAll(infra.getSiteInfraEquipamentosList());
         this.isEdit = true;
     }
 
@@ -107,6 +119,32 @@ public class InfraestruturaController implements Serializable {
         result = tpdDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
             toReturn.add(new SelectItem(result.get(i), result.get(i).getBlocoId().getDescricao() + " - " + result.get(i).getNomeSala()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
+    
+    public List<SelectItem> getTpInfra() {
+        System.out.println("entrou no listar tpinfra: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        TipoInfraestruturaDAO tpdDao = new TipoInfraestruturaDAO();
+        List<SiteTipoInfraestrutura> result = new ArrayList<SiteTipoInfraestrutura>();
+        result = tpdDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
+    
+    public List<SelectItem> getEquipamentos() {
+        System.out.println("entrou no listar equipamentos: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        EquipamentoDAO tpdDao = new EquipamentoDAO();
+        List<SiteEquipamento> result = new ArrayList<SiteEquipamento>();
+        result = tpdDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getDescricao()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
@@ -142,6 +180,14 @@ public class InfraestruturaController implements Serializable {
 
     public void setIsEdit(boolean isEdit) {
         this.isEdit = isEdit;
+    }
+
+    public List<SiteEquipamento> getSelectedEquipamentos() {
+        return selectedEquipamentos;
+    }
+
+    public void setSelectedEquipamentos(List<SiteEquipamento> selectedEquipamentos) {
+        this.selectedEquipamentos = selectedEquipamentos;
     }
 
 }

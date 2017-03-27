@@ -519,6 +519,61 @@ public class NavegacaoHelper {
         }
     }
      
+     public void paginaDowloadsCondir() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/docscondir");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaDowloadsConsuni() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/docsconsuni");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaDowloadsConsepe() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/docsconsepe");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaDowloadsDocentes() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/docsdocentes");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaDowloadsNDE() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/docsnde");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
      public void paginaTipoEquipamento() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -536,6 +591,17 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/pages/equipamento");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+     public void paginaTipoInfraestrutura() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/tipoinfraestrutura");
         } catch (IOException e) {
             e.printStackTrace();
         }
