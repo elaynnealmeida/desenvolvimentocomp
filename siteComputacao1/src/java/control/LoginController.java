@@ -30,6 +30,9 @@ public class LoginController implements Serializable {
     private SitePerfil perfilSelecionado;
     private boolean isAdmin;
     private boolean isUser;
+    private boolean multiploPerfil;
+    private SitePerfil perfilDuplo;
+    private SitePerfil perfilAtual;
 
     @PostConstruct
     public void init() {
@@ -38,6 +41,8 @@ public class LoginController implements Serializable {
         perfilSelecionado = new SitePerfil();
         this.isAdmin = false;
         this.isUser = false;
+        this.multiploPerfil = false;
+        this.perfilAtual = null;
     }
 
     public void login() throws IOException {
@@ -50,12 +55,14 @@ public class LoginController implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
                 perfilSelecionado = user.getSitePerfilUsuarioList().get(0);
+                this.perfilAtual = user.getSitePerfilUsuarioList().get(0);
                 System.out.println("perfil selecionado: " + perfilSelecionado);
                 FacesContext context = FacesContext.getCurrentInstance();
                 HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
                 request.getSession().setAttribute("user", user);
                 request.getSession().setAttribute("perfil", user.getSitePerfilUsuarioList().get(0));
                 this.isUser = true;
+                this.multiploPerfil = multiploPerfil();
                 admin();
             }
 
@@ -112,11 +119,41 @@ public class LoginController implements Serializable {
         return results;
     }
 
+    private boolean multiploPerfil() {
+        List<SitePerfil> results = new ArrayList<SitePerfil>();
+        if (user != null) {
+            results = user.getSitePerfilUsuarioList();
+            if (results.size() > 1) {
+                this.perfilDuplo = results.get(1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void alternarPerfil() {
+        List<SitePerfil> results = new ArrayList<SitePerfil>();
+        if (user != null && this.multiploPerfil) {
+            results = user.getSitePerfilUsuarioList();
+            if (results.get(0) == this.perfilAtual) {
+                this.perfilAtual = results.get(1);
+                this.perfilDuplo = results.get(0);
+            } else {
+                this.perfilAtual = results.get(0);
+                this.perfilDuplo = results.get(1);
+
+            }
+            this.perfilSelecionado = this.perfilAtual;
+        }
+    }
+
     public void confirmar() {
-        System.out.println("perfil selecionado: " + perfilSelecionado);
+        alternarPerfil();
+        System.out.println("Perfil Selecionado: " + this.perfilSelecionado);
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        request.getSession().setAttribute("perfil", perfilSelecionado);
+
+        request.getSession().setAttribute("perfil", this.perfilDuplo);
     }
 
     public TbUsersystem getUser() {
@@ -135,6 +172,18 @@ public class LoginController implements Serializable {
         this.perfilSelecionado = perfilSelecionado;
     }
 
+    public SitePerfil getPerfilDuplo() {
+        return perfilDuplo;
+    }
+
+    public void setPerfilDuplo(SitePerfil perfilDuplo) {
+        this.perfilDuplo = perfilDuplo;
+    }
+
+    public SitePerfil getPerfilAtual() {
+        return perfilAtual;
+    }
+
     public boolean isIsAdmin() {
         return isAdmin;
     }
@@ -151,4 +200,7 @@ public class LoginController implements Serializable {
         this.isUser = isUser;
     }
 
+    public boolean isMultiploPerfil() {
+        return multiploPerfil;
+    }
 }

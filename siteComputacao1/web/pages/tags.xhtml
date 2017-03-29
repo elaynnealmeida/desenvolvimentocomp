@@ -30,52 +30,62 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formtags">
+                            <h2>
+                                <h:outputText value="Cadastrar Tag "/>
+                            </h2>
                             <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Tag: "/>
+                                <h:outputText value="Tag: " style="font-weight:bold"/>
                                 <h:inputText id="tag" value="#{siteTagController.tag.descricao}"
                                              required="true"
                                              requiredMessage="Campo Obrigatório"
                                              />*
                                 <p:message for="tag" />
                             </h:panelGrid>
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{siteTagController.salvar}" rendered="#{!siteTagController.isEdit}" update=":formtags"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{siteTagController.atualizar}" rendered="#{siteTagController.isEdit}" update=":formtags"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtags:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{siteTagController.limpar}" update=":formtags"/>
+                            <br></br>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{siteTagController.salvar}" rendered="#{!siteTagController.isEdit}" update=":formtags"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{siteTagController.atualizar}" rendered="#{siteTagController.isEdit}" update=":formtags"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtags:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{siteTagController.limpar}" update=":formtags"/>
 
+                            <hr>
+                                <p:dataTable var="var" value="#{siteTagController.tags}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{siteTagController.tagsFiltradas}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             tableStyleClass="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Tag"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{siteTagController.onRowSelect}" update=":formtags" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
 
-                            <p:dataTable var="var" value="#{siteTagController.tags}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{siteTagController.tagsFiltradas}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Tag"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{siteTagController.onRowSelect}" update=":formtags" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
+                                    <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.descricao}" />
+                                    </p:column>
 
-                                <p:column headerText="Descrição" filterBy="#{var.descricao}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.descricao}" />
-                                </p:column>
-
-                            </p:dataTable>
+                                </p:dataTable>
+                            </hr>
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
 

@@ -3,6 +3,8 @@
   xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
                       http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
 
+        <!--<rewrite match="^/old-url/(\w+)/$" substitute="/new_url/$1/" redirect="301" />-->
+    
 	<url-mapping id="index">
 		<pattern value="/" />
 		<view-id value="/faces/index.xhtml" />
@@ -63,10 +65,10 @@
 		<view-id value="/faces/pages/documento.xhtml" />
 	</url-mapping>
         
-        <url-mapping id="noticias">
+<!--        <url-mapping id="noticias">
 		<pattern value="/professores/noticias" />
 		<view-id value="/faces/professores/noticias.xhtml" />
-	</url-mapping>
+	</url-mapping>-->
         
         <url-mapping id="usuarioperfil">
 		<pattern value="/pages/usuarioperfil" />
@@ -243,10 +245,6 @@
 		<view-id value="/faces/menu/ensino.xhtml" />
 	</url-mapping>
         
-        <url-mapping id="all_noticias">
-		<pattern value="/all_noticias" />
-		<view-id value="/faces/all_noticias.xhtml" />
-	</url-mapping>
 
 
 </pretty-config>

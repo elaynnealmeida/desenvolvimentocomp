@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
@@ -33,14 +34,17 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <!--Post-->
-                        <p:tabView id="tabhorarios">
-                            <p:tab class="style-tab" title="Aula" id="aula">
-                                <p:tabView id="tabhorariosaula">
+                        <b:tabView contentStyle="border-right: 2px solid #ddd;border-left: 2px solid #ddd;border-bottom: 2px solid #ddd;padding:10px" id="tabhorarios">
+                            <b:tab title="Aula" id="aula">
+                                <b:tabView contentStyle="border-right: 2px solid #ddd;border-left: 2px solid #ddd;border-bottom: 2px solid #ddd;padding:10px" id="tabhorariosaula">
 
-                                    <p:tab class="style-tab" title="1º Periodo" id="periodoUm">
+                                    <b:tab title="1º Periodo" id="periodoUm">
                                         <h:form id="aulaUmperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas}"
@@ -68,9 +72,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
 
-                                    <p:tab class="style-tab" title="2º Periodo" id="segundoperiodo">
+                                    <b:tab title="2º Periodo" id="segundoperiodo">
                                         <h:form id="aulasegundoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas2}"
@@ -98,9 +102,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="3º Periodo" id="terceiroperiodo">
+                                    <b:tab title="3º Periodo" id="terceiroperiodo">
                                         <h:form id="aulaterceiroperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas3}"
@@ -128,9 +132,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="4º Periodo" id="quartoperiodo">
+                                    <b:tab title="4º Periodo" id="quartoperiodo">
                                         <h:form id="aulaquartoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas4}"
@@ -158,9 +162,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="5º Periodo" id="quintoperiodo">
+                                    <b:tab title="5º Periodo" id="quintoperiodo">
                                         <h:form id="aulaquintoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas5}"
@@ -188,9 +192,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="6º Periodo" id="sextoperiodo">
+                                    <b:tab title="6º Periodo" id="sextoperiodo">
                                         <h:form id="aulasextoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas6}"
@@ -218,9 +222,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="7º Periodo" id="setimoperiodo">
+                                    <b:tab title="7º Periodo" id="setimoperiodo">
                                         <h:form id="aulasetimoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas7}"
@@ -248,9 +252,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="8º Periodo" id="oitavoperiodo">
+                                    <b:tab title="8º Periodo" id="oitavoperiodo">
                                         <h:form id="aulaoitavoperiodo">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas8}"
@@ -278,9 +282,9 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                    <p:tab class="style-tab" title="Optativas" id="optativas">
+                                    <b:tab title="Optativas" id="optativas">
                                         <h:form id="aulaoptativas">   
 
                                             <p:dataTable var="var" value="#{horariosHelper.aulas9}"
@@ -308,12 +312,12 @@
                                             </p:dataTable>
 
                                         </h:form>
-                                    </p:tab>
+                                    </b:tab>
                                     
-                                </p:tabView>
-                            </p:tab>
+                                </b:tabView>
+                            </b:tab>
 
-                            <p:tab title="Atendimento Professores" id="atendimento">
+                            <b:tab title="Atendimento Professores" id="atendimento">
                                 <h:form id="atendimentohorario">   
                                     <p:dataTable var="var" value="#{horariosHelper.docentes}"
                                                  rowKey="#{var.id}"                                                 
@@ -339,9 +343,9 @@
 
                                 </h:form>
 
-                            </p:tab>
+                            </b:tab>
 
-                            <p:tab title="Técnicos" id="tecnicos">
+                            <b:tab title="Técnicos" id="tecnicos">
                                 <h:form id="tecnicoshorario">   
                                     <p:dataTable var="var" value="#{horariosHelper.servidores}"
                                                  rowKey="#{var.id}"
@@ -367,9 +371,9 @@
 
                                 </h:form>
 
-                            </p:tab>
+                            </b:tab>
 
-                            <p:tab title="Estagiários" id="estagiarios">
+                            <b:tab title="Estagiários" id="estagiarios">
                                 <h:form id="estagiarioshorario">   
                                     <p:dataTable var="var" value="#{horariosHelper.estagiarios}"
                                                  rowKey="#{var.id}"
@@ -397,9 +401,9 @@
                                         </p:column>
                                     </p:dataTable>
                                 </h:form>
-                            </p:tab>
+                            </b:tab>
 
-                            <p:tab title="Monitores" id="monitores">
+                            <b:tab title="Monitores" id="monitores">
                                 <h:form id="monitoreshorario">   
                                     <p:dataTable var="var" value="#{horariosHelper.monitores}"
                                                  rowKey="#{var.id}"
@@ -431,8 +435,8 @@
                                         </p:column>                                 
                                     </p:dataTable>
                                 </h:form>
-                            </p:tab>
-                        </p:tabView>
+                            </b:tab>
+                        </b:tabView>
 
                         <!--                        <div class="container">
                                                     <div id="content">

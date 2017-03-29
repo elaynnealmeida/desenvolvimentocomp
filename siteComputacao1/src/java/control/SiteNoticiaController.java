@@ -25,6 +25,7 @@ import model.SitePerfil;
 import model.SiteTags;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -68,7 +69,7 @@ public class SiteNoticiaController implements Serializable {
         listarTags();
         listar();
     }
-    
+       
     public void salvar() {
         System.out.println("Entrou no salvar noticia ========================= ");
         try {
@@ -167,13 +168,14 @@ public class SiteNoticiaController implements Serializable {
         noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
         SitePerfil perfil = new SitePerfil();
         perfil = (SitePerfil) request.getSession().getAttribute("perfil");
-        if (perfil.getId()==1) {
-            System.out.println("entrou no perfil de adm");
-            this.noticias = noticiaDao.listarPorData();
-        } else {
-            System.out.println("entrou no perfil de prof ou ca");
-            this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
-        }
+//        if (perfil.getId()==1) {
+//            System.out.println("entrou no perfil de adm");
+//            this.noticias = noticiaDao.listarPorData();
+//        } else {
+//            System.out.println("entrou no perfil de prof ou ca");
+//            this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
+//        }
+        this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
         return this.noticias;
     }
     
@@ -275,5 +277,6 @@ public class SiteNoticiaController implements Serializable {
     public void setTags(List<SelectItem> tags) {
         this.tags = tags;
     }
+    
     
 }
