@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
@@ -36,9 +37,9 @@
                     </ui:insert>
                     <!--Main column-->
                     <div class="col-lg-9">
-                        <p:tabView id="documento1">
+                        <b:tabView contentStyle="border-right: 1px solid #ddd;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;padding:10px" id="documento1">
 
-                            <p:tab title="Documento" id="doc">
+                            <b:tab title="Documento" id="doc">
                                 <h:form id="formdocumento" enctype="multipart/form-data">
                                     <h3>
                                         <h:outputText value="Cadastro de Documento "/>
@@ -151,9 +152,9 @@
 
                                 </h:form>
 
-                            </p:tab>
+                            </b:tab>
 
-                            <p:tab title="Publicação" id="publicacao">
+                            <b:tab title="Publicação" id="publicacao">
                                 <h:form id="formpublicacao">
                                     <h3>
                                         <h:outputText value="Cadastro de Publicação "/>
@@ -268,8 +269,8 @@
 
 
                                 </h:form>
-                            </p:tab>
-                        </p:tabView>
+                            </b:tab>
+                        </b:tabView>
 
                         <br></br>
                     </div>

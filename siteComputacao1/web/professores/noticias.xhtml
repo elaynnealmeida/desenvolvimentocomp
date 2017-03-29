@@ -10,29 +10,16 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-        <!-- Font Awesome -->
+<!--         Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
-        <!-- Bootstrap core CSS -->
+         <!--Bootstrap core CSS--> 
         <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-        <!-- Material Design Bootstrap -->
+         <!--Material Design Bootstrap--> 
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
-        <!-- Template styles -->
-        <style rel="stylesheet">
-            /* TEMPLATE STYLES */
-            main {
-                margin-top: 0rem;
-            }
-            main .card {
-                margin-bottom: 2rem;
-            }
-            @media only screen and (max-width: 768px) {
-                .read-more {
-                    text-align: center;
-                }
-            }
-        </style>
+        <link href="../css/geral.css" rel="stylesheet"></link>
+
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>       
@@ -85,13 +72,13 @@
                                         <div class="col-md-12">
                                             <div class="md-form">
                                                 <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
-                                                <p:fileUpload value="#{siteNoticiaController.file}"  label="Procurar" mode="simple" skinSimple="true"
+                                                <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true" 
                                                               update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
                                                               required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
                                                               invalidFileMessage="Somente JPG ou PNG são permitidos."
                                                               invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
                                                               />
-                                                <p:message for="imagem" />
+                                                <h:message for="imagem" />
                                             </div>
                                         </div>
                                     </div>
@@ -170,7 +157,7 @@
         </ui:insert>
         <!--Footer-->
         <ui:insert name="extensao" >
-            <ui:include src="../js_interno.xhtml"/>   
+            <ui:include src="js_interno.xhtml"/>   
         </ui:insert>
     </h:body>
 </html>

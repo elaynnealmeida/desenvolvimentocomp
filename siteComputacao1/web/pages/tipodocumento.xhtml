@@ -29,52 +29,64 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formtipodocumento">
-                            <h:outputText value="Cadastro de Tipos de Documentos "/>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                            <h2>
+                                <h:outputText value="Cadastro de Tipos de Documentos "/>
+                            </h2>
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
 
-                                <h:outputText value="Documento: "/>
-                                <h:inputText id="documento" value="#{tipoDocumentoController.tipoDocumento.descricao}"
-                                             required="true" />*
-                                <p:message for="documento" />
-                            </h:panelGrid>
+                                    <h:outputText value="Documento: " style="font-weight:bold"/>
+                                    <h:inputText id="documento" value="#{tipoDocumentoController.tipoDocumento.descricao}"
+                                                 required="true" />*
+                                    <p:message for="documento" />
+                                </h:panelGrid>
+                            </hr>
+                            <br></br>
 
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{tipoDocumentoController.salvar}" rendered="#{!tipoDocumentoController.isEdit}" update=":formtipodocumento"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{tipoDocumentoController.atualizar}" rendered="#{tipoDocumentoController.isEdit}" update=":formtipodocumento"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtipodocumento:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{tipoDocumentoController.limpar}" update=":formtipodocumento"/>
+
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{tipoDocumentoController.salvar}" rendered="#{!tipoDocumentoController.isEdit}" update=":formtipodocumento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{tipoDocumentoController.atualizar}" rendered="#{tipoDocumentoController.isEdit}" update=":formtipodocumento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formtipodocumento:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{tipoDocumentoController.limpar}" update=":formtipodocumento"/>
                             <br></br> <br></br>
+                            <hr>
+                                <p:dataTable var="var" value="#{tipoDocumentoController.tipoDocumentos}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{tipoDocumentoController.tipoDocumentosFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             tableStyleClass="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Tipo Documento"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{tipoDocumentoController.onRowSelect}" update=":formtipodocumento" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
 
-                            <p:dataTable var="var" value="#{tipoDocumentoController.tipoDocumentos}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{tipoDocumentoController.tipoDocumentosFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Tipo Documento"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{tipoDocumentoController.onRowSelect}" update=":formtipodocumento" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
+                                    <p:column headerText="Tipo Documento" filterBy="#{var.descricao}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.descricao}" />
+                                    </p:column>
 
-                                <p:column headerText="Tipo Documento" filterBy="#{var.descricao}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.descricao}" />
-                                </p:column>
-
-                            </p:dataTable>
+                                </p:dataTable>
+                            </hr>
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
 
@@ -99,7 +111,7 @@
         <ui:insert name="footer" >
             <ui:include src="../footer.xhtml"/>   
         </ui:insert>
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

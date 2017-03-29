@@ -17,7 +17,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/all_noticias");
+                    + "/faces/all_noticias.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -425,7 +425,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/professores/noticias");
+                    + "/faces/professores/noticias.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -30,92 +30,101 @@
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formprofessor">
-                            <h:outputText value="Cadastro de Servidor "/>
+                            <h2>
+                                <h:outputText value="Cadastro de Servidor "/>
+                            </h2>
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+                                    <h:outputText value="Nome: " style="font-weight:bold"/>
+                                    <h:inputText id="nome" value="#{tbProfessoresController.professor.nome}" size="50" 
+                                                 requiredMessage="Campo Obrigatório" required="true" />*
+                                    <p:message for="nome" />
+
+                                    <h:outputText value="Email: " style="font-weight:bold"/>
+                                    <h:inputText id="email" value="#{tbProfessoresController.professor.email}" size="50" 
+                                                 requiredMessage="Campo Obrigatório" required="true" />*
+                                    <p:message for="email" />
+
+                                    <h:outputText value="Cargo: " style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="cargo" value="#{tbProfessoresController.cargoProf.cargoId}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="CargoConverter"
+                                                     >
+                                        <f:selectItems value="#{tbProfessoresController.cargo}" 
+                                                       var="cargo" itemLabel="#{cargo}" itemValue="#{cargo}" />                                       
+                                    </h:selectOneMenu>*  
+                                    <p:message for="cargo" />  
+
+                                    <h:outputText value="Data Inicio: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtinicio"  value="#{tbProfessoresController.cargoProf.dtInicio}" mask="99/99/9999"/>      
+                                    <p:message for="dtinicio" />*
+
+                                    <h:outputText value="Data Fim: " style="font-weight:bold"/>
+                                    <p:inputMask id="dtfim"  value="#{tbProfessoresController.cargoProf.dtFim}" mask="99/99/9999"/>      
+                                    <p:message for="dtfim" />
+
+                                </h:panelGrid> 
+                            </hr>
+                            <br></br>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{tbProfessoresController.salvar}" rendered="#{!tbProfessoresController.isEdit}" update=":formprofessor"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{tbProfessoresController.atualizar}" rendered="#{tbProfessoresController.isEdit}" update=":formprofessor"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formprofessor:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{tbProfessoresController.limpar}" update=":formprofessor"/>
                             <br></br><br></br>
-                            <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
-                                <h:outputText value="Nome: "/>
-                                <h:inputText id="nome" value="#{tbProfessoresController.professor.nome}" size="50" 
-                                             requiredMessage="Campo Obrigatório" required="true" />*
-                                <p:message for="nome" />
+                            <hr>
+                                <p:dataTable var="var" value="#{tbProfessoresController.professores}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{tbProfessoresController.professoresFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             tableStyleClass="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Nome"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{tbProfessoresController.onRowSelect}" update=":formprofessor" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
 
-                                <h:outputText value="Email: "/>
-                                <h:inputText id="email" value="#{tbProfessoresController.professor.email}" size="50" 
-                                             requiredMessage="Campo Obrigatório" required="true" />*
-                                <p:message for="email" />
-                                
-                                 <h:outputText value="Cargo: "/>
-                                 <p:selectOneMenu id="cargo" value="#{tbProfessoresController.cargoProf.cargoId}"  
-                                                 requiredMessage="Campo Obrigatório"
-                                                 required="true"
-                                                 converter="CargoConverter"
-                                                 >
-                                     <f:selectItems value="#{tbProfessoresController.cargo}" 
-                                                   var="cargo" itemLabel="#{cargo}" itemValue="#{cargo}" />                                       
-                                </p:selectOneMenu>*  
-                                <p:message for="cargo" />  
-                                
-                                <h:outputText value="Data Inicio: "/>
-                                <p:inputMask id="dtinicio"  value="#{tbProfessoresController.cargoProf.dtInicio}" mask="99/99/9999"/>      
-                                <p:message for="dtinicio" />*
+                                    <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.nome}" />
+                                    </p:column>
 
-                                <h:outputText value="Data Fim: "/>
-                                <p:inputMask id="dtfim"  value="#{tbProfessoresController.cargoProf.dtFim}" mask="99/99/9999"/>      
-                                <p:message for="dtfim" />
+                                    <p:column headerText="Email">
+                                        <h:outputText value="#{var.email}" />
+                                    </p:column> 
 
-                            </h:panelGrid> 
+                                </p:dataTable>
+                                </hr>
+                                <p:messages id="msg" autoUpdate="true" closable="true" >              
+                                </p:messages>
 
-                            <p:commandButton id="btnSalvar" value="Salvar" action="#{tbProfessoresController.salvar}" rendered="#{!tbProfessoresController.isEdit}" update=":formprofessor"/>
-                            <p:commandButton id="btnAtualizar" value="Atualizar" action="#{tbProfessoresController.atualizar}" rendered="#{tbProfessoresController.isEdit}" update=":formprofessor"/>
-                            <p:commandButton id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formprofessor:confimacao"/>
-                            <p:commandButton id="btnLimpar" value="Limpar" action="#{tbProfessoresController.limpar}" update=":formprofessor"/>
-                            <br></br><br></br>
+                                <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                                 hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
 
-                            <p:dataTable var="var" value="#{tbProfessoresController.professores}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{tbProfessoresController.professoresFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Nome"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{tbProfessoresController.onRowSelect}" update=":formprofessor" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
+                                    <p:commandButton value="Sim" update=":formprofessor" onclick="PF('confirmacao').hide()"
+                                                     action="#{tbProfessoresController.deletar}" />
 
-                                <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.nome}" />
-                                </p:column>
-
-                                <p:column headerText="Email">
-                                    <h:outputText value="#{var.email}" />
-                                </p:column> 
-
-                            </p:dataTable>
-                            <p:messages id="msg" autoUpdate="true" closable="true" >              
-                            </p:messages>
-
-                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
-                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
-
-                                <p:commandButton value="Sim" update=":formprofessor" onclick="PF('confirmacao').hide()"
-                                                 action="#{tbProfessoresController.deletar}" />
-
-                                <p:commandButton value="Não" onclick="PF('confirmacao').hide(); return true;" />
-                            </p:confirmDialog>
+                                    <p:commandButton value="Não" onclick="PF('confirmacao').hide(); return true;" />
+                                </p:confirmDialog>
 
                         </h:form>
                         <br></br>
