@@ -44,11 +44,17 @@
                             <li class="nav-item">
                                 <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Pesquisa" actionListener="#{navegacaoHelper.pesquisa()}"/>
                             </li>
-                            <li class="nav-item">
-                                <h:commandLink style="font-size: .88em" styleClass="nav-link" value="Extensão" actionListener="#{navegacaoHelper.extensao()}"/>
-                            </li>
-
                             <h:panelGroup rendered="#{loginController.isUser}">
+                                <li class="nav-item btn-group">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"/>
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Infraestrutura" actionListener="#{navegacaoHelper.paginaTipoInfraestrutura}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"/>
+                                        <h:commandLink styleClass="dropdown-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"/>
+                                    </div>
+                                </li>
+
                                 <li class="nav-item btn-group" style="font-size: .88em">
                                     <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -72,20 +78,18 @@
                             </h:panelGroup>
 
                         </ul>
+                        <h:form rendered="#{loginController.isUser}">
 
-                        <div style="color: #ffffff; text-align: right;">
-                            <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="#{loginController.user.nomecompleto}, perfil atual de #{loginController.perfilAtual}" rendered="#{loginController.isUser}"/>
-                            <br></br>
-                            <h:commandLink style="color: #ffffff; text-align: right; font-size: .88em" value="Alterar para perfil de #{loginController.perfilDuplo}" rendered="#{loginController.multiploPerfil}" actionListener="#{loginController.confirmar}"></h:commandLink>
-                            <br></br>
-                            <h:commandLink style="color: #ffffff; text-align: right;" action="#{loginController.logout}" rendered="#{loginController.isUser}">
-                                <i class="fa fa-sign-out" aria-hidden="true">Sair</i>
-                            </h:commandLink>
-                           
-
-
-
-                        </div>
+                            <div style="color: #ffffff; text-align: right;">
+                                <h:outputText style="color: #ffffff; text-align: right; font-size: .88em" value="#{loginController.user.nomecompleto}, perfil atual de #{loginController.perfilAtual}" rendered="#{loginController.isUser}"/>
+                                <br></br>
+                                <h:commandLink style="color: #ffffff; text-align: right; font-size: .88em" value="Alterar para perfil de #{loginController.perfilDuplo}" rendered="#{loginController.multiploPerfil}" actionListener="#{loginController.confirmar}"></h:commandLink>
+                                <br></br>
+                                <h:commandLink style="color: #ffffff; text-align: right;" action="#{loginController.logout}" rendered="#{loginController.isUser}">
+                                    <i class="fa fa-sign-out" aria-hidden="true">Sair</i>
+                                </h:commandLink>
+                            </div>
+                        </h:form>
 
                         <h:form rendered="#{!loginController.isUser}">
 
@@ -108,8 +112,6 @@
                                                     <div class="bottom text-center">
                                                         Esqueceu a senha? <a href="#"><b>Recuperar senha</b></a>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </li>

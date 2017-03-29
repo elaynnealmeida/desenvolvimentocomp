@@ -85,15 +85,14 @@
                                     </div>
                                 </p>
                             </hr>
-                            
+
                             <br></br>
 
                             <hr>
                                 <h3>
                                     <h:outputText value="Formação " style="font-weight:bold"/>
                                 </h3>
-                            </hr>
-                            <hr>
+
 
                                 <c:forEach var="formacao" items="${servidorInfo.formacaoList}" varStatus="id">
                                     <br></br>
@@ -112,12 +111,14 @@
                                 <h3>
                                     <h:outputText value="Área de Interesse:" style="font-weight:bold"/> 
                                 </h3>
+                                <h:outputText value="#{servidorInfo.servidor.areaAtuacao}" /><br></br>
                             </hr>
 
                             <hr>
-                                <h:outputText value="#{servidorInfo.servidor.areaAtuacao}" style="font-weight:bold" /><br></br>
 
-                                <h:outputText value="Horários: " style="font-weight:bold"/><br></br>
+                                <h3>
+                                    <h:outputText value="Horários: " style="font-weight:bold"/>
+                                </h3>
                                 <c:forEach var="horario" items="${servidorInfo.horarioList}" varStatus="id">
 
                                     <h:outputText value="#{horario.diaSemana}, " />

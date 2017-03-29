@@ -11,6 +11,61 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 public class NavegacaoHelper {
+    
+    public void horario_monitores() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios/monitores.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void horario_estagiarios() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios/estagiarios.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void horario_tecnicos() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios/tecnicos.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void atendimento_professores() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios/atendimento_professores.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void horarios_aula() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/horarios/aulas.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void all_noticias() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
@@ -601,7 +656,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/pages/tipoinfraestrutura");
+                    + "/faces/pages/tipoinfraestrutura.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

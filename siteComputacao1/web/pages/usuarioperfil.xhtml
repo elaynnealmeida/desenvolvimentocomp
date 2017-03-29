@@ -1,4 +1,4 @@
-xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -31,60 +31,69 @@ xml version='1.0' encoding='UTF-8' ?>
             <div class="container">
                 <br></br>
                 <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         <h:form id="formperfilusuario">
-                            <h:outputText value="Associação de Perfil " />
-                            <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
-                                <h:outputText value="Usuário: "/>
-                                <h:outputText id="usuario" value="#{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId.nomecompleto}" />      
-                                <p:message for="usuario" />
+                            <h2>
+                                <h:outputText value="Associação de Perfil " />
+                            </h2>
+                            <hr>
+                                <h:panelGrid columns="3" cellpadding="5" style="margin-bottom:10px">
+                                    <h:outputText value="Usuário: " style="font-weight:bold"/>
+                                    <h:outputText id="usuario" value=" #{sitePerfilUsuarioController.sitePerfilUsuario.usuarioId.nomecompleto}" />      
+                                    <p:message for="usuario" />
 
-                                <h:outputText value="Perfil: "/>
-                                <h:outputText id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId.nome}"   />    
-                                <p:message for="perfil" />
+                                    <h:outputText value="Perfil: " style="font-weight:bold"/>
+                                    <h:outputText id="perfil" value="#{sitePerfilUsuarioController.sitePerfilUsuario.perfilId.nome}"   />    
+                                    <p:message for="perfil" />
 
-                                <h:outputText value="Ativo: "/>
-                                <h:selectBooleanCheckbox id="ativo" value="#{sitePerfilUsuarioController.sitePerfilUsuario.ativo}" />      
-                                <p:message for="ativo" />
+                                    <h:outputText value="Ativo: " style="font-weight:bold"/>
+                                    <h:selectBooleanCheckbox id="ativo" value="#{sitePerfilUsuarioController.sitePerfilUsuario.ativo}" />      
+                                    <p:message for="ativo" />
+                                </h:panelGrid>
+                            </hr>
 
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formperfilusuario"/>
+                            <hr>
+                                <p:dataTable var="var" value="#{sitePerfilUsuarioController.sitePerfilUsuarios}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{sitePerfilController.perfisFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             tableStyleClass="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Usuário"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{sitePerfilUsuarioController.onRowSelect}" update=":formperfilusuario" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
 
-                                <p:commandButton id="btnSalvar" value="Salvar" action="#{sitePerfilUsuarioController.salvar}" rendered="#{!sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
-                                <p:commandButton id="btnAtualizar" value="Atualizar" action="#{sitePerfilUsuarioController.atualizar}" rendered="#{sitePerfilUsuarioController.isEdit}" update=":formperfilusuario"/>
-                                <p:commandButton id="btnLimpar" value="Limpar" action="#{sitePerfilUsuarioController.limpar}" update=":formperfilusuario"/>
-                            </h:panelGrid>
+                                    <p:column headerText="Usuário" filterBy="#{var.usuarioId.nomecompleto}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.usuarioId.nomecompleto}" />
+                                    </p:column>
 
-                            <p:dataTable var="var" value="#{sitePerfilUsuarioController.sitePerfilUsuarios}"
-                                         selectionMode="single"  rowKey="#{var.id}"
-                                         emptyMessage="Nenhum Registro Encontrado"
-                                         widgetVar="varTable"
-                                         filteredValue="#{sitePerfilController.perfisFiltrados}"
-                                         rows="10"
-                                         paginator="true"
-                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                         rowsPerPageTemplate="5,10,15"
-                                         >
-                                <f:facet name="header">
-                                    <p:outputPanel>
-                                        <h:outputText value="Pesquisar:" />
-                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
-                                                     style="width:150px" placeholder="Usuário"
-                                                     />
-                                    </p:outputPanel>
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{sitePerfilUsuarioController.onRowSelect}" update=":formperfilusuario" />
-                                <p:column headerText="Id">
-                                    <h:outputText value="#{var.id}" />
-                                </p:column>
-
-                                <p:column headerText="Usuário" filterBy="#{var.usuarioId.nomecompleto}" filterStyle="display:none" >
-                                    <h:outputText value="#{var.usuarioId.nomecompleto}" />
-                                </p:column>
-
-                                <p:column headerText="Perfil"  >
-                                    <h:outputText value="#{var.perfilId.nome}" />
-                                </p:column>
-                            </p:dataTable>
+                                    <p:column headerText="Perfil"  >
+                                        <h:outputText value="#{var.perfilId.nome}" />
+                                    </p:column>
+                                </p:dataTable>
+                            </hr>
                             <p:messages id="msg" autoUpdate="true" closable="true" >              
                             </p:messages>
                         </h:form>
@@ -114,7 +123,7 @@ xml version='1.0' encoding='UTF-8' ?>
 
 
         </h:form>
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

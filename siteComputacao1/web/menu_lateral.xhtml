@@ -34,8 +34,6 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item" value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/>
                                         <h:commandLink class="list-group-item" value="Pós-Graduação Strictu Senso" actionListener="#{navegacaoHelper.pos_strictu_senso()}"/>
                                         <h:commandLink class="list-group-item" value="Pós-Graduação Lato Senso" actionListener="#{navegacaoHelper.pos_lato_senso()}"/>
-                                        <h:commandLink class="list-group-item" value="Horários" actionListener="#{navegacaoHelper.horarios()}"/>
-                                        <h:commandLink class="list-group-item" value="Centro Acadêmico" actionListener="#{navegacaoHelper.centro_academico()}"/>
                                     </ul>
                                     <div class="panel-footer">Estrutura do Curso</div>
                                 </div>
@@ -50,14 +48,29 @@ and open the template in the editor.
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Servidores" actionListener="#{navegacaoHelper.servidores()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Formação" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.professor_formacao()}"/>
-                                        <h:commandLink class="list-group-item" value="Horários" actionListener="#{navegacaoHelper.horariosGeral()}"/> 
-                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
-
                                     </ul>
                                     <div class="panel-footer">Professores</div>
                                 </div>
                             </div>
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse5">Horários</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse5" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Aulas" actionListener="#{navegacaoHelper.horarios_aula()}"/> 
+                                        <h:commandLink class="list-group-item" value="Atendimento Professor" actionListener="#{navegacaoHelper.atendimento_professores()}"/>
+                                        <h:commandLink class="list-group-item" value="Técnicos" actionListener="#{navegacaoHelper.horario_tecnicos()}"/>
+                                        <h:commandLink class="list-group-item" value="Estagiários" actionListener="#{navegacaoHelper.horario_estagiarios()}"/>
+                                        <h:commandLink class="list-group-item" value="Monitores" actionListener="#{navegacaoHelper.horario_monitores()}"/>
+                                    </ul>
+                                    <div class="panel-footer">Horários</div>
+                                </div>
+                            </div>
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -85,47 +98,13 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse4" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="Tiago"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Centro Acadêmico" actionListener="#{navegacaoHelper.centro_academico()}" ></h:commandLink>
                                     </ul>
                                     <div class="panel-footer">Centro Acadêmico</div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapse5">Recursos</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse5" class="panel-collapse collapse">
-                                    <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
-                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Infraestrutura" actionListener="#{navegacaoHelper.paginaTipoInfraestrutura}"  /> 
-                                        <h:commandLink class="list-group-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
-                                    </ul>
-                                    <div class="panel-footer">Coordenação</div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapse6">Programas</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse6" class="panel-collapse collapse">
-                                    <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="Teste Noticia" actionListener="#{navegacaoHelper.teste()}"></h:commandLink>
-                                        
-                                    </ul>
-                                    <div class="panel-footer">Programas</div>
-                                </div>
-                            </div>
+
+                           
                         </div>
                     </div>
                 </div>

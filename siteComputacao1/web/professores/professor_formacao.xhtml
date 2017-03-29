@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
@@ -38,8 +39,8 @@
                     <!--Main column-->
                     <div class="col-lg-9">
                         <!--Post-->
-                        <p:tabView id="dados">
-                            <p:tab title="Informações Básica" id="dadosbasicos">
+                        <b:tabView contentStyle="border-right: 2px solid #ddd;border-left: 2px solid #ddd;border-bottom: 2px solid #ddd;padding:10px" id="dados">
+                            <b:tab title="Informações Básica" id="dadosbasicos">
                                 <h:form id="forminfos" enctype="multipart/form-data">
                                     <h3>
                                         <h:outputText value="Informações Básicas " />
@@ -67,7 +68,7 @@
                                         <h:message for="endprofissional" /><br></br>
 
                                         <h:outputText value="Telefone Profisisonal: " style="font-weight:bold"/>
-                                        <h:inputText id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" />      
+                                        <p:inputMask id="tel" value="#{dadosComplementaresController.dadoComplementar.telefoneProfissional}" mask="(99) 99999-9999" />      
                                         <h:message for="tel" /><br></br>
 
                                         <h:outputText value="Área de Atuação: " style="font-weight:bold"/>
@@ -124,9 +125,9 @@
                                     <p:messages id="msg" autoUpdate="true" closable="true" >              
                                     </p:messages>
                                 </h:form>
-                            </p:tab>
+                            </b:tab>
 
-                            <p:tab title="Dados Formação" id="dadosformacao">
+                            <b:tab title="Dados Formação" id="dadosformacao">
                                 <h:form id="formprofformacao">
                                     <h3>
                                         <h:outputText value="Cadastro de Formação " />
@@ -216,8 +217,8 @@
                                         <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
                                     </p:confirmDialog>
                                 </h:form>
-                            </p:tab>
-                            <p:tab title="Horários" id="horarios">
+                            </b:tab>
+                            <b:tab title="Horários" id="horarios">
                                 <h:form id="formforariosp">
                                     <h3>
                                         <h:outputText value="Cadastro de Horários "/>
@@ -325,8 +326,8 @@
 
                                 </h:form>
 
-                            </p:tab>
-                        </p:tabView>
+                            </b:tab>
+                        </b:tabView>
 
                         <!--/.Post-->                     
                         <br></br>
