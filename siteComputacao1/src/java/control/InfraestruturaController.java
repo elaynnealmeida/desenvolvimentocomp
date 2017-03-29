@@ -100,7 +100,6 @@ public class InfraestruturaController implements Serializable {
     public void onRowSelect(SelectEvent event) {
         this.infra = ((SiteInfraestrutura) event.getObject());
         selectedEquipamentos = new ArrayList<SiteEquipamento>();
-        System.out.println("lista de equipamentos: "+infra.getSiteInfraEquipamentosList());
         this.selectedEquipamentos.addAll(infra.getSiteInfraEquipamentosList());
         this.isEdit = true;
     }
