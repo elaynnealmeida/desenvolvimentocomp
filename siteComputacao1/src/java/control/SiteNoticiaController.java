@@ -38,7 +38,7 @@ import org.primefaces.model.UploadedFile;
 @ManagedBean
 @SessionScoped
 public class SiteNoticiaController implements Serializable {
-    
+
     private SiteNoticia noticia;
     private SiteNoticiaDAO noticiaDao;
     private List<SiteNoticia> noticias;
@@ -48,7 +48,7 @@ public class SiteNoticiaController implements Serializable {
     private List<SiteTags> selectedTags;
     private List<SelectItem> tags;
     private SiteTagDAO tagDao;
-    
+
     @PostConstruct
     public void init() {
         this.noticia = new SiteNoticia();
@@ -60,7 +60,7 @@ public class SiteNoticiaController implements Serializable {
         this.tags = listarTags();
         noticias = listar();
     }
-    
+
     public void limpar() {
         this.noticia = new SiteNoticia();
         this.isEdit = false;
@@ -69,7 +69,7 @@ public class SiteNoticiaController implements Serializable {
         listarTags();
         listar();
     }
-       
+
     public void salvar() {
         System.out.println("Entrou no salvar noticia ========================= ");
         try {
@@ -95,9 +95,9 @@ public class SiteNoticiaController implements Serializable {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
-        
+
     }
-    
+
     public void atualizar() {
         try {
             FacesContext context = FacesContext.getCurrentInstance();
@@ -114,7 +114,7 @@ public class SiteNoticiaController implements Serializable {
             limpar();
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            
+
         } catch (Exception e) {
             System.out.println("Erro de atualizaçao: " + e);
             limpar();
@@ -122,7 +122,7 @@ public class SiteNoticiaController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-    
+
     public void deletar() {
         try {
             noticiaDao.deletar(noticia);
@@ -135,7 +135,7 @@ public class SiteNoticiaController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-    
+
     public void gravaImagem() {
         // System.out.println("chamou o metodo");
         // if (file.getInputstream() != null) {
@@ -145,7 +145,7 @@ public class SiteNoticiaController implements Serializable {
             try {
                 byte[] bytes = IOUtils.toByteArray(file.getInputstream());
                 noticia.setImgCapa(bytes);
-                
+
             } catch (Exception ex) {
                 // System.out.println("arquivo: " + ex);
                 ex.printStackTrace();
@@ -153,21 +153,23 @@ public class SiteNoticiaController implements Serializable {
         } else {
             System.out.println("nao setou o file, file==null");
         }
-        
+
     }
-    
+
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
     }
-    
+
     public List<SiteNoticia> listar() {
+        System.out.println("entrou no listarnoticias");
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
         SitePerfil perfil = new SitePerfil();
         perfil = (SitePerfil) request.getSession().getAttribute("perfil");
+
 //        if (perfil.getId()==1) {
 //            System.out.println("entrou no perfil de adm");
 //            this.noticias = noticiaDao.listarPorData();
@@ -176,9 +178,22 @@ public class SiteNoticiaController implements Serializable {
 //            this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
 //        }
         this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
+
+//        if (perfil != null) {
+//            System.out.println("entrou no perfil !=null");
+//            if (perfil.getId() == 1) {
+//                System.out.println("entrou no perfil de adm");
+//                this.noticias = noticiaDao.listarPorData();
+//            } else {
+//                System.out.println("entrou no perfil de prof ou ca");
+//                this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
+//            }
+//        }
+
         return this.noticias;
+
     }
-    
+
     public List<SelectItem> listarTags() {
         //System.out.println("entrou no listar tags: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
@@ -191,10 +206,10 @@ public class SiteNoticiaController implements Serializable {
         }
         return toReturn;
     }
-    
+
     public StreamedContent getImage() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
-        
+
         if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
             // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
             return new DefaultStreamedContent();
@@ -212,7 +227,7 @@ public class SiteNoticiaController implements Serializable {
         }
         return new DefaultStreamedContent();
     }
-    
+
     public void onRowSelect(SelectEvent event) {
         this.noticia = ((SiteNoticia) event.getObject());
         selectedTags = new ArrayList<SiteTags>();
@@ -221,62 +236,61 @@ public class SiteNoticiaController implements Serializable {
         }
         this.isEdit = true;
     }
-    
+
     public boolean isIsEdit() {
         return isEdit;
     }
-    
+
     public void setIsEdit(boolean isEdit) {
         this.isEdit = isEdit;
     }
-    
+
     public SiteNoticia getNoticia() {
         return noticia;
     }
-    
+
     public void setNoticia(SiteNoticia noticia) {
         this.noticia = noticia;
     }
-    
+
     public List<SiteNoticia> getNoticias() {
         return noticias;
     }
-    
+
     public void setNoticias(List<SiteNoticia> noticias) {
         this.noticias = noticias;
     }
-    
+
     public List<SiteNoticia> getNoticiasFiltradas() {
         return noticiasFiltradas;
     }
-    
+
     public void setNoticiasFiltradas(List<SiteNoticia> noticiasFiltradas) {
         this.noticiasFiltradas = noticiasFiltradas;
     }
-    
+
     public UploadedFile getFile() {
         return file;
     }
-    
+
     public void setFile(UploadedFile file) {
         this.file = file;
     }
-    
+
     public List<SiteTags> getSelectedTags() {
         return selectedTags;
     }
-    
+
     public void setSelectedTags(List<SiteTags> selectedTags) {
         this.selectedTags = selectedTags;
     }
-    
+
     public List<SelectItem> getTags() {
         return tags;
     }
-    
+
     public void setTags(List<SelectItem> tags) {
         this.tags = tags;
     }
-    
-    
+
 }

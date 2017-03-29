@@ -45,6 +45,17 @@
                                 <h:inputText id="nome" value="#{infraestruturaController.infra.nome}"
                                              required="true" />
                                 <p:message for="nome" /><br></br>
+                                
+                                <h:outputText  value="Tripo de Infraestrutura *" style="font-weight:bold"/>
+                                <h:selectOneMenu class="form-control" id="infra" value="#{infraestruturaController.infra.tipoInfraestrutura}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="TipoInfraestruturaConverter"
+                                                 >
+                                    <f:selectItems value="#{infraestruturaController.tpInfra}" 
+                                                   var="infra" itemLabel="#{infra}" itemValue="#{infra}" />                                       
+                                </h:selectOneMenu>  
+                                <p:message for="infra" />  <br></br>
 
                                 <h:outputText value="Número: *" style="font-weight:bold"/>
                                 <h:inputText id="numero" value="#{infraestruturaController.infra.numero}"
@@ -61,6 +72,11 @@
                                              required="true" />
                                 <p:message for="largura" /><br></br>
                                 
+                                 <h:outputText value="Pavimento: *" style="font-weight:bold"/>
+                                <h:inputText id="pavimento" value="#{infraestruturaController.infra.pavimento}"
+                                             required="true" />
+                                <p:message for="pavimento" /><br></br>
+                                
                                 <h:outputText  value="Sala: *" style="font-weight:bold"/>
                                  <h:selectOneMenu class="form-control" id="sala" value="#{infraestruturaController.infra.sala}"  
                                                  requiredMessage="Campo Obrigatório"
@@ -72,11 +88,15 @@
                                 </h:selectOneMenu>  
                                 <p:message for="sala" />  <br></br>
                                 
-                                <h:outputText value="Pavimento: *" style="font-weight:bold"/>
-                                <h:inputText id="pavimento" value="#{infraestruturaController.infra.pavimento}"
-                                             required="true" />
-                                <p:message for="pavimento" /><br></br>
-                                
+                                <p:outputLabel    value="Equipamentos:" />
+                                <h:selectManyCheckbox  id="equipamentos" value="#{infraestruturaController.selectedEquipamentos}"  
+                                                          converter="EquipamentoConverter"
+                                                          layout="pageDirection"
+                                                          style="padding: 5px"
+                                                          >
+                                        <f:selectItems value="#{infraestruturaController.equipamentos}" var="tag" itemLabel="#{equipamentos}" itemValue="#{equipamentos}" />
+                                    </h:selectManyCheckbox>
+                                <p:message for="equipamentos" />  <br></br>
                             </h:panelGrid>
 
                             <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{infraestruturaController.salvar}" rendered="#{!infraestruturaController.isEdit}" update=":forminfra"/>

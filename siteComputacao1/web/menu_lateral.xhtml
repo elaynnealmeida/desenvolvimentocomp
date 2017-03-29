@@ -31,7 +31,6 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item"  value="Matriz Curricular" actionListener="#{navegacaoHelper.matrizCurricular()}"/>
                                         <h:commandLink class="list-group-item"  value="Plano de Ensino" actionListener="http://localhost:8081/lab/login.jsf"/>
                                         <h:commandLink class="list-group-item" value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/>
-                                        <h:commandLink class="list-group-item" value="Matriz Curricular" actionListener="#{navegacaoHelper.matriz()}"/>
                                         <h:commandLink class="list-group-item" value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/>
                                         <h:commandLink class="list-group-item" value="Pós-Graduação Strictu Senso" actionListener="#{navegacaoHelper.pos_strictu_senso()}"/>
                                         <h:commandLink class="list-group-item" value="Pós-Graduação Lato Senso" actionListener="#{navegacaoHelper.pos_lato_senso()}"/>
@@ -67,13 +66,13 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse3" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="Downloads" actionListener="#{navegacaoHelper.paginaDowloads()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Ary"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Professores"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Alunos"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Coordenação"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Centro Acadêmico"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Estrutura"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="CONDIR" actionListener="#{navegacaoHelper.paginaDowloadsCondir()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="CONSEPE" actionListener="#{navegacaoHelper.paginaDowloadsConsepe()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="CONSUNI" actionListener="#{navegacaoHelper.paginaDowloadsConsuni()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Coordenação" actionListener="#{navegacaoHelper.paginaDowloads()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Docentes" actionListener="#{navegacaoHelper.paginaDowloadsDocentes()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="NDE" actionListener="#{navegacaoHelper.paginaDowloadsNDE()}"></h:commandLink>
+                                        
                                     </ul>
                                     <div class="panel-footer">Documentos</div>
                                 </div>
@@ -106,6 +105,7 @@ and open the template in the editor.
                                 <div id="collapse5" class="panel-collapse collapse">
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Infraestrutura" actionListener="#{navegacaoHelper.paginaTipoInfraestrutura}"  /> 
                                         <h:commandLink class="list-group-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
                                         <h:commandLink class="list-group-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
                                     </ul>

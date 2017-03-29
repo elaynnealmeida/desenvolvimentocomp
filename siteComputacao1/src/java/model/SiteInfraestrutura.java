@@ -6,19 +6,26 @@
 package model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -36,6 +43,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteInfraestrutura.findByNome", query = "SELECT s FROM SiteInfraestrutura s WHERE s.nome = :nome"),
     @NamedQuery(name = "SiteInfraestrutura.findByNumero", query = "SELECT s FROM SiteInfraestrutura s WHERE s.numero = :numero")})
 public class SiteInfraestrutura implements Serializable {
+
+    @JoinColumn(name = "tipo_infraestrutura", referencedColumnName = "id")
+    @ManyToOne
+    private SiteTipoInfraestrutura tipoInfraestrutura;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "site_infra_equipamentos",
+            joinColumns = @JoinColumn(name = "infraestrutura_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipamento_id"))
+    private List<SiteEquipamento> siteInfraEquipamentosList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -146,6 +163,23 @@ public class SiteInfraestrutura implements Serializable {
     @Override
     public String toString() {
         return "model.SiteInfraestrutura[ id=" + id + " ]";
+    }
+
+    public SiteTipoInfraestrutura getTipoInfraestrutura() {
+        return tipoInfraestrutura;
+    }
+
+    public void setTipoInfraestrutura(SiteTipoInfraestrutura tipoInfraestrutura) {
+        this.tipoInfraestrutura = tipoInfraestrutura;
+    }
+
+    @XmlTransient
+    public List<SiteEquipamento> getSiteInfraEquipamentosList() {
+        return siteInfraEquipamentosList;
+    }
+
+    public void setSiteInfraEquipamentosList(List<SiteEquipamento> siteInfraEquipamentosList) {
+        this.siteInfraEquipamentosList = siteInfraEquipamentosList;
     }
     
 }
