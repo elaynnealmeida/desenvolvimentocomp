@@ -6,9 +6,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -107,7 +110,16 @@ public class LoginController implements Serializable {
         }
 
     }
-
+    
+public void refresh() {  
+    System.out.println("entrou no refresh: ");
+        FacesContext context = FacesContext.getCurrentInstance();  
+        Application application = context.getApplication();  
+        ViewHandler viewHandler = application.getViewHandler();  
+        UIViewRoot viewRoot = viewHandler.createView(context, context.getViewRoot().getViewId());  
+        context.setViewRoot(viewRoot);  
+        context.renderResponse();  
+    }
     public List<SitePerfil> buscaPerfil(String q) {
         System.out.println("a ser pesquisado: " + q);
         List<SitePerfil> results = new ArrayList<SitePerfil>();
@@ -153,7 +165,8 @@ public class LoginController implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 
-        request.getSession().setAttribute("perfil", this.perfilDuplo);
+        request.getSession().setAttribute("perfil", this.perfilSelecionado);
+        refresh();
     }
 
     public TbUsersystem getUser() {

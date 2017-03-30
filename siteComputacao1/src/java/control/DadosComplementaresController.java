@@ -40,7 +40,7 @@ public class DadosComplementaresController implements Serializable {
     @PostConstruct
     public void init() {
         this.dadoComplementar = new SiteProfDadosComplementares();
-        this.dadosComplementaresDAO = new DadosComplementaresDAO();        
+        this.dadosComplementaresDAO = new DadosComplementaresDAO();
         this.file = null;
         dadosComplementares = listar();
         this.isEdit = verificaInfos();
@@ -56,7 +56,7 @@ public class DadosComplementaresController implements Serializable {
     public void salvar() {
         try {
             dadoComplementar.setIdProfessor(buscaProf());
-           if (!file.getFileName().isEmpty()) {
+            if (!file.getFileName().isEmpty()) {
                 gravaImagem();
             }
             dadosComplementaresDAO.salvar(dadoComplementar);
@@ -141,16 +141,15 @@ public class DadosComplementaresController implements Serializable {
         }
         return new DefaultStreamedContent();
     }
-    
-    public boolean verificaInfos(){
-        if(this.dadosComplementares.isEmpty()){
+
+    public boolean verificaInfos() {
+        if (this.dadosComplementares.isEmpty()) {
             return true;
-        }
-        else{
+        } else {
             this.dadoComplementar = this.dadosComplementares.get(0);
             return false;
         }
-           
+
     }
 
     public TbProfessores buscaProf() {
