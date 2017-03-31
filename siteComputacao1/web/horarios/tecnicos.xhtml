@@ -44,30 +44,133 @@
                             <h:outputText value="Horário dos Servidores Técnicos" />
                         </h3>
                         <hr>
-                            <h:form id="tecnicoshorario">   
-                                <p:dataTable var="var" value="#{horariosHelper.servidores}"
-                                             rowKey="#{var.id}"
-                                             emptyMessage="Nenhum Registro Encontrado"
-                                             widgetVar="varTable" 
-                                             tableStyleClass="table table-bordered table-striped"
-                                             >                                    
-                                    <p:column  headerText="Dia" >
-                                        <h:outputText value="#{var.diaSemana}" />
-                                    </p:column>                                            
+                            <b:tabView contentStyle="border-right: 2px solid #ddd;border-left: 2px solid #ddd;border-bottom: 2px solid #ddd;padding:10px" id="tabhorariosaula">
 
-                                    <p:column headerText="Técnico" >
-                                        <h:outputText value="#{var.servidorId.nome}" />
-                                    </p:column>
+                                <b:tab title="2ª Feira" id="segunda">
+                                    <h:form id="tecnicoshorariosegunda">   
+                                        <p:dataTable var="var" value="#{horariosHelper.servidores}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
 
-                                    <p:column headerText="Horário" >
-                                        <h:outputText value="#{var.horaInicio} as #{var.horaFim}" />
-                                    </p:column>
-                                    <p:column headerText="Local"  >
-                                        <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
-                                    </p:column>                                         
-                                </p:dataTable>
+                                            <p:column headerText="Técnico" >
+                                                <h:outputText value="#{var.servidorId.nome}" />
+                                            </p:column>
 
-                            </h:form>
+                                            <p:column headerText="Horário" >
+                                                <h:outputText value="#{var.horaInicio} às #{var.horaFim}" />
+                                            </p:column>
+                                            <p:column headerText="Local"  >
+                                                <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
+                                            </p:column>                                         
+                                        </p:dataTable>
+
+                                    </h:form>
+
+                                </b:tab>
+
+                                <b:tab title="3ª Feira" id="terca">
+                                    <h:form id="tecnicoshorarioterca">   
+                                        <p:dataTable var="var" value="#{horariosHelper.servidores3}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+
+                                            <p:column headerText="Técnico" >
+                                                <h:outputText value="#{var.servidorId.nome}" />
+                                            </p:column>
+
+                                            <p:column headerText="Horário" >
+                                                <h:outputText value="#{var.horaInicio} às #{var.horaFim}" />
+                                            </p:column>
+                                            <p:column headerText="Local"  >
+                                                <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
+                                            </p:column>                                         
+                                        </p:dataTable>
+
+                                    </h:form>
+
+                                </b:tab>
+
+                                <b:tab title="4ª Feira" id="quarta">
+                                    <h:form id="tecnicoshorarioquarta">   
+                                        <p:dataTable var="var" value="#{horariosHelper.servidores4}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+
+                                            <p:column headerText="Técnico" >
+                                                <h:outputText value="#{var.servidorId.nome}" />
+                                            </p:column>
+
+                                            <p:column headerText="Horário" >
+                                                <h:outputText value="#{var.horaInicio} às #{var.horaFim}" />
+                                            </p:column>
+                                            <p:column headerText="Local"  >
+                                                <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
+                                            </p:column>                                         
+                                        </p:dataTable>
+
+                                    </h:form>
+
+                                </b:tab>
+
+                                <b:tab title="5ª Feira" id="quinta">
+                                    <h:form id="tecnicoshorarioquinta">   
+                                        <p:dataTable var="var" value="#{horariosHelper.servidores5}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+
+                                            <p:column headerText="Técnico" >
+                                                <h:outputText value="#{var.servidorId.nome}" />
+                                            </p:column>
+
+                                            <p:column headerText="Horário" >
+                                                <h:outputText value="#{var.horaInicio} às #{var.horaFim}" />
+                                            </p:column>
+                                            <p:column headerText="Local"  >
+                                                <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
+                                            </p:column>                                         
+                                        </p:dataTable>
+
+                                    </h:form>
+
+                                </b:tab>
+
+                                <b:tab title="6ª Feira" id="sexta">
+                                    <h:form id="tecnicoshorariosexta">   
+                                        <p:dataTable var="var" value="#{horariosHelper.servidores6}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+
+                                            <p:column headerText="Técnico" >
+                                                <h:outputText value="#{var.servidorId.nome}" />
+                                            </p:column>
+
+                                            <p:column headerText="Horário" >
+                                                <h:outputText value="#{var.horaInicio} às #{var.horaFim}" />
+                                            </p:column>
+                                            <p:column headerText="Local"  >
+                                                <h:outputText value="Bloco: #{var.sala.blocoId.descricao} Sala: #{var.sala.nomeSala}" />
+                                            </p:column>                                         
+                                        </p:dataTable>
+
+                                    </h:form>
+
+                                </b:tab>
+                            </b:tabView>
                         </hr>
                         <!--/.Post-->                     
                         <br></br>

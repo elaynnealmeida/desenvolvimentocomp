@@ -30,7 +30,16 @@ public class HorariosHelper implements Serializable {
     private HorarioServidorDAO servidorDao;
     private HorarioAulaDAO aulaDao;
     private List<SiteHorarioServidor> servidores;
+    private List<SiteHorarioServidor> servidores3;
+    private List<SiteHorarioServidor> servidores4;
+    private List<SiteHorarioServidor> servidores5;
+    private List<SiteHorarioServidor> servidores6;
     private List<SiteHorarioServidor> docentes;
+    private List<SiteHorarioServidor> docentes3;
+    private List<SiteHorarioServidor> docentes4;
+    private List<SiteHorarioServidor> docentes5;
+    private List<SiteHorarioServidor> docentes6;
+    private List<SiteHorarioServidor> docentes7;
     private List<SiteHorarioAula> aulas;
     private List<SiteHorarioAula> aulas2;
     private List<SiteHorarioAula> aulas3;
@@ -51,7 +60,16 @@ public class HorariosHelper implements Serializable {
         this.monitorDao = new MonitorDAO();
         this.aulaDao = new HorarioAulaDAO();
         this.servidores = listarTecnicos();
+        this.servidores3 = listarTecnicos3();
+        this.servidores4 = listarTecnicos4();
+        this.servidores5 = listarTecnicos5();
+        this.servidores6 = listarTecnicos6();
         this.docentes = listarProfessores();
+        this.docentes3 = listarProfessores3();
+        this.docentes4 = listarProfessores4();
+        this.docentes5 = listarProfessores5();
+        this.docentes6 = listarProfessores6();
+        this.docentes7 = listarProfessores7();
         this.monitores = listarMonitores();
         this.estagiarios = listarEstagiarios();
         this.aulas = listarAulas();
@@ -70,10 +88,54 @@ public class HorariosHelper implements Serializable {
         this.servidores = servidorDao.listarTecnicos();
         return this.servidores;
     }
+     public List<SiteHorarioServidor> listarTecnicos3() {
+        this.servidores3 = servidorDao.listarTecnicos3();
+        return this.servidores3;
+    }
+     
+     public List<SiteHorarioServidor> listarTecnicos4() {
+        this.servidores4 = servidorDao.listarTecnicos4();
+        return this.servidores4;
+    }
+     
+     public List<SiteHorarioServidor> listarTecnicos5() {
+        this.servidores5 = servidorDao.listarTecnicos5();
+        return this.servidores5;
+    }
+     
+     public List<SiteHorarioServidor> listarTecnicos6() {
+        this.servidores6 = servidorDao.listarTecnicos6();
+        return this.servidores6;
+    }     
      
      public List<SiteHorarioServidor> listarProfessores() {
         this.docentes = servidorDao.listarProfessores();
         return this.docentes;
+    }
+     
+     public List<SiteHorarioServidor> listarProfessores3() {
+        this.docentes3 = servidorDao.listarProfessores3();
+        return this.docentes3;
+    }
+     
+     public List<SiteHorarioServidor> listarProfessores4() {
+        this.docentes4 = servidorDao.listarProfessores4();
+        return this.docentes4;
+    }
+     
+     public List<SiteHorarioServidor> listarProfessores5() {
+        this.docentes5 = servidorDao.listarProfessores5();
+        return this.docentes5;
+    }
+     
+     public List<SiteHorarioServidor> listarProfessores6() {
+        this.docentes6 = servidorDao.listarProfessores6();
+        return this.docentes6;
+    }
+     
+     public List<SiteHorarioServidor> listarProfessores7() {
+        this.docentes7 = servidorDao.listarProfessores7();
+        return this.docentes7;
     }
      
       public List<SiteHorarioAula> listarAulas() {
@@ -233,6 +295,78 @@ public class HorariosHelper implements Serializable {
 
     public void setAulas9(List<SiteHorarioAula> aulas9) {
         this.aulas9 = aulas9;
+    }
+
+    public List<SiteHorarioServidor> getDocentes3() {
+        return docentes3;
+    }
+
+    public void setDocentes3(List<SiteHorarioServidor> docentes3) {
+        this.docentes3 = docentes3;
+    }
+
+    public List<SiteHorarioServidor> getDocentes4() {
+        return docentes4;
+    }
+
+    public void setDocentes4(List<SiteHorarioServidor> docentes4) {
+        this.docentes4 = docentes4;
+    }
+
+    public List<SiteHorarioServidor> getDocentes5() {
+        return docentes5;
+    }
+
+    public void setDocentes5(List<SiteHorarioServidor> docentes5) {
+        this.docentes5 = docentes5;
+    }
+
+    public List<SiteHorarioServidor> getDocentes6() {
+        return docentes6;
+    }
+
+    public void setDocentes6(List<SiteHorarioServidor> docentes6) {
+        this.docentes6 = docentes6;
+    }
+
+    public List<SiteHorarioServidor> getDocentes7() {
+        return docentes7;
+    }
+
+    public void setDocentes7(List<SiteHorarioServidor> docentes7) {
+        this.docentes7 = docentes7;
+    }
+
+    public List<SiteHorarioServidor> getServidores3() {
+        return servidores3;
+    }
+
+    public void setServidores3(List<SiteHorarioServidor> servidores3) {
+        this.servidores3 = servidores3;
+    }
+
+    public List<SiteHorarioServidor> getServidores4() {
+        return servidores4;
+    }
+
+    public void setServidores4(List<SiteHorarioServidor> servidores4) {
+        this.servidores4 = servidores4;
+    }
+
+    public List<SiteHorarioServidor> getServidores5() {
+        return servidores5;
+    }
+
+    public void setServidores5(List<SiteHorarioServidor> servidores5) {
+        this.servidores5 = servidores5;
+    }
+
+    public List<SiteHorarioServidor> getServidores6() {
+        return servidores6;
+    }
+
+    public void setServidores6(List<SiteHorarioServidor> servidores6) {
+        this.servidores6 = servidores6;
     }
 
 }
