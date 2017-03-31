@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/web/professores/professor_formacao.xhtml</file>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/src/java/control/EstagiarioController.java</file>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/web/menu_lateral.xhtml</file>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/web/horarios.xhtml</file>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/web/menu.xhtml</file>
-            <file>file:/C:/Users/root/Documents/SiteUFT/siteuft/siteComputacao1/web/pages/estagiario.xhtml</file>
+            <file>file:/C:/Users/UFT/Documents/site/siteuft/siteComputacao1/src/java/model/SiteHorarioServidor.java</file>
+            <file>file:/C:/Users/UFT/Documents/site/siteuft/siteComputacao1/src/java/dao/HorarioServidorDAO.java</file>
+            <file>file:/C:/Users/UFT/Documents/site/siteuft/siteComputacao1/src/java/control/HorariosHelper.java</file>
+            <file>file:/C:/Users/UFT/Documents/site/siteuft/siteComputacao1/web/horarios/atendimento_professores.xhtml</file>
         </group>
     </open-files>
 </project-private>
