@@ -579,7 +579,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/docscondir");
+                    + "/faces/docscondir.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -590,7 +590,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/docsconsuni");
+                    + "/faces/docsconsuni.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -601,7 +601,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/docsconsepe");
+                    + "/faces/docsconsepe.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -612,7 +612,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/docsdocentes");
+                    + "/faces/docsdocentes.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -623,7 +623,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/docsnde");
+                    + "/faces/docsnde.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
