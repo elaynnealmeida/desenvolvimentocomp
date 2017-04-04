@@ -19,6 +19,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
+        <link href="css/signin.css" rel="stylesheet"></link>
         <link href="css/mdb.min.css" rel="stylesheet"></link>
         <link href="css/layout.css" rel="stylesheet"></link>
         <link href="css/geral.css" rel="stylesheet"></link>
@@ -35,36 +36,43 @@
                     <ui:insert name="menu_lateral">
                         <ui:include src="menu_lateral.xhtml"></ui:include>
                     </ui:insert>
-                    <div class="col-lg-9">
-                        <h3 class="h3-responsive" style="text-align: right">Matriz Curricular
-                            <!--<small class="text-muted">secondary text</small>-->
-                        </h3>
-                        <hr></hr>
-                        <h:form id="detalhedisciplina">
-                            <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Disciplina: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.descricao}" ></h:outputText>
-                            <h:outputText value="Código SIE: " ></h:outputText>
-                            <h:outputText value="Código SIE: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.codigoSie}" ></h:outputText>
-                            <h:outputText value="Crédito: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.credito}" ></h:outputText>
-                            <h:outputText value="Período Ideal: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.periodoIdeal}" ></h:outputText>
-                            <h:outputText value="Tipo: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.tipoDisciplina}" ></h:outputText>
-                            <h:outputText value="Aréa do Conhecimento: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.areaConhecimentoId.descricao}" ></h:outputText>
-                            <h:outputText value="Carga Horária Prática: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.chPratica}" ></h:outputText>
-                            <h:outputText value="Carga Horária Teórica: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.chTeorica}" ></h:outputText>
-                            <h:outputText value="Ementa: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.ementa}" ></h:outputText>
-                            <h:outputText value="Objetivo Geral: " ></h:outputText>
-                            <h:outputText value="#{disciplinaController.disciplina.objetivoGeral}" ></h:outputText>                            
-                            </h:panelGrid>
-                        </h:form>
+                    <div class="col-lg-9">                       
+                        <h3>
+                            <h:outputText value="Matriz Curricular" ></h:outputText>
+                        </h3>                      
+                        <hr>
+                            <h:form id="detalhedisciplina">
+                                <h:panelGrid columns="2" width="400px" cellpadding="5" style="margin-bottom:10px">
+                                    <h:outputText value="Disciplina: " style="font-weight:bold" ></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.descricao}" ></h:outputText>
+                                    <h:outputText value="Código SIE: " style="font-weight:bold"></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.codigoSie}" ></h:outputText>
+                                    <h:outputText value="Crédito: " style="font-weight:bold"></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.credito}" ></h:outputText>
+                                    <h:outputText value="Período Ideal: " style="font-weight:bold" ></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.periodoIdeal}º" ></h:outputText>
+                                    <h:outputText value="Tipo: " style="font-weight:bold"></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.tipoDisciplina}" ></h:outputText>
+                                    <h:outputText value="Aréa do Conhecimento: " style="font-weight:bold" ></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.areaConhecimentoId.descricao}" ></h:outputText>
+                                    <h:outputText value="Carga Horária Prática: " style="font-weight:bold" ></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.chPratica}h" ></h:outputText>
+                                    <h:outputText value="Carga Horária Teórica: " style="font-weight:bold" ></h:outputText>
+                                    <h:outputText value="#{disciplinaController.disciplina.chTeorica}h" ></h:outputText>
+                                </h:panelGrid>
+                                <hr>
+                                    <p>
+                                        <h:outputText value="Ementa: " style="font-weight:bold" ></h:outputText>
+                                        <h:outputText value="#{disciplinaController.disciplina.ementa}" style="text-align: justify" ></h:outputText>
+                                    </p>
+
+                                    <p>
+                                        <h:outputText value="Objetivo Geral: " style="font-weight:bold" ></h:outputText>
+                                        <h:outputText value="#{disciplinaController.disciplina.objetivoGeral}" style="text-align: justify" ></h:outputText>     
+                                    </p>
+                                </hr>
+                            </h:form>
+                        </hr>
                     </div>
                 </div>
                 <!--/.First row-->
@@ -77,7 +85,7 @@
             <ui:include src="footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

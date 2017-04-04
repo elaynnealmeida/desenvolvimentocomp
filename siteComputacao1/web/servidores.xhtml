@@ -40,56 +40,55 @@
                         <ui:include src="menu_lateral.xhtml"></ui:include>
                     </ui:insert>
                     <div class="col-lg-9">
-                        <h3 class="h3-responsive" style="text-align: right">Servidores Ativos
+                        <h3 class="h3-responsive" style="text-align: left">Servidores Ativos
                             <!--<small class="text-muted">secondary text</small>-->
                         </h3>
-                        <hr></hr>
+                        <!--<hr></hr>-->
                         <h:form id="formulario">
                             <c:forEach var="servidor" items="${servidoresHelper.servidores}" varStatus="id">
-                                <div class="col-lg-6">
+                                <hr>
                                     <!--Card-->
-                                    <div class="card">
+                                    <div class="media mb-1">
                                         <!--Card image-->
-                                        <div class="view overlay hm-white-slight">
-                                            <div style=" max-width:500px; max-height:200px;"><p:graphicImage style="    max-width:100%;
+                                        <div class="view media-left waves-light col-xs-2">
+                                            <div style=" max-width:500px; max-height:200px;"><p:graphicImage class="rounded-circle" style="    max-width:100%;
                                                                                                              max-height:100%;
                                                                                                              width: 100px;
                                                                                                              height: 100px;" value="#{servidoresHelper.image}"
                                                                                                              rendered="#{servidor.foto!=null}">
                                                     <f:param name="servidor" value="#{servidor.id}" />
                                                 </p:graphicImage>
-                                                <p:graphicImage style="    max-width:100%;
-                                                                                                             max-height:100%;
-                                                                                                             width: 100px;
-                                                                                                             height: 100px;" value="#{resource['img/sem_foto.jpg']}"
-                                                                                                             rendered="#{servidor.foto==null}"
-                                                                                                             >                                                   
+                                                <p:graphicImage class="rounded-circle" style="    max-width:100%;
+                                                                max-height:100%;
+                                                                width: 100px;
+                                                                height: 100px;" value="#{resource['img/sem_foto.jpg']}"
+                                                                rendered="#{servidor.foto==null}"
+                                                                >                                                   
                                                 </p:graphicImage>
                                             </div>
                                             <h:commandLink  styleClass="mask" action="#{servidoresHelper.pagina}">
                                                 <f:setPropertyActionListener target="#{servidorInfo.servidor}" value="#{servidor}"/>
                                                 <f:param name="servidor" value="#{servidor.id}" />
                                             </h:commandLink>
-                                        </div>
-                                        <!--/.Card image-->
-                                        <!--Card content-->
-                                        <div class="card-block">
-                                            <!--Title-->
-                                            <h4 class="card-title font-media">
-                                                <h:commandLink  styleClass="btn btn-primary" style="color:#ffffff" value="#{servidor.idProfessor.nome}" action="#{servidoresHelper.pagina}">
+                                        </div>                                       
+                                            <!--/.Card image-->
+                                            <!--Card content-->
+                                            <div class="card-block col-md-6">
+                                                <h:commandLink  styleClass="btn btn-primary" style="color:#ffffff; margin-top: -20px" value="#{servidor.idProfessor.nome}" action="#{servidoresHelper.pagina}">
                                                     <f:setPropertyActionListener target="#{servidorInfo.servidor}" value="#{servidor}"/>
                                                     <f:param name="servidor" value="#{servidor.id}" />
-                                                </h:commandLink></h4>
-                                            <!--Text -->
-                                            <div>
-                                                <p class="card-text font-pequena"><h:outputText value="#{servidoresHelper.buscaCargo(servidor.idProfessor)}"/></p>
-                                            </div>                                          
-                                        </div>
+                                                </h:commandLink>
+                                                <hr>
+                                                    <h5 class="media-heading">
+                                                        <h:outputText value="#{servidoresHelper.buscaCargo(servidor.idProfessor)}"/>
+                                                    </h5>
+                                                </hr>
+
+                                            </div>
                                         <!--/.Card content-->
                                     </div>
                                     <!--/.Card-->
-                                </div>
-                                <!--/.First column-->
+                                </hr>
                             </c:forEach>
 
                         </h:form>
@@ -108,6 +107,6 @@
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   
         </ui:insert>        
-        
+
     </h:body>
 </html>
