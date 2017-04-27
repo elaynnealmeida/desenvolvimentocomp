@@ -365,6 +365,17 @@ public class NavegacaoHelper {
         }
     }
      
+     public void cadastrar_links() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/professores/links");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
      public void servidores() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
