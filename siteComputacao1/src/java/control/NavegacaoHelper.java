@@ -370,7 +370,7 @@ public class NavegacaoHelper {
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
-                    + "/professores/links");
+                    + "/faces/professores/links.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

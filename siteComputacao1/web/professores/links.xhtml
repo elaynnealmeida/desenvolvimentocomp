@@ -59,7 +59,7 @@
                             <br></br>
                             <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{linksController.salvar}" rendered="#{!linksController.isEdit}" update=":formlinks"/>
                             <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{linksController.atualizar}"  rendered="#{linksController.isEdit}" update=":formlinks"/>
-                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formlinks:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" />
                             <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{linksController.limpar}" update=":formlinks"/>
 
                             <p:dataTable var="var" value="#{linksController.links}"
