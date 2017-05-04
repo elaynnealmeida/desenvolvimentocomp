@@ -3,6 +3,7 @@ package control;
 import dao.EquipamentoDAO;
 import dao.InfraestruturaDAO;
 import dao.SalaDAO;
+import dao.TbProfessoresDAO;
 import dao.TipoInfraestruturaDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.faces.model.SelectItem;
 import model.SiteEquipamento;
 import model.SiteInfraestrutura;
 import model.SiteTipoInfraestrutura;
+import model.TbProfessores;
 import model.TbSala;
 import org.primefaces.event.SelectEvent;
 
@@ -149,6 +151,18 @@ public class InfraestruturaController implements Serializable {
         return toReturn;
     }
 
+     public List<SelectItem> getProfessor() {
+        System.out.println("entrou no listar professor: ");
+        List<SelectItem> toReturn = new ArrayList<SelectItem>();
+        TbProfessoresDAO profDao = new TbProfessoresDAO();
+        List<TbProfessores> result = new ArrayList<TbProfessores>();
+        result = profDao.listarTodos();
+        for (int i = 0; i < result.size(); i++) {
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getNome()));
+            //System.out.println("perfil: " + result.get(i).toString());
+        }
+        return toReturn;
+    }
     public SiteInfraestrutura getInfra() {
         return infra;
     }

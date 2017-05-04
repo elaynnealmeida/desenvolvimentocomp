@@ -46,6 +46,11 @@
                                              required="true" />
                                 <p:message for="nome" /><br></br>
                                 
+                                <h:outputText value="Sigla: *" style="font-weight:bold"/>
+                                <h:inputText id="sigla" value="#{infraestruturaController.infra.sigla}"
+                                             required="true" />
+                                <p:message for="sigla" /><br></br>
+                                
                                 <h:outputText  value="Tipo de Infraestrutura *" style="font-weight:bold"/>
                                 <h:selectOneMenu class="form-control" id="infra" value="#{infraestruturaController.infra.tipoInfraestrutura}"  
                                                  requiredMessage="Campo Obrigatório"
@@ -56,6 +61,18 @@
                                                    var="infra" itemLabel="#{infra}" itemValue="#{infra}" />                                       
                                 </h:selectOneMenu>  
                                 <p:message for="infra" />  <br></br>
+                                
+                                
+                                    <h:outputText value="Responsável *" style="font-weight:bold"/>
+                                    <h:selectOneMenu class="form-control" id="professor" value="#{infraestruturaController.infra.responsavel}"  
+                                                     requiredMessage="Campo Obrigatório"
+                                                     required="true"
+                                                     converter="ProfessorConverter"
+                                                     >
+                                        <f:selectItems value="#{infraestruturaController.professor}" 
+                                                       var="professor" itemLabel="#{professor}" itemValue="#{professor}" />                                       
+                                    </h:selectOneMenu>  
+                                    <h:message for="professor" /> 
 
                                 <h:outputText value="Número: *" style="font-weight:bold"/>
                                 <h:inputText id="numero" value="#{infraestruturaController.infra.numero}"
@@ -71,6 +88,11 @@
                                 <h:inputText id="largura" value="#{infraestruturaController.infra.largura}"
                                              required="true" />
                                 <p:message for="largura" /><br></br>
+                                
+                                <h:outputText value="Capacidade: *" style="font-weight:bold"/>
+                                <h:inputText id="capacidade" value="#{infraestruturaController.infra.capacidade}"
+                                             required="true" />
+                                <p:message for="capacidade" /><br></br>
                                 
                                  <h:outputText value="Pavimento: *" style="font-weight:bold"/>
                                 <h:inputText id="pavimento" value="#{infraestruturaController.infra.pavimento}"

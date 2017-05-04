@@ -44,6 +44,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SiteInfraestrutura.findByNumero", query = "SELECT s FROM SiteInfraestrutura s WHERE s.numero = :numero")})
 public class SiteInfraestrutura implements Serializable {
 
+    @Size(max = 2147483647)
+    @Column(name = "sigla")
+    private String sigla;
+    @Column(name = "capacidade")
+    private Integer capacidade;
+    @JoinColumn(name = "responsavel", referencedColumnName = "id")
+    @ManyToOne
+    private TbProfessores responsavel;
+
     @JoinColumn(name = "tipo_infraestrutura", referencedColumnName = "id")
     @ManyToOne
     private SiteTipoInfraestrutura tipoInfraestrutura;
@@ -180,6 +189,30 @@ public class SiteInfraestrutura implements Serializable {
 
     public void setSiteInfraEquipamentosList(List<SiteEquipamento> siteInfraEquipamentosList) {
         this.siteInfraEquipamentosList = siteInfraEquipamentosList;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
+    }
+
+    public Integer getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(Integer capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public TbProfessores getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(TbProfessores responsavel) {
+        this.responsavel = responsavel;
     }
     
 }
