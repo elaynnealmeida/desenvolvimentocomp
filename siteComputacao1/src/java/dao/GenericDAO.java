@@ -26,7 +26,7 @@ public class GenericDAO<T> implements Serializable {
 
     public EntityManager getEM() {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("siteComputacao1PU");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("siteComputacao1PU2");
 
         return factory.createEntityManager();
     }

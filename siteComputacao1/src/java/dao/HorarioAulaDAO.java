@@ -58,6 +58,9 @@ public class HorarioAulaDAO extends GenericDAO<SiteHorarioAula>{
         query.orderBy(builder.asc(root.get("dia")),builder.asc(root.get("horaInicio")));
         result = em1.createQuery(query).getResultList();
         em1.close();
+        if(!result.isEmpty()){
+        System.out.println("periodo: "+result.get(0).getTurmaId().getPeriodo());
+        }
         return result;
     }
 }

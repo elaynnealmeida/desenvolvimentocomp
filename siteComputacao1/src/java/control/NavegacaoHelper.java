@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 public class NavegacaoHelper {
-    
+   
     public void horario_monitores() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -701,6 +701,28 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+      public void alterarSenhar() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/alterarsenha.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+      public void recuperarSenhar() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/recuperarsenha.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }

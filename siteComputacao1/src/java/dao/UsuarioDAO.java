@@ -57,6 +57,25 @@ public class UsuarioDAO extends GenericDAO<TbUsersystem> {
 
     }
     
+    public TbUsersystem buscaEmail(TbUsersystem login) {
+        TbUsersystem result = new TbUsersystem();
+        try {
+            EntityManager em1 = getEM();
+            em1.getTransaction().begin();
+            CriteriaBuilder builder = em1.getCriteriaBuilder();
+            CriteriaQuery query = builder.createQuery(TbUsersystem.class);
+            EntityType type = em1.getMetamodel().entity(TbUsersystem.class);
+            Root root = query.from(TbUsersystem.class);
+            query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("email", String.class)), login.getEmail()));
+            result = (TbUsersystem) em1.createQuery(query).getSingleResult();
+            em1.close();
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+    
     public List<TbUsersystem> listarTodosAtivos2() {
         List<TbUsersystem> result = new ArrayList<TbUsersystem>();
         EntityManager em1 = getEM();

@@ -69,7 +69,7 @@
 
                                         <p>
                                             <h:outputText value="Lattes: " style="font-weight:bold" />
-                                            <p:commandLink value="#{servidorInfo.servidor.lattes}" />
+                                            <h:outputLink target="_blank" value="#{servidorInfo.servidor.lattes}" > #{servidorInfo.servidor.lattes} </h:outputLink>                                           
                                         </p>
                                         <p>
                                             <h:outputText value="Email: " style="font-weight:bold" />

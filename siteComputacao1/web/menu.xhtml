@@ -39,17 +39,17 @@
                             </li>-->
 
                             <h:panelGroup rendered="#{loginController.isAdmin}">
-                            <li class="nav-item btn-group" style="font-size: .88em">
-                                <a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                                    <h:commandLink styleClass="dropdown-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
-                                    <h:commandLink styleClass="dropdown-item" value="Tipo de Infraestrutura" actionListener="#{navegacaoHelper.paginaTipoInfraestrutura}"  /> 
-                                    <h:commandLink styleClass="dropdown-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
-                                    <h:commandLink styleClass="dropdown-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
-                                </div>
-                            </li>
+                                <li class="nav-item btn-group" style="font-size: .88em">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Recursos</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu5">
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Equipamentos" actionListener="#{navegacaoHelper.paginaTipoEquipamento()}"></h:commandLink>
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Infraestrutura" actionListener="#{navegacaoHelper.paginaTipoInfraestrutura}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Equipamentos" actionListener="#{navegacaoHelper.paginaEquipamento()}"></h:commandLink>
+                                        <h:commandLink styleClass="dropdown-item" value="Infraestrutura" actionListener="#{navegacaoHelper.paginaInfraestrutura()}"></h:commandLink>
+                                    </div>
+                                </li>
 
-                            
+
                                 <li class="nav-item btn-group" style="font-size: .88em">
                                     <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administração</a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -80,13 +80,17 @@
                                                rendered="#{loginController.multiploPerfil}" actionListener="#{loginController.confirmar}" ajax="false">
                                 </p:commandLink>
                                 <br></br>
+                                <h:commandLink style="color: #ffffff; text-align: right;" action="#{navegacaoHelper.alterarSenhar()}" rendered="#{loginController.isUser}">
+                                    <i class="fa fa-sign-out" aria-hidden="true">Alterar Senha</i>
+                                </h:commandLink> <br></br>
                                 <h:commandLink style="color: #ffffff; text-align: right;" action="#{loginController.logout}" rendered="#{loginController.isUser}">
                                     <i class="fa fa-sign-out" aria-hidden="true">Sair</i>
                                 </h:commandLink>
+
                             </div>
                         </h:panelGroup>
 
-                        <h:form rendered="#{!loginController.isUser}">
+                        <h:form id="login" rendered="#{!loginController.isUser}">
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
@@ -101,20 +105,22 @@
                                                         <p:inputText type="email" placeholder="Email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
                                                         <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>                                                           
                                                         <p:commandButton styleClass="btn btn-sm btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
-                                                                         action="#{loginController.login()}"/>
+                                                                         action="#{loginController.login()}" update="menu:login:mErro"/>    
                                                     </h:form>
 
                                                     <div class="bottom text-center">
-                                                        Esqueceu a senha? <a href="#"><b>Recuperar senha</b></a>
+                                                        <a href="http://localhost:8080/siteComputacao1/faces/recuperarsenha.xhtml"><b>Recuperar senha</b></a>
                                                     </div>
 
 
                                                 </div>
                                             </div>
                                         </li>
+
                                     </ul>
                                 </li>
                             </ul>
+                            <h:outputText id="mErro" style="color: #ffffff; text-align: right; font-size: .88em" value="#{loginController.mensagem}" />
                         </h:form>
                     </div>
                 </div>

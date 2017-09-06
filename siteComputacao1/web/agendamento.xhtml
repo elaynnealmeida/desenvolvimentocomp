@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Agendamento de Horário com a Coordenação</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="css/signin.css" rel="stylesheet"></link>
+        <link href="css/mdb.min.css" rel="stylesheet"></link>
+        <link href="css/layout.css" rel="stylesheet"></link>
+        <link href="css/geral.css" rel="stylesheet"></link>
+    </h:head>
+    <ui:insert name="menu">
+        <ui:include src="menu.xhtml"/>
+    </ui:insert>
+    <h:body> 
+
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <!--Corpo -->
+                <div class="row">
+
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+
+                    <div class="col-lg-9">
+
+                        <h:form id="formagendamento">
+                            <h2>
+                                <h:outputText value="Agendamento "/>
+                            </h2>
+                            <hr>
+                                <h:panelGrid columns="4" cellpadding="5" style="margin-bottom:10px">
+
+                                    <h:outputText value="Nome: " style="font-weight:bold"/>
+                                    <h:inputText id="nome" style="width: 400px" value="#{siteMarcarHorarioController.siteMarcarHorario.nome}"
+                                                 required="true" />*
+                                    <p:message for="nome" />
+                                    <h:outputText value="Email: " style="font-weight:bold"/>
+                                    <h:inputText id="email" value="#{siteMarcarHorarioController.siteMarcarHorario.email}"
+                                                 required="true" />*
+                                    <p:message for="email" />
+                                    <h:outputText value="Email: " style="font-weight:bold"/>
+                                    <h:inputTextarea id="assunto" value="#{siteMarcarHorarioController.siteMarcarHorario.previaDoAssunto}"
+                                                 required="true" />*
+                                    <p:message for="assunto" />
+                                    <h:outputText value="Horário: " style="font-weight:bold"/>
+                                    <h:inputTextarea id="horario" value="#{siteMarcarHorarioController.siteMarcarHorario.horario}"
+                                                 required="true" />*
+                                    <p:message for="horario" />
+                                </h:panelGrid>
+                            </hr>
+                            <br></br>
+
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnSalvar" value="Salvar" action="#{siteMarcarHorarioController.salvar}" rendered="#{!siteMarcarHorarioController.isEdit}" update=":formagendamento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnAtualizar" value="Atualizar" action="#{siteMarcarHorarioController.atualizar}" rendered="#{siteMarcarHorarioController.isEdit}" update=":formagendamento"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formagendamento:confimacao"/>
+                            <p:commandButton class="btn btn-primary btn-sm" id="btnLimpar" value="Limpar" action="#{siteMarcarHorarioController.limpar}" update=":formagendamento"/>
+                            <br></br> <br></br>
+                            <hr>
+                                <p:dataTable var="var" value="#{siteMarcarHorarioController.siteMarcarHorarios}"
+                                             selectionMode="single"  rowKey="#{var.id}"
+                                             emptyMessage="Nenhum Registro Encontrado"
+                                             widgetVar="varTable"
+                                             filteredValue="#{siteMarcarHorarioController.siteMarcarHorariosFiltrados}"
+                                             rows="10"
+                                             paginator="true"
+                                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                             rowsPerPageTemplate="5,10,15"
+                                             tableStyleClass="table table-bordered table-striped"
+                                             style="border-width: medium"
+                                             >
+                                    <f:facet name="header">
+                                        <p:outputPanel>
+                                            <h:outputText value="Pesquisar:" style="font-weight:bold"/>
+                                            <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                         style="width:150px" placeholder="Conselho"
+                                                         />
+                                        </p:outputPanel>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{siteMarcarHorarioController.onRowSelect}" update=":formagendamento" />
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{var.id}" />
+                                    </p:column>
+
+                                    <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
+                                        <h:outputText value="#{var.nome}" />
+                                    </p:column>
+
+                                    <p:column headerText="Email" >
+                                        <h:outputText value="#{var.email}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Assunto" >
+                                        <h:outputText value="#{var.previaDoAssunto}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Horário" >
+                                        <h:outputText value="#{var.horario}" />
+                                    </p:column>
+
+                                </p:dataTable>
+                            </hr>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >              
+                            </p:messages>
+
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+
+                                <p:commandButton value="Sim" update=":formagendamento" onclick="PF('confirmation').hide()"
+                                                 action="#{siteMarcarHorarioController.deletar}" />
+
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" />
+                            </p:confirmDialog>
+
+
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo -->
+        <ui:insert name="footer" >
+            <ui:include src="footer.xhtml"/>   
+        </ui:insert>
+
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+</html>
