@@ -246,12 +246,12 @@ public class LoginController implements Serializable {
             user3.setPassword(servicos.criptografa(senha));
             try {
                 userDao.atualizar(user3);
-                email.setHostName("smtp.mail.uft.edu.br");
+                email.setHostName("smtp.gmail.com");
                 email.setSmtpPort(587);
-                email.setAuthenticator(new DefaultAuthenticator("desenvolvimentocomp@mail.uft.edu.br", "computacao2017site"));
+                email.setAuthenticator(new DefaultAuthenticator("coordenacaocomputacaouft@gmail.com", "sitecomputacaouft"));
                 email.setTLS(true);
                 email.addTo(user3.getEmail(), user3.getNomecompleto()); //destinatário
-                email.setFrom("desenvolvimentocomp@mail.uft.edu.br", "Computação"); // remetente
+                email.setFrom("coordenacaocomputacaouft@gmail.com", "Computação"); // remetente
                 email.setSubject("Senha de acesso ao site"); // assunto do e-mail
                 email.setMsg("Sua nova senha de acesso ao site é: " + senha + " \nAltere em: https://palmas.uft.edu.br/grad/ccomp/cienciacomputacao/"); //conteudo do e-mail
                 email.send();
