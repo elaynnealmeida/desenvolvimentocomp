@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Adicionar Notícia</title>
+      
+       
+
+    </h:head>
+   
+    <h:body>
+        
+                        <h:form id="formd" enctype="multipart/form-data">
+                           
+                                    <h1 >Adicionar Documento</h1>
+                                   
+                                                <h:outputText value="Tipo de Documento: *"/>
+                                                <h:selectOneMenu  id="documento" value="#{documentoController.documento.tipoDocumento}"  
+                                                                 requiredMessage="Campo Obrigatório"
+                                                                 required="true"
+                                                                 converter="TipoDocumentoConverter"
+                                                                 >
+                                                    <f:selectItems value="#{documentoController.tpDocumento}" 
+                                                                   var="tpdocumento" itemLabel="#{tpdocumento}" itemValue="#{tpdocumento}" />                                      
+                                                </h:selectOneMenu>  
+                                                <h:message for="documento" />
+                                         
+                                                <h:outputText value="Publicacao: *" />
+                                                <h:selectOneMenu class="form-control" id="publicacao" value="#{documentoController.documento.publicacaoId}"  
+                                                                 converter="PublicacaoConverter"
+                                                                 >
+                                                    <f:selectItems value="#{documentoController.publicacao}" 
+                                                                   var="publicacao" itemLabel="#{publicacao}" itemValue="#{publicacao}" />                                       
+                                                </h:selectOneMenu> 
+                                                <h:message for="publicacao" />  
+
+                                                <h:outputText value="Título: *" style="font-weight:bold"/>
+                                                <h:inputText id="titulo" value="#{documentoController.documento.titulo}"
+                                                             required="true" />
+                                                <h:message for="titulo" />
+                                     
+                                                <b><h:outputText  value="Imagem da Capa "/></b>
+                                                <p:fileUpload value="#{documentoController.file}" label="Procurar" mode="simple" skinSimple="true" 
+                                                              update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
+                                                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(pdf)$/"
+                                                              invalidFileMessage="Somente JPG ou PNG são permitidos."
+                                                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                                              />
+                                                <h:message for="imagem" />
+                                          
+                                    <h:outputText value="Assunto: *" />
+                                    <h:inputTextarea id="assunto" value="#{documentoController.documento.assunto}"
+                                                     required="true" />
+                                    <h:message for="assunto" />
+
+                                    <h:outputText value="Ativo: "/>
+                                    <h:selectBooleanCheckbox id="ativo" value="#{documentoController.documento.ativo}" />      
+                                    <h:message for="ativo" />  
+                                
+                            <p:commandButton class="btn btn-dark-green" id="btnSalvar" value="Salvar" actionListener="#{documentoController.salvar}" ajax="false" rendered="#{!documentoController.isEdit}" update=":formd"/>
+                            <p:commandButton class="btn btn-dark-green" id="btnAtualizar" value="Atualizar" ajax="false" actionListener="#{documentoController.atualizar}" rendered="#{documentoController.isEdit}" update=":formd"/>
+                            <p:commandButton class="btn btn-danger" id="btnDeletar" value="Deletar" oncomplete="PF('confirmation').show()" update=":formd:confimacao"/>
+                            <p:commandButton class="btn btn-warning" id="btnLimpar" value="Limpar" action="#{documentoController.limpar}" update=":formd"/>
+                            <p:messages id="msg" autoUpdate="true" closable="true" >   </p:messages>
+                            <br></br>
+                            <br></br>
+                            <p:dataTable var="var" value="#{documentoController.documentos}"
+                                         selectionMode="single"  rowKey="#{var.id}"
+                                         emptyMessage="Nenhum Registro Encontrado"
+                                         widgetVar="varTable"
+                                         filteredValue="#{documentoController.documentosFiltrados}"
+                                         rows="5"
+                                         paginator="true"
+                                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                         rowsPerPageTemplate="5,10,15"
+                                         >
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Pesquisar:" />
+                                        <p:inputText id="globalFilter" onkeyup="PF('varTable').filter()" 
+                                                     style="width:150px" placeholder="Título"
+                                                     />
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{documentoController.onRowSelect}" update=":formd" />
+                                <p:column headerText="Título" filterBy="#{var.titulo}" filterStyle="display:none" style="text-align: center">
+                                    <h:outputText value="#{var.titulo}" />
+                                </p:column>
+
+                            </p:dataTable>
+                            <p:confirmDialog id="confimacao" message="Deseja mesmo excluir?" showEffect="bounce"
+                                             hideEffect="explode" header="Confirmação" severity="info" widgetVar="confirmation">
+                                <p:commandButton value="Sim" update=":formd" onclick="PF('confirmation').hide()"
+                                                 action="#{documentoController.deletar}" />
+                                <p:commandButton value="Não" onclick="PF('confirmation').hide(); return true;" update=":formd" />
+                            </p:confirmDialog>
+                        </h:form>
+            
+      
+    </h:body>
+</html>

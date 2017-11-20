@@ -2,11 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
     <h:head>
         <title>Sobre o Curso</title>
         <meta charset="utf-8" />
@@ -14,34 +14,33 @@
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
-
         <!-- Bootstrap core CSS -->
         <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
-
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
+        <link href="../../css/signin.css" rel="stylesheet"></link>
         <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../../css/layout.css" rel="stylesheet"></link>
         <link href="../../css/geral.css" rel="stylesheet"></link>
+
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="../../menu.xhtml"/>   
+        <ui:include src="../../menu.xhtml"/>
     </ui:insert>
-    <h:body> 
-
+    <h:body>
         <!--Corpo-->
         <main>
-
             <!--Main layout-->
             <div class="container">
-
-
                 <br></br>
                 <div class="row">
-
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-8">
-                        <!--Post-->
-                        <h:form>
+
+                    <div class="col-lg-9">
+                       <h:form>
                             <div class="post-wrapper">
                                 <!--Post data-->
                                 <h1 class="h6-responsive">Sobre o Curso</h1>
@@ -50,7 +49,7 @@
 
                                 <!--Featured image -->
                                 <div class="view overlay hm-white-light z-depth-1-half">
-                                    <img src="https://eduardoazev.files.wordpress.com/2015/09/uft-logo.jpg" class="img-fluid " alt=""></img>
+                                    <img src="#{resource['img/computacao-logo2.png']}" class="img-fluid " alt=""></img>
 
                                     <div class="mask">
                                     </div>
@@ -67,47 +66,30 @@
                                     Duração: Mínima: 4 anos; Máxima: 6 anos. <br></br>
                                     Vagas: 80 anuais com duas entradas semestrais de 40 alunos</p>
                                 <br></br>
-
+                                <p class="text-justify">O Curso de Ciência da Computação está no Campus de Palmas, que possui sinal de Wi-fi aberto para toda a comunidade acadêmica em toda sua a área de prédios. A internet wireless é acessada por meio de um sistema de login unificado da insitutição. A internet da UFT está conectada ao ponto de presença (Point of Presence - PoP) da rede de fibra óptica de alta velocidade junto à Rede Nacional de Ensino e Pesquisa (RNP), do Ministério da Ciência, Tecnologias, Inovações e Comunicação (MCTIC), a qual configura-se como a conexão de internet mais rápida no Estado do Tocantins, a uma velocidade de 10 Gbits/s. A UFT conta com uma infraestrutura de centro de dados implantado na Diretoria de Tecnologia da Informação (DTI/UFT), dentro do Campus de Palmas, na cidade de Palmas-TO. O centro de dados acomoda, atualmente, toda a infraestrutura de servidores, de armazenamento e de redes de computadores usados em pesquisa, desenvolvimento e inovação na universidade e região. Portanto, a UFT oferece os serviços de processamento, armazenamento e comunicação de dados e informações para a instituição. </p>
+                                
+                                <p class="text-justify">O data center da DTI/UFT já possui a infraestrutura preparada para a implantação dos servidores e demais equipamentos necessários para a hospedagem, processamento, comunicação e armazenamento dos dados e informações do Curso de Ciência da Computação. A DTI/UFT possui sistema para combate e prevenção de incêndios, contendo os materiais e recursos adequados às características dos equipamentos (extintores, sinalizadores e etc). Além da infraestrutura física, DTI/UFT conta com um corpo técnico administrativo com mais de 30 (trinta) profissionais da área de computação, distribuídos em seis setores: desenvolvimento de sistemas, infraestrutura de TIC, gerenciamento de sistemas de informação, suporte e manutenção, central de atendimento ao usuário e núcleo administrativo e gestão de contratos. Por possuir uma infraestrutura avançada, a DTI/UFT acomoda um rack com a infraestrutura de servidores do Curso de Ciência da Computação, o qual nos últimos 05 (cinco) anos, investiu aproximadamente R$ 200.000,00 (duzentos mil reais) do seu capital para a aquisição de equipamentos de tecnologia da informação e comunicação.</p>
 
                             </div>
                         </h:form>
-                        <!--/.Post-->                     
-                        <br></br>
-
-
                     </div>
 
-                    <!--Sidebar-->
-                    <div class="col-lg-4">
-
-                        <div class="widget-wrapper">
-                            <h4>Categorias:</h4>
-                            <br></br>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item active">Professores</a>
-                                <a href="#" class="list-group-item">Alunos</a>
-                                <a href="#" class="list-group-item">Coordenação</a>
-                                <a href="#" class="list-group-item">Centro Acadêmico</a>
-                                <a href="#" class="list-group-item">Estrutura</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.Sidebar-->
                 </div>
             </div>
             <!--/.Main layout-->
-
         </main>
         <!--Corpo-->
-
         <!--Footer-->
         <ui:insert name="footer" >
             <ui:include src="../../footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   
         </ui:insert>
-
+        <!-- Impotando os js para funcionar internamente <-->
     </h:body>
+
 </html>
+

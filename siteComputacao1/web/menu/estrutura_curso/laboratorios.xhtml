@@ -2,11 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-
     <h:head>
         <title>Laboratórios</title>
         <meta charset="utf-8" />
@@ -14,123 +14,79 @@
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
-
         <!-- Bootstrap core CSS -->
         <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
-
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
+        <link href="../../css/signin.css" rel="stylesheet"></link>
         <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../../css/layout.css" rel="stylesheet"></link>
         <link href="../../css/geral.css" rel="stylesheet"></link>
+
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="../../menu.xhtml"/>   
+        <ui:include src="../../menu.xhtml"/>
     </ui:insert>
-    <h:body> 
-
+    <h:body>
         <!--Corpo-->
         <main>
-
             <!--Main layout-->
             <div class="container">
-
-
                 <br></br>
                 <div class="row">
-
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
                     <!--Main column-->
-                    <div class="col-lg-8">
-                        <!--Post-->
+
+                    <div class="col-lg-9">
                         <h:form>
                             <div class="post-wrapper">
                                 <!--Post data-->
                                 <h1 class="h6-responsive">Laboratórios</h1>
 
                                 <br></br>
-
-                                
                                 <!--Post excerpt-->
-                                <p class="text-justify">A UFT, no Campus de Palmas, dispõe de 72 salas de aula de variados tamanhos para atender os diversos perfis de disciplinas do curso. Permitindo atividades didático-pedagógicas além da programação de aulas referenciadas no calendário acadêmico.</p>
-                                <p class="text-justify">Acomoda-se uma média superior a de um aluno por metro quadrado, o que se pode considerar uma média com bom padrão de conforto e circulação. Os elementos construtivos oferecem bom conforto térmico e acústico, com a possibilidade de utilizar-se de iluminação e ventilação de forma reversível entre a natural e a artificial, uma vez que a maioria possui janelas bem dimensionadas e todas as salas possuem aparelhos de ar condicionados.</p>
-                                <p class="text-justify">Os laboratórios de informática funcionam de segunda a sexta-feira das 8h às 20h, ininterruptas. Dessa forma, o aluno poderá ter acesso aos laboratórios em qualquer momento, obedecendo ao horário de funcionamento dos mesmos. Todos os laboratórios possuem acesso à Internet.</p>
-                                <p class="text-justify">O Campus de Palmas dispõe de 05 Laboratórios de Informática para os discentes, contando com 112 computadores, assim distribuídos:</p>
-                                <ol>
-                                    <li>
-                                        <p class="text-justify">Labin 10 – 24 máquinas;</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-justify">Labin 11 – 24 máquinas;</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-justify">Labin 12 – 30 máquinas;</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-justify">Laboratório de Hardware – 10 máquinas;</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-justify">Laboratório de Redes – 24 máquinas.</p>
-                                    </li>
-                                </ol>
-                                <p class="text-justify">Existem  02  (dois)  laboratórios  de  informática  destinados,  principalmente, para  o ensino de disciplinas práticas, tais como: programação avançada, programação comercial e desenvolvimento de sistemas, bem como para uso geral dos alunos do curso de Ciência da Computação. Um laboratório é composto por 24 computadores com a seguinte configuração: Pentium IV, 512 MB de memória RAM, 80 GB de HD e monitores CRT de 17 polegadas. E o outro laboratório contém 30 computadores com a seguinte configuração: ADM Athlon Dual Core, 1024 MB de memória RAM, 150GB de HD e monitores LCD de 17 polegadas. Os laboratórios de informática são reservados para as aulas no momento em que for estabelecido o horário do semestre letivo, caso necessário.</p>
-                                <p class="text-justify"></p>
-                                <ol>
-                                    <li>
-                                        <p class="text-justify">LAPIN2 – Laboratório de Pesquisa, Projetos, Inovação e Negócios que conta com oito estações de trabalho para uso dos professores com a finalidade de fomento.</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-justify">Laboratório de Redes Avançadas para o ensino e pesquisa na área de Redes e Multimídia que contará com 30 estações de trabalho cada uma equipada com 2 placas de rede sendo uma delas sem fio, 2 servidores, 5 câmeras IP, 8 webcams, 1 roteador que implementa a camada 3 do modelo OSI, 2 roteadores que implementam a camada 2 do modelo OSI (por exemplo, implementam WLAN), 1 impressora de rede, 1 projetor multimídia, kits de ferramentas para redes, com acesso à rede sem fio e conectado através da tecnologia Gigabit Ethernet ao anel de fibra óptica rede METROTINS.</p>
-                                    </li>
-                                </ol>
-                                
-                                <p class="text-justify">Há ainda o laboratório de Hardware utilizado para ministrar as disciplinas sistemas digitais, organização de computadores, sistema operacional, processamento de imagens e outras que por ventura possam usufruir do laboratório através de pesquisas para automação, robótica e outras áreas de interesse, faz-se necessário que o mesmo possua equipamentos eletrônicos de análise, geração, medição e representação de sinais, tanto analógicos quanto digitais e ferramentas básicas para utilização dos mesmos.</p>
-                                <p class="text-justify">Neste laboratório, os alunos desenvolvem experiências para verificar na prática o que aprenderam na teoria, ou seja, projetos de circuitos elétricos (resistores, capacitores, transistores,  etc.),  de  circuitos  digitais  (portas AND,  OR,  NOT)  e  de  sistemas  digitais (relógios, frequencímetros, somadores, contadores, registradores, etc.). O laboratório de Hardware encontra-se situado na sala 08 do bloco III e possui 03 bancadas, cada uma com multímetro de bancada, osciloscópio, fonte de tensão, soldador, maleta de eletrônica(kit).</p>
-                                <p class="text-justify">Existem também 01 computador com impressora, 01 programador universal, 01 apagador por ultravioleta, 01 kit desenvolvedor, 01 kit de robótica, 01 kit de fpga e mais alguns componentes.</p>
-                                <p class="text-justify">Há previsão de criação do laboratório para o Projeto do DINTER em Ciência da Computação para ser usado, exclusivamente, pelos alunos do programa de doutorado (professores do curso), bem como alunos de iniciação científica (alunos do curso).</p>
-                                <p class="text-justify">A UFT conta com uma equipe de manutenção dos laboratórios ligada a direção do campus que é responsável pela manutenção e substituição dos equipamentos danificados e pela manutenção  da   rede  física  (cabeamento),  caso  se  faça  necessário.  Os   funcionários responsáveis pela manutenção são estagiários e técnicos lotados na a Oficina de Informática na estação Experimental ou Bloco Bala.</p>
-                                <br></br>
+                                <p class="text-justify">O Curso de Ciência da Computação possui 05 (cinco)  Laboratórios de Ensino, Extensão e Pesquisa, com capacidade para atender 100 pessoas concomitantemente. O curso de Ciência da Computação possui um quantitativo de 100 computadores distribuídos nos cinco laboratórios. Todos os laboratórios estão equipados com condicionadores de ar e projetor multimídia (datashow) e cada um atende uma finalidade descrita nas cinco linhas de pesquisa do curso.
+                                    Todos os computadores estão equipados com software livre, com o sistema operacional Linux. Os laboratórios possuem conectividade com a rede cabeada e sem fio (wireless/UFTAcad), softwares de desenvolvimento e programação, ferramentas de gerenciamento, programação paralela, entre outros, sendo, dessa forma, ambientes mais diversificados e apropriados para a execução de trabalhos, pesquisas e desenvolvimento do que é solicitado em sala de aula. 
+                                    Estes laboratórios atendem aos alunos dos cursos de graduação em Ciência da Computação, porém, quando possível, também atendem aos alunos de graduação de diversos cursos da universidade, assim como a administração da universidade e comunidade em geral em atividades de extensão, treinamentos e projetos de extensão e pesquisa conjuntos. As restrições iniciais é a de que sempre deve haver um laboratório disponível para os acadêmicos do curso desenvolverem seus estudos e a prioridade é para as atividades de ensino do Curso, ou seja, o uso para aulas sempre será a prioridade.</p>
+
+                                <h5>Laboratório de Banco de Dados e Engenharia de Software (LabBDES) - Ciência da Computação (UFT/Campus Palmas/Bloco 3, Sala 05)</h5>
+                                <p class="text-justify">Com uma área de 50 m2 e capacidade para 28 alunos, o laboratório é responsável pelo armazenamento de dados de projetos ligados às áreas de saúde e meio ambiente. Além disso, é voltado para o estudo, avaliação e definição de tecnologias inovadoras para o desenvolvimento da ciência da computação, aplicando metodologias, técnicas e/ou ferramentas estudadas nas áreas de Engenharia de Software, Banco de Dados e Sistema de Informação.  Em banco de dados são pesquisadas as melhorias nos sistemas gerenciadores de bancos de dados e as diferentes aplicações que envolvem o uso de grandes volumes de dados, tais como bioinformática e saúde, aplicações corporativas e processos de negócio, redes sociais e aplicações governamentais. As principais temáticas de trabalho são Big Data, NoSql, Business Intelligence, Data Warehouse, Indexação e Recuperação de Dados, Data Provenance e Análise de Redes Sociais. Em engenharia de software, são desenvolvidos sistemas de informações de projetos de pesquisa e extensão, transformando os modelos e metodologias propostas pelos pesquisadores em software, conforme padrões de qualidade ISO. O laboratório abriga o projeto Fábrica Social de Software para o desenvolvimento gratuito de softwares para instituições da região, tais como Conselho Nacional de Política Fazendária, Instituto de Natureza do Tocantins, Secretaria de Saúde e Segurança Pública do Estado do Tocantins. O laboratório conta com uma lousa digital HITACHI e um Datashow Epson para apresentação dos resultados, 08 computadores HP i5 com 8Gb (RAM) e 1Tb (HD) e 4 computadores DELL i3 8Gb (RAM) e 1Tb (HD). Todos os computadores possuem monitores de 23’.</p>
+
+                                <h5>Laboratório de Redes Avançadas e Multimídia (LabRAM) - Ciência da Computação (UFT/Campus Palmas/Bloco 3, Sala 08)</h5>
+                                <p class="text-justify">Com uma área de 50 m2 e capacidade para 20 alunos, o laboratório de Redes Avançadas e Multimídia é destinado ao apoio em pesquisas nas áreas de rede de computadores, segurança da informação, sistemas de bancos de dados, clusterização, mineração de dados, gestão de tecnologia da informação e em diversas áreas de pesquisa em Tecnologia da Informação e Comunicação que demande um ambiente de pesquisa flexível e dinâmico. O LABRAM dispõe de uma rede de computadores própria sendo responsável pela gestão da Metrotins, rede metropolitana de alta velocidade, vinculada a Rede Nacional de Pesquisa (RNP). Atualmente, o laboratório conta com uma lousa digital HITACHI, uma impressora multifuncional Laser Brother, um computador Lenovo, 13 computadores HP Compaq, um servidor DELL Power Edge 2900, um servidor IBM System X3400 M3, um rack para servidor com 05 switches e 02 patch panels.</p>
+
+                                <h5>Laboratório de Hardware e Arquitetura de Computadores (LabHAC) - Ciência da Computação (UFT/Campus Palmas/Bloco 3, Sala 09)</h5>
+                                <p class="text-justify">Com uma área de 50 m2 e capacidade para 28 alunos, o laboratório de hardware tem por finalidade dar suporte às atividades do curso de Ciência da Computação em âmbito prático das áreas correlatas ao hardware de sistemas de computação. Como áreas correlatas, entende-se: hardware (de um modo geral), Organização e Sistemas de Computadores e Redes de Computadores. O recurso existente no laboratório pode ser caracterizado como material de prototipagem (fontes chaveada, osciloscópio, multímetro, protoboard, bancada elétrica, kit de didático de prototipagem, soldas e ferramentas diversas), material de programação e simulação (11 computadores HP), componentes discretos (resistores, capacitores, transistores, trimpot, potenciômetros etc.) e componentes digitais (circuitos integrados de portas lógicas, contadores, multiplexadores, ULA, memórias, conversores etc.).</p>
+
+                                <h5>Laboratório de Computação Gráfica e Processamento de Imagens (LabCGPI) - Ciência da Computação (UFT/Campus Palmas/Bloco 3, Sala 10)</h5>
+                                <p class="text-justify">Com uma área de 50 m2 e capacidade para 28 alunos, este laboratório realiza estudos sobre os processos ou técnicas computacionais que envolvem modelos geométricos, imagens digitais e vídeos. Os projetos nesta área de conhecimento envolvem a transformação de dados geométricos em imagens, a transformação de imagens em dados diversos, o estudo de formas eficientes para apresentar visualmente grandes volumes de dados, o desenvolvimento de algoritmos para auxiliar na descoberta de estruturas de interesse presentes em imagens e vídeos, o estudo de formas de representação e manipulação de modelos geométricos tridimensionais. Além disso, trabalha com uso de métodos de Inteligência Artificial para realizar classificação, agrupamento, recuperação e predição de imagens. Enfim, esse laboratório engloba a realização de atividades de ensino, pesquisa e desenvolvimento nas áreas de Processamento de Imagens, Computação Gráfica, Visão Computacional, Visualização de Dados/Imagens, Busca e Recuperação em Imagens e Vídeos, Reconhecimento de Padrões em Imagens, Multimídia e Interface Homem Máquina. Atualmente, desenvolve pesquisas na área de processamento de imagens de satélite para monitoramento ambiental e, também, análise de imagens médicas, principalmente relacionadas ao câncer de pele e mama. O laboratório conta, atualmente, com um Datashow Epson e 24 computadores HP i5 com 8Gb (RAM), 1Tb (HD) e monitor de 23”.</p>
+
+                                <h5>Laboratório de Computação Aplicada (LabCA) - Ciência da Computação (UFT/Campus Palmas/Bloco 3, Sala 11)</h5>
+                                <p class="text-justify">Com uma área de 50m2 e capacidade para 28 alunos, o laboratório tem como principal objetivo atender as demandas de soluções computacionais, tendo como foco principal o uso de Inteligência Artificial, Otimização, Matemática da Computação e Física Computacional aplicados às demais áreas do conhecimento, tais como: Ciências Exatas e da Terra, Engenharias, Ciências Agrárias e Ciências Biológicas e da Saúde. O laboratório possui 16 (dezesseis) computadores Dell i3, 8Gb de memória RAM, disco rígido (HD) de 1Tbyte e monitor de 23". Além disso, possui um Datashow e tela de projeção.</p>
 
 
                             </div>
                         </h:form>
-                        <!--/.Post-->                     
-                        <br></br>
-
-
                     </div>
 
-                    <!--Sidebar-->
-                    <div class="col-lg-4">
-
-                        <div class="widget-wrapper">
-                            <h4>Categorias:</h4>
-                            <br></br>
-                            <div class="list-group">
-                                <a href="#" class="list-group-item active">Professores</a>
-                                <a href="#" class="list-group-item">Alunos</a>
-                                <a href="#" class="list-group-item">Coordenação</a>
-                                <a href="#" class="list-group-item">Centro Acadêmico</a>
-                                <a href="#" class="list-group-item">Estrutura</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.Sidebar-->
                 </div>
             </div>
             <!--/.Main layout-->
-
         </main>
         <!--Corpo-->
-
         <!--Footer-->
         <ui:insert name="footer" >
             <ui:include src="../../footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
-        
+        <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   
         </ui:insert>
-
-
+        <!-- Impotando os js para funcionar internamente <-->
     </h:body>
+
 </html>
+

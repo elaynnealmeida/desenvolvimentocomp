@@ -67,7 +67,7 @@ public class DocumentoController implements Serializable {
     }
 
     public void salvar() throws IOException {
-
+System.out.println("entrou no salvar documento");
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

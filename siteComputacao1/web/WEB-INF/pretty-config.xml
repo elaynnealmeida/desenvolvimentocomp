@@ -50,6 +50,26 @@
 		<view-id value="/faces/pages/conselho.xhtml" />
 	</url-mapping>
         
+        <url-mapping id="modulo">
+		<pattern value="/pages/modulo" />
+		<view-id value="/faces/pages/modulo.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="aluno">
+		<pattern value="/pages/aluno" />
+		<view-id value="/faces/pages/aluno.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="ic">
+		<pattern value="/pages/ic" />
+		<view-id value="/faces/pages/ic.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="pp">
+		<pattern value="/pages/pp" />
+		<view-id value="/faces/pages/pp.xhtml" />
+	</url-mapping>
+        
         <url-mapping id="tipopublicacao">
 		<pattern value="/pages/tipopublicacao" />
 		<view-id value="/faces/pages/tipopublicacao.xhtml" />
@@ -63,6 +83,11 @@
         <url-mapping id="documento">
 		<pattern value="/pages/documento" />
 		<view-id value="/faces/pages/documento.xhtml" />
+	</url-mapping>
+        
+        <url-mapping id="testedocumento">
+		<pattern value="/pages/testedocumento" />
+		<view-id value="/faces/pages/testedocumento.xhtml" />
 	</url-mapping>
         
 <!--        <url-mapping id="noticias">

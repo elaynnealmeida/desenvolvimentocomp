@@ -66,6 +66,39 @@ public class NavegacaoHelper {
             e.printStackTrace();
         }
     }
+    
+    public void grupo_pesquisa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pesquisa/grupo.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void nucleo_pesquisa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pesquisa/nucleo.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void projeto_pesquisa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/pesquisa/projeto.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void all_noticias() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
@@ -508,6 +541,17 @@ public class NavegacaoHelper {
         }
     }
      
+     public void paginaDocumento2() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/testedocumento");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
       public void paginaTpDocumento() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -568,6 +612,50 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/pages/turma");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
+     
+     public void paginaModulo() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/modulo");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
+     
+     public void paginaAluno() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/aluno");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
+     
+     public void paginaIC() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/ic");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
+     
+      public void paginaPP() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/pages/pp");
         } catch (IOException e) {
             e.printStackTrace();
         }

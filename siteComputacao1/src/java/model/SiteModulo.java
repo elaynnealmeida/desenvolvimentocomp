@@ -1,19 +1,18 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -27,16 +26,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author UFT
  */
 @Entity
-@Table(name = "site_formacao")
+@Table(name = "site_modulo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SiteFormacao.findAll", query = "SELECT s FROM SiteFormacao s"),
-    @NamedQuery(name = "SiteFormacao.findById", query = "SELECT s FROM SiteFormacao s WHERE s.id = :id"),
-    @NamedQuery(name = "SiteFormacao.findByDescricao", query = "SELECT s FROM SiteFormacao s WHERE s.descricao = :descricao")})
-public class SiteFormacao implements Serializable {
-
-    @OneToMany(mappedBy = "formacao")
-    private List<SiteAluno> siteAlunoList;
+    @NamedQuery(name = "SiteModulo.findAll", query = "SELECT s FROM SiteModulo s")
+    , @NamedQuery(name = "SiteModulo.findById", query = "SELECT s FROM SiteModulo s WHERE s.id = :id")
+    , @NamedQuery(name = "SiteModulo.findByDescricao", query = "SELECT s FROM SiteModulo s WHERE s.descricao = :descricao")})
+public class SiteModulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,16 +43,13 @@ public class SiteFormacao implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "descricao")
     private String descricao;
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
-    @JoinTable(name="site_professor_formacao", 
-               joinColumns=  @JoinColumn( name = "formacao_id"), 
-               inverseJoinColumns= @JoinColumn(name = "professor_id") )
-    private List<SiteProfessorFormacao> siteProfessorFormacaoList;
+    @OneToMany(mappedBy = "modal")
+    private List<SiteIniciacaoCientifica> siteIniciacaoCientificaList;
 
-    public SiteFormacao() {
+    public SiteModulo() {
     }
 
-    public SiteFormacao(Integer id) {
+    public SiteModulo(Integer id) {
         this.id = id;
     }
 
@@ -77,12 +70,12 @@ public class SiteFormacao implements Serializable {
     }
 
     @XmlTransient
-    public List<SiteProfessorFormacao> getSiteProfessorFormacaoList() {
-        return siteProfessorFormacaoList;
+    public List<SiteIniciacaoCientifica> getSiteIniciacaoCientificaList() {
+        return siteIniciacaoCientificaList;
     }
 
-    public void setSiteProfessorFormacaoList(List<SiteProfessorFormacao> siteProfessorFormacaoList) {
-        this.siteProfessorFormacaoList = siteProfessorFormacaoList;
+    public void setSiteIniciacaoCientificaList(List<SiteIniciacaoCientifica> siteIniciacaoCientificaList) {
+        this.siteIniciacaoCientificaList = siteIniciacaoCientificaList;
     }
 
     @Override
@@ -95,10 +88,10 @@ public class SiteFormacao implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SiteFormacao)) {
+        if (!(object instanceof SiteModulo)) {
             return false;
         }
-        SiteFormacao other = (SiteFormacao) object;
+        SiteModulo other = (SiteModulo) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -107,16 +100,7 @@ public class SiteFormacao implements Serializable {
 
     @Override
     public String toString() {
-        return "model.SiteFormacao[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public List<SiteAluno> getSiteAlunoList() {
-        return siteAlunoList;
-    }
-
-    public void setSiteAlunoList(List<SiteAluno> siteAlunoList) {
-        this.siteAlunoList = siteAlunoList;
+        return "model.SiteModulo[ id=" + id + " ]";
     }
     
 }

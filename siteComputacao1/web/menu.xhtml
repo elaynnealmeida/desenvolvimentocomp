@@ -61,13 +61,31 @@
                                         <h:commandLink styleClass="dropdown-item" value="Cargo" actionListener="#{navegacaoHelper.paginaCargo}"  />                                    
                                         <h:commandLink styleClass="dropdown-item" value="Servidor" actionListener="#{navegacaoHelper.paginaProfessor}"  />                                    
                                         <h:commandLink styleClass="dropdown-item" value="Desativar Perfil" actionListener="#{navegacaoHelper.paginaAssociarPerfil}"  />                                    
-                                        <h:commandLink styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
-                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Documento" actionListener="#{navegacaoHelper.paginaTpDocumento}"  /> 
-                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Publicação" actionListener="#{navegacaoHelper.paginaTpPublicacao}"  />
-                                        <h:commandLink styleClass="dropdown-item" value="Conselho" actionListener="#{navegacaoHelper.paginaConselho}"  /> 
                                         <h:commandLink styleClass="dropdown-item" value="Estagiário" actionListener="#{navegacaoHelper.paginaEstagiario}"  /> 
                                         <h:commandLink styleClass="dropdown-item" value="Monitor" actionListener="#{navegacaoHelper.paginaMonitor}"  /> 
                                         <h:commandLink styleClass="dropdown-item" value="Turma" actionListener="#{navegacaoHelper.paginaTurma}"  /> 
+                                    </div>
+                                </li>
+                                
+                                 <li class="nav-item btn-group" style="font-size: .88em">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">                                                                         
+                                        <h:commandLink styleClass="dropdown-item" value="Documento" actionListener="#{navegacaoHelper.paginaDocumento}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Documento 2" actionListener="#{navegacaoHelper.paginaDocumento2}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Documento" actionListener="#{navegacaoHelper.paginaTpDocumento}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Tipo de Publicação" actionListener="#{navegacaoHelper.paginaTpPublicacao}"  />
+                                        <h:commandLink styleClass="dropdown-item" value="Conselho" actionListener="#{navegacaoHelper.paginaConselho}"  /> 
+                                        
+                                    </div>
+                                </li>
+                                
+                                 <li class="nav-item btn-group" style="font-size: .88em">
+                                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pesquisa</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">                                           
+                                        <h:commandLink styleClass="dropdown-item" value="Modulo" actionListener="#{navegacaoHelper.paginaModulo()}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Aluno" actionListener="#{navegacaoHelper.paginaAluno()}"  /> 
+                                        <h:commandLink styleClass="dropdown-item" value="Iniciação Científica" actionListener="#{navegacaoHelper.paginaIC()}"  />
+                                        <h:commandLink styleClass="dropdown-item" value="Projeto de Pesquisa" actionListener="#{navegacaoHelper.paginaPP()}"  />
                                     </div>
                                 </li>
                             </h:panelGroup>
@@ -109,7 +127,7 @@
                                                     </h:form>
 
                                                     <div class="bottom text-center">
-                                                        <a href="http://localhost:8080/siteComputacao1/faces/recuperarsenha.xhtml"><b>Recuperar senha</b></a>
+                                                        <a href="https://palmas.uft.edu.br/grad/ccomp/cienciacomputacao/faces/recuperarsenha.xhtml"><b>Recuperar senha</b></a>
                                                     </div>
 
 

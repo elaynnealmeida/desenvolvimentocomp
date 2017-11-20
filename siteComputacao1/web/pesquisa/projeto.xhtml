@@ -8,24 +8,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Histórico do Curso</title>
+        <title>Horários de Aula</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
         <!-- Bootstrap core CSS -->
-        <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
         <!-- Material Design Bootstrap -->
-        <link href="../../css/signin.css" rel="stylesheet"></link>
-        <link href="../../css/mdb.min.css" rel="stylesheet"></link>
-        <link href="../../css/layout.css" rel="stylesheet"></link>
-        <link href="../../css/geral.css" rel="stylesheet"></link>
+        <link href="../css/signin.css" rel="stylesheet"></link>
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
 
     </h:head>
     <ui:insert name="menu" >
-        <ui:include src="../../menu.xhtml"/>
+        <ui:include src="../menu.xhtml"/>
     </ui:insert>
     <h:body>
         <!--Corpo-->
@@ -35,12 +35,12 @@
                 <br></br>
                 <div class="row">
                     <ui:insert name="menu_lateral">
-                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
                     </ui:insert>
                     <!--Main column-->
 
                     <div class="col-lg-9">
-                       <h:form>
+                        <h:form>
                             <div class="post-wrapper">
                                 <!--Post data-->
                                 <h1 class="h6-responsive">Histórico do Curso</h1>
@@ -56,7 +56,7 @@
                                 <p class="text-justify">O Curso de Bacharelado em Ciência da Computação foi autorizado por meio da Resolução nº 00036/99 do Conselho Curador da Fundação Universidade do Tocantins, conforme processo 0038/SECUR/99 e ATA 001/99 da reunião extraordinária.</p>
                                 <p class="text-justify">Criado em janeiro de 2000, não se submeteu à inspeção avaliativa do MEC para entrar com processo de reconhecimento. Porém, houve um ato de reconhecimento pelo conselho estadual de educação, conforme parecer nº 340/2002, aprovado em 20/12/2002, tendo como processo nº2002/2700/002088 e Decreto 1. 772/2003, de 16/6/2003. Neste ato de reconhecimento, o curso obteve o conceito “C”.</p>
                                 <p class="text-justify">Atualmente, o Curso de Bacharelado em Ciência da Computação possui (2011/2) 274 alunos matriculados em turno integral. Este Curso exige ainda uma constante interação do acadêmico com a comunidade científica a fim de adquirir novos conhecimentos e explorar técnicas computacionais mais atualizadas.</p>
-                                
+
                                 <br></br>
 
 
@@ -71,7 +71,7 @@
         <!--Corpo-->
         <!--Footer-->
         <ui:insert name="footer" >
-            <ui:include src="../../footer.xhtml"/>   
+            <ui:include src="../footer.xhtml"/>   
         </ui:insert>
         <!--Footer-->
         <!-- Impotando os js para funcionar internamente <-->

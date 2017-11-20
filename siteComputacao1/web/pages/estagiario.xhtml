@@ -113,7 +113,7 @@
                                     <h:selectBooleanCheckbox id="ativoh" value="#{estagiarioController.horario.ativo}" />      
                                     <h:message for="ativoh" /><br></br>
 
-                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Estagiário"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
+                                    <p:commandButton class="btn btn-primary btn-sm" id="btnAdd" value="Adicionar Horário"  action="#{estagiarioController.addHorario}" update=":formestagiario"/><br></br>
 
                                     <c:forEach var="hor" items="${estagiarioController.horarios}" varStatus="id">
                                         <h:outputText value="#{hor.sala.blocoId.descricao} "/>  <h:outputText value="#{hor.sala.nomeSala}"/> <h:outputText value="#{hor.diaSemana} - "/>  

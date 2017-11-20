@@ -38,6 +38,22 @@ import org.hibernate.annotations.Cascade;
     @NamedQuery(name = "TbProfessores.findByAtivo", query = "SELECT t FROM TbProfessores t WHERE t.ativo = :ativo")})
 public class TbProfessores implements Serializable {
 
+    @ManyToMany(cascade=CascadeType.REMOVE)
+    @JoinTable(name="site_pp_profpesquisador", 
+               joinColumns=  @JoinColumn( name = "prof_pesquisador" ), 
+               inverseJoinColumns= @JoinColumn(name = "pp") )
+    private List<SitePpProfpesquisador> sitePpProfpesquisadorList;
+    
+    
+    @ManyToMany(cascade=CascadeType.REMOVE)
+    @JoinTable(name="site_pp_coordenador", 
+               joinColumns=  @JoinColumn( name = "coordenador" ), 
+               inverseJoinColumns= @JoinColumn(name = "pp") )
+    private List<SitePpCoordenador> sitePpCoordenadorList;
+
+    @OneToMany(mappedBy = "coordenador")
+    private List<SiteIniciacaoCientifica> siteIniciacaoCientificaList;
+
     @OneToMany(mappedBy = "responsavel")
     private List<SiteInfraestrutura> siteInfraestruturaList;
 
@@ -173,7 +189,7 @@ public class TbProfessores implements Serializable {
 
     @Override
     public String toString() {
-        return "model.TbProfessores[ id=" + id + " ]";
+        return nome;
     }
 
     @XmlTransient
@@ -210,6 +226,33 @@ public class TbProfessores implements Serializable {
 
     public void setSiteInfraestruturaList(List<SiteInfraestrutura> siteInfraestruturaList) {
         this.siteInfraestruturaList = siteInfraestruturaList;
+    }
+
+    @XmlTransient
+    public List<SiteIniciacaoCientifica> getSiteIniciacaoCientificaList() {
+        return siteIniciacaoCientificaList;
+    }
+
+    public void setSiteIniciacaoCientificaList(List<SiteIniciacaoCientifica> siteIniciacaoCientificaList) {
+        this.siteIniciacaoCientificaList = siteIniciacaoCientificaList;
+    }
+
+    @XmlTransient
+    public List<SitePpProfpesquisador> getSitePpProfpesquisadorList() {
+        return sitePpProfpesquisadorList;
+    }
+
+    public void setSitePpProfpesquisadorList(List<SitePpProfpesquisador> sitePpProfpesquisadorList) {
+        this.sitePpProfpesquisadorList = sitePpProfpesquisadorList;
+    }
+
+    @XmlTransient
+    public List<SitePpCoordenador> getSitePpCoordenadorList() {
+        return sitePpCoordenadorList;
+    }
+
+    public void setSitePpCoordenadorList(List<SitePpCoordenador> sitePpCoordenadorList) {
+        this.sitePpCoordenadorList = sitePpCoordenadorList;
     }
     
 }
