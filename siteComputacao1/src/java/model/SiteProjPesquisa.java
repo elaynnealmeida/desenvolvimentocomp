@@ -52,6 +52,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SiteProjPesquisa.findByGrupoPesquisa", query = "SELECT s FROM SiteProjPesquisa s WHERE s.grupoPesquisa = :grupoPesquisa")})
 public class SiteProjPesquisa implements Serializable {
 
+    @Size(max = 2147483647)
+    @Column(name = "financiamento")
+    private String financiamento;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -303,6 +307,14 @@ public class SiteProjPesquisa implements Serializable {
     @Override
     public String toString() {
         return "model.SiteProjPesquisa[ id=" + id + " ]";
+    }
+
+    public String getFinanciamento() {
+        return financiamento;
+    }
+
+    public void setFinanciamento(String financiamento) {
+        this.financiamento = financiamento;
     }
     
 }

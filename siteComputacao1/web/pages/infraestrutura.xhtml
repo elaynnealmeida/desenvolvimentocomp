@@ -40,17 +40,18 @@
                                 <h:outputText value="Cadastro de Infraestrutura"/>
                             </h3><br></br>
                             <h:panelGrid columns="1" width="500px" cellpadding="5" style="margin-bottom:10px">
-
+                             
+                                
                                 <h:outputText value="Nome: *" style="font-weight:bold"/>
                                 <h:inputText id="nome" value="#{infraestruturaController.infra.nome}"
                                              required="true" />
                                 <p:message for="nome" /><br></br>
-                                
+
                                 <h:outputText value="Sigla: *" style="font-weight:bold"/>
                                 <h:inputText id="sigla" value="#{infraestruturaController.infra.sigla}"
                                              required="true" />
                                 <p:message for="sigla" /><br></br>
-                                
+
                                 <h:outputText  value="Tipo de Infraestrutura *" style="font-weight:bold"/>
                                 <h:selectOneMenu class="form-control" id="infra" value="#{infraestruturaController.infra.tipoInfraestrutura}"  
                                                  requiredMessage="Campo Obrigatório"
@@ -61,18 +62,18 @@
                                                    var="infra" itemLabel="#{infra}" itemValue="#{infra}" />                                       
                                 </h:selectOneMenu>  
                                 <p:message for="infra" />  <br></br>
-                                
-                                
-                                    <h:outputText value="Responsável *" style="font-weight:bold"/>
-                                    <h:selectOneMenu class="form-control" id="professor" value="#{infraestruturaController.infra.responsavel}"  
-                                                     requiredMessage="Campo Obrigatório"
-                                                     required="true"
-                                                     converter="ProfessorConverter"
-                                                     >
-                                        <f:selectItems value="#{infraestruturaController.professor}" 
-                                                       var="professor" itemLabel="#{professor}" itemValue="#{professor}" />                                       
-                                    </h:selectOneMenu>  
-                                    <h:message for="professor" /> 
+
+
+                                <h:outputText value="Responsável *" style="font-weight:bold"/>
+                                <h:selectOneMenu class="form-control" id="professor" value="#{infraestruturaController.infra.responsavel}"  
+                                                 requiredMessage="Campo Obrigatório"
+                                                 required="true"
+                                                 converter="ProfessorConverter"
+                                                 >
+                                    <f:selectItems value="#{infraestruturaController.professor}" 
+                                                   var="professor" itemLabel="#{professor}" itemValue="#{professor}" />                                       
+                                </h:selectOneMenu>  
+                                <h:message for="professor" /> 
 
                                 <h:outputText value="Número: *" style="font-weight:bold"/>
                                 <h:inputText id="numero" value="#{infraestruturaController.infra.numero}"
@@ -83,41 +84,41 @@
                                 <h:inputText id="comprimento" value="#{infraestruturaController.infra.comprimento}"
                                              required="true" />
                                 <p:message for="comprimento" /><br></br>
-                                
+
                                 <h:outputText value="Largura: *" style="font-weight:bold"/>
                                 <h:inputText id="largura" value="#{infraestruturaController.infra.largura}"
                                              required="true" />
                                 <p:message for="largura" /><br></br>
-                                
+
                                 <h:outputText value="Capacidade: *" style="font-weight:bold"/>
                                 <h:inputText id="capacidade" value="#{infraestruturaController.infra.capacidade}"
                                              required="true" />
                                 <p:message for="capacidade" /><br></br>
-                                
-                                 <h:outputText value="Pavimento: *" style="font-weight:bold"/>
+
+                                <h:outputText value="Pavimento: *" style="font-weight:bold"/>
                                 <h:inputText id="pavimento" value="#{infraestruturaController.infra.pavimento}"
                                              required="true" />
                                 <p:message for="pavimento" /><br></br>
-                                
+
                                 <h:outputText  value="Sala: *" style="font-weight:bold"/>
-                                 <h:selectOneMenu class="form-control" id="sala" value="#{infraestruturaController.infra.sala}"  
+                                <h:selectOneMenu class="form-control" id="sala" value="#{infraestruturaController.infra.sala}"  
                                                  requiredMessage="Campo Obrigatório"
                                                  required="true"
                                                  converter="SalaConverter"
                                                  >
-                                     <f:selectItems value="#{infraestruturaController.sala}" 
+                                    <f:selectItems value="#{infraestruturaController.sala}" 
                                                    var="sala" itemLabel="#{sala}" itemValue="#{sala}" />                                       
                                 </h:selectOneMenu>  
                                 <p:message for="sala" />  <br></br>
-                                
+
                                 <p:outputLabel    value="Equipamentos:" />
                                 <h:selectManyCheckbox  id="equipamentos" value="#{infraestruturaController.selectedEquipamentos}"  
-                                                          converter="EquipamentoConverter"
-                                                          layout="pageDirection"
-                                                          style="padding: 5px"
-                                                          >
-                                        <f:selectItems value="#{infraestruturaController.equipamentos}" var="tag" itemLabel="#{equipamentos}" itemValue="#{equipamentos}" />
-                                    </h:selectManyCheckbox>
+                                                       converter="EquipamentoConverter"
+                                                       layout="pageDirection"
+                                                       style="padding: 5px"
+                                                       >
+                                    <f:selectItems value="#{infraestruturaController.equipamentos}" var="tag" itemLabel="#{equipamentos}" itemValue="#{equipamentos}" />
+                                </h:selectManyCheckbox>
                                 <p:message for="equipamentos" />  <br></br>
                             </h:panelGrid>
 
@@ -152,18 +153,27 @@
                                     <h:outputText value="#{var.id}" />
                                 </p:column>
 
+                                <p:column headerText="Foto">
+                                    <p:graphicImage value="#{infraestruturaController.image}" style="    max-width:50%;
+                                                                                                             max-height:50%;
+                                                                                                             width: 100px;
+                                                                                                             height: 30px;">
+                                        <f:param name="foto" value="#{var.id}" />
+                                    </p:graphicImage>
+                                </p:column>
+                                
                                 <p:column headerText="Nome" filterBy="#{var.nome}" filterStyle="display:none" >
                                     <h:outputText value="#{var.nome}" />
                                 </p:column>
-                                
+
                                 <p:column headerText="Bloco - Sala"  >
                                     <h:outputText value="#{var.sala.blocoId.descricao} - #{var.sala.nomeSala}" />
                                 </p:column>
-                                
-                                 <p:column headerText="Pavimento"  >
-                                     <h:outputText value="#{var.pavimento}" />
+
+                                <p:column headerText="Pavimento"  >
+                                    <h:outputText value="#{var.pavimento}" />
                                 </p:column>
-                                
+
                                 <p:column headerText="Área"  >
                                     <h:outputText value="#{infraestruturaController.calculaArea(var)} m²" />
                                 </p:column>
@@ -194,7 +204,7 @@
         <ui:insert name="footer" >
             <ui:include src="../footer.xhtml"/>   
         </ui:insert>
-        
+
         <!-- Impotando os js para funcionar internamente <-->
         <ui:insert name="extensao" >
             <ui:include src="js_interno.xhtml"/>   

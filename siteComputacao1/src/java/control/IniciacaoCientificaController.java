@@ -100,7 +100,7 @@ public class IniciacaoCientificaController implements Serializable {
     }
     
     public List<SelectItem> getProfessor() {
-        System.out.println("entrou no listar professor: ");
+        //System.out.println("entrou no listar professor: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
         TbProfessoresDAO profDao = new TbProfessoresDAO();
         List<TbProfessores> result = new ArrayList<TbProfessores>();
@@ -113,7 +113,7 @@ public class IniciacaoCientificaController implements Serializable {
     }
     
     public List<SelectItem> getModal() {
-        System.out.println("entrou no listar modulos: ");
+        //System.out.println("entrou no listar modulos: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
         SiteModuloDAO dao = new SiteModuloDAO();
         List<SiteModulo> result = new ArrayList<SiteModulo>();
@@ -126,7 +126,7 @@ public class IniciacaoCientificaController implements Serializable {
     }
     
     public List<SelectItem> getAluno() {
-        System.out.println("entrou no listar alunos: ");
+       // System.out.println("entrou no listar alunos: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
         SiteAlunoDAO dao = new SiteAlunoDAO();
         List<SiteAluno> result = new ArrayList<SiteAluno>();

@@ -101,8 +101,8 @@ public class GenericDAO<T> implements Serializable {
     }
 
     public List<T> listarTodos() {
-        System.out.println("entrou no dao listar-----------");
-        System.out.println("entidade:  " + entityClass.getName());
+        //System.out.println("entrou no dao listar-----------");
+      //  System.out.println("entidade:  " + entityClass.getName());
         List<T> result = new ArrayList<T>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -119,8 +119,8 @@ public class GenericDAO<T> implements Serializable {
     }
 
     public T buscaPorID(int entityID) {
-        System.out.println("entrou no dao buscaPorID-----------");
-        System.out.println("entidade:  " + entityClass.getName());
+        //System.out.println("entrou no dao buscaPorID-----------");
+       // System.out.println("entidade:  " + entityClass.getName());
         EntityManager em1 = getEM();
         try {
             em1.getTransaction().begin();
@@ -135,8 +135,8 @@ public class GenericDAO<T> implements Serializable {
     }
 
     public T buscaPorID2(long entityID) {
-        System.out.println("entrou no dao buscaPorID-----------");
-        System.out.println("entidade:  " + entityClass.getName());
+       // System.out.println("entrou no dao buscaPorID-----------");
+       // System.out.println("entidade:  " + entityClass.getName());
         EntityManager em1 = getEM();
         try {
             em1.getTransaction().begin();

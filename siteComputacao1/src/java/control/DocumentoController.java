@@ -148,7 +148,7 @@ System.out.println("entrou no salvar documento");
         List<SitePublicacao> result = new ArrayList<SitePublicacao>();
         result = publicacaoDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
-            toReturn.add(new SelectItem(result.get(i), String.valueOf(result.get(i).getNumero())+" "+result.get(i).getData()));
+            toReturn.add(new SelectItem(result.get(i),result.get(i).getConselhoId().getNome() +" - "+ String.valueOf(result.get(i).getNumero())+" - "+ result.get(i).getData()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;

@@ -21,7 +21,7 @@ public class TipoEquipamentoConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         if (!string.trim().equals("")) {
             try {
-                System.out.println("valor da string cargo: "+string);
+                //System.out.println("valor da string cargo: "+string);
                 return (SiteTipoEquipamento) dao.buscaPorID(Integer.valueOf(string));
             } catch (NumberFormatException e) {
                 throw new ConverterException("Erro de conversão: " + e.getMessage());

@@ -21,7 +21,7 @@ public class TipoInfraestruturaConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         if (!string.trim().equals("")) {
             try {
-                System.out.println("valor da string: " + string);
+                //System.out.println("valor da string: " + string);
                 return (SiteTipoInfraestrutura) dao.buscaPorID(Integer.valueOf(string));
             } catch (NumberFormatException e) {
                 throw new ConverterException("Erro de conversão: " + e.getMessage());

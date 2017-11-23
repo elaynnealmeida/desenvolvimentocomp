@@ -113,6 +113,11 @@
                                     <p:inputMask id="dtfim"  value="#{projPesquisaController.projpesquisa.dataFim}" mask="99/99/9999"/>      
                                     <h:message for="dtfim" />*
                                     
+                                    <h:outputText value="Financiamento: " style="font-weight:bold"/>
+                                    <h:inputText id="financiamento" style="width: 400px" value="#{projPesquisaController.projpesquisa.financiamento}"
+                                                 required="true" />*
+                                    <p:message for="financiamento" /> 
+                                    
                                     <h:outputText value="Coordenador: " style="font-weight:bold"/>
                                     <h:selectOneMenu class="form-control" id="professor" value="#{projPesquisaController.coordenador}"  
                                                      requiredMessage="Campo Obrigatório"

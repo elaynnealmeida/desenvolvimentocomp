@@ -21,7 +21,7 @@ public class ProfessorConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         if (!string.trim().equals("")) {
             try {
-                System.out.println("valor da string professor: "+string);
+                //System.out.println("valor da string professor: "+string);
                 return (TbProfessores) dao.buscaPorID2(Long.parseLong(string));
             } catch (NumberFormatException e) {
                 throw new ConverterException("Erro de conversão: " + e.getMessage());

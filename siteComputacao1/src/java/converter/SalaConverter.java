@@ -21,7 +21,7 @@ public class SalaConverter implements Converter {
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         if (!string.trim().equals("")) {
             try {
-                System.out.println("valor da string cargo: "+string);
+                //System.out.println("valor da string cargo: "+string);
                 return (TbSala) salaDao.buscaPorID2(Integer.valueOf(string));
             } catch (NumberFormatException e) {
                 throw new ConverterException("Erro de conversão: " + e.getMessage());

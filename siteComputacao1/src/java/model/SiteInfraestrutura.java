@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -43,6 +44,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SiteInfraestrutura.findByNome", query = "SELECT s FROM SiteInfraestrutura s WHERE s.nome = :nome"),
     @NamedQuery(name = "SiteInfraestrutura.findByNumero", query = "SELECT s FROM SiteInfraestrutura s WHERE s.numero = :numero")})
 public class SiteInfraestrutura implements Serializable {
+
+    @Lob
+    @Column(name = "foto")
+    private byte[] foto;
 
     @Size(max = 2147483647)
     @Column(name = "sigla")
@@ -213,6 +218,14 @@ public class SiteInfraestrutura implements Serializable {
 
     public void setResponsavel(TbProfessores responsavel) {
         this.responsavel = responsavel;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
     
 }
