@@ -13,6 +13,7 @@ import javax.persistence.criteria.Root;
 import model.SiteConselho;
 import model.SiteDocumento;
 import model.SitePublicacao;
+import model.SiteTipoArquivo;
 
 /**
  *
@@ -55,6 +56,25 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         em1.close();
         return result;
     }
+    
+    public List<SiteDocumento> listarEnade() {
+        System.out.println("entrou no dao listar Enade");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SiteTipoArquivo> join =  root.join("tipoDocumento", JoinType.INNER);
+       // Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),"8"));   //Enade
+        query.orderBy(builder.desc(root.get("hora")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+    
     public List<SiteDocumento> listarConsepe() {
         System.out.println("entrou no dao listar listarConsepe");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();

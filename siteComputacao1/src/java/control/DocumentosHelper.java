@@ -29,7 +29,8 @@ public class DocumentosHelper implements Serializable {
     private List<SiteDocumento> documentosNDE;
     private List<SiteDocumento> documentosCondir;
     private List<SiteDocumento> documentosConsepe;
-    private List<SiteDocumento> documentosConsuni;    
+    private List<SiteDocumento> documentosConsuni;  
+    private List<SiteDocumento> documentosEnade;  
     
     @PostConstruct
     public void init() {
@@ -40,6 +41,7 @@ public class DocumentosHelper implements Serializable {
         documentosCondir = listarCondir();
         documentosConsepe = listarConsepe();
         documentosConsuni = listarconsuni();
+        documentosEnade = listarenade();
         
         
     }
@@ -47,6 +49,11 @@ public class DocumentosHelper implements Serializable {
   public List<SiteDocumento> listarconsuni() {
         this.documentosConsuni = documentoDao.listarConsuni();
         return this.documentosConsuni;
+    }
+  
+  public List<SiteDocumento> listarenade() {
+        this.documentosEnade = documentoDao.listarEnade();
+        return this.documentosEnade;
     }
   
   public List<SiteDocumento> listarConsepe() {
@@ -128,6 +135,14 @@ public class DocumentosHelper implements Serializable {
 
     public void setDocumentosConsuni(List<SiteDocumento> documentosConsuni) {
         this.documentosConsuni = documentosConsuni;
+    }
+
+    public List<SiteDocumento> getDocumentosEnade() {
+        return documentosEnade;
+    }
+
+    public void setDocumentosEnade(List<SiteDocumento> documentosEnade) {
+        this.documentosEnade = documentosEnade;
     }
     
     

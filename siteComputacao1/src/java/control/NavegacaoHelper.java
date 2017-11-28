@@ -728,6 +728,17 @@ public class NavegacaoHelper {
         }
     }
      
+     public void paginaDowloadsEnade() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/docsenade.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
      public void paginaTipoEquipamento() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
