@@ -48,6 +48,7 @@ public class LoginController implements Serializable {
     private FacesContext context;
     private String currentPage;
     private Servicos servicos;
+    private boolean erro;
 
     @PostConstruct
     public void init() {
@@ -59,6 +60,7 @@ public class LoginController implements Serializable {
         perfilSelecionado = new SitePerfil();
         this.isAdmin = false;
         this.isUser = false;
+        this.erro = false;
         this.multiploPerfil = false;
         this.perfilAtual = null;
         this.message2 = new FacesMessage();
@@ -90,12 +92,15 @@ public class LoginController implements Serializable {
             }
 
         } else {
-            System.out.println("Verifique login e senha! ");
+            // System.out.println("Verifique login e senha! ");
             this.mensagem = "Verifique login e senha! ";
             System.out.println(this.mensagem);
             //FacesMessage 
             message2 = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Verifique login e senha!", null);
-            FacesContext.getCurrentInstance().addMessage(null, message2);
+            // FacesContext.getCurrentInstance().addMessage(null, message2);
+            FacesContext context2 = FacesContext.getCurrentInstance();
+            this.erro = true;
+            context2.addMessage(null, new FacesMessage("Erro", "Mensagem: " + this.mensagem));
             init();
         }
     }
@@ -361,6 +366,14 @@ public class LoginController implements Serializable {
 
     public void setUser3(TbUsersystem user3) {
         this.user3 = user3;
+    }
+
+    public boolean isErro() {
+        return erro;
+    }
+
+    public void setErro(boolean erro) {
+        this.erro = erro;
     }
 
 }

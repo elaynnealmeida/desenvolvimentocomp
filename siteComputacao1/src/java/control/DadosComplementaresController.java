@@ -18,6 +18,7 @@ import model.SiteProfDadosComplementares;
 import model.TbProfessores;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -53,18 +54,32 @@ public class DadosComplementaresController implements Serializable {
         listar();
     }
 
+    public void handleFileUpload(FileUploadEvent event) {  
+        System.out.println("entrou no handleFileUpload");
+        this.file=event.getFile();
+        System.out.println("file: "+file.getFileName());
+    }
+    
     public void salvar() {
         try {
             dadoComplementar.setIdProfessor(buscaProf());
+            System.out.println("dentro do salvar professor: "+dadoComplementar.getIdProfessor().getId());
+            if (file==null) {
+               System.out.println("file == null ");
+            }
+            System.out.println("file: "+file.getFileName());
+            
             if (!file.getFileName().isEmpty()) {
                 gravaImagem();
             }
-            dadosComplementaresDAO.salvar(dadoComplementar);
+            System.out.println("dados complementar: ");
+            dadosComplementaresDAO.salvar(this.dadoComplementar);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com Sucesso!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         } catch (Exception e) {
             limpar();
+             System.out.println("Erro2: "+e.toString());
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
@@ -103,7 +118,7 @@ public class DadosComplementaresController implements Serializable {
     }
 
     public void gravaImagem() {
-        // System.out.println("chamou o metodo");
+         System.out.println("chamou o metodo gravar imagem");
 
         if (file != null) {
             System.out.println("file!=null");
@@ -153,7 +168,6 @@ public class DadosComplementaresController implements Serializable {
     }
 
     public TbProfessores buscaProf() {
-
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         HttpSession session = (HttpSession) request.getSession();
         TbUsersystem usuarioSession = (TbUsersystem) session.getAttribute("user");

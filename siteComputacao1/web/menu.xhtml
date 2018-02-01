@@ -123,11 +123,11 @@
                                                         <p:inputText type="email" placeholder="Email" styleClass="form-control validate" id="Email" value="#{loginController.user.email}" required="true"/>   
                                                         <p:password styleClass="form-control" id="senha" value="#{loginController.user.password}" required="true" placeholder="Senha" ></p:password>                                                           
                                                         <p:commandButton styleClass="btn btn-sm btn-primary btn-rounded" id="btnSalvar" value="Entrar" 
-                                                                         action="#{loginController.login()}" update="menu:login:mErro"/>    
+                                                                         action="#{loginController.login()}" update="menu:login:mErro" />    
                                                     </h:form>
 
                                                     <div class="bottom text-center">
-                                                        <a href="https://palmas.uft.edu.br/grad/ccomp/cienciacomputacao/faces/recuperarsenha.xhtml"><b>Recuperar senha</b></a>
+                                                        <a href="https://palmas.uft.edu.br/grad/ccomp/faces/recuperarsenha.xhtml"><b>Recuperar senha</b></a>
                                                     </div>
 
 
@@ -138,6 +138,7 @@
                                     </ul>
                                 </li>
                             </ul>
+                            <!-- <p:growl id="growl" showDetail="true" sticky="true" />  -->
                             <h:outputText id="mErro" style="color: #ffffff; text-align: right; font-size: .88em" value="#{loginController.mensagem}" />
                         </h:form>
                     </div>

@@ -25,7 +25,6 @@ import model.SitePerfil;
 import model.SiteTags;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;

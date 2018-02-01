@@ -59,7 +59,8 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse2" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="Servidores" actionListener="#{navegacaoHelper.servidores()}"/>
+                                        <h:commandLink class="list-group-item" value="Docentes" actionListener="#{navegacaoHelper.servidores()}"/>
+                                        <h:commandLink class="list-group-item" value="Técnicos" actionListener="#{navegacaoHelper.tecnicos1()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Formação" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.professor_formacao()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Links" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.cadastrar_links()}"/>
                                     </ul>

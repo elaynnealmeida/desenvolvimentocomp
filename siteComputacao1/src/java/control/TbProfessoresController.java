@@ -52,6 +52,12 @@ public class TbProfessoresController implements Serializable {
             cargoProf.setProfessorId(professor);
             cargoProfList.add(cargoProf);
             professor.setSiteCargoProfessorList(cargoProfList);
+            if(cargoProf.getDtFim().isEmpty()){
+                professor.setAtivo(true);
+            }
+            else{
+                professor.setAtivo(false);
+            }
             professorDao.salvar(professor);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Inserido com Sucesso!", null);
@@ -69,6 +75,12 @@ public class TbProfessoresController implements Serializable {
             cargoProf.setProfessorId(professor);
             cargoProfList.add(cargoProf);
             professor.setSiteCargoProfessorList(cargoProfList);
+             if(cargoProf.getDtFim().isEmpty()){
+                professor.setAtivo(true);
+            }
+            else{
+                professor.setAtivo(false);
+            }
             professorDao.atualizar(professor);
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -118,7 +130,7 @@ public class TbProfessoresController implements Serializable {
     }
 
     public List<TbProfessores> listar() {
-        this.professores = professorDao.listarTodos();
+        this.professores = professorDao.listarProfessores();
         return this.professores;
     }
 

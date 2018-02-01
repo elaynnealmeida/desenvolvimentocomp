@@ -63,8 +63,7 @@ public class GenericDAO<T> implements Serializable {
     }
 
     public void salvar(T t) {
-        EntityManager em1 = getEM();
-
+        EntityManager em1 = getEM();        
         try {
             em1.getTransaction().begin();
             em1.persist(t);

@@ -83,6 +83,12 @@
                                             <h:outputText value="Telefone: "  style="font-weight:bold"/>
                                             <h:outputText value="#{servidorInfo.servidor.telefoneProfissional}" />
                                         </p>
+                                        <p>
+                                            <h:outputText value="Data de Admissão: "  style="font-weight:bold"/>
+                                            <h:outputText value="#{servidorInfo.buscaDtAdmissao()}">
+                                            <f:param name="servidor" value="#{servidorInfo.servidor.id}" />
+                                            </h:outputText>
+                                        </p>
                                     </div>
                                 </p>
                             </hr>

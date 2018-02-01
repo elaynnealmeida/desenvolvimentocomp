@@ -5,9 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.EntityType;
 import model.SiteNoticia;
+import model.SiteNoticiaTags;
+import model.SiteTags;
 import model.TbUsersystem;
 
 /**
@@ -48,6 +52,26 @@ public class SiteNoticiaDAO extends GenericDAO<SiteNoticia> {
         query.orderBy(builder.desc(root.get("hora2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
+        return result;
+    }
+    
+    public List<SiteNoticia> listarNoticiaPorTag(SiteTags tag) {
+        System.out.println("tag..............................: "+tag.getDescricao());
+        List<SiteNoticia> result = new ArrayList<SiteNoticia>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteNoticia.class);
+        EntityType type = em1.getMetamodel().entity(SiteNoticia.class);
+        Root root = query.from(SiteNoticia.class);
+        Join<SiteNoticia, SiteNoticiaTags> join = root.join("siteNoticiaTagsList", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"),tag.getId()));
+        query.orderBy(builder.desc(root.get("hora2")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        System.out.println("noticias por tag: "+result);
+        
         return result;
     }
 

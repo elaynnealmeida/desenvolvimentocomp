@@ -25,8 +25,8 @@
         <link href="css/mdb.min.css" rel="stylesheet"></link>
         <link href="css/layout.css" rel="stylesheet"></link>
         <link href="css/geral.css" rel="stylesheet"></link>
-        
-        
+
+
     </h:head>
     <ui:insert name="menu">
         <ui:include src="menu.xhtml"/>
@@ -127,6 +127,15 @@
                                 </div>
                                 <!--/.First column-->
                             </c:forEach>
+                            <h6 style="font-size: 17px" class="h6-responsive"><h:outputText value="Pesquise notícias por tags" /></h6>
+                            
+                            <c:forEach var="tag" items="${siteTagController.tags}" varStatus="id">
+                                    <h:commandLink  value="#{tag.descricao}       " action="#{noticiasHelper.paginaTags}">
+                                        <f:setPropertyActionListener target="#{noticiasTagControler.tag}" value="#{tag}"/>
+                                        <f:param name="tag" value="#{tag.id}" />
+                                    </h:commandLink>
+                            </c:forEach>
+                            <br></br><br></br>
                             <h:commandLink class="btn btn-primary btn-block" actionListener="#{navegacaoHelper.all_noticias()}" value="Todas as Notícias"></h:commandLink>
                         </h:form>
                     </div>

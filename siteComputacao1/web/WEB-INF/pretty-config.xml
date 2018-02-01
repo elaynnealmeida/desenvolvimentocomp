@@ -145,6 +145,11 @@
 		<view-id value="/faces/servidores.xhtml" />
 	</url-mapping>
         
+        <url-mapping id="tecnicos">
+		<pattern value="/tecnicos" />
+		<view-id value="/faces/tecnicos.xhtml" />
+	</url-mapping>
+        
         <url-mapping id="professor_formacao">
 		<pattern value="/professores/professor_formacao" />
 		<view-id value="/faces/professores/professor_formacao.xhtml" />

@@ -420,6 +420,17 @@ public class NavegacaoHelper {
         }
     }
      
+     public void tecnicos1() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/tecnicos");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
      public void horariosGeral() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
