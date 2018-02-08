@@ -54,13 +54,9 @@ public class DadosComplementaresController implements Serializable {
         listar();
     }
 
-    public void handleFileUpload(FileUploadEvent event) {  
-        System.out.println("entrou no handleFileUpload");
-        this.file=event.getFile();
-        System.out.println("file: "+file.getFileName());
-    }
-    
-    public void salvar() {
+      
+    public void salvar(){
+         System.out.println("chamou o metodo ");
         try {
             dadoComplementar.setIdProfessor(buscaProf());
             System.out.println("dentro do salvar professor: "+dadoComplementar.getIdProfessor().getId());

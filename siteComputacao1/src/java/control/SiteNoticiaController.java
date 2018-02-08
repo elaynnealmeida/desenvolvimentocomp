@@ -3,6 +3,8 @@ package control;
 import dao.SiteNoticiaDAO;
 import dao.SiteTagDAO;
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import static java.lang.System.currentTimeMillis;
@@ -12,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,13 +23,16 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import model.SiteNoticia;
 import model.SitePerfil;
 import model.SiteTags;
 import model.TbUsersystem;
 import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
+import org.primefaces.model.CroppedImage;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
@@ -47,6 +54,10 @@ public class SiteNoticiaController implements Serializable {
     private List<SiteTags> selectedTags;
     private List<SelectItem> tags;
     private SiteTagDAO tagDao;
+    private StreamedContent imagemEnviada;
+    private CroppedImage croppedImage;
+    private boolean exibeBotao;
+    private String imagemTemporaria;
 
     @PostConstruct
     public void init() {
@@ -54,6 +65,10 @@ public class SiteNoticiaController implements Serializable {
         this.noticiaDao = new SiteNoticiaDAO();
         selectedTags = new ArrayList<SiteTags>();
         tagDao = new SiteTagDAO();
+        this.imagemEnviada = new DefaultStreamedContent();
+        this.croppedImage = new CroppedImage();
+        this.imagemTemporaria = new String();
+        this.exibeBotao = false;
         this.isEdit = false;
         this.file = null;
         this.tags = listarTags();
@@ -80,8 +95,8 @@ public class SiteNoticiaController implements Serializable {
             noticia.setData(getDateTime());//Data de Alteração
             noticia.setHora(getDateTime());//Data de Inserção
             noticia.setHora2(BigInteger.valueOf(currentTimeMillis()));
-            System.out.println("Salvar");
             gravaImagem();
+            System.out.println("Salvar");
             if (noticia.getImgCapa() != null) {
                 noticiaDao.salvar(noticia);
                 limpar();
@@ -103,8 +118,7 @@ public class SiteNoticiaController implements Serializable {
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
             noticia.setData(getDateTime());//Data de Alteração
-            if (!file.getFileName().isEmpty()) {
-                System.out.println("entrou no imagem vazio ");
+            if (croppedImage != null) {
                 noticia.setImgCapa(null);
                 gravaImagem();
             }
@@ -135,15 +149,43 @@ public class SiteNoticiaController implements Serializable {
         }
     }
 
+    public void criaArquivo(byte[] bytes, String arquivo) {
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(arquivo);
+            fos.write(bytes);
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SiteNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SiteNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void enviarImagem(FileUploadEvent event) {
+        byte[] img = event.getFile().getContents();
+        imagemTemporaria = event.getFile().getFileName();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ServletContext scontext = (ServletContext) facesContext.getExternalContext().getContext();
+        String arquivo = scontext.getRealPath("/upload/") + "\\" + imagemTemporaria;
+        criaArquivo(img, arquivo);
+        setExibeBotao(true);
+    }
+
+    public void crop() {
+        setImagemEnviada(new DefaultStreamedContent(new ByteArrayInputStream(croppedImage.getBytes())));
+    }
+
     public void gravaImagem() {
         // System.out.println("chamou o metodo");
         // if (file.getInputstream() != null) {
         //System.out.println("file: " + this.file.getFileName());
-        if (file != null) {
+        if (croppedImage != null) {
             System.out.println("file!=null");
             try {
-                byte[] bytes = IOUtils.toByteArray(file.getInputstream());
-                noticia.setImgCapa(bytes);
+                //byte[] bytes = IOUtils.toByteArray(file.getInputstream());
+                // noticia.setImgCapa(bytes);
+                noticia.setImgCapa(this.croppedImage.getBytes());              
 
             } catch (Exception ex) {
                 // System.out.println("arquivo: " + ex);
@@ -188,7 +230,6 @@ public class SiteNoticiaController implements Serializable {
 //                this.noticias = noticiaDao.listarPorUsuario(noticia.getUsuarioId());
 //            }
 //        }
-
         return this.noticias;
 
     }
@@ -290,6 +331,38 @@ public class SiteNoticiaController implements Serializable {
 
     public void setTags(List<SelectItem> tags) {
         this.tags = tags;
+    }
+
+    public StreamedContent getImagemEnviada() {
+        return imagemEnviada;
+    }
+
+    public void setImagemEnviada(StreamedContent imagemEnviada) {
+        this.imagemEnviada = imagemEnviada;
+    }
+
+    public CroppedImage getCroppedImage() {
+        return croppedImage;
+    }
+
+    public void setCroppedImage(CroppedImage croppedImage) {
+        this.croppedImage = croppedImage;
+    }
+
+    public boolean isExibeBotao() {
+        return exibeBotao;
+    }
+
+    public void setExibeBotao(boolean exibeBotao) {
+        this.exibeBotao = exibeBotao;
+    }
+
+    public String getImagemTemporaria() {
+        return imagemTemporaria;
+    }
+
+    public void setImagemTemporaria(String imagemTemporaria) {
+        this.imagemTemporaria = imagemTemporaria;
     }
 
 }

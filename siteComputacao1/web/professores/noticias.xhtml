@@ -10,12 +10,12 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
-<!--         Font Awesome -->
+        <!--         Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
-         <!--Bootstrap core CSS--> 
+        <!--Bootstrap core CSS--> 
         <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-         <!--Material Design Bootstrap--> 
+        <!--Material Design Bootstrap--> 
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
         <link href="../css/geral.css" rel="stylesheet"></link>
@@ -72,24 +72,34 @@
                                         <div class="col-md-12">
                                             <div class="md-form">
                                                 <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
-                                                <p:fileUpload value="#{siteNoticiaController.file}" label="Procurar" mode="simple" skinSimple="true" 
-                                                              update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
-                                                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
-                                                              invalidFileMessage="Somente JPG ou PNG são permitidos."
-                                                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
-                                                              />
-                                                <h:message for="imagem" />
+                                                <p:fileUpload fileUploadListener="#{siteNoticiaController.enviarImagem}" sizeLimit="204800" auto="true"
+                                                              label="Procurar" update="outputPanelUpload"/>
+                                                <p:outputPanel id="outputPanelUpload">
+                                                    <h:panelGrid columns="2">
+                                                        <h:outputText value="Imagem" rendered="#{siteNoticiaController.exibeBotao}"/>
+                                                        <h:outputText value="Pre-visualização" rendered="#{siteNoticiaController.exibeBotao}"/>
+                                                        <p:imageCropper id="imageCropperImagemTemporaria" value="#{siteNoticiaController.croppedImage}"                                                
+                                                                        image="#{pageContext.servletContext.contextPath}/upload/#{siteNoticiaController.imagemTemporaria}"
+                                                                        initialCoords="225,75,300,125"/>
+                                                        <p:graphicImage value="#{siteNoticiaController.imagemEnviada}" cache="false"/>
+                                                    </h:panelGrid>
+                                                    <p:commandButton value="Recortar" action="#{siteNoticiaController.crop}" update="outputPanelUpload"
+                                                                     rendered="#{siteNoticiaController.exibeBotao}">
+                                                        <p:graphicImage style="margin-top: 5px; border: none;" value="/imagens/imgCortar.png"/>
+                                                    </p:commandButton>
+                                                </p:outputPanel>
+                                                <p:message for="outputPanelUpload" /><br></br>
                                             </div>
                                         </div>
                                     </div>
                                     <p:outputLabel    value="Tags:" />
                                     <h:selectManyCheckbox  id="tags2" value="#{siteNoticiaController.selectedTags}"  
-                                                          converter="tagConverter"
-                                                          requiredMessage="Especificar Tag é Obrigatório"
-                                                          required="true"
-                                                          layout="pageDirection"
-                                                          style="padding: 5px"
-                                                          >
+                                                           converter="tagConverter"
+                                                           requiredMessage="Especificar Tag é Obrigatório"
+                                                           required="true"
+                                                           layout="pageDirection"
+                                                           style="padding: 5px"
+                                                           >
                                         <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
                                     </h:selectManyCheckbox>
                                 </div>
@@ -125,10 +135,10 @@
                                     <h:outputText value="#{var.titulo}" />
                                 </p:column>
                                 <p:column headerText="Capa">
-                                    <p:graphicImage value="#{siteNoticiaController.image}" style="    max-width:100%;
-                                                                                                             max-height:100%;
-                                                                                                             width: 400px;
-                                                                                                             height: 180px;">
+                                    <p:graphicImage value="#{siteNoticiaController.image}" cache="false" style="    max-width:100%;
+                                                    max-height:100%;
+                                                    width: 400px;
+                                                    height: 180px;">
                                         <f:param name="noticia" value="#{var.id}" />
                                     </p:graphicImage>
                                 </p:column>
