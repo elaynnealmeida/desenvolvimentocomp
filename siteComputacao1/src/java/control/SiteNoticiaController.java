@@ -1,11 +1,13 @@
 package control;
 
+import dao.NoticiaArquivosDAO;
 import dao.SiteNoticiaDAO;
 import dao.SiteTagDAO;
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import static java.lang.System.currentTimeMillis;
 import java.math.BigInteger;
@@ -26,10 +28,10 @@ import javax.faces.model.SelectItem;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import model.SiteNoticia;
+import model.SiteNoticiaArquivos;
 import model.SitePerfil;
 import model.SiteTags;
 import model.TbUsersystem;
-import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.CroppedImage;
@@ -50,13 +52,17 @@ public class SiteNoticiaController implements Serializable {
     private List<SiteNoticia> noticias;
     private List<SiteNoticia> noticiasFiltradas;
     private boolean isEdit;
-    private UploadedFile file;
+    private List<UploadedFile> file;
+    private List<SiteNoticiaArquivos> arquivos;
+    private List<SiteNoticiaArquivos> arquivos2;
+    private List<SiteNoticiaArquivos> arquivosRemover;
     private List<SiteTags> selectedTags;
     private List<SelectItem> tags;
     private SiteTagDAO tagDao;
     private StreamedContent imagemEnviada;
     private CroppedImage croppedImage;
     private boolean exibeBotao;
+    private boolean exibeArquivos;
     private String imagemTemporaria;
 
     @PostConstruct
@@ -65,12 +71,17 @@ public class SiteNoticiaController implements Serializable {
         this.noticiaDao = new SiteNoticiaDAO();
         selectedTags = new ArrayList<SiteTags>();
         tagDao = new SiteTagDAO();
+        arquivos = new ArrayList<SiteNoticiaArquivos>();
+        arquivos2 = new ArrayList<SiteNoticiaArquivos>();
+        arquivosRemover = new ArrayList<SiteNoticiaArquivos>();
         this.imagemEnviada = new DefaultStreamedContent();
         this.croppedImage = new CroppedImage();
         this.imagemTemporaria = new String();
         this.exibeBotao = false;
+        this.exibeArquivos = false;
         this.isEdit = false;
-        this.file = null;
+        this.file = new ArrayList<>();
+//        this.file2 = new ArrayList<>();
         this.tags = listarTags();
         noticias = listar();
     }
@@ -78,8 +89,16 @@ public class SiteNoticiaController implements Serializable {
     public void limpar() {
         this.noticia = new SiteNoticia();
         this.isEdit = false;
+        this.exibeArquivos = false;
+        this.exibeBotao = false;
         this.selectedTags = new ArrayList<SiteTags>();
-        this.file = null;
+        arquivos = new ArrayList<SiteNoticiaArquivos>();
+        arquivos2 = new ArrayList<SiteNoticiaArquivos>();
+        this.imagemEnviada = new DefaultStreamedContent();
+        this.croppedImage = new CroppedImage();
+        this.imagemTemporaria = new String();
+        this.file = new ArrayList<>();
+        arquivosRemover = new ArrayList<SiteNoticiaArquivos>();
         listarTags();
         listar();
     }
@@ -87,7 +106,7 @@ public class SiteNoticiaController implements Serializable {
     public void salvar() {
         System.out.println("Entrou no salvar noticia ========================= ");
         try {
-            System.out.println("Entrou no salvar noticia ========================= ");
+            System.out.println("Entrou no try salvar noticia ========================= ");
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
@@ -96,6 +115,19 @@ public class SiteNoticiaController implements Serializable {
             noticia.setHora(getDateTime());//Data de Inserção
             noticia.setHora2(BigInteger.valueOf(currentTimeMillis()));
             gravaImagem();
+            if (!file.isEmpty()) {
+                System.out.println("Entrou no file diferente de vazio ");
+                System.out.println("file.size:  " + file.size());
+                for (int i = 0; i < file.size(); i++) {
+                    SiteNoticiaArquivos a = new SiteNoticiaArquivos();
+                    a.setExtensao(file.get(i).getContentType());
+                    a.setNome(file.get(i).getFileName());
+                    a.setNoticiaId(noticia);
+                    a.setArquivo(file.get(i).getContents());
+                    arquivos.add(a);
+                }
+                noticia.setSiteNoticiaArquivosList(arquivos);
+            }
             System.out.println("Salvar");
             if (noticia.getImgCapa() != null) {
                 noticiaDao.salvar(noticia);
@@ -113,6 +145,7 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public void atualizar() {
+        NoticiaArquivosDAO arqDAO = new NoticiaArquivosDAO();
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -123,6 +156,30 @@ public class SiteNoticiaController implements Serializable {
                 gravaImagem();
             }
             noticia.setSiteNoticiaTagsList(selectedTags);
+            System.out.println("tamanho arquivos antes att: " + noticia.getSiteNoticiaArquivosList().size());
+            if (!arquivosRemover.isEmpty()) {
+                System.out.println("Entrou no arquivos a remover ");
+                System.out.println("arquivos a remover.size:  " + arquivosRemover.size());
+                for (int i = 0; i < arquivosRemover.size(); i++) {
+                    noticia.getSiteNoticiaArquivosList().remove(arquivosRemover.get(i));
+                    arqDAO.deletar(arquivosRemover.get(i));
+                }
+            }
+            if (!file.isEmpty()) {                
+                System.out.println("Entrou no file diferente de vazio ");
+                System.out.println("file.size:  " + file.size());
+                for (int i = 0; i < file.size(); i++) {
+                    SiteNoticiaArquivos a = new SiteNoticiaArquivos();
+                    a.setExtensao(file.get(i).getContentType());
+                    a.setNome(file.get(i).getFileName());
+                    a.setNoticiaId(noticia);
+                    a.setArquivo(file.get(i).getContents());
+                    arquivos.add(a);
+                    arqDAO.salvar(a);
+                }
+                 noticia.getSiteNoticiaArquivosList().addAll(arquivos);
+            }
+            System.out.println("tamanho arquivos final: " + noticia.getSiteNoticiaArquivosList().size());
             noticiaDao.atualizar(noticia);
             limpar();
             FacesMessage msg = new FacesMessage("Atualizado com Sucesso!");
@@ -147,6 +204,21 @@ public class SiteNoticiaController implements Serializable {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar excluir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
+    }
+
+    public void enviarArquivo(FileUploadEvent event) {
+        System.out.println("Arquivo adicionado: " + event.getFile().getFileName());
+        file.add(event.getFile());
+        setExibeBotao(true);
+    }
+
+    public void removerArquivo(UploadedFile f) {
+        file.remove(f);
+    }
+
+    public void removerArquivo2(SiteNoticiaArquivos doc) {
+        arquivosRemover.add(doc);
+        arquivos2.remove(doc);
     }
 
     public void criaArquivo(byte[] bytes, String arquivo) {
@@ -185,7 +257,7 @@ public class SiteNoticiaController implements Serializable {
             try {
                 //byte[] bytes = IOUtils.toByteArray(file.getInputstream());
                 // noticia.setImgCapa(bytes);
-                noticia.setImgCapa(this.croppedImage.getBytes());              
+                noticia.setImgCapa(this.croppedImage.getBytes());
 
             } catch (Exception ex) {
                 // System.out.println("arquivo: " + ex);
@@ -268,11 +340,29 @@ public class SiteNoticiaController implements Serializable {
         return new DefaultStreamedContent();
     }
 
+    public StreamedContent download(SiteNoticiaArquivos doc) {
+        InputStream stream = new ByteArrayInputStream(doc.getArquivo());
+        StreamedContent file1 = null;
+        file1 = new DefaultStreamedContent(stream, doc.getExtensao(), doc.getNome());
+
+        return (StreamedContent) file1;
+    }
+
     public void onRowSelect(SelectEvent event) {
         this.noticia = ((SiteNoticia) event.getObject());
         selectedTags = new ArrayList<SiteTags>();
         if (!noticia.getSiteNoticiaTagsList().isEmpty()) {
             selectedTags.addAll(noticia.getSiteNoticiaTagsList());
+        }
+        if (!noticia.getSiteNoticiaArquivosList().isEmpty()) {
+            this.exibeArquivos = true;
+            System.out.println("Entrou no file diferente de vazio ");
+            System.out.println("lista de arquivos.size:  " + noticia.getSiteNoticiaArquivosList().size());
+            arquivos2.clear();
+            arquivos2.addAll(noticia.getSiteNoticiaArquivosList());
+            //for (int i = 0; i < noticia.getSiteNoticiaArquivosList().size(); i++) {
+            //   file2.add((File) new FileInputStream(noticia.getSiteNoticiaArquivosList().get(i).getArquivo()));
+            // }            
         }
         this.isEdit = true;
     }
@@ -309,11 +399,11 @@ public class SiteNoticiaController implements Serializable {
         this.noticiasFiltradas = noticiasFiltradas;
     }
 
-    public UploadedFile getFile() {
+    public List<UploadedFile> getFile() {
         return file;
     }
 
-    public void setFile(UploadedFile file) {
+    public void setFile(List<UploadedFile> file) {
         this.file = file;
     }
 
@@ -363,6 +453,22 @@ public class SiteNoticiaController implements Serializable {
 
     public void setImagemTemporaria(String imagemTemporaria) {
         this.imagemTemporaria = imagemTemporaria;
+    }
+
+    public boolean isExibeArquivos() {
+        return exibeArquivos;
+    }
+
+    public void setExibeArquivos(boolean exibeArquivos) {
+        this.exibeArquivos = exibeArquivos;
+    }
+
+    public List<SiteNoticiaArquivos> getArquivos2() {
+        return arquivos2;
+    }
+
+    public void setArquivos2(List<SiteNoticiaArquivos> arquivos2) {
+        this.arquivos2 = arquivos2;
     }
 
 }

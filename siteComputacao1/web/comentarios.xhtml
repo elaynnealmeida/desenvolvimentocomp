@@ -57,15 +57,24 @@
                                 <p><h:outputText value="#{siteComentariosController.comentario.noticiaId.conteudo}" style="text-align: justify" escape="false" /></p>
                                 <br></br>
 
-                                <h6 style="font-size: 15px" class="h6-responsive"><h:outputText value="Tags relacionadas: " /></h6>
-                                
+                                <b><h:outputText value="Arquivos Relacionados " rendered="#{siteComentariosController.comentario.noticiaId.siteNoticiaArquivosList.size()>0}"/></b>
+                                <p:panelGrid  id="arquivos2" columns="2" rendered="#{siteComentariosController.comentario.noticiaId.siteNoticiaArquivosList.size()>0}">
+                                    <c:forEach var="doc" items="${siteComentariosController.comentario.noticiaId.siteNoticiaArquivosList}" varStatus="id" >
+                                        <h:outputText value="#{doc.nome}" />  
+                                        <p:commandButton class="btn btn-primary btn-md" value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                            <p:fileDownload value="#{siteComentariosController.download(doc)}" />
+                                        </p:commandButton>    
+                                    </c:forEach>                                    
+                                </p:panelGrid>
+                                <br></br>
+                                <b><h:outputText value="Tags relacionadas: " rendered="#{siteComentariosController.comentario.noticiaId.siteNoticiaTagsList.size()>0}" /></b>
                                 <c:forEach var="tag" items="${siteComentariosController.comentario.noticiaId.siteNoticiaTagsList}" varStatus="id">
                                     <h:commandLink value="#{tag.descricao}  " action="#{noticiasHelper.paginaTags}">
                                         <f:setPropertyActionListener target="#{noticiasTagControler.tag}" value="#{tag}"/>
                                         <f:param name="tag" value="#{tag.id}" />
                                     </h:commandLink>
                                 </c:forEach>
-                                
+                                <br></br><br></br>
                                 <h6 style="font-size: 12px" class="h6-responsive"><h:outputText value="Postado em: #{siteComentariosController.comentario.noticiaId.hora}" /><br></br>
                                     <h:outputText value="Última Atualização: #{siteComentariosController.comentario.noticiaId.data}" /></h6>
                             </div>

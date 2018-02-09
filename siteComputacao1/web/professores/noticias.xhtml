@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Adicionar Notícia</title>
         <meta charset="utf-8" />
@@ -66,8 +67,18 @@
                                                                  required="true" styleClass="form-control" rows="10"></h:inputTextarea>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
+                                    </div>                                   
+                                    <b> <h:outputText   value="Tags:" /></b>
+                                    <h:selectManyCheckbox  id="tags2" value="#{siteNoticiaController.selectedTags}"  
+                                                           converter="tagConverter"
+                                                           requiredMessage="Especificar Tag é Obrigatório"
+                                                           required="true"
+                                                           layout="pageDirection"
+                                                           style="padding: 5px"
+                                                           >
+                                        <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
+                                    </h:selectManyCheckbox>
+                                     <div class="row">
                                         <!--First column-->
                                         <div class="col-md-12">
                                             <div class="md-form">
@@ -92,16 +103,28 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p:outputLabel    value="Tags:" />
-                                    <h:selectManyCheckbox  id="tags2" value="#{siteNoticiaController.selectedTags}"  
-                                                           converter="tagConverter"
-                                                           requiredMessage="Especificar Tag é Obrigatório"
-                                                           required="true"
-                                                           layout="pageDirection"
-                                                           style="padding: 5px"
-                                                           >
-                                        <f:selectItems value="#{siteNoticiaController.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
-                                    </h:selectManyCheckbox>
+                                    <b> <h:outputText   value="Adicionar Arquivos:" /></b>
+                                    <p:fileUpload fileUploadListener="#{siteNoticiaController.enviarArquivo}" sizeLimit="204800" auto="true"
+                                                  label="Procurar" update="arquivos"/>                                    
+                                    <p:outputLabel    value="Arquivos Adicionados:" />
+                                    <p:panelGrid id="arquivos" columns="2">
+                                        <c:forEach var="arq" items="${siteNoticiaController.file}"  varStatus="id">
+                                            <h:outputText value="#{arq.fileName} "/>                                       
+                                            <p:commandButton class="btn btn-primary btn-sm" id="btnRemove" value="Remove" action="#{siteNoticiaController.removerArquivo(arq)}" update="arquivos"/>
+                                        </c:forEach>
+                                    </p:panelGrid>
+                                    <b> <h:outputText   value="Arquivos Relacionados:" rendered="#{siteNoticiaController.exibeArquivos}"/></b>
+                                    <p:panelGrid  id="arquivos2" columns="3" rendered="#{siteNoticiaController.exibeArquivos}">
+                                        <c:forEach var="doc" items="${siteNoticiaController.arquivos2}" varStatus="id" >
+
+                                            <h:outputText value="#{doc.nome}" />  
+                                            <p:commandButton class="btn btn-primary btn-md" value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                <p:fileDownload value="#{siteNoticiaController.download(doc)}" />
+                                            </p:commandButton>               
+                                            <p:commandButton class="btn btn-primary btn-sm" id="btnRemove2" value="Remove" action="#{siteNoticiaController.removerArquivo2(doc)}" update="arquivos2"/>
+
+                                        </c:forEach>
+                                    </p:panelGrid>
                                 </div>
                             </div>
                             <p:commandButton class="btn btn-dark-green" id="btnSalvar" value="Salvar" actionListener="#{siteNoticiaController.salvar}" ajax="false" rendered="#{!siteNoticiaController.isEdit}" update=":formnoticias"/>

@@ -32,14 +32,24 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "site_noticia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "SiteNoticia.findAll", query = "SELECT s FROM SiteNoticia s"),
-    @NamedQuery(name = "SiteNoticia.findById", query = "SELECT s FROM SiteNoticia s WHERE s.id = :id"),
-    @NamedQuery(name = "SiteNoticia.findByTitulo", query = "SELECT s FROM SiteNoticia s WHERE s.titulo = :titulo"),
-    @NamedQuery(name = "SiteNoticia.findByData", query = "SELECT s FROM SiteNoticia s WHERE s.data = :data"),
-    @NamedQuery(name = "SiteNoticia.findByHora", query = "SELECT s FROM SiteNoticia s WHERE s.hora = :hora"),
-    @NamedQuery(name = "SiteNoticia.findByConteudo", query = "SELECT s FROM SiteNoticia s WHERE s.conteudo = :conteudo"),
+    @NamedQuery(name = "SiteNoticia.findAll", query = "SELECT s FROM SiteNoticia s")
+    ,
+    @NamedQuery(name = "SiteNoticia.findById", query = "SELECT s FROM SiteNoticia s WHERE s.id = :id")
+    ,
+    @NamedQuery(name = "SiteNoticia.findByTitulo", query = "SELECT s FROM SiteNoticia s WHERE s.titulo = :titulo")
+    ,
+    @NamedQuery(name = "SiteNoticia.findByData", query = "SELECT s FROM SiteNoticia s WHERE s.data = :data")
+    ,
+    @NamedQuery(name = "SiteNoticia.findByHora", query = "SELECT s FROM SiteNoticia s WHERE s.hora = :hora")
+    ,
+    @NamedQuery(name = "SiteNoticia.findByConteudo", query = "SELECT s FROM SiteNoticia s WHERE s.conteudo = :conteudo")
+    ,
     @NamedQuery(name = "SiteNoticia.findByHora2", query = "SELECT s FROM SiteNoticia s WHERE s.hora2 = :hora2")})
 public class SiteNoticia implements Serializable {
+
+    @Lob
+    @Column(name = "img_capa")
+    private byte[] imgCapa;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,12 +57,11 @@ public class SiteNoticia implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @OneToMany(mappedBy = "noticiaId", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    private List<SiteNoticiaArquivos> siteNoticiaArquivosList;
     @Size(max = 2147483647)
     @Column(name = "titulo")
     private String titulo;
-    @Lob
-    @Column(name = "img_capa")
-    private byte[] imgCapa;
     @Size(max = 2147483647)
     @Column(name = "data")
     private String data;
@@ -189,5 +198,15 @@ public class SiteNoticia implements Serializable {
     public String toString() {
         return "model.SiteNoticia[ id=" + id + " ]";
     }
+
+    @XmlTransient
+    public List<SiteNoticiaArquivos> getSiteNoticiaArquivosList() {
+        return siteNoticiaArquivosList;
+    }
+
+    public void setSiteNoticiaArquivosList(List<SiteNoticiaArquivos> siteNoticiaArquivosList) {
+        this.siteNoticiaArquivosList = siteNoticiaArquivosList;
+    }
+
 
 }

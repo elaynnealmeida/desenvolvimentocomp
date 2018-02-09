@@ -4,6 +4,7 @@ import dao.SiteComentariosDAO;
 import dao.SiteNoticiaDAO;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import model.SiteComentarios;
 import model.SiteNoticia;
+import model.SiteNoticiaArquivos;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -125,6 +127,14 @@ public class SiteComentariosController implements Serializable {
             }
 
         }
+    }
+    
+    public StreamedContent download(SiteNoticiaArquivos doc) {
+        InputStream stream = new ByteArrayInputStream(doc.getArquivo());
+        StreamedContent file1 = null;
+        file1 = new DefaultStreamedContent(stream, doc.getExtensao(), doc.getNome());
+
+        return (StreamedContent) file1;
     }
 
     public SiteComentarios getComentario() {
