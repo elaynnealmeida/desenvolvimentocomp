@@ -25,7 +25,7 @@ public class SiteNoticiaDAO extends GenericDAO<SiteNoticia> {
     }
 
     public List<SiteNoticia> listarPorData() {
-        System.out.println("entrou no dao listar noticias");
+       // System.out.println("entrou no dao listar noticias");
         List<SiteNoticia> result = new ArrayList<SiteNoticia>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -40,7 +40,7 @@ public class SiteNoticiaDAO extends GenericDAO<SiteNoticia> {
     }
     
     public List<SiteNoticia> listarPorUsuario(TbUsersystem id) {
-        System.out.println("entrou no dao listar noticias");
+        //System.out.println("entrou no dao listar noticias");
         List<SiteNoticia> result = new ArrayList<SiteNoticia>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();
@@ -56,7 +56,7 @@ public class SiteNoticiaDAO extends GenericDAO<SiteNoticia> {
     }
     
     public List<SiteNoticia> listarNoticiaPorTag(SiteTags tag) {
-        System.out.println("tag..............................: "+tag.getDescricao());
+        //System.out.println("tag..............................: "+tag.getDescricao());
         List<SiteNoticia> result = new ArrayList<SiteNoticia>();
         EntityManager em1 = getEM();
         em1.getTransaction().begin();

@@ -4,8 +4,6 @@ import dao.NoticiaArquivosDAO;
 import dao.SiteNoticiaDAO;
 import dao.SiteTagDAO;
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -16,8 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -25,13 +21,13 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 import javax.faces.model.SelectItem;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import model.SiteNoticia;
 import model.SiteNoticiaArquivos;
 import model.SitePerfil;
 import model.SiteTags;
 import model.TbUsersystem;
+import org.apache.commons.io.IOUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.CroppedImage;
@@ -52,6 +48,7 @@ public class SiteNoticiaController implements Serializable {
     private List<SiteNoticia> noticias;
     private List<SiteNoticia> noticiasFiltradas;
     private boolean isEdit;
+    private UploadedFile file1;
     private List<UploadedFile> file;
     private List<SiteNoticiaArquivos> arquivos;
     private List<SiteNoticiaArquivos> arquivos2;
@@ -71,6 +68,7 @@ public class SiteNoticiaController implements Serializable {
         this.noticiaDao = new SiteNoticiaDAO();
         selectedTags = new ArrayList<SiteTags>();
         tagDao = new SiteTagDAO();
+        this.file1 = null;
         arquivos = new ArrayList<SiteNoticiaArquivos>();
         arquivos2 = new ArrayList<SiteNoticiaArquivos>();
         arquivosRemover = new ArrayList<SiteNoticiaArquivos>();
@@ -89,6 +87,7 @@ public class SiteNoticiaController implements Serializable {
     public void limpar() {
         this.noticia = new SiteNoticia();
         this.isEdit = false;
+        this.file1 = null;
         this.exibeArquivos = false;
         this.exibeBotao = false;
         this.selectedTags = new ArrayList<SiteTags>();
@@ -151,7 +150,8 @@ public class SiteNoticiaController implements Serializable {
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
             noticia.setData(getDateTime());//Data de Alteração
-            if (croppedImage != null) {
+             if (!file1.getFileName().isEmpty()) {
+                System.out.println("entrou no imagem vazio ");
                 noticia.setImgCapa(null);
                 gravaImagem();
             }
@@ -165,7 +165,7 @@ public class SiteNoticiaController implements Serializable {
                     arqDAO.deletar(arquivosRemover.get(i));
                 }
             }
-            if (!file.isEmpty()) {                
+            if (!file.isEmpty()) {
                 System.out.println("Entrou no file diferente de vazio ");
                 System.out.println("file.size:  " + file.size());
                 for (int i = 0; i < file.size(); i++) {
@@ -177,7 +177,7 @@ public class SiteNoticiaController implements Serializable {
                     arquivos.add(a);
                     arqDAO.salvar(a);
                 }
-                 noticia.getSiteNoticiaArquivosList().addAll(arquivos);
+                noticia.getSiteNoticiaArquivosList().addAll(arquivos);
             }
             System.out.println("tamanho arquivos final: " + noticia.getSiteNoticiaArquivosList().size());
             noticiaDao.atualizar(noticia);
@@ -221,7 +221,7 @@ public class SiteNoticiaController implements Serializable {
         arquivos2.remove(doc);
     }
 
-    public void criaArquivo(byte[] bytes, String arquivo) {
+  /*  public void criaArquivo(byte[] bytes, String arquivo) {
         FileOutputStream fos;
         try {
             fos = new FileOutputStream(arquivo);
@@ -234,30 +234,35 @@ public class SiteNoticiaController implements Serializable {
         }
     }
 
-    public void enviarImagem(FileUploadEvent event) {
+    public void enviarImagem(FileUploadEvent event) throws MalformedURLException {
         byte[] img = event.getFile().getContents();
         imagemTemporaria = event.getFile().getFileName();
         FacesContext facesContext = FacesContext.getCurrentInstance();
+        //facesContext.responseComplete();
         ServletContext scontext = (ServletContext) facesContext.getExternalContext().getContext();
-        String arquivo = scontext.getRealPath("/upload/") + "\\" + imagemTemporaria;
-        criaArquivo(img, arquivo);
+        String arquivo = scontext.getRealPath("/upload");
+        // String path = getClass().getResource("/upload").toString().replace("file:/", "");
+        //System.out.println("path..........: " + path);
+        String teste = arquivo + "\\" + imagemTemporaria;
+        System.out.println("teste..........: " + teste);
+        criaArquivo(img, teste);
         setExibeBotao(true);
     }
 
     public void crop() {
         setImagemEnviada(new DefaultStreamedContent(new ByteArrayInputStream(croppedImage.getBytes())));
-    }
+    }*/
 
     public void gravaImagem() {
         // System.out.println("chamou o metodo");
         // if (file.getInputstream() != null) {
         //System.out.println("file: " + this.file.getFileName());
-        if (croppedImage != null) {
+        if (file1 != null) {
             System.out.println("file!=null");
             try {
-                //byte[] bytes = IOUtils.toByteArray(file.getInputstream());
-                // noticia.setImgCapa(bytes);
-                noticia.setImgCapa(this.croppedImage.getBytes());
+                byte[] bytes = IOUtils.toByteArray(file1.getInputstream());
+                 noticia.setImgCapa(bytes);
+               // noticia.setImgCapa(this.croppedImage.getBytes());
 
             } catch (Exception ex) {
                 // System.out.println("arquivo: " + ex);
@@ -276,7 +281,7 @@ public class SiteNoticiaController implements Serializable {
     }
 
     public List<SiteNoticia> listar() {
-        System.out.println("entrou no listarnoticias");
+        //System.out.println("entrou no listarnoticias");
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         noticia.setUsuarioId((TbUsersystem) request.getSession().getAttribute("user"));
@@ -471,4 +476,33 @@ public class SiteNoticiaController implements Serializable {
         this.arquivos2 = arquivos2;
     }
 
+    public UploadedFile getFile1() {
+        return file1;
+    }
+
+    public void setFile1(UploadedFile file1) {
+        this.file1 = file1;
+    }
+
 }
+
+/*  Conteudo do xhtml
+<b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
+                                                <p:fileUpload fileUploadListener="#{siteNoticiaController.enviarImagem}" sizeLimit="204800" auto="true"
+                                                              label="Procurar" update="outputPanelUpload"/>
+                                                <p:outputPanel id="outputPanelUpload">
+                                                    <h:panelGrid columns="2">
+                                                        <h:outputText value="Imagem" rendered="#{siteNoticiaController.exibeBotao}"/>
+                                                        <h:outputText value="Pre-visualização" rendered="#{siteNoticiaController.exibeBotao}"/>
+                                                        <p:imageCropper id="imageCropperImagemTemporaria" value="#{siteNoticiaController.croppedImage}"                                                
+                                                                        image="#{pageContext.servletContext.contextPath}/upload/#{siteNoticiaController.imagemTemporaria}"
+                                                                        initialCoords="225,75,300,125"/>
+                                                        <p:graphicImage value="#{siteNoticiaController.imagemEnviada}" cache="false"/>
+                                                    </h:panelGrid>
+                                                    <p:commandButton value="Recortar" action="#{siteNoticiaController.crop}" update="outputPanelUpload"
+                                                                     rendered="#{siteNoticiaController.exibeBotao}">
+                                                        <p:graphicImage style="margin-top: 5px; border: none;" value="/imagens/imgCortar.png"/>
+                                                    </p:commandButton>
+                                                </p:outputPanel>
+                                                <p:message for="outputPanelUpload" /><br></br>
+*/

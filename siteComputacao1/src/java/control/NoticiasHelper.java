@@ -49,7 +49,7 @@ public class NoticiasHelper implements Serializable {
         } else {
             String id = context.getExternalContext().getRequestParameterMap().get("noticia");
             SiteNoticia i = noticiaDao.buscaPorID(Integer.parseInt(id));
-            System.out.println("Id: " + id);
+            //System.out.println("Id: " + id);
             if (i.getImgCapa() != null) {
                 return new DefaultStreamedContent(new ByteArrayInputStream(i.getImgCapa()));
             } else {
@@ -61,7 +61,7 @@ public class NoticiasHelper implements Serializable {
 
     public void pagina() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("entrou no redirecionamento de pagina");
+      //  System.out.println("entrou no redirecionamento de pagina");
         String id = context.getExternalContext().getRequestParameterMap().get("noticia");
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -75,7 +75,7 @@ public class NoticiasHelper implements Serializable {
     
       public void paginaTags() throws IOException {
         FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("entrou no redirecionamento de pagina noticia por tag");
+        //System.out.println("entrou no redirecionamento de pagina noticia por tag");
         String id = context.getExternalContext().getRequestParameterMap().get("tag");
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();

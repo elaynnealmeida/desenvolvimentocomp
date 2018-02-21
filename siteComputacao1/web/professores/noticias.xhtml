@@ -82,24 +82,15 @@
                                         <!--First column-->
                                         <div class="col-md-12">
                                             <div class="md-form">
-                                                <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
-                                                <p:fileUpload fileUploadListener="#{siteNoticiaController.enviarImagem}" sizeLimit="204800" auto="true"
-                                                              label="Procurar" update="outputPanelUpload"/>
-                                                <p:outputPanel id="outputPanelUpload">
-                                                    <h:panelGrid columns="2">
-                                                        <h:outputText value="Imagem" rendered="#{siteNoticiaController.exibeBotao}"/>
-                                                        <h:outputText value="Pre-visualização" rendered="#{siteNoticiaController.exibeBotao}"/>
-                                                        <p:imageCropper id="imageCropperImagemTemporaria" value="#{siteNoticiaController.croppedImage}"                                                
-                                                                        image="#{pageContext.servletContext.contextPath}/upload/#{siteNoticiaController.imagemTemporaria}"
-                                                                        initialCoords="225,75,300,125"/>
-                                                        <p:graphicImage value="#{siteNoticiaController.imagemEnviada}" cache="false"/>
-                                                    </h:panelGrid>
-                                                    <p:commandButton value="Recortar" action="#{siteNoticiaController.crop}" update="outputPanelUpload"
-                                                                     rendered="#{siteNoticiaController.exibeBotao}">
-                                                        <p:graphicImage style="margin-top: 5px; border: none;" value="/imagens/imgCortar.png"/>
-                                                    </p:commandButton>
-                                                </p:outputPanel>
-                                                <p:message for="outputPanelUpload" /><br></br>
+                                                 <b><h:outputText style="padding-right: 20px" value="Imagem da Capa "/></b>
+                                                <p:fileUpload value="#{siteNoticiaController.file1}" label="Procurar" mode="simple" skinSimple="true" 
+                                                              update="msg" id="imagem"    requiredMessage="Imagem Obrigatória" 
+                                                              required="true" sizeLimit="200000"  allowTypes="/(\.|\/)(jpe?g|png)$/"
+                                                              invalidFileMessage="Somente JPG ou PNG são permitidos."
+                                                              invalidSizeMessage="Limite do tamanho do arquivo é de 2 mb."
+                                                              />
+                                                <h:message for="imagem" />                                          
+                                                
                                             </div>
                                         </div>
                                     </div>
