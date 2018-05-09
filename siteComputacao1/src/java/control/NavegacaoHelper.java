@@ -78,6 +78,105 @@ public class NavegacaoHelper {
         }
     }
     
+    public void extensao_sobre() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/sobre.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void taekwondo() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/taekwondo.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void secomp() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/secomp.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void obi() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/obi.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void fabrica() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/fabrica.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+      public void olimpiadasrobotica() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/olimpiadasrobotica.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+       public void maratona() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/maratona.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void congressos() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/congressos.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void seminariosepalestras() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/faces/extensao/seminariosepalestras.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
      public void nucleo_pesquisa() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
@@ -288,12 +387,89 @@ public class NavegacaoHelper {
         }
     }
     
+     public void lab_lbdes() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_lbdes");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+      public void lab_lhac() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_lhac");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+       public void lab_lcgpi() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_lcgpi");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+       
+       public void lab_laed() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_laed");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+       
+       public void lab_labca() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_labca");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+     
+      public void lab_labram() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/lab_labram");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void sobre() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/menu/estrutura_curso/sobre");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void identidadeVisual() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/identidadevisual");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -343,12 +519,55 @@ public class NavegacaoHelper {
         }
     }
     
+    public void organizacaoadministrativa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/organizacaoadministrativa");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public void laboratorios() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/menu/estrutura_curso/laboratorios");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void infraadministrativa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/infraadministrativa");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      public void infrapedagogica() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/infrapedagogica");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+      public void infracompartilhada() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/infracompartilhada");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -371,6 +590,17 @@ public class NavegacaoHelper {
         try {
             externalContext.redirect(externalContext.getRequestContextPath()
                     + "/menu/estrutura_curso/historico");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void linhasdepesquisa() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+        try {
+            externalContext.redirect(externalContext.getRequestContextPath()
+                    + "/menu/estrutura_curso/linhasdepesquisa");
         } catch (IOException e) {
             e.printStackTrace();
         }

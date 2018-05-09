@@ -67,8 +67,18 @@ public class DocumentoController implements Serializable {
     }
 
     public void salvar() throws IOException {
-System.out.println("entrou no salvar documento");
+        System.out.println("entrou no salvar documento");
         try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            df.setLenient(false);
+            Date d1 = df.parse("07/09/1822");
+            System.out.println(d1);
+            Date d2 = df.parse(documento.getDataArquivo());
+            System.out.println(d2);
+            long dt = (d2.getTime() - d1.getTime()) + 3600000; // 1 hora para compensar horário de verão
+            //System.out.println(dt / 86400000L); // passaram-se 67111 dias
+            long x = dt / 86400000L;
+            documento.setDataArquivo2((int) x);
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             documento.setUsuarioInclusao((TbUsersystem) request.getSession().getAttribute("user"));
@@ -84,7 +94,7 @@ System.out.println("entrou no salvar documento");
                 FacesContext.getCurrentInstance().addMessage(null, message);
             }
         } catch (Exception e) {
-           // System.out.println("Erro de inserção: " + e);
+            // System.out.println("Erro de inserção: " + e);
             limpar();
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar inserir!", null);
             FacesContext.getCurrentInstance().addMessage(null, message);
@@ -94,6 +104,16 @@ System.out.println("entrou no salvar documento");
 
     public void atualizar() {
         try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            df.setLenient(false);
+            Date d1 = df.parse("07/09/1822");
+            System.out.println(d1);
+            Date d2 = df.parse(documento.getDataArquivo());
+            System.out.println(d2);
+            long dt = (d2.getTime() - d1.getTime()) + 3600000; // 1 hora para compensar horário de verão
+            //System.out.println(dt / 86400000L); // passaram-se 67111 dias
+            long x = dt / 86400000L;
+            documento.setDataArquivo2((int) x);
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             documento.setUsuarioInclusao((TbUsersystem) request.getSession().getAttribute("user"));
@@ -127,7 +147,7 @@ System.out.println("entrou no salvar documento");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
-    
+
     public List<SelectItem> getTpDocumento() {
         System.out.println("entrou no listar tp documento: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
@@ -140,7 +160,7 @@ System.out.println("entrou no salvar documento");
         }
         return toReturn;
     }
-    
+
     public List<SelectItem> getPublicacao() {
         System.out.println("entrou no listar publicaçao: ");
         List<SelectItem> toReturn = new ArrayList<SelectItem>();
@@ -148,19 +168,19 @@ System.out.println("entrou no salvar documento");
         List<SitePublicacao> result = new ArrayList<SitePublicacao>();
         result = publicacaoDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
-            toReturn.add(new SelectItem(result.get(i),result.get(i).getConselhoId().getNome() +" - "+ String.valueOf(result.get(i).getNumero())+" - "+ result.get(i).getData()));
+            toReturn.add(new SelectItem(result.get(i), result.get(i).getConselhoId().getNome() + " - " + String.valueOf(result.get(i).getNumero()) + " - " + result.get(i).getData()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
     }
-       
+
     public void gravaArquivo() throws IOException {
         System.out.println("chamou o metodo de gravar aquivo");
         if (file != null) {
             System.out.println("arquivo: " + this.file.getFileName());
             try {
-                byte[] bytes =  IOUtils.toByteArray(file.getInputstream());
-                
+                byte[] bytes = IOUtils.toByteArray(file.getInputstream());
+
                 documento.setArquivo(bytes);
 
             } catch (Exception ex) {
@@ -171,15 +191,15 @@ System.out.println("entrou no salvar documento");
             System.out.println("arquivo esta vazio ");
         }
     }
-    
-     public StreamedContent download(SiteDocumento doc) { 
+
+    public StreamedContent download(SiteDocumento doc) {
         InputStream stream = new ByteArrayInputStream(doc.getArquivo());
         StreamedContent file1 = null;
         file1 = new DefaultStreamedContent(stream, "application/pdf", doc.getTitulo());
-        
+
         return (StreamedContent) file1;
     }
-    
+
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();

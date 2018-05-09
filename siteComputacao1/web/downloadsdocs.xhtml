@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <h:head>
         <title>Documentos Postados Pela Coordenação</title>
@@ -38,29 +39,249 @@
                     </ui:insert>
 
                     <div class="col-lg-9">
+                        <h3>
+                            <h:outputText value="Documentos da Coordenação" />
+                        </h3>
+                        <hr>
+                            <b:tabView contentStyle="border-right: 2px solid #ddd;border-left: 2px solid #ddd;border-bottom: 2px solid #ddd;padding:10px" id="tabhorariosaula">
 
-                        <h:form id="formdocumentos">
-                            <h1>
-                                <h:outputText value="Documentos Para Download  " /> 
-                            </h1>
-                            <hr>
-                                <c:forEach var="doc" items="${documentosHelper.documentos}" varStatus="id" >
-                                    <hr>
-                                        <h4>
-                                            <h:outputText value="#{doc.titulo}:  " />  
-                                        </h4>
+                                <b:tab title="2018" id="periodoUm">
+                                    <h:form id="aulaUmperiodo">   
 
-                                        <p:commandButton class="btn btn-primary btn-md" value="Baixar Arquivo" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
-                                            <p:fileDownload value="#{documentosHelper.download(doc)}" />
-                                        </p:commandButton>               
-                                        
-                                        <h:outputText style="font-size: small" value="  #{doc.tamanhoDoArquivo} bytes." />
-                                            <h:outputText style="font-size: small" value=" postado em:  #{doc.dataInclusao}." />
-                                    </hr>
-                                </c:forEach>
-                            </hr>
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
 
-                        </h:form>
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2017" id="segundoperiodo">
+                                    <h:form id="aulasegundoperiodo">   
+
+                                       <p:dataTable var="var" value="#{documentosHelper.documentos17}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2016" id="terceiroperiodo">
+                                    <h:form id="aulaterceiroperiodo">   
+
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos16}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2015" id="quartoperiodo">
+                                    <h:form id="aulaquartoperiodo">   
+
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos15}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2014" id="quintoperiodo">
+                                    <h:form id="aulaquintoperiodo">   
+
+                                       <p:dataTable var="var" value="#{documentosHelper.documentos14}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2013" id="sextoperiodo">
+                                    <h:form id="aulasextoperiodo">   
+
+                                       <p:dataTable var="var" value="#{documentosHelper.documentos13}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2012" id="setimoperiodo">
+                                    <h:form id="aulasetimoperiodo">   
+
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos12}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2011" id="oitavoperiodo">
+                                    <h:form id="aulaoitavoperiodo">   
+
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos11}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                                <b:tab title="2010" id="optativas">
+                                    <h:form id="aulaoptativas">   
+
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos10}"
+                                                     rowKey="#{var.id}"
+                                                     emptyMessage="Nenhum Registro Encontrado"
+                                                     widgetVar="varTable" 
+                                                     tableStyleClass="table table-bordered table-striped"
+                                                     >                                    
+                                            <p:column  headerText="Título" >
+                                                <h:outputText value="#{var.titulo}" />
+                                            </p:column>                                            
+
+                                            <p:column headerText="Arquivo" >
+                                                <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                                    <p:fileDownload value="#{documentosHelper.download(var)}" />
+                                                </p:commandButton> 
+                                            </p:column>
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>                                                                                  
+                                        </p:dataTable>
+
+                                    </h:form>
+                                </b:tab>
+
+                            </b:tabView>
+                        </hr>
+
                     </div>
                 </div>
             </div>

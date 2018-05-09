@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Infraestrutura Compartilhada</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../../css/signin.css" rel="stylesheet"></link>
+        <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../../css/layout.css" rel="stylesheet"></link>
+        <link href="../../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Infraestrutura Compartilhada (Campus Palmas)</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <p class="text-justify">O Curso de Ciência da Computação possui infraestrutura administrativa própria para atendimento aos discentes e docentes. O curso conta com infraestrutura de salas e laboratórios adequadas para as atividades de ensino, pesquisa e extensão. A UFT disponibiliza ainda espaços comuns para os cursos expandido adequadamente o atendimento aos discentes, docentes e técnicos administrativos.</p>
+
+                                <h5>Biblioteca</h5>
+                                <p class="text-justify">
+                                    A biblioteca do campus de Palmas-UFT, em especial, chamada de Biblioteca Professor José Torquato Carolino, foi inaugurada em 16 de março de 2011 e conta com espaço para estudos coletivos e individuais, sala de consulta ao acervo, videoteca e um amplo espaço climatizado, com vista panorâmica para o Lago de Palmas e também para a Serra do Carmo. É a maior e mais moderna biblioteca do Estado do Tocantins, contém aproximadamente 74 mil exemplares e atende 17 cursos de graduação e 15 de pós-graduação (stricto sensu), englobando cursos das áreas de Engenharia, Ciências Exatas, Ciências da Saúde e Sociais Aplicadas. Mais informações sobre o Sisbib/UFT podem ser obtidas no site <h:outputLink target="_blank" value="http://ww2.uft.edu.br/gestao/orgaos-complementares/11047-sisbib" > http://ww2.uft.edu.br/gestao/orgaos-complementares/11047-sisbib </h:outputLink> .
+                                </p>
+
+                                <p class="text-justify">
+                                    A UFT dispõe de um Sistema de Bibliotecas, o Sisbib/UFT, que compreende as bibliotecas dos campi de Araguaína, Arraias, Gurupi, Miracema, Palmas, Porto Nacional e Tocantinópolis, vinculadas funcionalmente à Reitoria e administrativamente às direções dos campi. O Sisbib/UFT contém cerca 238 mil exemplares, incluindo livros, revistas, periódicos, monografias, dissertações, teses, fitas VHS, CDs e DVDs. Além disso, o Sisbib/UFT é informatizado, possui computadores com acesso a Internet e participa do Portal CAPES, o qual disponibiliza periódicos eletrônicos com textos completos e bases de dados com resumos de documentos científicos.
+                                </p>
+
+                                <h5>Restaurante Universitário</h5>
+                                <p class="text-justify">
+                                    O Restaurante Universitário (RUs) do Campus de Palmas da Universidade Federal do Tocantins funciona desde o mês de junho de 2014. Ele faz parte da política de assistência estudantil da Instituição e têm como finalidade fornecer refeições balanceadas, higiênicas e de baixo custo à comunidade universitária. O RU funciona de segunda a sexta-feira durante os horários de almoço e jantar. Os cardápios e funcionamento do RU pode ser acompanhado por meio do site <h:outputLink target="_blank" value="http://ww2.uft.edu.br/gestao/pro-reitorias/107-proest/13703-restaurante-universitario" > http://ww2.uft.edu.br/gestao/pro-reitorias/107-proest/13703-restaurante-universitario </h:outputLink> ou por um aplicativo móvel, mantendo a comunidade acadêmica atualizada. O aplicativo pode ser obtivo pelo link <h:outputLink target="_blank" value="https://play.google.com/store/apps/details?id=com.uft.ru" > https://play.google.com/store/apps/details?id=com.uft.ru </h:outputLink>. Os RUs têm uma capacidade para atender a demanda de até 2,5 mil refeições por dia. O RU é gerenciados pela Pró-Reitoria de Assuntos Estudantis e Comunitários (PROEST) e, atualmente, funcionam como laboratório e campo de estágio para alunos de graduação do Curso de Nutrição.
+                                </p>
+
+                                <h5>Internet e Conectividade</h5>
+                                <p class="text-justify">
+                                    Deve-se destacar que o Campus de Palmas possui sinal de Wi-fi aberto para toda a comunidade acadêmica na área em que se encontra a infraestrutura do Campus. A internet da UFT está conectada, como um ponto de presença (Point of Presence - PoP), na rede de fibra óptica de alta velocidade junto à Rede Nacional de Ensino e Pesquisa (RNP), do Ministério da Ciência, Tecnologias, Inovações e Comunicação (MCTIC), configurando-se como a conexão de internet mais rápida no Estado do Tocantins, a uma velocidade de 10 Gbits/s. A UFT conta com uma infraestrutura de centro de dados implantado na Diretoria de Tecnologia da Informação (DTI/UFT) na cidade de Palmas-TO. O centro de dados acomoda, atualmente, toda a infraestrutura de servidores, de armazenamento e de redes de computadores usados em pesquisa, desenvolvimento e inovação na universidade e região. Portanto, a UFT oferece os serviços de processamento, armazenamento e comunicação de dados e informações. 
+                                </p>
+
+                                <p class="text-justify">
+                                    O data center da DTI/UFT possui infraestrutura preparada para a implantação dos equipamentos de computação de alto desempenho. Além disso, possui sistema para combate e prevenção de incêndios, contendo os materiais e recursos adequados às características dos equipamentos (extintores, sinalizadores e etc). Além da infraestrutura física, DTI/UFT conta com um corpo técnico administrativo com mais de 30 (trinta) profissionais da área de computação, distribuídos em seis setores: desenvolvimento de sistemas, infraestrutura de TIC, gerenciamento de sistemas de informação, suporte e manutenção, central de atendimento ao usuário e núcleo administrativo e gestão de contratos. Por possui uma infraestrutura avançada, a DTI acomoda um rack com a infraestrutura de servidores do Curso de Ciência da Computação, o qual nos últimos 05 (cinco) anos, investiu aproximadamente R$ 200.000,00 (duzentos mil reais) para a aquisição de servidores.
+                                </p>
+
+
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

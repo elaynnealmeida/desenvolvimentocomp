@@ -7,7 +7,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
-        <title>Documentos Postados Pelo NDE</title>
+        <title>Documentos Postados Pelo Núcleo Docente Estruturante(NDE)</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
@@ -41,7 +41,7 @@
 
                         <h:form id="formdocumentos">
                             <h1>
-                                <h:outputText value="Documentos Para Download  " /> 
+                                <h:outputText value="Documentos Postados Pelo Núcleo Docente Estruturante(NDE)" /> 
                             </h1>
                             <hr>
                                 <c:forEach var="doc" items="${documentosHelper.documentosNDE}" varStatus="id" >
@@ -54,8 +54,8 @@
                                             <p:fileDownload value="#{documentosHelper.download(doc)}" />
                                         </p:commandButton>               
                                         
-                                        <h:outputText style="font-size: small" value="  #{doc.tamanhoDoArquivo} bytes." />
-                                            <h:outputText style="font-size: small" value=" postado em:  #{doc.dataInclusao}." />
+                                       <!-- <h:outputText style="font-size: small" value="  #//{doc.tamanhoDoArquivo} bytes." />-->
+                                       <h:outputText style="font-size: small" value=" Data:  #{doc.dataArquivo}." />
                                     </hr>
                                 </c:forEach>
                             </hr>

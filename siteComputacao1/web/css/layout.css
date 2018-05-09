@@ -1,13 +1,13 @@
 .font-pequena{
-    font-size: .80em 
+    font-size: .6em 
 }
 
 .font-pequena-media{
-    font-size: 1em
+    font-size: 0.75em
 }
 
 .font-media{
-    font-size: 19px
+    font-size: 17px
 }
 
 .ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {

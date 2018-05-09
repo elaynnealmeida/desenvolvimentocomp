@@ -53,8 +53,8 @@ public class HorarioAulaDAO extends GenericDAO<SiteHorarioAula>{
         Join<SiteHorarioAula, SiteTurma> join = root.join("turmaId", JoinType.INNER);
         Join<SiteTurma, TbDisciplina> join2 = join.join("disciplinaId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.and(builder.equal(builder.equal(join2.get("periodoIdeal"), periodo), 
-                builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true"))));
+        query.where(builder.and(builder.equal(join2.get("periodoIdeal"), periodo), 
+                builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true")));
         query.orderBy(builder.asc(root.get("dia")),builder.asc(root.get("horaInicio")));
         result = em1.createQuery(query).getResultList();
         em1.close();

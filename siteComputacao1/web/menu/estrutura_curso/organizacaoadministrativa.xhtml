@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Organização Administrativa</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../../css/signin.css" rel="stylesheet"></link>
+        <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../../css/layout.css" rel="stylesheet"></link>
+        <link href="../../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Organização Administrativa</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <ol type = "1" start="1">
+                                    <li>Coordenação de Curso  
+                                        <ol type = "1" start="1">
+                                            <li>Assessoria
+                                                <ol type = "1" start="1">
+                                                    <li>Colegiado do Curso de Ciência da Computação</li>
+                                                </ol>
+                                            </li>
+                                            <li>Administrativo
+                                                <ol type = "1" start="1">
+                                                    <li>Secretaria da Coordenação de Curso</li>
+                                                </ol>
+                                            </li>
+                                            <li>Laboratórios
+                                                <ol type = "1" start="1">
+                                                    <li>Ensino
+                                                        <ol type = "1" start="1">
+                                                            <li>Laboratório de Redes Avançadas e Multimídia</li>
+                                                            <li>Laboratório de Hardware e Arquitetura de Computadores</li>
+                                                            <li>Laboratório de Programação de Computadores</li>
+                                                            <li>Laboratório de Banco de Dados e Engenharia de Software</li>
+                                                            <li>Laboratório de Computação Gráfica e Processamento de Imagens</li>                                                        
+                                                        </ol>
+                                                    </li>
+                                                    <li>Pesquisa e Extensão (temáticos)
+                                                        <ol type = "1" start="1">
+                                                            <li>Laboratório de Computação Aplicada</li>
+                                                            <li>Laboratório de Inteligência Artificial</li>
+                                                            <li>Laboratório de Eletrônica e Física Computacional</li>
+                                                            <li>Laboratório de Inteligência Computacional</li>
+                                                            <li>Laboratório de Robótica</li>   
+                                                            <li>Laboratório de Modelagem Computacional</li>   
+                                                        </ol>
+                                                    </li>
+                                                </ol>
+                                            </li>
+
+                                            <li>Núcleos
+                                                <ol type = "1" start="1">
+                                                    <li>Pesquisa
+                                                        <ol type = "1" start="1">
+                                                            <li>Núcleo de Computação Aplicada</li>
+                                                            <li>Núcleo de Desenvolvimento de Software</li>
+                                                            <li>Núcleo de Apoio Discente</li>
+                                                            <li>Fábrica de Software da Ciência da Computação</li>
+                                                        </ol>
+                                                    </li>
+
+                                                </ol>
+                                            </li>
+
+                                        </ol>
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

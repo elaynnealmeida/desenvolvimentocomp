@@ -22,17 +22,36 @@ and open the template in the editor.
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="font-pequena-media" data-toggle="collapse" href="#collapse1">Estrutura do Curso</a>
+                                        <a  data-toggle="collapse" href="#collapse1">O Curso</a>
                                     </h4>
                                 </div>
                                 <div id="collapse1" class="panel-collapse collapse">
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item"  value="Sobre o Curso" actionListener="#{navegacaoHelper.sobre()}"/>
+                                        <h:commandLink class="list-group-item"  value="Identidade Visual" actionListener="#{navegacaoHelper.identidadeVisual()}"/>
+                                        <h:commandLink class="list-group-item" value="Organização Administrativa" actionListener="#{navegacaoHelper.organizacaoadministrativa()}"/>
                                         <h:commandLink class="list-group-item"  value="Matriz Curricular" actionListener="#{navegacaoHelper.matrizCurricular()}"/>
                                         <h:commandLink class="list-group-item" value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/>
+                                        <h:commandLink class="list-group-item" value="Linhas de Pesquisa" actionListener="#{navegacaoHelper.linhasdepesquisa()}"/>
+                                    </ul>
+                                    <div class="panel-footer">O Curso</div>
+                                </div>
+                            </div>
+                            
+                               <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a  data-toggle="collapse" href="#collapse7">Infraestrutura</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse7" class="panel-collapse collapse">
+                                    <ul class="list-group">                                        
+                                        <h:commandLink class="list-group-item" value="Administrativa" actionListener="#{navegacaoHelper.infraadministrativa()}"/>
+                                        <h:commandLink class="list-group-item" value="Pedagógica" actionListener="#{navegacaoHelper.infrapedagogica()}"/>
+                                        <h:commandLink class="list-group-item" value="Compartilhada" actionListener="#{navegacaoHelper.infracompartilhada()}"/>
                                         <h:commandLink class="list-group-item" value="Laboratórios" actionListener="#{navegacaoHelper.laboratorios()}"/>
                                     </ul>
-                                    <div class="panel-footer">Estrutura do Curso</div>
+                                    <div class="panel-footer">Infraestrutura</div>
                                 </div>
                             </div>
                             
@@ -51,6 +70,29 @@ and open the template in the editor.
                                 </div>
                             </div>
                             
+                              <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse8">Extensão</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse8" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                        <h:commandLink class="list-group-item" value="Sobre" actionListener="#{navegacaoHelper.extensao_sobre()}"/> 
+                                        <h:commandLink class="list-group-item" value="Taekwondo Universitário" actionListener="#{navegacaoHelper.taekwondo()}"/> 
+                                        <h:commandLink class="list-group-item" value="Seminários e Palestras" actionListener="#{navegacaoHelper.seminariosepalestras()}"/> 
+                                        <h:commandLink class="list-group-item" value="Campus Party/CSBC" actionListener="#{navegacaoHelper.congressos()}"/> 
+                                        <h:commandLink class="list-group-item" value="Olimpíada Brasileira de Robótica" actionListener="#{navegacaoHelper.olimpiadasrobotica()}"/> 
+                                        <h:commandLink class="list-group-item" value="Olimpíada Brasileira de Informática" actionListener="#{navegacaoHelper.obi()}"/> 
+                                        <h:commandLink class="list-group-item" value="Semana Acadêmica" actionListener="#{navegacaoHelper.secomp()}"/> 
+                                        <h:commandLink class="list-group-item" value="Maratona de Programação" actionListener="#{navegacaoHelper.maratona()}"/> 
+                                        <h:commandLink class="list-group-item" value="Fábrica de Software" actionListener="#{navegacaoHelper.fabrica()}"/> 
+                                        
+                                     </ul>
+                                    <div class="panel-footer">Extensão</div>
+                                </div>
+                            </div>
+                            
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -60,7 +102,7 @@ and open the template in the editor.
                                 <div id="collapse2" class="panel-collapse collapse">
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Docentes" actionListener="#{navegacaoHelper.servidores()}"/>
-                                        <h:commandLink class="list-group-item" value="Técnicos" actionListener="#{navegacaoHelper.tecnicos1()}"/>
+                                        <h:commandLink class="list-group-item" value="Técnicos Administrativos" actionListener="#{navegacaoHelper.tecnicos1()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Formação" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.professor_formacao()}"/>
                                         <h:commandLink class="list-group-item" value="Cadastrar Links" rendered="#{loginController.isUser}" actionListener="#{navegacaoHelper.cadastrar_links()}"/>
                                     </ul>
@@ -78,7 +120,7 @@ and open the template in the editor.
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Aulas" actionListener="#{navegacaoHelper.horarios_aula()}"/> 
                                         <h:commandLink class="list-group-item" value="Atendimento Professor" actionListener="#{navegacaoHelper.atendimento_professores()}"/>
-                                        <h:commandLink class="list-group-item" value="Técnicos" actionListener="#{navegacaoHelper.horario_tecnicos()}"/>
+                                        <h:commandLink class="list-group-item" value="Técnicos Administrativos" actionListener="#{navegacaoHelper.horario_tecnicos()}"/>
                                         <h:commandLink class="list-group-item" value="Estagiários" actionListener="#{navegacaoHelper.horario_estagiarios()}"/>
                                         <h:commandLink class="list-group-item" value="Monitores" actionListener="#{navegacaoHelper.horario_monitores()}"/>
                                     </ul>
@@ -94,12 +136,12 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse3" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                        <h:commandLink class="list-group-item" value="CONDIR" actionListener="#{navegacaoHelper.paginaDowloadsCondir()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="CONSEPE" actionListener="#{navegacaoHelper.paginaDowloadsConsepe()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="CONSUNI" actionListener="#{navegacaoHelper.paginaDowloadsConsuni()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Coordenação" actionListener="#{navegacaoHelper.paginaDowloads()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="Docentes" actionListener="#{navegacaoHelper.paginaDowloadsDocentes()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="NDE" actionListener="#{navegacaoHelper.paginaDowloadsNDE()}"></h:commandLink>
+                                   <!--     <h:commandLink class="list-group-item" value="CONDIR" actionListener="#//{navegacaoHelper.paginaDowloadsCondir()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="CONSEPE" actionListener="#//{navegacaoHelper.paginaDowloadsConsepe()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="CONSUNI" actionListener="#//{navegacaoHelper.paginaDowloadsConsuni()}"></h:commandLink>-->
+                                        <h:commandLink class="list-group-item" value="Atas Coordenação" actionListener="#{navegacaoHelper.paginaDowloads()}"></h:commandLink>
+                                      <!--  <h:commandLink class="list-group-item" value="Docentes" actionListener="#//{navegacaoHelper.paginaDowloadsDocentes()}"></h:commandLink>-->
+                                        <h:commandLink class="list-group-item" value="Núcleo Docente Estruturante" actionListener="#{navegacaoHelper.paginaDowloadsNDE()}"></h:commandLink>
                                         <h:commandLink class="list-group-item" value="Enade" actionListener="#{navegacaoHelper.paginaDowloadsEnade()}"></h:commandLink>
 
                                     </ul>

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Semana Acadêmica da Ciência da Computação (Secomp)</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/signin.css" rel="stylesheet"></link>
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Semana Acadêmica da Ciência da Computação (Secomp)</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <h5>
+                                    Responsável: Colegiado e Centro Acadêmico do Curso de Ciência da Computação
+                                </h5>
+                                <p class="text-justify">
+                                    A Semana Acadêmica de Ciência da Computação é um evento que ocorre com periodicidade anual, sendo promovido pelo curso de Ciência da Computação da UFT. Ao longo dos anos, este evento científico em computação vem ganhando cada vez mais importância e respeito, agregando grande parte da comunidade regional cujo interesse em tecnologia e computação seja proveniente do meio acadêmico ou do meio empresarial e industrial. As últimas edições da Semana Acadêmica realizadas anualmente no campus de Palmas da UFT foram um sucesso, contando com mais de 200 participantes. Além disso, a cooperação de todos os docentes do curso, além de profissionais do mercado de trabalho e de professores de outras instituições, tornou possível a realização de um evento com qualidade, eficiência e eficácia.
+                                </p>
+                                
+                                <p class="text-justify">
+                                    A Universidade Federal do Tocantins (UFT) é responsável por gerar e disseminar conhecimento, fomentando o desenvolvimento tecnológico do estado do Tocantins. Logo, cabe à UFT propiciar o desenvolvimento de soluções e sistemas de informação que não somente atendam as demandas públicas do estado como também as demandas privadas, e à medida do possível, fomente a transferência de tecnologia do meio acadêmico para a comunidade tocantinense. Diante disso, o desenvolvimento de projetos de extensão são de extrema importância. Considerando o contínuo e dinâmico progresso em comunicação, tecnologia e computação, é um desafio constante manter os profissionais atualizados, sendo fundamental a promoção de eventos que tratem do desenvolvimento de soluções tecnológicas atuais e de inovação, promovendo a qualificação profissional e, consequentemente, o avanço tecnológico de nossa região. Nesse contexto, a VIII Semana Acadêmica da Ciência da Computação é uma oportunidade para integração, discussão e difusão do conhecimento entre profissionais qualificados e estudantes.
+                                </p>
+
+                                <p class="text-justify">
+                                    O objetivo geral da Semana Acadêmica é incentivar a participação de acadêmicos e profissionais de áreas ligadas a tecnologia e a computação, além de fomentar projetos científicos de pesquisa, extensão e para o desenvolvimento de produtos e ferramentas que possam trazer ganhos para a sociedade, profissionais e empresas participantes. Também objetiva-se promover a integração entre os acadêmicos e os profissionais de computação, como forma de estreitar relações e diminuir as dificuldades, os medos e os mitos quanto a inserção dos acadêmicos no mercado de trabalho. Tem-se ainda o objetivo de trazer para o público o que há de mais novo em relação a tecnologia para o desenvolvimento de sistemas e softwares, mostrando ferramentas atualmente utilizadas por empresas para aumentar a eficácia durante o desenvolvimento de seus produtos, assim como pesquisadores de renome durante palestras e debates mostrando aos participantes a importância das universidades no processo de formação de profissionais e na produção científica para o Brasil.
+                                </p>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

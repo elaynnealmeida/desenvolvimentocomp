@@ -139,6 +139,9 @@ public class TbProfessoresController implements Serializable {
         if (!professor.getSiteCargoProfessorList().isEmpty()) {
             this.cargoProf = professor.getSiteCargoProfessorList().get(0);
         }
+        else{
+        this.cargoProf =null;
+        }
         this.isEdit = true;
     }
 

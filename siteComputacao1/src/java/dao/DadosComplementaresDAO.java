@@ -34,6 +34,7 @@ public class DadosComplementaresDAO extends GenericDAO<SiteProfDadosComplementar
         EntityType type = em1.getMetamodel().entity(SiteProfDadosComplementares.class);
         Root root = query.from(SiteProfDadosComplementares.class);
         query.where(builder.equal(root.get(type.getDeclaredSingularAttribute("idProfessor", TbProfessores.class)), id));
+         query.orderBy(builder.asc(root.get("nome")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -53,6 +54,7 @@ public class DadosComplementaresDAO extends GenericDAO<SiteProfDadosComplementar
         Join<SiteCargoProfessor, SiteCargo> join3 = join2.join("cargoId", JoinType.INNER);
         query.equals(join3.get("id"));
         query.where(builder.and(builder.equal(join.get("ativo"), "true"), builder.or((builder.equal(join3.get("id"), 1)), (builder.equal(join3.get("id"), 2)))));
+        query.orderBy(builder.asc(join.get("nome")));
         result = em1.createQuery(query).getResultList();
         em1.close();
 
@@ -72,6 +74,7 @@ public class DadosComplementaresDAO extends GenericDAO<SiteProfDadosComplementar
         Join<SiteCargoProfessor, SiteCargo> join3 = join2.join("cargoId", JoinType.INNER);
         query.equals(join3.get("id"));
         query.where(builder.and(builder.equal(join.get("ativo"), "false"), builder.or((builder.equal(join3.get("id"), 1)), (builder.equal(join3.get("id"), 2)))));
+        query.orderBy(builder.asc(join.get("nome")));
         result = em1.createQuery(query).getResultList();
         em1.close();
 
@@ -92,6 +95,7 @@ public class DadosComplementaresDAO extends GenericDAO<SiteProfDadosComplementar
         Join<SiteCargoProfessor, SiteCargo> join3 = join2.join("cargoId", JoinType.INNER);
         query.equals(join3.get("id"));
         query.where(builder.and(builder.equal(join.get("ativo"), "true"), builder.or((builder.equal(join3.get("id"), 3)), (builder.equal(join3.get("id"), 4)))));
+        query.orderBy(builder.asc(join.get("nome")));
         result = em1.createQuery(query).getResultList();
         em1.close();
 
@@ -111,6 +115,7 @@ public class DadosComplementaresDAO extends GenericDAO<SiteProfDadosComplementar
         Join<SiteCargoProfessor, SiteCargo> join3 = join2.join("cargoId", JoinType.INNER);
         query.equals(join3.get("id"));
         query.where(builder.and(builder.equal(join.get("ativo"), "false"), builder.or((builder.equal(join3.get("id"), 3)), (builder.equal(join3.get("id"), 4)))));
+        query.orderBy(builder.asc(join.get("nome")));
         result = em1.createQuery(query).getResultList();
         em1.close();
 

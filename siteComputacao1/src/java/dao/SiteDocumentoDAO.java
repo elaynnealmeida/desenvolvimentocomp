@@ -33,7 +33,7 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);       
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -51,7 +51,7 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
         query.where(builder.equal(join2.get("id"),"1"));   //Consuni
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -69,7 +69,7 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
        // Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join.get("id"));
         query.where(builder.equal(join.get("id"),"8"));   //Enade
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -87,7 +87,7 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
         query.where(builder.equal(join2.get("id"),"2"));   //Consepe
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -101,10 +101,10 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
         Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
-       Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
+        Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
         query.where(builder.equal(join2.get("id"),"4"));   //Docentes
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
@@ -121,12 +121,13 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
         query.where(builder.equal(join2.get("id"),"5"));   //Condir
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    public List<SiteDocumento> listarCoordenacao() {
+    
+    public List<SiteDocumento> listarCoordenacao(String ano) {
         System.out.println("entrou no dao listar listarCoordenacao");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
         EntityManager em1 = getEM();
@@ -137,12 +138,15 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"6"));   //Coordenacao
-        query.orderBy(builder.desc(root.get("hora")));
+       // query.where(builder.equal(join2.get("id"),"6"));   //Coordenacao        
+        query.where(builder.and(builder.equal(join2.get("id"),"6"),
+                builder.like(root.get("dataArquivo"), "%" + ano + "%")));     
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
+    
     public List<SiteDocumento> listarNDE() {
         System.out.println("entrou no dao listar listarNDE");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -155,7 +159,7 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
         query.where(builder.equal(join2.get("id"),"7"));   //nde
-        query.orderBy(builder.desc(root.get("hora")));
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;

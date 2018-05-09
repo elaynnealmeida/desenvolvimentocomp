@@ -41,17 +41,26 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "SiteDocumento.findByAssunto", query = "SELECT s FROM SiteDocumento s WHERE s.assunto = :assunto")})
 public class SiteDocumento implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "arquivo")
+    private byte[] arquivo;
+    @Size(max = 2147483647)
+    @Column(name = "extencao")
+    private String extencao;
+    @Column(name = "data_arquivo2")
+    private Integer dataArquivo2;
+    @Size(max = 2147483647)
+    @Column(name = "data_arquivo")
+    private String dataArquivo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Column(name = "arquivo")
-    private byte[] arquivo;
     @Column(name = "tamanho_do_arquivo")
     private BigInteger tamanhoDoArquivo;
     @Size(max = 2147483647)
@@ -97,13 +106,6 @@ public class SiteDocumento implements Serializable {
         this.id = id;
     }
 
-    public byte[] getArquivo() {
-        return arquivo;
-    }
-
-    public void setArquivo(byte[] arquivo) {
-        this.arquivo = arquivo;
-    }
 
     public BigInteger getTamanhoDoArquivo() {
         return tamanhoDoArquivo;
@@ -200,6 +202,40 @@ public class SiteDocumento implements Serializable {
     @Override
     public String toString() {
         return "model.SiteDocumento[ id=" + id + " ]";
+    }
+
+
+    public String getDataArquivo() {
+        return dataArquivo;
+    }
+
+    public void setDataArquivo(String dataArquivo) {
+        this.dataArquivo = dataArquivo;
+    }
+
+
+    public Integer getDataArquivo2() {
+        return dataArquivo2;
+    }
+
+    public void setDataArquivo2(Integer dataArquivo2) {
+        this.dataArquivo2 = dataArquivo2;
+    }
+
+    public byte[] getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(byte[] arquivo) {
+        this.arquivo = arquivo;
+    }
+
+    public String getExtencao() {
+        return extencao;
+    }
+
+    public void setExtencao(String extencao) {
+        this.extencao = extencao;
     }
     
 }

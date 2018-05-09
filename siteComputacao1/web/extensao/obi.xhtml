@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Olimpíada Brasileira de Informática (OBI)</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/signin.css" rel="stylesheet"></link>
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Olimpíada Brasileira de Informática (OBI)</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <h5>
+                                    Responsável: Prof. Dr. Alexandre Tadeu Rossini da Silva
+                                </h5>
+                                <p class="text-justify">
+                                    A Olimpíada Brasileira de Informática (OBI) é uma competição organizada pela Sociedade Brasileira de Computação (SBC) nos moldes das outras olimpíadas científicas brasileiras, como Matemática, Física e Astronomia. O objetivo da OBI é despertar nos alunos o interesse por uma ciência importante na formação básica hoje em dia (no caso, ciência da computação), através de uma atividade que envolve desafio, engenhosidade e uma saudável dose de competição. A organização da OBI está cargo do Instituto de Computação da UNICAMP. A OBI está organizada em três modalidades:
+
+                                    <ol  type = "1" start="1">
+                                        <li>Modalidade Iniciação:
+                                            <ol type = "1" start="1">
+                                                <li>Nível 1, para alunos até sétimo ano do Ensino Fundamental e</li>
+                                                <li>Nível 2, para alunos até nono ano do Ensino Fundamental.</li>
+                                            </ol>
+                                        </li>
+                                        <li>Modalidade Programação:
+                                            <ol type = "1" start="1">
+                                                <li type = "1" start="1">Nível Júnior, para alunos do ensino fundamental,</li>
+                                                <li>Nível 1, para alunos até o segundo ano do ensino médio e</li>
+                                                <li>Nível 2, para alunos até o terceiro ano do ensino médio.</li>
+                                            </ol>
+                                        </li>
+                                        <li type = "1" start="1">Modalidade Universitária:
+                                            <ol type = "1" start="1">
+                                                <li start="1">Para alunos que estejam cursando, pela primeira vez, o primeiro ano de um curso de graduação.</li>
+                                            </ol>
+                                        </li>
+                                    </ol>
+
+                                </p>
+                                <p class="text-justify">
+                                    Em todas as modalidades os alunos competem individualmente. Cada aluno poderá estar inscrito em apenas uma modalidade. A prova da modalidade Universitária exige conhecimento em programação; é necessário prover computadores para os participantes, na ocasião da prova. A prova é composta de tarefas de programação com níveis variados de dificuldade: há tarefas mais fáceis, em que um conhecimento mínimo de programação é suficiente, e algumas tarefas mais difíceis, que exigem um conhecimento um pouco mais avançado de programação, com noções de estruturas de dados, em um nível normalmente ensinado em bons colégios técnicos, ou no primeiro ano de cursos superiores de computação ou engenharia.
+                                </p>
+
+                                <p class="text-justify">
+                                    Na premiação todos os participantes recebem certificados de participação. Os melhores colocados de cada modalidade receberão ainda medalhas de ouro, prata e bronze. Os melhores colocados das modalidades Iniciação e Programação serão convidados para uma semana de cursos no Instituto de Computação da UNICAMP. Os alunos da modalidade Iniciação participam de Cursos de Introdução à Programação; os alunos da modalidade Programação participarão de Cursos de Programação Avançada. Os cursos são ministrados no Instituto de Computação da UNICAMP. Para os alunos da modalidade Programação nível 2, haverá, durante o Curso de Programação Avançada, uma seleção para escolher os quatro alunos integrantes da equipe brasileira na Olimpíada Internacional de Informática, que conta com a participação de equipes de mais de 70 países.
+                                </p>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

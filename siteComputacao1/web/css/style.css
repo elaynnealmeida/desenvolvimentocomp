@@ -1,1 +1,25 @@
-/* YOUR CUSTOM STYLES */
+
+div ul li{
+    display: inline;
+}
+
+div img{
+	padding: 5px;
+	transition: 1s;
+}
+
+img:hover{
+	transform: grayscale(1.1);
+
+}
+
+.centralizar{
+    margin: 0px auto;
+}
+
+.centraliza{
+	text-align: center;
+}
+.justificar{
+    text-align: justify;
+}

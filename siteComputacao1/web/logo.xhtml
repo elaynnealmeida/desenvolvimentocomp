@@ -19,11 +19,19 @@ and open the template in the editor.
                         <main>
                             <!--Main layout-->
                             <div class="container">
-                                <br></br>
-                                <h:graphicImage styleClass="rounded float-xs-left" style="padding-right: 15px" value="#{resource['img/brasao.png']}" />
-                                <h1 class="h1-responsive" style=" font-size: 2.2em ;text-align: left; color: #ffffff; padding-top: 15px; ">Ciência da Computação</h1>
-                                <p style="text-align: left; color: #ffffff">UNIVERSIDADE FEDERAL DO TOCANTINS</p>
-                                <br></br>
+                                <div class = "row">                                   
+                                    <div class="col-md-6">
+                                        <br></br>
+                                        <h:graphicImage styleClass="rounded float-xs-left" style="margin-right: 15px;" value="#{resource['img/brasao.png']}" />
+                                        <h1 class="h1-responsive" style=" font-size: 2.2em; margin-top: 15px; text-align: left; color: #ffffff;  ">Ciência da Computação</h1>
+                                        <p style="text-align: left; color: #ffffff">UNIVERSIDADE FEDERAL DO TOCANTINS</p>
+                                        <br></br>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3">
+                                        <h:graphicImage styleClass="rounded float-xs-left" style="margin-top: 1.5em;" value="#{resource['img/logo-2.png']}" />
+                                    </div>
+                                </div>
                             </div>
 
                         </main>

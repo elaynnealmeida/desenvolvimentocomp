@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Atividades de Extensão</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/signin.css" rel="stylesheet"></link>
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Atividades de Extensão</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <p class="text-justify">
+                                    As atividades de Extensão Universitária são geridas pela Pró-Reitoria de Extensão (PROEX) com base na Resolução no 15 de 22 de Março de 2017, Dispõe sobre o Regulamento das Ações de Extensão da Universidade Federal do Tocantins. Conforme a unidade, a extensão é um processo educativo, cultural e científico que articula o Ensino e a Pesquisa de forma indissociável e viabiliza a relação transformadora entre Universidade e Sociedade. Por meio da extensão, a comunidade acadêmica encontra na sociedade a oportunidade de colocar em prática o conhecimento acadêmico. Além disso, no retorno à Universidade, docentes e discentes trazem um aprendizado que, submetido à reflexão teórica, é acrescido àquele conhecimento. O Curso de Ciência da Computação busca realizar as atividades de extensão norteadas pela política de extensão da UFT, que está pautada em três eixos principais: Promoção da cidadania, apoio a diversidade étnico-cultural e promoção a arte e cultura.
+                                </p>
+
+
+                                <p class="text-justify">
+                                    As propostas de ações de Extensão Universitária devem obrigatoriamente apresentar: o nome da ação, setores envolvidos, justificativa (demonstração da relevância acadêmica e social), objetivos, metodologia, caracterização do seu público-alvo, indicação do coordenador e dos possíveis participantes ou colaboradores, a carga horária dos participantes, recursos financeiros potencialmente envolvidos, cronograma de execução da ação, resultados a serem alcançados ou produtos esperados, descrição do local onde será realizada a ação, apresentar termo de ciência e compromisso de instituições parceiras.
+                                </p>
+
+                                <p class="text-justify">
+                                    As ações de Extensão Universitária podem ser propostas ou coordenadas por docentes ou técnicos administrativos do quadro de servidores da UFT. As ações de extensão devem envolver o público interno e externo a instituição, desenvolvidas de modo interdisciplinar e/ou multidisciplinar. A equipe executora de quaisquer ações de Extensão Universitária deverá ser composta por, no mínimo, 2/3 de pessoas vinculadas à UFT e poderá contar também com colaboradores externos. São previstas as seguintes modalidade de extensão:
+
+                                    <ol type = "a" start="a">
+                                        <li>Programas: conjunto de projetos de caráter orgânicos institucionais gerenciados com a mesma diretriz e voltados a um objetivo comum.
+                                        </li>
+                                        <li>Projetos: ações processuais contínuas de caráter educativo, cultural, científico, político e tecnológico;</li>
+                                        <li>Atividades: ações esporádicas, de caráter educativo, cultural, científico, político ou tecnológico, a exemplo de: cursos, eventos, prestações de serviços, produções e publicações, podendo ser incorporadas aos projetos e programas</li>
+                                    </ol>
+                                </p>
+
+                                <p class="text-justify">
+                                    Ao final das ações, os coordenadores devem aplicar questionários aos participantes de forma a avaliar a ação de extensão. O questionário deve conter dados sobre a qualidade das instalações, comunicação e divulgação da ação, conhecimento dos responsáveis pela ação, sugestões sobre melhorias. As ações devem gerar certificados aos participantes conforme as regras definidas pela Proex e a resolução em vigor.
+                                </p>
+
+                                <p class="text-justify">
+                                    O Curso de Bacharelado em Ciência da Computação possui um conjunto de atividades contínuas de extensão anualmente previstas.
+                                </p>
+
+
+
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

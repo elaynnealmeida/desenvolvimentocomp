@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Campus Party/CSBC </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../css/signin.css" rel="stylesheet"></link>
+        <link href="../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../css/layout.css" rel="stylesheet"></link>
+        <link href="../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Campus Party/Congresso da Sociedade Brasileira de Computação </h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <h5>
+                                    Responsável: Coordenação e Centro Acadêmico da Ciência da Computação
+                                </h5>
+                                <p class="text-justify">
+                                    A Campus Party tem sido um evento bastante procurado pelos acadêmicos do Curso de Ciência da Computação. Trata-se de um evento repleto de teorias, ideias, curiosidades, descobertas, inovações e conhecimentos compartilhados com diversos participantes que podem debater e aprimorar ainda mais essas experiências. Os conteúdos da Campus Party propõem discussões, reflexões e agora experimentações que levem ao desenvolvimento de jovens talentos e ideias, e com isso, impulsionem o crescimento do país. São apresentadas inovações tecnológicas com potencial de transformar os principais setores econômicos do planeta nas próximas décadas.
+                                </p>
+                                <p class="text-justify">
+                                    A Campus Party concentra-se nas áreas de empreendedorismo, inovação, criatividade, entretenimento e ciência. A cada edição, a Campus Party Brasil tem buscado impulsionar jovens talentos e empreendedores a criarem ou tirarem seus projetos do papel. As mentorias e conteúdos da Campus Party serão focados em auxiliar o empreendedor a compreender se o modelo de negócios aplicado é o ideal, como escalar suas vendas, quais as diretrizes são necessárias para ser acelerado ou receber um investimento e como buscar uma aceleradora ou um investidor-anjo. Startups avançadas, com uma equipe robusta e desenvolvida, produtos lançados no mercado, com ou sem investimento, que já possuam faturamento.
+                                </p>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

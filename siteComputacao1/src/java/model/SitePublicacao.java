@@ -39,6 +39,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SitePublicacao.findByData", query = "SELECT s FROM SitePublicacao s WHERE s.data = :data")})
 public class SitePublicacao implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numero")
+    private int numero;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "ano")
+    private int ano;
+
     @OneToMany(mappedBy = "publicacaoId")
     private List<SiteDocumento> siteDocumentoList;
 
@@ -48,14 +57,6 @@ public class SitePublicacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "numero")
-    private Integer numero;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "ano")
-    private Integer ano;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -90,21 +91,6 @@ public class SitePublicacao implements Serializable {
         this.id = id;
     }
 
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public Integer getAno() {
-        return ano;
-    }
-
-    public void setAno(Integer ano) {
-        this.ano = ano;
-    }
 
     public String getData() {
         return data;
@@ -162,6 +148,22 @@ public class SitePublicacao implements Serializable {
 
     public void setSiteDocumentoList(List<SiteDocumento> siteDocumentoList) {
         this.siteDocumentoList = siteDocumentoList;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
     }
     
 }

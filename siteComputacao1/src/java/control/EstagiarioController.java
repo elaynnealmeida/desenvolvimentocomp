@@ -161,7 +161,7 @@ public class EstagiarioController implements Serializable {
         List<TbSala> result = new ArrayList<TbSala>();
         result = tpdDao.listarTodos();
         for (int i = 0; i < result.size(); i++) {
-            toReturn.add(new SelectItem(result.get(i), result.get(i).getBlocoId().getDescricao() + " - " + result.get(i).getNomeSala()));
+            toReturn.add(new SelectItem(result.get(i), "Boloco "+result.get(i).getBlocoId().getDescricao() + " - Sala " + result.get(i).getNomeSala()));
             //System.out.println("perfil: " + result.get(i).toString());
         }
         return toReturn;
