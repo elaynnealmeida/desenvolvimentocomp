@@ -1,4 +1,3 @@
-
 package dao;
 
 import static antlr.build.ANTLR.root;
@@ -19,12 +18,12 @@ import model.SiteTipoArquivo;
  *
  * @author UFT
  */
-public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
-    
-    public SiteDocumentoDAO(){
+public class SiteDocumentoDAO extends GenericDAO<SiteDocumento> {
+
+    public SiteDocumentoDAO() {
         super(SiteDocumento.class);
     }
-    
+
     public List<SiteDocumento> listarPorData() {
         System.out.println("entrou no dao listar documentos");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -32,13 +31,13 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         em1.getTransaction().begin();
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
-        Root root = query.from(SiteDocumento.class);       
+        Root root = query.from(SiteDocumento.class);
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
     public List<SiteDocumento> listarConsuni() {
         System.out.println("entrou no dao listar listarConsuni");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -47,16 +46,16 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"1"));   //Consuni
+        query.where(builder.equal(join2.get("id"), "1"));   //Consuni
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
     public List<SiteDocumento> listarEnade() {
         System.out.println("entrou no dao listar Enade");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -65,16 +64,16 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SiteTipoArquivo> join =  root.join("tipoDocumento", JoinType.INNER);
-       // Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
+        Join<SiteDocumento, SiteTipoArquivo> join = root.join("tipoDocumento", JoinType.INNER);
+        // Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join.get("id"));
-        query.where(builder.equal(join.get("id"),"8"));   //Enade
+        query.where(builder.equal(join.get("id"), "8"));   //Enade
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
     public List<SiteDocumento> listarConsepe() {
         System.out.println("entrou no dao listar listarConsepe");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -83,15 +82,16 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"2"));   //Consepe
+        query.where(builder.equal(join2.get("id"), "2"));   //Consepe
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
+
     public List<SiteDocumento> listarDocentes() {
         System.out.println("entrou no dao listar listarDocentes");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -100,15 +100,16 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"4"));   //Docentes
+        query.where(builder.equal(join2.get("id"), "4"));   //Docentes
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
+
     public List<SiteDocumento> listarCondir() {
         System.out.println("entrou no dao listar listarCondir");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -117,16 +118,16 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"5"));   //Condir
+        query.where(builder.equal(join2.get("id"), "5"));   //Condir
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
     public List<SiteDocumento> listarCoordenacao(String ano) {
         System.out.println("entrou no dao listar listarCoordenacao");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -135,18 +136,20 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join1 = root.join("tipoDocumento", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-       // query.where(builder.equal(join2.get("id"),"6"));   //Coordenacao        
-        query.where(builder.and(builder.equal(join2.get("id"),"6"),
-                builder.like(root.get("dataArquivo"), "%" + ano + "%")));     
+        query.equals(join1.get("id"));
+        // query.where(builder.equal(join2.get("id"),"6"));   //Coordenacao        
+        query.where(builder.and(builder.equal(join2.get("id"), "6"),
+                builder.like(root.get("dataArquivo"), "%" + ano + "%"),builder.notEqual(join1.get("id"), "10")));
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
     public List<SiteDocumento> listarNDE() {
         System.out.println("entrou no dao listar listarNDE");
         List<SiteDocumento> result = new ArrayList<SiteDocumento>();
@@ -155,14 +158,48 @@ public class SiteDocumentoDAO extends GenericDAO<SiteDocumento>{
         CriteriaBuilder builder = em1.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(SiteDocumento.class);
         Root root = query.from(SiteDocumento.class);
-        Join<SiteDocumento, SitePublicacao> join =  root.join("publicacaoId", JoinType.INNER);
+        Join<SiteDocumento, SitePublicacao> join = root.join("publicacaoId", JoinType.INNER);
         Join<SitePublicacao, SiteConselho> join2 = join.join("conselhoId", JoinType.INNER);
         query.equals(join2.get("id"));
-        query.where(builder.equal(join2.get("id"),"7"));   //nde
+        query.where(builder.equal(join2.get("id"), "7"));   //nde
         query.orderBy(builder.desc(root.get("dataArquivo2")));
         result = em1.createQuery(query).getResultList();
         em1.close();
         return result;
     }
-    
+
+    public List<SiteDocumento> listarRegimentos() {
+        System.out.println("entrou no dao listar Regimentos");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);   
+        Join<SiteDocumento, SitePublicacao> join = root.join("tipoDocumento", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"), "10"));   //regimentos
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+
+    public List<SiteDocumento> listarDiversos() {
+        System.out.println("entrou no dao listar Outros documentos");
+        List<SiteDocumento> result = new ArrayList<SiteDocumento>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteDocumento.class);
+        Root root = query.from(SiteDocumento.class);
+        Join<SiteDocumento, SitePublicacao> join = root.join("tipoDocumento", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.equal(join.get("id"), "6"));   //outros
+        query.orderBy(builder.desc(root.get("dataArquivo2")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
+
 }

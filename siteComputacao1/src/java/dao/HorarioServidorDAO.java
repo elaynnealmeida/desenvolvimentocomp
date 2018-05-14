@@ -276,4 +276,25 @@ public class HorarioServidorDAO extends GenericDAO<SiteHorarioServidor> {
         em1.close();
         return result;
     }
+    
+     public List<SiteHorarioServidor> listarHorariosCoordenacao() {
+
+        List<SiteHorarioServidor> result = new ArrayList<SiteHorarioServidor>();
+        EntityManager em1 = getEM();
+        em1.getTransaction().begin();
+        CriteriaBuilder builder = em1.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(SiteHorarioServidor.class);
+        EntityType type = em1.getMetamodel().entity(SiteHorarioServidor.class);
+        Root root = query.from(SiteHorarioServidor.class);
+        Join<SiteHorarioServidor, TbProfessores> join = root.join("servidorId", JoinType.INNER);
+        //Join<TbProfessores, SiteCargoProfessor> join2 = join.join("siteCargoProfessorList", JoinType.INNER);
+       // Join<SiteCargoProfessor, SiteCargo> join3 = join2.join("cargoId", JoinType.INNER);
+        query.equals(join.get("id"));
+        query.where(builder.and(builder.equal(join.get("id"), "50"),//coordenação
+                builder.equal(root.get(type.getDeclaredSingularAttribute("ativo", Boolean.class)), "true")));
+        query.orderBy(builder.asc(root.get("dia")), builder.asc(root.get("horaInicio")));
+        result = em1.createQuery(query).getResultList();
+        em1.close();
+        return result;
+    }
 }

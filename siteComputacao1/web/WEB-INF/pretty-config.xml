@@ -192,6 +192,16 @@
         <pattern value="/menu/estrutura_curso/historico" />
         <view-id value="/faces/menu/estrutura_curso/historico.xhtml" />
     </url-mapping>
+    
+     <url-mapping id="objetivos">
+        <pattern value="/menu/estrutura_curso/objetivos" />
+        <view-id value="/faces/menu/estrutura_curso/objetivos.xhtml" />
+    </url-mapping>
+    
+     <url-mapping id="perfil_egresso">
+        <pattern value="/menu/estrutura_curso/perfil_egresso" />
+        <view-id value="/faces/menu/estrutura_curso/perfil_egresso.xhtml" />
+    </url-mapping>
         
     <url-mapping id="horarios_aulas">
         <pattern value="/menu/estrutura_curso/horarios" />

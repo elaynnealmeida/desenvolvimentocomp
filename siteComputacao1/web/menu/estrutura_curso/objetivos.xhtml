@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Objetivos do Curso</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="../../css/bootstrap.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <!-- Material Design Bootstrap -->
+        <link href="../../css/signin.css" rel="stylesheet"></link>
+        <link href="../../css/mdb.min.css" rel="stylesheet"></link>
+        <link href="../../css/layout.css" rel="stylesheet"></link>
+        <link href="../../css/geral.css" rel="stylesheet"></link>
+
+    </h:head>
+    <ui:insert name="menu" >
+        <ui:include src="../../menu.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <!--Corpo-->
+        <main>
+            <!--Main layout-->
+            <div class="container">
+                <br></br>
+                <div class="row">
+                    <ui:insert name="menu_lateral">
+                        <ui:include src="../../menu_lateral.xhtml"></ui:include>
+                    </ui:insert>
+                    <!--Main column-->
+
+                    <div class="col-lg-9">
+                        <h:form>
+                            <div class="post-wrapper">
+                                <!--Post data-->
+                                <h1 class="h6-responsive">Objetivos do Curso</h1>
+
+                                <br></br>
+                                <!--Post excerpt-->
+                                <p class="text-justify">O curso de Ciência da Computação da Universidade Federal do Tocantins visa formar profissionais com sólido conhecimento científico e tecnológico na área de Computação, conhecendo os fundamentos da ciência e as interligações com outras ciências, com habilidade de atuar no desenvolvimento científico e tecnológico de maneira criativa e inovadora. São objetivos específicos do Curso de Ciência da Computação:</p>
+
+                                    <li>Incentivar o perfil pesquisador do estudante, visando promover o desenvolvimento científico e tecnológico da Ciência da Computação;</li>
+                                    <li>Preparar o estudante para atuar profissionalmente em organizações de forma empreendedora e com responsabilidade social;</li>
+                                    <li>Proporcionar atividades acadêmicas que estimulem a interdisciplinaridade, bem como a aplicação e renovação dos conhecimentos e habilidades de forma independente e inovadora, nos diversos contextos da atuação profissional;</li>
+                                    <li>Formar estudantes que possam estar em sintonia com a nova realidade e necessidade do aprendizado contínuo e autônomo, exigido pela sociedade do conhecimento e organizações dos dias atuais;</li>
+                                    <li>Promover no estudante uma postura ética e socialmente comprometida de seu papel e de sua contribuição no avanço científico, tecnológico e social do País.</li>
+                            </div>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Main layout-->
+        </main>
+        <!--Corpo-->
+        <!--Footer-->
+        <ui:insert name="footer" >
+            <ui:include src="../../footer.xhtml"/>   
+        </ui:insert>
+        <!--Footer-->
+        <!-- Impotando os js para funcionar internamente <-->
+        <ui:insert name="extensao" >
+            <ui:include src="js_interno.xhtml"/>   
+        </ui:insert>
+        <!-- Impotando os js para funcionar internamente <-->
+    </h:body>
+
+</html>
+

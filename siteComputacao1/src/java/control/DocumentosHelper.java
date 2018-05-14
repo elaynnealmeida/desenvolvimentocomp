@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import model.SiteDocumento;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -39,9 +40,8 @@ public class DocumentosHelper implements Serializable {
     private List<SiteDocumento> documentos11;
     private List<SiteDocumento> documentos10;
     private List<SiteDocumento> documentos9;
-    
-    
-    
+    private List<SiteDocumento> documentosRegimento;    
+    private List<SiteDocumento> documentosDiversos;    
 
     @PostConstruct
     public void init() {
@@ -61,6 +61,8 @@ public class DocumentosHelper implements Serializable {
         documentosConsepe = listarConsepe();
         documentosConsuni = listarconsuni();
         documentosEnade = listarenade();
+        documentosRegimento = listarRegimento();
+        documentosDiversos = listarDiversos();
 
     }
 
@@ -138,11 +140,29 @@ public class DocumentosHelper implements Serializable {
         this.documentosNDE = documentoDao.listarNDE();
         return this.documentosNDE;
     }
+    
+    public List<SiteDocumento> listarRegimento() {
+        this.documentosRegimento = documentoDao.listarRegimentos();
+        return this.documentosRegimento;
+    }
+    
+    public List<SiteDocumento> listarDiversos() {
+        this.documentosDiversos = documentoDao.listarDiversos();
+        return this.documentosDiversos;
+    }
 
     public StreamedContent download(SiteDocumento doc) {
         InputStream stream = new ByteArrayInputStream(doc.getArquivo());
         StreamedContent file1 = null;
         file1 = new DefaultStreamedContent(stream, doc.getExtencao(), doc.getTitulo());
+
+        return (StreamedContent) file1;
+    }
+    
+    public StreamedContent downloadPPC(){
+        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/img/PPC2018.pdf");
+        StreamedContent file1 = null;
+        file1 = new DefaultStreamedContent(stream, "application/pdf", "PPC2018");
 
         return (StreamedContent) file1;
     }
@@ -273,6 +293,22 @@ public class DocumentosHelper implements Serializable {
 
     public void setDocumentos9(List<SiteDocumento> documentos9) {
         this.documentos9 = documentos9;
+    }
+
+    public List<SiteDocumento> getDocumentosRegimento() {
+        return documentosRegimento;
+    }
+
+    public void setDocumentosRegimento(List<SiteDocumento> documentosRegimento) {
+        this.documentosRegimento = documentosRegimento;
+    }
+
+    public List<SiteDocumento> getDocumentosDiversos() {
+        return documentosDiversos;
+    }
+
+    public void setDocumentosDiversos(List<SiteDocumento> documentosDiversos) {
+        this.documentosDiversos = documentosDiversos;
     }
 
 }

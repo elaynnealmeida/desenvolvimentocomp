@@ -40,6 +40,7 @@ public class HorariosHelper implements Serializable {
     private List<SiteHorarioServidor> docentes5;
     private List<SiteHorarioServidor> docentes6;
     private List<SiteHorarioServidor> docentes7;
+    private List<SiteHorarioServidor> coordenacao;
     private List<SiteHorarioAula> aulas;
     private List<SiteHorarioAula> aulas2;
     private List<SiteHorarioAula> aulas3;
@@ -70,6 +71,7 @@ public class HorariosHelper implements Serializable {
         this.docentes5 = listarProfessores5();
         this.docentes6 = listarProfessores6();
         this.docentes7 = listarProfessores7();
+        this.coordenacao = listarCoordenacao();
         this.monitores = listarMonitores();
         this.estagiarios = listarEstagiarios();
         this.aulas = listarAulas();
@@ -136,6 +138,11 @@ public class HorariosHelper implements Serializable {
      public List<SiteHorarioServidor> listarProfessores7() {
         this.docentes7 = servidorDao.listarProfessores7();
         return this.docentes7;
+    }
+     
+     public List<SiteHorarioServidor> listarCoordenacao() {
+        this.coordenacao = servidorDao.listarHorariosCoordenacao();
+        return this.coordenacao;
     }
      
       public List<SiteHorarioAula> listarAulas() {
@@ -367,6 +374,14 @@ public class HorariosHelper implements Serializable {
 
     public void setServidores6(List<SiteHorarioServidor> servidores6) {
         this.servidores6 = servidores6;
+    }
+
+    public List<SiteHorarioServidor> getCoordenacao() {
+        return coordenacao;
+    }
+
+    public void setCoordenacao(List<SiteHorarioServidor> coordenacao) {
+        this.coordenacao = coordenacao;
     }
 
 }

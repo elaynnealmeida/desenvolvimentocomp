@@ -33,12 +33,14 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item"  value="Matriz Curricular" actionListener="#{navegacaoHelper.matrizCurricular()}"/>
                                         <h:commandLink class="list-group-item" value="Histórico do Curso" actionListener="#{navegacaoHelper.historico()}"/>
                                         <h:commandLink class="list-group-item" value="Linhas de Pesquisa" actionListener="#{navegacaoHelper.linhasdepesquisa()}"/>
+                                        <h:commandLink class="list-group-item" value="Objetivos" actionListener="#{navegacaoHelper.objetivos()}"/>
+                                        <h:commandLink class="list-group-item" value="Perfil do Egresso" actionListener="#{navegacaoHelper.perfil_egresso()}"/>
                                     </ul>
                                     <div class="panel-footer">O Curso</div>
                                 </div>
                             </div>
-                            
-                               <div class="panel panel-default">
+
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a  data-toggle="collapse" href="#collapse7">Infraestrutura</a>
@@ -54,8 +56,8 @@ and open the template in the editor.
                                     <div class="panel-footer">Infraestrutura</div>
                                 </div>
                             </div>
-                            
-                             <div class="panel panel-default">
+
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" href="#collapse6">Pesquisa</a>
@@ -65,12 +67,12 @@ and open the template in the editor.
                                     <ul class="list-group">
                                         <h:commandLink class="list-group-item" value="Grupos" actionListener="#{navegacaoHelper.grupo_pesquisa()}"/> 
                                         <h:commandLink class="list-group-item" value="Núcleos" actionListener="#{navegacaoHelper.nucleo_pesquisa()}"/>    
-                                     </ul>
+                                    </ul>
                                     <div class="panel-footer">Pesquisa</div>
                                 </div>
                             </div>
-                            
-                              <div class="panel panel-default">
+
+                            <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" href="#collapse8">Extensão</a>
@@ -87,12 +89,12 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item" value="Semana Acadêmica" actionListener="#{navegacaoHelper.secomp()}"/> 
                                         <h:commandLink class="list-group-item" value="Maratona de Programação" actionListener="#{navegacaoHelper.maratona()}"/> 
                                         <h:commandLink class="list-group-item" value="Fábrica de Software" actionListener="#{navegacaoHelper.fabrica()}"/> 
-                                        
-                                     </ul>
+
+                                    </ul>
                                     <div class="panel-footer">Extensão</div>
                                 </div>
                             </div>
-                            
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -123,6 +125,7 @@ and open the template in the editor.
                                         <h:commandLink class="list-group-item" value="Técnicos Administrativos" actionListener="#{navegacaoHelper.horario_tecnicos()}"/>
                                         <h:commandLink class="list-group-item" value="Estagiários" actionListener="#{navegacaoHelper.horario_estagiarios()}"/>
                                         <h:commandLink class="list-group-item" value="Monitores" actionListener="#{navegacaoHelper.horario_monitores()}"/>
+                                        <h:commandLink class="list-group-item" value="Coordenação" actionListener="#{navegacaoHelper.horario_coordenacao()}"/>
                                     </ul>
                                     <div class="panel-footer">Horários</div>
                                 </div>
@@ -136,14 +139,15 @@ and open the template in the editor.
                                 </div>
                                 <div id="collapse3" class="panel-collapse collapse">
                                     <ul class="list-group">
-                                   <!--     <h:commandLink class="list-group-item" value="CONDIR" actionListener="#//{navegacaoHelper.paginaDowloadsCondir()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="CONSEPE" actionListener="#//{navegacaoHelper.paginaDowloadsConsepe()}"></h:commandLink>
-                                        <h:commandLink class="list-group-item" value="CONSUNI" actionListener="#//{navegacaoHelper.paginaDowloadsConsuni()}"></h:commandLink>-->
+                                        <!--     <h:commandLink class="list-group-item" value="CONDIR" actionListener="#//{navegacaoHelper.paginaDowloadsCondir()}"></h:commandLink>
+                                             <h:commandLink class="list-group-item" value="CONSEPE" actionListener="#//{navegacaoHelper.paginaDowloadsConsepe()}"></h:commandLink>
+                                             <h:commandLink class="list-group-item" value="CONSUNI" actionListener="#//{navegacaoHelper.paginaDowloadsConsuni()}"></h:commandLink>-->
                                         <h:commandLink class="list-group-item" value="Atas Coordenação" actionListener="#{navegacaoHelper.paginaDowloads()}"></h:commandLink>
-                                      <!--  <h:commandLink class="list-group-item" value="Docentes" actionListener="#//{navegacaoHelper.paginaDowloadsDocentes()}"></h:commandLink>-->
+                                        <!--  <h:commandLink class="list-group-item" value="Docentes" actionListener="#//{navegacaoHelper.paginaDowloadsDocentes()}"></h:commandLink>-->
                                         <h:commandLink class="list-group-item" value="Núcleo Docente Estruturante" actionListener="#{navegacaoHelper.paginaDowloadsNDE()}"></h:commandLink>
                                         <h:commandLink class="list-group-item" value="Enade" actionListener="#{navegacaoHelper.paginaDowloadsEnade()}"></h:commandLink>
-
+                                        <h:commandLink class="list-group-item" value="Regimentos" actionListener="#{navegacaoHelper.paginaDowloadsRegimento()}"></h:commandLink>
+                                        <h:commandLink class="list-group-item" value="Diversos" actionListener="#{navegacaoHelper.paginaDowloadsDiversos()}"></h:commandLink>
                                     </ul>
                                     <div class="panel-footer">Documentos</div>
                                 </div>

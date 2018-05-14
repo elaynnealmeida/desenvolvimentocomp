@@ -70,62 +70,67 @@
                                     Duração: Mínima: 4 anos; Máxima: 6 anos. <br></br>
                                     Vagas: 80 anuais com duas entradas semestrais de 40 alunos</p>
                                 <br></br>
+
+                                <p class="text-justify">   <p:commandButton class="btn btn-primary btn-md" value="Baixar PPC do Curso" title="Baixar PPC do Curso" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{documentosHelper.downloadPPC()}" />
+                                    </p:commandButton> 
+                                </p>
                                 <p class="text-justify">O Curso de Ciência da Computação está no Campus de Palmas, que possui sinal de Wi-fi aberto para toda a comunidade acadêmica em toda sua a área de prédios. A internet wireless é acessada por meio de um sistema de login unificado da insitutição. A internet da UFT está conectada ao ponto de presença (Point of Presence - PoP) da rede de fibra óptica de alta velocidade junto à Rede Nacional de Ensino e Pesquisa (RNP), do Ministério da Ciência, Tecnologias, Inovações e Comunicação (MCTIC), a qual configura-se como a conexão de internet mais rápida no Estado do Tocantins, a uma velocidade de 10 Gbits/s. A UFT conta com uma infraestrutura de centro de dados implantado na Diretoria de Tecnologia da Informação (DTI/UFT), dentro do Campus de Palmas, na cidade de Palmas-TO. O centro de dados acomoda, atualmente, toda a infraestrutura de servidores, de armazenamento e de redes de computadores usados em pesquisa, desenvolvimento e inovação na universidade e região. Portanto, a UFT oferece os serviços de processamento, armazenamento e comunicação de dados e informações para a instituição. </p>
 
                                 <p class="text-justify">O data center da DTI/UFT já possui a infraestrutura preparada para a implantação dos servidores e demais equipamentos necessários para a hospedagem, processamento, comunicação e armazenamento dos dados e informações do Curso de Ciência da Computação. A DTI/UFT possui sistema para combate e prevenção de incêndios, contendo os materiais e recursos adequados às características dos equipamentos (extintores, sinalizadores e etc). Além da infraestrutura física, DTI/UFT conta com um corpo técnico administrativo com mais de 30 (trinta) profissionais da área de computação, distribuídos em seis setores: desenvolvimento de sistemas, infraestrutura de TIC, gerenciamento de sistemas de informação, suporte e manutenção, central de atendimento ao usuário e núcleo administrativo e gestão de contratos. Por possuir uma infraestrutura avançada, a DTI/UFT acomoda um rack com a infraestrutura de servidores do Curso de Ciência da Computação, o qual nos últimos 05 (cinco) anos, investiu aproximadamente R$ 200.000,00 (duzentos mil reais) do seu capital para a aquisição de equipamentos de tecnologia da informação e comunicação.</p>
 
                             </div>
                         </h:form>
-                         <div class="w3-main w3-white" style="margin-left:5.7em; margin-right: 11.5em;">
+                        <div class="w3-main w3-white" style="margin-left:5.7em; margin-right: 11.5em;">
 
-                        <!-- Push down content on small screens -->
-                        <div class="w3-hide-large" style="margin-top:80px" ></div>
+                            <!-- Push down content on small screens -->
+                            <div class="w3-hide-large" style="margin-top:80px" ></div>
 
-                        <!-- Slideshow Header -->
-                        <div class="w3-container" id="apartment" >
-                            <h2 class="w3-text-green">Fotos e Vídeos</h2>
-                            <div class="w3-display-container mySlides">
-                                <img src="../../resources/curso_img/81233-reproducao-uft.jpg" style="width:100%;margin-bottom:-6px"/>
+                            <!-- Slideshow Header -->
+                            <div class="w3-container" id="apartment" >
+                                <h2 class="w3-text-green">Fotos e Vídeos</h2>
+                                <div class="w3-display-container mySlides">
+                                    <img src="../../resources/curso_img/81233-reproducao-uft.jpg" style="width:100%;margin-bottom:-6px"/>
+                                </div>
+                                <div class="w3-display-container mySlides">
+                                    <img src="../../resources/curso_img/UFT_CUP_Implantação_2016.jpg" style="width:50%;margin-bottom:-6px; margin-left: 25%"/>
+                                </div>
+                                <div class="w3-display-container mySlides">      
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/z-qpoRKRXnI" style="width: 100%;margin-bottom:-6px">
+                                    </iframe>
+                                </div>
+                                <div class="w3-display-container mySlides">      
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/oB5FAwcZZyE" style="width:100%;margin-bottom:-6px"></iframe>
+                                </div>
+                                <div class="w3-display-container mySlides">      
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/9HX9_q9LP8Q" style="width:100%;margin-bottom:-6px"></iframe>
+                                </div>      
                             </div>
-                            <div class="w3-display-container mySlides">
-                                <img src="../../resources/curso_img/UFT_CUP_Implantação_2016.jpg" style="width:50%;margin-bottom:-6px; margin-left: 25%"/>
-                            </div>
-                            <div class="w3-display-container mySlides">      
-                                <iframe width="420" height="345" src="https://www.youtube.com/embed/z-qpoRKRXnI" style="width: 100%;margin-bottom:-6px">
-                                </iframe>
-                            </div>
-                            <div class="w3-display-container mySlides">      
-                                <iframe width="420" height="345" src="https://www.youtube.com/embed/oB5FAwcZZyE" style="width:100%;margin-bottom:-6px"></iframe>
-                            </div>
-                            <div class="w3-display-container mySlides">      
-                                <iframe width="420" height="345" src="https://www.youtube.com/embed/9HX9_q9LP8Q" style="width:100%;margin-bottom:-6px"></iframe>
-                            </div>      
+
+                            <div class="w3-row-padding w3-section">      
+                                <div class="w3-col s3">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/81233-reproducao-uft.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)"/>
+                                </div>
+                                <div class="w3-col s3">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/UFT_CUP_Implantação_2016.jpg" style="width:50%;cursor:pointer" onclick="currentDiv(2)"/>
+                                </div>
+                                <div class="w3-col s3">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video.png" style="width:100%;cursor:pointer;" onclick="currentDiv(3)"/>
+                                </div>
+                                <div class="w3-col s3">
+                                    <img class=" w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video3.png" style="width:100%;cursor:pointer" onclick="currentDiv(4)"/>
+                                </div>
+                                <div class="w3-col s3">
+                                    <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video2.png" style="width:100%;cursor:pointer;" onclick="currentDiv(5)"/>
+                                </div> 
+                            </div>     
+
+
+                            <!-- End page content -->
+
                         </div>
-
-                        <div class="w3-row-padding w3-section">      
-                            <div class="w3-col s3">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/81233-reproducao-uft.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)"/>
-                            </div>
-                            <div class="w3-col s3">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/UFT_CUP_Implantação_2016.jpg" style="width:50%;cursor:pointer" onclick="currentDiv(2)"/>
-                            </div>
-                            <div class="w3-col s3">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video.png" style="width:100%;cursor:pointer;" onclick="currentDiv(3)"/>
-                            </div>
-                            <div class="w3-col s3">
-                                <img class=" w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video3.png" style="width:100%;cursor:pointer" onclick="currentDiv(4)"/>
-                            </div>
-                            <div class="w3-col s3">
-                                <img class="demo w3-opacity w3-hover-opacity-off" src="../../resources/curso_img/video2.png" style="width:100%;cursor:pointer;" onclick="currentDiv(5)"/>
-                            </div> 
-                        </div>     
-
-
-                        <!-- End page content -->
-
                     </div>
-                    </div>
-                   
+
                 </div>
 
             </div>

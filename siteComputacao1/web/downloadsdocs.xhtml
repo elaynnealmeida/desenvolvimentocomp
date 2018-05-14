@@ -56,16 +56,17 @@
                                                      >                                    
                                             <p:column  headerText="Título" >
                                                 <h:outputText value="#{var.titulo}" />
-                                            </p:column>                                            
+                                            </p:column>                                           
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>  
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
                                         </p:dataTable>
 
                                     </h:form>
@@ -74,7 +75,7 @@
                                 <b:tab title="2017" id="segundoperiodo">
                                     <h:form id="aulasegundoperiodo">   
 
-                                       <p:dataTable var="var" value="#{documentosHelper.documentos17}"
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos17}"
                                                      rowKey="#{var.id}"
                                                      emptyMessage="Nenhum Registro Encontrado"
                                                      widgetVar="varTable" 
@@ -84,14 +85,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                             <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                            
                                         </p:dataTable>
 
                                     </h:form>
@@ -110,14 +113,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
@@ -134,16 +139,18 @@
                                                      >                                    
                                             <p:column  headerText="Título" >
                                                 <h:outputText value="#{var.titulo}" />
-                                            </p:column>                                            
-
+                                            </p:column>   
+                                            
+<p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
@@ -152,7 +159,7 @@
                                 <b:tab title="2014" id="quintoperiodo">
                                     <h:form id="aulaquintoperiodo">   
 
-                                       <p:dataTable var="var" value="#{documentosHelper.documentos14}"
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos14}"
                                                      rowKey="#{var.id}"
                                                      emptyMessage="Nenhum Registro Encontrado"
                                                      widgetVar="varTable" 
@@ -160,16 +167,18 @@
                                                      >                                    
                                             <p:column  headerText="Título" >
                                                 <h:outputText value="#{var.titulo}" />
-                                            </p:column>                                            
-
+                                            </p:column>   
+                                            
+  <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column>  
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                          
                                         </p:dataTable>
 
                                     </h:form>
@@ -178,7 +187,7 @@
                                 <b:tab title="2013" id="sextoperiodo">
                                     <h:form id="aulasextoperiodo">   
 
-                                       <p:dataTable var="var" value="#{documentosHelper.documentos13}"
+                                        <p:dataTable var="var" value="#{documentosHelper.documentos13}"
                                                      rowKey="#{var.id}"
                                                      emptyMessage="Nenhum Registro Encontrado"
                                                      widgetVar="varTable" 
@@ -188,14 +197,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
@@ -214,14 +225,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
@@ -240,14 +253,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
@@ -266,14 +281,16 @@
                                                 <h:outputText value="#{var.titulo}" />
                                             </p:column>                                            
 
+                                            <p:column headerText="Data da Postagem" >
+                                                <h:outputText value="#{var.dataArquivo}" />
+                                            </p:column> 
+                                            
                                             <p:column headerText="Arquivo" >
                                                 <p:commandButton class="btn btn-primary btn-md" value="Baixar" title="Baixar arquivo" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                                     <p:fileDownload value="#{documentosHelper.download(var)}" />
                                                 </p:commandButton> 
                                             </p:column>
-                                            <p:column headerText="Data da Postagem" >
-                                                <h:outputText value="#{var.dataArquivo}" />
-                                            </p:column>                                                                                  
+                                                                                                                             
                                         </p:dataTable>
 
                                     </h:form>
