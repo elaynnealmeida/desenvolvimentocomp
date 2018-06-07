@@ -25,7 +25,7 @@
 
         <link  href="../../css/w3.css" rel="stylesheet"></link>
         <style>
-            .mySlides {display:none}
+            .mySlides {display:none}            
         </style>
     </h:head>
     <ui:insert name="menu" >
@@ -62,14 +62,15 @@
                                 <br></br>
 
                                 <!--Post excerpt-->
-                                <p>Nome do Curso: Ciência da Computação <br></br>
+                                <article class="current">
+                                    Nome do Curso: Ciência da Computação<br />
                                     Modalidade: Bacharelado em Ciência da Computação <br></br>
                                     Autorização: Resolução nº 0036 de 16/06/1999 -CEE/TO Reconhecimento: Decreto 5.773/2006 e Portaria MEC 2.413/2005 <br></br>
                                     Renovação: Portaria MEC nº 686 de 22/03/2011 – DOU de 24/03/2011, Seção 1, p.24. Turno: Integral <br></br>
                                     Carga Horária: 3.300 h/total <br></br>
                                     Duração: Mínima: 4 anos; Máxima: 6 anos. <br></br>
-                                    Vagas: 80 anuais com duas entradas semestrais de 40 alunos</p>
-                                <br></br>
+                                    Vagas: 80 anuais com duas entradas semestrais de 40 alunos
+                                </article>
 
                                 <p class="text-justify">   <p:commandButton class="btn btn-primary btn-md" value="Baixar PPC do Curso" title="Baixar PPC do Curso" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
                                         <p:fileDownload value="#{documentosHelper.downloadPPC()}" />

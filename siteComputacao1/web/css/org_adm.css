@@ -1,0 +1,15 @@
+ol{ 
+   counter-reset: item 
+}
+            
+.linha{             
+   display: block 
+}
+            
+.linha::before { 
+    content: counters(item, ".") " - "; 
+    counter-increment: item 
+}
+
+
+
