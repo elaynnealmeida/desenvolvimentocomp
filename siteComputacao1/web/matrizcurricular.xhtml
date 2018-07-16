@@ -23,6 +23,12 @@
         <link href="css/signin.css" rel="stylesheet"></link>
         <link href="css/layout.css" rel="stylesheet"></link>
         <link href="css/geral.css" rel="stylesheet"></link>
+        <style>
+            .svg {
+                width: 80%;
+                height: 30%;
+            }
+        </style>
     </h:head>
     <ui:insert name="menu">
         <ui:include src="menu.xhtml"/>
@@ -37,11 +43,78 @@
                         <ui:include src="menu_lateral.xhtml"></ui:include>
                     </ui:insert>
                     <div class="col-lg-9">
-                        <h3 class="h3-responsive" style="text-align: right">Matriz Curricular
-                            <!--<small class="text-muted">secondary text</small>-->
+                        <h3 class="h3-responsive" style="text-align: right">
+                            Matriz Curricular
                         </h3>
                         <hr></hr>
-                        <ui:include src="matriz_svg.xhtml"></ui:include>
+                         
+                        <!-- Card -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="./resources/img/matriz_curricular_2018.png" alt="matriz_curricular_2018.png"></img>
+                                        <div class="card-body" align="center">
+                                            <h5 class="card-title" style="text-align: center; padding-top: 5px">PPC - 2018</h5>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2018">
+                                              Visualizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-5">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" src="./resources/img/matriz_curricular_2012.png" alt="matriz_curricular_2012.png"></img>
+                                        <div class="card-body" align="center">
+                                            <h5 class="card-title" style="clear: both; text-align: center">PPC - 2012</h5>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2012">
+                                              Visualizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                           
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal2018" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="left: -40%;" charset="UTF-8"> 
+                            <div class="modal-dialog " role="document">
+                                <div class="modal-content" style="position: relative; width: 240%;">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Matriz Curricular PPC - 2018</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+
+                                    <div class="modal-body"> 
+                                        <div>
+                                            <ui:include  class="svg" src="./resources/img/svg/matriz_curricular_2018.svg"></ui:include>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal fade" id="modal2012" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="left: -40%;">
+                            <div class="modal-dialog " role="document">
+                                <div class="modal-content" style="position: relative; width: 240%;">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Matriz Curricular PPC - 2012</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                    <div class="modal-body" style=" width: 80%; overflow-x: visible; left: -5%;">
+                                        <ui:include  class="svg" src="./resources/img/svg/matriz_curricular_2012.svg" ></ui:include>
+                                    </div>
+                            </div>
+                          </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <!--/.First row-->

@@ -22,7 +22,170 @@
         <link href="../css/mdb.min.css" rel="stylesheet"></link>
         <link href="../css/layout.css" rel="stylesheet"></link>
         <link href="../css/geral.css" rel="stylesheet"></link>
+        <style>
+.reset-this {
+    animation : none;
+    animation-delay : 0;
+    animation-direction : normal;
+    animation-duration : 0;
+    animation-fill-mode : none;
+    animation-iteration-count : 1;
+    animation-name : none;
+    animation-play-state : running;
+    animation-timing-function : ease;
+    backface-visibility : visible;
+    background : 0;
+    background-attachment : scroll;
+    background-clip : border-box;
+    background-color : transparent;
+    background-image : none;
+    background-origin : padding-box;
+    background-position : 0 0;
+    background-position-x : 0;
+    background-position-y : 0;
+    background-repeat : repeat;
+    background-size : auto auto;
+    border : 0;
+    border-style : none;
+    border-width : medium;
+    border-color : inherit;
+    border-bottom : 0;
+    border-bottom-color : inherit;
+    border-bottom-left-radius : 0;
+    border-bottom-right-radius : 0;
+    border-bottom-style : none;
+    border-bottom-width : medium;
+    border-collapse : separate;
+    border-image : none;
+    border-left : 0;
+    border-left-color : inherit;
+    border-left-style : none;
+    border-left-width : medium;
+    border-radius : 0;
+    border-right : 0;
+    border-right-color : inherit;
+    border-right-style : none;
+    border-right-width : medium;
+    border-spacing : 0;
+    border-top : 0;
+    border-top-color : inherit;
+    border-top-left-radius : 0;
+    border-top-right-radius : 0;
+    border-top-style : none;
+    border-top-width : medium;
+    bottom : auto;
+    box-shadow : none;
+    box-sizing : content-box;
+    caption-side : top;
+    clear : none;
+    clip : auto;
+    color : inherit;
+    columns : auto;
+    column-count : auto;
+    column-fill : balance;
+    column-gap : normal;
+    column-rule : medium none currentColor;
+    column-rule-color : currentColor;
+    column-rule-style : none;
+    column-rule-width : none;
+    column-span : 1;
+    column-width : auto;
+    content : normal;
+    counter-increment : none;
+    counter-reset : none;
+    cursor : auto;
+    direction : ltr;
+    display : inline;
+    empty-cells : show;
+    float : none;
+    font : normal;
+    font-family : inherit;
+    font-size : medium;
+    font-style : normal;
+    font-variant : normal;
+    font-weight : normal;
+    height : auto;
+    hyphens : none;
+    left : auto;
+    letter-spacing : normal;
+    line-height : normal;
+    list-style : none;
+    list-style-image : none;
+    list-style-position : outside;
+    list-style-type : disc;
+    margin : 0;
+    margin-bottom : 0;
+    margin-left : 0;
+    margin-right : 0;
+    margin-top : 0;
+    max-height : none;
+    max-width : none;
+    min-height : 0;
+    min-width : 0;
+    opacity : 1;
+    orphans : 0;
+    outline : 0;
+    outline-color : invert;
+    outline-style : none;
+    outline-width : medium;
+    overflow : visible;
+    overflow-x : visible;
+    overflow-y : visible;
+    padding : 0;
+    padding-bottom : 0;
+    padding-left : 0;
+    padding-right : 0;
+    padding-top : 0;
+    page-break-after : auto;
+    page-break-before : auto;
+    page-break-inside : auto;
+    perspective : none;
+    perspective-origin : 50% 50%;
+    position : static;
+    /* May need to alter quotes for different locales (e.g fr) */
+    quotes : '\201C' '\201D' '\2018' '\2019';
+    right : auto;
+    tab-size : 8;
+    table-layout : auto;
+    text-align : inherit;
+    text-align-last : auto;
+    text-decoration : none;
+    text-decoration-color : inherit;
+    text-decoration-line : none;
+    text-decoration-style : solid;
+    text-indent : 0;
+    text-shadow : none;
+    text-transform : none;
+    top : auto;
+    transform : none;
+    transform-style : flat;
+    transition : none;
+    transition-delay : 0s;
+    transition-duration : 0s;
+    transition-property : none;
+    transition-timing-function : ease;
+    unicode-bidi : normal;
+    vertical-align : baseline;
+    visibility : visible;
+    white-space : normal;
+    widows : 0;
+    width : auto;
+    word-spacing : normal;
+    z-index : auto;
+    /* basic modern patch */
+    all: initial;
+    all: unset;
+}
 
+/* basic modern patch */
+
+#reset-this-root {
+    all: initial;
+    * {
+        all: unset;
+    }
+}
+        </style>
     </h:head>
     <ui:insert name="menu" >
         <ui:include src="../menu.xhtml"/>
@@ -50,18 +213,60 @@
                                 <p class="text-justify">O Curso de Ciência da Computação possui o Núcleo de Desenvolvimento de Software da UFT (NDS) vinculado à Pro-reitoria de Extensão da UFT. O NDS é coordenado pelo prof. Dr. Patrick Letouze Palmas. Atualmente, os núcleos de Ensino, Pesquisa e Extensão são criados e regulamentados na UFT pela Resolução CONSEPE 02/2005. Os Núcleos são unidades criadas para apoiar, planejar, organizar, elaborar e executar programas e projetos relativos à pesquisa e extensão visando complementar as atividades dos cursos de graduação e pós-graduação. Segundo a resolução, as ações desenvolvidas deverão ser prioritariamente de caráter multi e interdisciplinar com o envolvimento de docentes pertencentes aos cursos da UFT e que podem contar com parcerias de docentes e/ou pesquisadores oriundos de outras instituições nacionais ou internacionais mediante convênio. Os Alunos de Graduação e Pós-Graduação participantes de programas ou projetos de pesquisa e/ou extensão da UFT desenvolvidos pelos núcleos ficam a eles vinculados.</p>
 
                                 <!--Post excerpt-->
-                               
-                                <article class="current">
-                                <h5>Núcleo de Computação Aplicada (NCA)</h5>
-                                <p class="text-justify">Unidade acadêmica ligada ao Curso de Ciência da Computação orientado segundo o cenário econômico, social, ambiental e regional do estado do Tocantins. O núcleo busca atender as especificidades da realidade tocantinense, considerando inclusive a localização privilegiada do Tocantins na Amazônia Legal, e tem o objetivo de propor soluções computacionais inovadoras para lidar com as demandas dos municípios e do próprio estado do Tocantins. Em seu primeiro ano de funcionamento, o núcleo foi responsável pela realização da Maratona de Programação e VIII Semana Acadêmica do Curso de Ciência da Computação. Além disso, possui projetos de automação de reserva de espaço físico e laboratórios na UFT, sistema de gestão de serviços em parceria com a Direção do Campus Universitário de Palmas, e projetos na área da saúde envolvendo georeferenciamento e processamento de imagens, como é o caso do sistema de gestão de contatos de portadores de Hanseníase, sistema para processamento de imagens para identificação de nódulos na mama, sistema de processamento de imagens para caracterização de Alzheimer. O NCA é vinculado ao Instituto de Atenção às Cidades (IAC/UFT), agregando a expertise na área de tecnologia da informação e comunicação como um dos eixos principais do insituto. Atualmente, o NCA conta com a parceria da empresa de desenvolvimento de software ConsisTI, e portanto, sua sede fica nas instalações desta última. Os componentes do núcleo são os professores: Anna Paula Rodrigues, Ary Henrique Morais de Oliveira, Glenda Michele Botelho, Rafael Lima, Tiago da Silva Almeida e Warley Gramacho.
-                                    <h5>Coordenadora: Glenda Michele Botelho</h5></p>
-                                </article>
-                                
-                                 <article class="current">
-                                <h5>Núcleo de Desenvolvimento de Software (NDS)</h5>
-                                <p class="text-justify">Unidade acadêmica ligada ao Curso de Ciência da Computação que tem por finalidade desenvolver sistemas tanto para pesquisa e educação quanto de cunho comercial. Em particular, os projetos do núcleo visam atuar em problemas de alta complexidade e/ou multidisciplinaridade. Atualmente, estão sendo desenvolvidos dois softwares. O primeiro consiste num software de gestão para transplantes baseado no trabalho aceito no VII Congresso Luso-Brasileiro de Transplantação (2008) e submetido ao “Transplantation Proceedings” cujo título é “Project Based Transplant Management as a Research Statistical Support”. Já o segundo consiste num software educativo baseado no trabalho “Cálculo de Estruturas de Proteínas” apresentado no XL Simpósio Brasileiro de Pesquisa Operacional (2008). Atualmente, o NDS conta com a parceria do Núcleo Estadual do Ministério da Saúde, e portanto, sua sede fica nas instalações deste último. Os componentes do núcleo são os professores: Álvaro Prestes, Ary Morais, Gentil Veloso Barbosa, George Lauro Ribeiro de Brito, Patrick Letouzé, Rafael Lima e Warley Gramacho.
-                                    <h5>Coordenador: Patrick Letouze Moreira</h5></p>
-                                 </article>
+                                <p:growl id="msgs" showDetail="true" />
+                                <p:tabView class='reset-this'>
+                                    <p:tab title="Núcleo de Computação Aplicada (NCA)">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <p class="text-justify" style="margin: 16px;">
+                                                Unidade acadêmica ligada ao Curso de Ciência da Computação orientado segundo o cenário econômico, social, ambiental e regional do estado do Tocantins. 
+                                                O núcleo busca atender as especificidades da realidade tocantinense, considerando inclusive a localização privilegiada do Tocantins na Amazônia Legal, e tem o objetivo de propor soluções computacionais inovadoras para lidar com as demandas dos municípios e do próprio estado do Tocantins. 
+                                                Em seu primeiro ano de funcionamento, o núcleo foi responsável pela realização da Maratona de Programação e VIII Semana Acadêmica do Curso de Ciência da Computação. 
+                                                Além disso, possui projetos de automação de reserva de espaço físico e laboratórios na UFT, sistema de gestão de serviços em parceria com a Direção do Campus Universitário de Palmas, e projetos na área da saúde envolvendo georeferenciamento e processamento de imagens, 
+                                                como é o caso do sistema de gestão de contatos de portadores de Hanseníase, sistema para processamento de imagens para identificação de nódulos na mama, sistema de processamento de imagens para caracterização de Alzheimer. 
+                                                O NCA é vinculado ao Instituto de Atenção às Cidades (IAC/UFT), agregando a expertise na área de tecnologia da informação e comunicação como um dos eixos principais do insituto. 
+                                                Atualmente, o NCA conta com a parceria da empresa de desenvolvimento de software ConsisTI, e portanto, sua sede fica nas instalações desta última. 
+                                            </p>
+                                            <div style="padding: 16px;">
+                                                <h5>Professores que compõem o Núcleo:</h5>
+                                                <ul>
+                                                    <li><a href="#">Anna Paula Rodrigues</a></li>
+                                                    <li><a href="#">Ary Henrique Morais de Oliveira</a></li>
+                                                    <li><a href="#">Glenda Michele Botelho</a></li>
+                                                    <li><a href="#">Rafael Lima</a></li>
+                                                    <li><a href="#">Tiago da Silva Almeida</a></li>
+                                                    <li><a href="#">Warley Gramacho</a></li>
+                                                </ul>
+                                                <h5>Coordenadora: Glenda Michele Botelho</h5>
+                                            </div>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                    <p:tab title="Núcleo de Desenvolvimento de Software (NDS)">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <p class="text-justify" style="margin: 16px;">
+                                                Unidade acadêmica ligada ao Curso de Ciência da Computação que tem por finalidade desenvolver sistemas tanto para pesquisa e educação quanto de cunho comercial. 
+                                                Em particular, os projetos do núcleo visam atuar em problemas de alta complexidade e/ou multidisciplinaridade. 
+                                                Atualmente, estão sendo desenvolvidos dois softwares. O primeiro consiste num software de gestão para transplantes baseado no trabalho aceito no VII Congresso Luso-Brasileiro de Transplantação (2008) e 
+                                                submetido ao “Transplantation Proceedings” cujo título é “Project Based Transplant Management as a Research Statistical Support”. 
+                                                Já o segundo consiste num software educativo baseado no trabalho “Cálculo de Estruturas de Proteínas” apresentado no XL Simpósio Brasileiro de Pesquisa Operacional (2008). 
+                                                Atualmente, o NDS conta com a parceria do Núcleo Estadual do Ministério da Saúde, e portanto, sua sede fica nas instalações deste último. 
+                                            </p>
+
+                                            <div style="padding: 16px;">
+                                                <h5>Professores que compõem o Núcleo: </h5>
+                                                <ul>
+                                                    <li><a href="#">Álvaro Prestes</a></li>
+                                                    <li><a href="#">Ary Henrique Morais de Oliveira</a></li>
+                                                    <li><a href="#">Gentil Veloso Barbosa</a></li>
+                                                    <li><a href="#">George Lauro Ribeiro de Brito</a></li>
+                                                    <li><a href="#">Patrick Letouzé</a></li>
+                                                    <li><a href="#">Rafael Lima</a></li>
+                                                    <li><a href="#">Warley Gramacho</a></li>
+                                                </ul>
+                                            </div>
+                                            <h5 style="margin-left: 16px;margin-bottom: 16px;">Coordenador: Patrick Letouze Moreira</h5>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:tabView>
                             </div>
                         </h:form>
                     </div>
@@ -82,6 +287,4 @@
         </ui:insert>
         <!-- Impotando os js para funcionar internamente <-->
     </h:body>
-
 </html>
-
